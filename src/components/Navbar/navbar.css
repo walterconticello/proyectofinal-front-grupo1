@@ -1,0 +1,12 @@
+.navbarContainer{
+	background-color: #F2F2F2;
+}
+
+.navBtn {
+	background-color: #71B641;
+	transition: 0.5s;
+}
+
+.navBtn:hover {
+	scale: 1.1;
+}
