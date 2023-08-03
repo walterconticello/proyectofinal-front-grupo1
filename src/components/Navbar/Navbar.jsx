@@ -3,6 +3,8 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logoApp from "../../assets/logo-canchas.png"
 import "./navbar.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons'
 
 const navigation = [
 	{ name: 'Dashboard', href: '#', current: true },
@@ -24,7 +26,7 @@ const Navbar = () => {
 						<div className="relative flex h-16 items-center justify-between">
 							<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 								{/* Mobile menu button*/}
-								<Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+								<Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-green-600 hover:bg-green-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-600">
 									<span className="absolute -inset-0.5" />
 									<span className="sr-only">Open main menu</span>
 									{open ? (
@@ -49,8 +51,8 @@ const Navbar = () => {
 												key={item.name}
 												href={item.href}
 												className={classNames(
-													item.current ? 'text-white navBtn' : 'text-gray-300 hover:text-white navBtn',
-													'rounded-md px-3 py-2 text-sm font-medium'
+													item.current ? 'text-white navBtn' : 'text-gray-300 hover:text-white hover:bg-green-500 navBtn',
+													'rounded-md px-3 py-2 text-sm font-medium navBtn'
 												)}
 												aria-current={item.current ? 'page' : undefined}
 											>
@@ -63,24 +65,21 @@ const Navbar = () => {
 							<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 								<button
 									type="button"
-									className="relative rounded-full carrito p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+									className="relative rounded-full carrito p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-1 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-green-600"
 								>
 									<span className="absolute -inset-1.5" />
-									<span className="sr-only">View notifications</span>
-									
+									<span className="sr-only">Agrega tus productos!</span>
+									<FontAwesomeIcon icon={faCartShopping} className='carrito' size='xl' />
+
 								</button>
 
 								{/* Profile dropdown */}
 								<Menu as="div" className="relative ml-3">
 									<div>
-										<Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+										<Menu.Button className="relative flex rounded-full  text-sm focus:outline-none">
 											<span className="absolute -inset-1.5" />
 											<span className="sr-only">Open user menu</span>
-											<img
-												className="h-8 w-8 rounded-full"
-												src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-												alt=""
-											/>
+											<FontAwesomeIcon icon={faUser} bounce className="h-8 w-8 rounded-full userIcon" size='lg'/>
 										</Menu.Button>
 									</div>
 									<Transition
@@ -97,7 +96,7 @@ const Navbar = () => {
 												{({ active }) => (
 													<a
 														href="#"
-														className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+														className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 													>
 														Your Profile
 													</a>
@@ -107,7 +106,7 @@ const Navbar = () => {
 												{({ active }) => (
 													<a
 														href="#"
-														className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+														className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 													>
 														Settings
 													</a>
@@ -117,7 +116,7 @@ const Navbar = () => {
 												{({ active }) => (
 													<a
 														href="#"
-														className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+														className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 													>
 														Sign out
 													</a>
@@ -138,7 +137,7 @@ const Navbar = () => {
 									as="a"
 									href={item.href}
 									className={classNames(
-										item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+										item.current ? 'navBtn text-white' : 'text-gray-400  hover:text-white hover:bg-green-500',
 										'block rounded-md px-3 py-2 text-base font-medium'
 									)}
 									aria-current={item.current ? 'page' : undefined}

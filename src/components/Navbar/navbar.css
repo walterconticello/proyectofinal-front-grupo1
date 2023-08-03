@@ -1,4 +1,4 @@
-.navbarContainer{
+.navbarContainer {
 	background-color: #F2F2F2;
 }
 
@@ -7,6 +7,10 @@
 	transition: 0.5s;
 }
 
-.navBtn:hover {
-	scale: 1.1;
+.carrito {
+	color: #71B641;
+}
+
+.userIcon {
+	color: #71B641
 }
