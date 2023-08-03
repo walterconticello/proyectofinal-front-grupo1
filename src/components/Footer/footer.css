@@ -15,6 +15,11 @@
 
 .socialIcon {
 	cursor: pointer;
+	transition: 0.2s;
+}
+
+.socialIcon:hover {
+	scale: 1.05;
 }
 
 .footerText {
