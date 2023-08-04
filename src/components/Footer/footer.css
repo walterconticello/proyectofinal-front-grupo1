@@ -1,0 +1,44 @@
+.footerContainer {
+	background-image: linear-gradient(to bottom, #71B641, #375920);
+}
+
+.footerLogoContainer {
+
+	justify-content: center;
+	align-items: center;
+}
+
+.logoFooter {
+	height: 100px;
+	width: 100px;
+}
+
+.socialIcon {
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.socialIcon:hover {
+	scale: 1.05;
+}
+
+.footerText {
+	font-weight: 500;
+}
+
+.footer2 {
+	display: flex;
+	margin: 0 auto;
+	align-items: center !important;
+	justify-content: space-around;
+}
+
+.itemFooter {
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.itemFooter:hover {
+	scale: 1.05;
+	color: white;
+}
