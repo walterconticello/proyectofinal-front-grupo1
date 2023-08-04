@@ -26,7 +26,7 @@ const Navbar = () => {
 						<div className="relative flex h-16 items-center justify-between">
 							<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 								{/* Mobile menu button*/}
-								<Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-lime-500 hover:bg-lime-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-lime-600 transition">
+								<Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-lime-500 hover:bg-lime-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-lime-500 transition">
 									<span className="absolute -inset-0.5" />
 									<span className="sr-only">Open main menu</span>
 									{open ? (
