@@ -26,7 +26,7 @@ const Navbar = () => {
 						<div className="relative flex h-16 items-center justify-between">
 							<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 								{/* Mobile menu button*/}
-								<Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-green-600 hover:bg-green-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-600">
+								<Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-lime-500 hover:bg-lime-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-lime-600 transition">
 									<span className="absolute -inset-0.5" />
 									<span className="sr-only">Open main menu</span>
 									{open ? (
@@ -51,7 +51,7 @@ const Navbar = () => {
 												key={item.name}
 												href={item.href}
 												className={classNames(
-													item.current ? 'text-white navBtn' : 'text-gray-300 hover:text-white hover:bg-green-500 navBtn',
+													item.current ? 'text-white navBtn' : 'text-gray-300 hover:text-white hover:bg-lime-500 navBtn',
 													'rounded-md px-3 py-2 text-sm font-medium navBtn'
 												)}
 												aria-current={item.current ? 'page' : undefined}
@@ -65,7 +65,7 @@ const Navbar = () => {
 							<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 								<button
 									type="button"
-									className="relative rounded-full carrito p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-1 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-green-600"
+									className="relative rounded-full carrito p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-1 focus:ring-lime-500 focus:ring-offset-2 focus:ring-offset-lime-500 transition"
 								>
 									<span className="absolute -inset-1.5" />
 									<span className="sr-only">Agrega tus productos!</span>
@@ -79,7 +79,7 @@ const Navbar = () => {
 										<Menu.Button className="relative flex rounded-full  text-sm focus:outline-none">
 											<span className="absolute -inset-1.5" />
 											<span className="sr-only">Open user menu</span>
-											<FontAwesomeIcon icon={faUser} bounce className="h-8 w-8 rounded-full userIcon" size='lg'/>
+											<FontAwesomeIcon icon={faUser} className="h-8 w-8 rounded-full userIcon" size='lg'/>
 										</Menu.Button>
 									</div>
 									<Transition
@@ -96,7 +96,7 @@ const Navbar = () => {
 												{({ active }) => (
 													<a
 														href="#"
-														className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+														className={classNames(active ? 'bg-lime-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 													>
 														Your Profile
 													</a>
@@ -106,7 +106,7 @@ const Navbar = () => {
 												{({ active }) => (
 													<a
 														href="#"
-														className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+														className={classNames(active ? 'bg-lime-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 													>
 														Settings
 													</a>
@@ -116,7 +116,7 @@ const Navbar = () => {
 												{({ active }) => (
 													<a
 														href="#"
-														className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+														className={classNames(active ? 'bg-lime-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 													>
 														Sign out
 													</a>
@@ -137,8 +137,8 @@ const Navbar = () => {
 									as="a"
 									href={item.href}
 									className={classNames(
-										item.current ? 'navBtn text-white' : 'text-gray-400  hover:text-white hover:bg-green-500',
-										'block rounded-md px-3 py-2 text-base font-medium'
+										item.current ? 'navBtn text-white transition' : 'text-gray-400  hover:text-white hover:bg-lime-500 transition',
+										'block rounded-md px-3 py-2 text-base font-medium transition'
 									)}
 									aria-current={item.current ? 'page' : undefined}
 								>
