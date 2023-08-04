@@ -1,5 +1,5 @@
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa"
-import logoApp from "../../assets/logo-canchas.png"
+import logoApp from "../../../assets/logo-canchas.png"
 import "./footer.css"
 
 

@@ -1,0 +1,11 @@
+.heroContainer {
+	max-width: 2164px;
+}
+
+.headerText {
+	font-weight: 400;
+}
+
+.headerText span {
+	font-weight: 800;
+}
