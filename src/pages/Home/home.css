@@ -9,3 +9,41 @@
 .heroButton:hover {
 	box-shadow: 0 0 0 2px #84cc16;
 }
+
+.searchContainer {
+	background-color: #71B641;
+}
+
+.shadow-buscador {
+	--tw-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.25);
+	--tw-shadow-colored: 0 4px 4px 0px var(--tw-shadow-color);
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.bg-misc-white {
+	--tw-bg-opacity: 1;
+	background-color: rgb(255 255 255/var(--tw-bg-opacity));
+}
+
+.inputStyled {
+	display: flex;
+	-webkit-box-pack: start;
+	place-content: stretch flex-start;
+	-webkit-box-align: stretch;
+	align-items: stretch;
+	flex-flow: row;
+	border-bottom: 2px solid #71B641;
+	color: rgb(68, 68, 68);
+	padding: 12px 0px;
+}
+
+.inputSearchBar {
+	border: none;
+	color: rgb(157, 157, 157);
+	font-weight: 600;
+	font-size: 14px;
+	padding: 0px 10px;
+	min-width: 50px;
+	flex-grow: 2;
+	outline: none;
+}
