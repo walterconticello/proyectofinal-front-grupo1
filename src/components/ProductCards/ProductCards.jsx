@@ -1,37 +1,43 @@
-import React, { useContext } from "react";
-import { ProductContext } from "../../context/ProductContext";
+import React, { useContext, useState } from "react";
+import { ProductContext, ProductProvider } from "../../context/ProductContext";
 import { Card, Button, Row, Col } from "react-bootstrap";
+import ProductSideBar from "../productSideBar/ProductSideBar";
 
 const ProductCards = () => {
   const { products } = useContext(ProductContext);
+  const [selectedCategories, setSelectedCategories] = useState([]); // Estado inicial de las categorías seleccionadas
+
+  // Filtrar productos por categorías seleccionadas
+  const filteredProducts =
+    selectedCategories.length === 0
+      ? products
+      : products.filter((product) =>
+          product.categories.some((category) =>
+            selectedCategories.includes(category)
+          )
+        );
 
   return (
     <div className="m-5">
-      {" "}
-      {/* Agregamos un margen a la derecha del contenedor principal */}
       <h1 className="mb-4">This is the card list</h1>
       <Row>
-        {/* Sidebar con filtros (izquierda) */}
         <Col md={3}>
-          {/* Agrega aquí el contenido de tu sidebar */}
-          <button type="button" className="btn btn-primary mb-2">
-            Filter 1
-          </button>
-          <button type="button" className="btn btn-primary mb-2">
-            Filter 2
-          </button>
-          {/* ... Agrega aquí más filtros si es necesario */}
+          <ProductProvider>
+            <ProductSideBar
+              selectedCategories={selectedCategories}
+              setSelectedCategories={setSelectedCategories}
+            />
+          </ProductProvider>
         </Col>
 
-        {/* Espacio para las cards (derecha) */}
         <Col md={9}>
           <Row className="justify-content-center">
-            {products.length === 0 ? (
+            {filteredProducts.length === 0 ? (
               <Col xs={12} className="text-center mt-4">
                 <p>No hay productos disponibles.</p>
               </Col>
             ) : (
-              products.map((product) => (
+              filteredProducts.map((product) => (
                 <Col
                   key={product._id}
                   xs={12}
@@ -41,11 +47,7 @@ const ProductCards = () => {
                   className="mb-4"
                 >
                   <Card className="h-100">
-                    <Card.Img
-                      variant="top"
-                      src={product.image}
-                      alt={product.name}
-                    />
+                    {/* <Card.Img variant="top" src={product.image} alt={product.name} /> */}
                     <Card.Body>
                       <Card.Title>{product.name}</Card.Title>
                       <Card.Text>{product.description}</Card.Text>

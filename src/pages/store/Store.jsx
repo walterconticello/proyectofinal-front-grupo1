@@ -5,7 +5,6 @@ import { ProductContext } from "../../context/ProductContext";
 const Store = () => {
   return (
     <div>
-      <h1>This is store page</h1>
       <ProductCards />
     </div>
   );
