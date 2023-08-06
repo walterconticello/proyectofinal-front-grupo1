@@ -1,0 +1,11 @@
+.buy-button {
+    background-color: #71B641 !important;
+    border: none !important;
+}
+
+.sidebarCol {
+    background-color: #fff;
+    height: 100vh !important;
+    border-radius:12px ;
+    padding: 2rem;
+}

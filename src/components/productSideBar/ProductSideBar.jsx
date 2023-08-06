@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import Form from "react-bootstrap/Form";
+import styles from "./productSideBar.css";
 
 const ProductSideBar = ({ selectedCategories, setSelectedCategories }) => {
   const { products } = useContext(ProductContext);
@@ -28,14 +29,12 @@ const ProductSideBar = ({ selectedCategories, setSelectedCategories }) => {
             type="checkbox"
             label={category}
             value={category}
+            className="category-field custom-checkbox p-3"
             checked={selectedCategories.includes(category)}
             onChange={handleCategoryChange}
           />
         ))}
       </Form>
-
-      <h4>Filtrar por Precio</h4>
-      <Form>{/* ... controles deslizantes de rango de precios ... */}</Form>
     </div>
   );
 };

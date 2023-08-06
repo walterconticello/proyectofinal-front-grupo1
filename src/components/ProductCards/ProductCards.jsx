@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { ProductContext, ProductProvider } from "../../context/ProductContext";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import ProductSideBar from "../productSideBar/ProductSideBar";
-
+import styles from "./productCards.css";
 const ProductCards = () => {
   const { products } = useContext(ProductContext);
   const [selectedCategories, setSelectedCategories] = useState([]); // Estado inicial de las categorías seleccionadas
@@ -21,7 +21,7 @@ const ProductCards = () => {
     <div className="m-5">
       <h1 className="mb-4">This is the card list</h1>
       <Row>
-        <Col md={3}>
+        <Col md={3} className="sidebarCol">
           <ProductProvider>
             <ProductSideBar
               selectedCategories={selectedCategories}
@@ -52,7 +52,7 @@ const ProductCards = () => {
                       <Card.Title>{product.name}</Card.Title>
                       <Card.Text>{product.description}</Card.Text>
                       <Card.Text>Price: ${product.price}</Card.Text>
-                      <Button variant="primary">Add to Cart</Button>
+                      <Button className="buy-button">Add to Cart</Button>
                     </Card.Body>
                   </Card>
                 </Col>
