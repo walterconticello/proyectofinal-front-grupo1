@@ -3,7 +3,12 @@ import { ProductContext } from "../../context/ProductContext";
 import Form from "react-bootstrap/Form";
 import styles from "./productSideBar.css";
 
-const ProductSideBar = ({ selectedCategories, setSelectedCategories }) => {
+const ProductSideBar = ({
+  selectedCategories,
+  setSelectedCategories,
+  isSidebarOpen,
+  toggleSideBar,
+}) => {
   const { products } = useContext(ProductContext);
   const [priceRange, setPriceRange] = useState([0, 100]);
   const uniqueCategories = Array.from(
@@ -20,8 +25,8 @@ const ProductSideBar = ({ selectedCategories, setSelectedCategories }) => {
   };
 
   return (
-    <div className="sidebar">
-      <h4>Filtrar por Categoría</h4>
+    <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+      <h5>Filtrar</h5>
       <Form>
         {uniqueCategories.map((category) => (
           <Form.Check
