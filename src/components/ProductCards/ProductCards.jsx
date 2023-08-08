@@ -1,15 +1,20 @@
 import React, { useContext, useState } from "react";
 import { ProductContext, ProductProvider } from "../../context/ProductContext";
+import "./productCards.css";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import ProductSideBar from "../productSideBar/ProductSideBar";
-import styles from "./productCards.css";
-import { MdOutlineShoppingCart } from "react-icons/md";
+import Categories from "../categories/Categories";
+import {
+  MdOutlineShoppingCart,
+  MdOutlineRemoveShoppingCart,
+} from "react-icons/md";
+
 const ProductCards = () => {
   const { products } = useContext(ProductContext);
-  const [selectedCategories, setSelectedCategories] = useState([]); // Estado inicial de las categorías seleccionadas
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [cart, setCart] = useState([]);
 
-  // Filtrar productos por categorías seleccionadas
   const filteredProducts =
     selectedCategories.length === 0
       ? products
@@ -19,26 +24,49 @@ const ProductCards = () => {
           )
         );
 
-  const toggleSideBar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+  const addToCart = (product) => {
+    if (cart.some((item) => item._id === product._id)) {
+      const updatedCart = cart.filter((item) => item._id !== product._id);
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    } else {
+      const updatedCart = [...cart, product];
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
   };
+
+  const isProductInCart = (product) =>
+    cart.some((item) => item._id === product._id);
 
   return (
     <div className="m-5">
-      {/* <h1 className="mb-4">This is the card list</h1> */}
       <Row>
-        {isSidebarOpen && (
-          <Col md={3} className="sidebarCol d-none d-md-block">
-            <ProductProvider>
-              <ProductSideBar
-                selectedCategories={selectedCategories}
-                setSelectedCategories={setSelectedCategories}
-              />
-            </ProductProvider>
-          </Col>
-        )}
-
-        <Col md={9}>
+        <Col
+          lg={3}
+          className={`sidebarCol d-none d-lg-block ${
+            !isSidebarOpen ? "d-none" : ""
+          }`}
+        >
+          <ProductSideBar
+            selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
+            isSidebarOpen={isSidebarOpen}
+          />
+        </Col>
+        <Col lg={isSidebarOpen ? 9 : 12}>
+          {!isSidebarOpen && (
+            <Categories
+              selectedCategories={selectedCategories}
+              setSelectedCategories={setSelectedCategories}
+            />
+          )}
+          <div className="categories-scroll-container d-flex overflow-auto">
+            <Categories
+              selectedCategories={selectedCategories}
+              setSelectedCategories={setSelectedCategories}
+            />
+          </div>
           <Row className="justify-content-center">
             {filteredProducts.length === 0 ? (
               <Col xs={12} className="text-center mt-4">
@@ -55,15 +83,23 @@ const ProductCards = () => {
                   className="mb-4"
                 >
                   <Card className="h-100">
-                    {/* <Card.Img variant="top" src={product.image} alt={product.name} /> */}
                     <Card.Body>
                       <Card.Title>{product.name}</Card.Title>
-                      {/* <Card.Text>{product.description}</Card.Text> */}
                       <Card.Text>${product.price}</Card.Text>
                       <div className="card-buttons d-flex justify-content-between">
                         <Button className="buy-button"> Buy now </Button>
-                        <Button className="">
-                          <MdOutlineShoppingCart />
+                        <Button
+                          variant="primary"
+                          className={`${
+                            isProductInCart(product) ? "added" : ""
+                          }`}
+                          onClick={() => addToCart(product)}
+                        >
+                          {isProductInCart(product) ? (
+                            <MdOutlineRemoveShoppingCart />
+                          ) : (
+                            <MdOutlineShoppingCart />
+                          )}
                         </Button>
                       </div>
                     </Card.Body>

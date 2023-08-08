@@ -9,3 +9,7 @@
     border-radius:12px ;
     padding: 2rem;
 }
+.added {
+    background-color: #71B641 !important;
+    color: white !important;
+  }

@@ -1,16 +1,15 @@
 import React, { useContext, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import Form from "react-bootstrap/Form";
-import styles from "./productSideBar.css";
+import "./productSideBar.css";
 
 const ProductSideBar = ({
   selectedCategories,
   setSelectedCategories,
   isSidebarOpen,
-  toggleSideBar,
 }) => {
   const { products } = useContext(ProductContext);
-  const [priceRange, setPriceRange] = useState([0, 100]);
+  // const [priceRange, setPriceRange] = useState([0, 100]);
   const uniqueCategories = Array.from(
     new Set(products.map((product) => product.categories).flat())
   );
