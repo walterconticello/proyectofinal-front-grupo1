@@ -17,8 +17,7 @@ const SportCenterDetail = ({sportCenter}) => {
             <h1 className="text-center fs-1 text-green my-4">{sportCenter.name}</h1>
             <section className="d-flex gap-5 flex-column flex-md-row align-items-center">
                 <article className="main-picture rounded-3">
-                    {/* <img src={sportCenter.photo} alt={`${sportCenter.name} photo`} /> */}
-                    <div className="bg-primary h-100 w-100"></div>
+                    <img src={sportCenter.photo} alt={`${sportCenter.name} photo`} />
                 </article>
                 <article>
                     <p>Dirección: {sportCenter.address}</p>
