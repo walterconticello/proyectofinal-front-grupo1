@@ -7,12 +7,13 @@ function App() {
   const sportCenter = {
     _id: "ObjectId(sportCenter)",
     name: "La Morocha - Fútbol",
-    address: "Av. Perón 1226",
     // location: "-26.803525, -65.278823",
     latitude: "-26.803525",
     longitude: "-65.278823",
-    photo: "https://w.forfun.com/fetch/c7/c72f15ffce0daa5d30436b7ddf5bc6c4.jpeg",
+    photo: "https://www.economiayviveros.com.ar/imagenes/ciencia-y-arte/cesped-canchas-futbol-1.jpg",
     owner: "ObjectId(owner)",
+    description: "Contamos con 10 canchas impecables y vestuarios completos con duchas, bar con parrilla y servicio de comida",
+    phone: "+54-381-1532115",
     isActive: true,
   }
 

@@ -2,6 +2,10 @@
     color: #71B641;
 }
 
+.bg-cards {
+    background-color: #71B641;
+}
+
 .main-picture {
     width: 80vw;
     height: 80vw;
@@ -10,8 +14,10 @@
 }
 
 .leaflet-container {
-    width: 500px;
-    height: 500px;
+    width: 80vw;
+    height: 80vw;
+    max-width: 400px;
+    max-height: 400px;
 }
 
 .main-picture img {
@@ -41,6 +47,13 @@
         height: 30vw;
         max-width: 300px;
         max-height: 300px;
+    }
+
+    .leaflet-container {
+        width: 50vw;
+        height: 25vw;
+        max-height: 350px;
+        max-width: 350px;
     }
 }
 
