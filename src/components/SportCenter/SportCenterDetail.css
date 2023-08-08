@@ -19,8 +19,8 @@
     /* Delete when card component is developed */
     width: 80vw;
     height: 80vw;
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 350px;
+    max-height: 350px;
 }
 
 @media all and (min-width:768px){
@@ -32,10 +32,10 @@
     }
     .card {
         /* Delete when card component is developed */
-        width: 15vw;
-        height: 15vw;
-        max-width: 200px;
-        max-height: 200px;
+        width: 30vw;
+        height: 30vw;
+        max-width: 300px;
+        max-height: 300px;
     }
 }
 

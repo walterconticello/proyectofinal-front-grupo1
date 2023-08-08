@@ -27,50 +27,35 @@ const SportCenterDetail = ({sportCenter}) => {
             <section className="my-4">{/*We have to use the component Card here, but it hasn't been developed yet*/}
                 <Container>
                     <Row>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
+                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
+                            <div className="card bg-danger m-2">Cancha 1</div>
                         </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
+                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
+                            <div className="card bg-danger m-2">Cancha 2</div>
                         </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
+                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
+                            <div className="card bg-danger m-2">Cancha 4</div>
                         </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
+                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
+                            <div className="card bg-danger m-2">Cancha 4</div>
                         </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
+                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
+                            <div className="card bg-danger m-2">Cancha 5</div>
                         </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
+                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
+                            <div className="card bg-danger m-2">Cancha 6</div>
                         </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
+                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
+                            <div className="card bg-danger m-2">Cancha 7</div>
                         </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
+                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
+                            <div className="card bg-danger m-2">Cancha 8</div>
                         </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
+                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
+                            <div className="card bg-danger m-2">Cancha 9</div>
                         </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
-                        </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
-                        </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
-                        </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
-                        </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
-                        </Col>
-                        <Col xs={12} md={4} lg= {3}>
-                            <div className="card bg-danger m-2"></div>
+                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
+                            <div className="card bg-danger m-2">Cancha 10</div>
                         </Col>
                     </Row>
                 </Container>
