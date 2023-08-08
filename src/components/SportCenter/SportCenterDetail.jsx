@@ -1,5 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import "./SportCenterDetail.css";
+import MapView from "./Map/MapView";
 
 const SportCenterDetail = ({sportCenter}) => {
     /*
@@ -22,6 +23,7 @@ const SportCenterDetail = ({sportCenter}) => {
                     <img className="rounded-3" src={sportCenter.photo} alt={`${sportCenter.name} photo`} />
                 </article>
                 <article>
+                    <MapView latitude={sportCenter.latitude} longitude={sportCenter.longitude}></MapView>
                     <p>Dirección: {sportCenter.address}</p>
                 </article>
             </section>

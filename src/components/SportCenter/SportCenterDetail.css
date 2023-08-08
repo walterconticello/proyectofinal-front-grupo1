@@ -9,6 +9,11 @@
     max-height: 400px;
 }
 
+.leaflet-container {
+    width: 500px;
+    height: 500px;
+}
+
 .main-picture img {
     object-fit: cover;
     height: 100%;
