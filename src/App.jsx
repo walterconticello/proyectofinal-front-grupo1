@@ -9,7 +9,7 @@ function App() {
     name: "La Morocha - Fútbol",
     address: "Av. Perón 1226",
     location: `26°48'12.8"S 65°16'44.6"W`,
-    photo: "https://imgar.zonapropcdn.com/avisos/1/00/44/29/27/76/720x532/1724306414.jpg",
+    photo: "https://esteeselfamosoriver.com/wp-content/uploads/2019/03/imagenes-de-river-plate-para-fondos-de-pantalla-para-celular-wallpaper-de-river-escudo-river-plate-1-1080x1200.jpg",
     owner: "ObjectId(owner)",
     isActive: true,
   }
