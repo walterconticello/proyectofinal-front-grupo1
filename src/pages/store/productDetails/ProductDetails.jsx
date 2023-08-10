@@ -1,28 +1,34 @@
-import { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext";
 
 const ProductDetails = () => {
-  const { products } = useContext(ProductContext);
+  const { getProduct, selectedProduct } = useContext(ProductContext);
   const { productId } = useParams();
 
-  const product = products.find((product) => product._id === productId);
+  useEffect(() => {
+    getProduct(productId);
+  }, []);
 
-  if (!product) {
-    return <p>Couldnt find the product.</p>;
+  console.log(selectedProduct);
+  if (!selectedProduct) {
+    return <p>Loading...</p>;
   }
 
   return (
     <div className="container mt-5">
       <div className="row">
         <div className="col-md-6">
-          <img src={product.image} alt={product.name} className="img-fluid" />
+          {/* <img
+            src={selectedProduct.image}
+            alt={selectedProduct.name}
+            className="img-fluid"
+          /> */}
         </div>
         <div className="col-md-6">
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <p>Precio: ${product.price}</p>
-          {/* Agregar más detalles aquí */}
+          <h2>{selectedProduct.name}</h2>
+          <p>{selectedProduct.description}</p>
+          <p>Precio: ${selectedProduct.price}</p>
         </div>
       </div>
     </div>

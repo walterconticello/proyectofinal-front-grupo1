@@ -89,8 +89,12 @@ const ProductCards = () => {
                       <Card.Text>${product.price}</Card.Text>
                       <div className="card-buttons d-flex justify-content-between">
                         <Link
-                          to={`/product/${product._id}`}
+                          to={`/store/product/${product._id}`}
                           className="buy-button btn"
+                          onClick={() => {
+                            // getProduct(product._id);
+                            console.log(product._id);
+                          }}
                         >
                           {" "}
                           Buy now{" "}

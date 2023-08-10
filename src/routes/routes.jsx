@@ -10,7 +10,12 @@ const Routes = () => {
     <Rutas>
       <Route exact path="/" />
       <Route exact path="/store" element={<Store />} />
-      <Route exact path="/product/:id" element={<ProductDetails />} />
+      <Route
+        exact
+        path="/store/product/:productId"
+        element={<ProductDetails />}
+      />
+      <Route exact path="/*" element={<p>404 NOT FOUND</p>} />
     </Rutas>
   );
 };
