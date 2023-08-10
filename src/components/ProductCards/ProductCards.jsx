@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { ProductContext, ProductProvider } from "../../context/ProductContext";
 import "./productCards.css";
 import { Card, Button, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import ProductSideBar from "../productSideBar/ProductSideBar";
 import Categories from "../categories/Categories";
 import {
@@ -87,10 +88,20 @@ const ProductCards = () => {
                       <Card.Title>{product.name}</Card.Title>
                       <Card.Text>${product.price}</Card.Text>
                       <div className="card-buttons d-flex justify-content-between">
-                        <Button className="buy-button"> Buy now </Button>
+                        <Link
+                          to={`/store/product/${product._id}`}
+                          className="buy-button btn"
+                          onClick={() => {
+                            // getProduct(product._id);
+                            console.log(product._id);
+                          }}
+                        >
+                          {" "}
+                          Buy now{" "}
+                        </Link>
                         <Button
                           variant="primary"
-                          className={`${
+                          className={`btn ${
                             isProductInCart(product) ? "added" : ""
                           }`}
                           onClick={() => addToCart(product)}

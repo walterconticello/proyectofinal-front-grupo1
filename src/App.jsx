@@ -1,14 +1,16 @@
+import React from "react";
 import "./App.css";
-import Store from "./pages/store/Store";
 import { ProductProvider } from "./context/ProductContext";
+import Routes from "./routes/routes";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <ProductProvider>
-        <Store />
-      </ProductProvider>
-    </>
+    <ProductProvider>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </ProductProvider>
   );
 }
 
