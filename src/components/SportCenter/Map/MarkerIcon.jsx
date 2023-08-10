@@ -1,4 +1,4 @@
-import Icon from "../../../../public/map_icon.svg";
+import Icon from "../../../assets/map_icon.svg";
 import L from "leaflet";
 
 const MarkerIcon = L.icon({

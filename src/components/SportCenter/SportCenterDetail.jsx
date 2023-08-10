@@ -1,7 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import "./SportCenterDetail.css";
 import MapView from "./Map/MapView";
-import Phone from "../../../public/telephone-fill.svg";
+import Phone from "../../assets/telephone-fill.svg";
 
 const SportCenterDetail = ({sportCenter}) => {
     /*
@@ -15,7 +15,18 @@ const SportCenterDetail = ({sportCenter}) => {
     photo: "",
     owner: "ObjectId(owner)",
     description: "Contamos con 10 canchas impecables y vestuarios, parrilla y bar",
-    phone: "+54-381-1532115",
+        contact: {
+        phone: "+54-381-1532115",
+        instagram: "+54-381-1532115",
+        facebook: "+54-381-1532115",
+    },
+    services: {
+        showers: true,
+        dressingRooms: true,
+        bar: false,
+        grill: true,
+        parking: false,
+    },
     isActive: true,
   }*/
     
@@ -35,7 +46,7 @@ const SportCenterDetail = ({sportCenter}) => {
                     <p className="fs-5">{sportCenter.description}</p>
                     <div className="d-flex justify-content-center my-3">
                         <img src={Phone} alt="Phone number" />
-                        <p>{sportCenter.phone}</p>
+                        <p>{sportCenter.contact.phone}</p>
                     </div>
                 </section>
             </div>

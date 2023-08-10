@@ -15,7 +15,18 @@ function App() {
     photo: "https://www.economiayviveros.com.ar/imagenes/ciencia-y-arte/cesped-canchas-futbol-1.jpg",
     owner: "ObjectId(owner)",
     description: "Contamos con 10 canchas impecables y vestuarios completos con duchas, bar con parrilla y servicio de comida",
-    phone: "+54-381-1532115",
+    contact: {
+      phone: "+54-381-1532115",
+      instagram: "+54-381-1532115",
+      facebook: "+54-381-1532115",
+    },
+    services: {
+      showers: true,
+      dressingRooms: true,
+      bar: false,
+      grill: true,
+      parking: false,
+    },
     isActive: true,
   }
 
