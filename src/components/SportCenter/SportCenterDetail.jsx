@@ -8,8 +8,10 @@ const SportCenterDetail = ({sportCenter}) => {
       const sportCenter = {
     _id: "ObjectId(sportCenter)",
     name: "Sport Center",
-    latitude: "-26.803525",
-    longitude: "-65.278823",
+    location: {
+        latitude: "-26.803525",
+        longitude: "-65.278823",
+    },
     photo: "",
     owner: "ObjectId(owner)",
     description: "Contamos con 10 canchas impecables y vestuarios, parrilla y bar",
@@ -26,7 +28,7 @@ const SportCenterDetail = ({sportCenter}) => {
                         <img className="rounded-3" src={sportCenter.photo} alt={`${sportCenter.name} photo`} />
                     </article>
                     <article>
-                        <MapView latitude={sportCenter.latitude} longitude={sportCenter.longitude}></MapView>
+                        <MapView latitude={sportCenter.location.latitude} longitude={sportCenter.location.longitude}></MapView>
                     </article>
                 </section>
                 <section className="text-center my-5">

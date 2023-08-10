@@ -8,8 +8,10 @@ function App() {
     _id: "ObjectId(sportCenter)",
     name: "La Morocha - Fútbol",
     // location: "-26.803525, -65.278823",
-    latitude: "-26.803525",
-    longitude: "-65.278823",
+    location: {
+      latitude: "-26.803525",
+      longitude: "-65.278823",
+    },
     photo: "https://www.economiayviveros.com.ar/imagenes/ciencia-y-arte/cesped-canchas-futbol-1.jpg",
     owner: "ObjectId(owner)",
     description: "Contamos con 10 canchas impecables y vestuarios completos con duchas, bar con parrilla y servicio de comida",
