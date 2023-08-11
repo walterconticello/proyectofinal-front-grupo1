@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { createContext, useEffect, useState } from 'react'
 
-export UsersContex = createContext()
+export const UsersContext = createContext()
 
-const UserContex = ({children}) =>{
+const UserContext = ({ children }) => {
 
     const [users, setUsers] = useState([]);
 
@@ -36,17 +36,28 @@ const UserContex = ({children}) =>{
         }
       };
 
+      const viewProfileId= async (id) => {
+        console.log(id);
+        try {
+              await axios.get(`http://localhost:3000/user/${id}`)  
+          const viewUser = users.filter((user) => user.id !== id);
+          console.log(viewUser);      
+      }catch (error) {
+        console.log(error, "error de productos");
+      }
+    }
+
 
       useEffect(() => {
         getUsers()
     }, [])
 
     return (
-        <UsersContex.Provider value={{users, getUsers , setUsers ,postUser , deleteUsers}}>
+        <UsersContext.Provider value={{users , getUsers , setUsers ,postUser , deleteUsers , viewProfileId}}>
             {children}
-        </UsersContex.Provider>
+        </UsersContext.Provider>
         
       )
 }
 
-export default UserContex;
+export default UserContext;
