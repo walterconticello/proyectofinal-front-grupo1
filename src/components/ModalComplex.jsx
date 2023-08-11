@@ -3,16 +3,18 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-function ModalComplex() {
+const ModalComplex = (id) => { 
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    const handleShow = () => setShow(true);
+  
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+      <Button variant="warning" className="ms-1"onClick={handleShow}>
+        Editar
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -39,8 +41,7 @@ function ModalComplex() {
             </Form.Group>
             <Form.Group
               className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
+              controlId="exampleForm.ControlTextarea1">
               <Form.Label>Example textarea</Form.Label>
               <Form.Control as="textarea" rows={3} />
             </Form.Group>

@@ -1,11 +1,15 @@
 import { Button } from 'bootstrap';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 const CardsDashboard = () => {
+
+  
   return (
     <>
-    <div className="m-1 d-flex flex-row"   >
-    <Card border="success" className="m-1 ms-4" style={{ width: '16rem' }}>
+    <div className="d-flex flex-wrap justify-content-center">
+    <Link to ={'/SportCenter'} className='buy-button btn m-2'>
+    <Card border="success" className="ms-2 me-2" style={{ width: '16rem' }}>
         <Card.Body>
         <Card.Img variant="top" src="src\img\Complejos.png" />
         <Card.Title class="text-center pt-3">
@@ -16,7 +20,9 @@ const CardsDashboard = () => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card border="success" className="m-1 ms-4" style={{ width: '16rem' }}>
+      </Link>
+      <Link to ={'./CardUsers.jsx'} className='buy-button btn m-2'>
+      <Card border="success" className="ms-2 me-2" style={{ width: '16rem' }}>
         <Card.Body>
         <Card.Img variant="top" src="src\img\Canchas.png" />
         <Card.Title class="text-center pt-3">
@@ -27,7 +33,9 @@ const CardsDashboard = () => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card border="success" className="m-1 ms-4" style={{ width: '16rem' }}>
+      </Link>
+       <Link to ={'./CardUsers.jsx'} className='buy-button btn m-2'>
+      <Card border="success" className="ms-2 me-2" style={{ width: '16rem' }}>
         <Card.Body>
         <Card.Img variant="top" src="src\img\Reservas.png" />
         <Card.Title class="text-center pt-3">
@@ -38,7 +46,9 @@ const CardsDashboard = () => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card border="success" className="m-1 ms-4" style={{ width: '16rem' }}>
+      </Link>
+      <Link to ={'./CardUsers.jsx'} className='buy-button btn m-2'>
+      <Card border="success" className="ms-2 me-2" style={{ width: '16rem' }}>
         <Card.Body>
         <Card.Img variant="top" src="src\img\Usuarios.png" />
         <Card.Title class="text-center pt-3">
@@ -49,6 +59,7 @@ const CardsDashboard = () => {
           </Card.Text>
         </Card.Body>
       </Card>
+      </Link>
       </div>
       </>
   )

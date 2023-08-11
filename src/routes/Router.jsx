@@ -1,5 +1,6 @@
 import {Route , Routes as Ruta} from 'react-router-dom'
 import {Dashboard} from '../pages/Dashboard'
+import SportCenter from '../pages/SportCenter'
 
 
 const Routes = () => {
@@ -8,6 +9,7 @@ const Routes = () => {
           <>
           <Ruta>
               <Route path="/Dashboard" element={<Dashboard />}/>
+              <Route path="/SportCenter" element={<SportCenter/>}/>
           </Ruta>
       </>
     )
