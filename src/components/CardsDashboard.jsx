@@ -21,7 +21,7 @@ const CardsDashboard = () => {
         </Card.Body>
       </Card>
       </Link>
-      <Link to ={'./CardUsers.jsx'} className='buy-button btn m-2'>
+      <Link to ={'./Fields.jsx'} className='buy-button btn m-2'>
       <Card border="success" className="ms-2 me-2" style={{ width: '16rem' }}>
         <Card.Body>
         <Card.Img variant="top" src="src\img\Canchas.png" />
