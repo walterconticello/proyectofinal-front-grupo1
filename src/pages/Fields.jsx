@@ -1,9 +1,9 @@
-import CardFields from '../components/SportCenter/CardFields'
+import CardField from '../components/Cards/CardFields'
 
 const Fields= () => {
   return (
     <>
-    <CardFields/>
+    <CardField/>
     </>
   )
 }

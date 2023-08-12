@@ -1,4 +1,4 @@
-import CardCenter from '../components/SportCenter/CardCenter'
+import CardCenter from '../components/Cards/CardCenter'
 
 const SportCenter = () => {
   return (

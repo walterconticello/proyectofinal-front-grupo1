@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import ModalComplex from '../ModalComplex';
+import ModalComplex from '../Modals/ModalComplex';
 
 const CardCenter = () => {
 
@@ -11,7 +11,7 @@ const CardCenter = () => {
     <>
     {/* Aqui hay que agregar un bucle que sigle segun la cantidad de complejos  */}
     <div>
-    <Card style={{ width: '16rem' }}>
+    <Card style={{ width: '16rem' }} >
       <Card.Img variant="top" src="src\img\Ejemplos\1.jpg" />
       <Card.Body>
         <Card.Title>SportCenter.Name</Card.Title>

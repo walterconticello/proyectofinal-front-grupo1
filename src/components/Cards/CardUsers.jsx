@@ -1,6 +1,6 @@
 import { useContext ,useState } from "react";
 import { Button, Card , Modal } from "react-bootstrap";
-import { UsersContext } from "../context/UserContext"
+import { UsersContext } from "../../context/UserContext"
 
 const CardUsers = () => {
 

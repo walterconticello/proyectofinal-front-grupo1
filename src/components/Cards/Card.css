@@ -1,0 +1,13 @@
+#edit{
+    width: 2.5em;
+    height: 2.5em;
+  }
+  
+#edit:hover{
+    transition: transform 0.3s, filter 0.3s;
+}
+
+#edit:hover {
+    transform: scale(1.1);
+    filter: brightness(70%);
+  }
