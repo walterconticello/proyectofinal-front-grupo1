@@ -84,20 +84,23 @@ const ProductCards = () => {
                   className="mb-4"
                 >
                   <Card className="h-100">
+                    <div className="card-image-container">
+                      <Card.Img
+                        src={product.image.url}
+                        alt={product.name}
+                        className="card-image img-fluid"
+                      />
+                    </div>
                     <Card.Body>
+                      {console.log(product)}
                       <Card.Title>{product.name}</Card.Title>
                       <Card.Text>${product.price}</Card.Text>
                       <div className="card-buttons d-flex justify-content-between">
                         <Link
                           to={`/store/product/${product._id}`}
                           className="buy-button btn"
-                          onClick={() => {
-                            // getProduct(product._id);
-                            console.log(product._id);
-                          }}
                         >
-                          {" "}
-                          Buy now{" "}
+                          Buy now
                         </Link>
                         <Button
                           variant="primary"
