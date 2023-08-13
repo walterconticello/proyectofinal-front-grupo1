@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ProductContext, ProductProvider } from "../../context/ProductContext";
 import "./productCards.css";
 import { Card, Button, Row, Col } from "react-bootstrap";
@@ -11,10 +11,15 @@ import {
 } from "react-icons/md";
 
 const ProductCards = () => {
-  const { products } = useContext(ProductContext);
+  const { products, getProducts, totalPages } = useContext(ProductContext);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [cart, setCart] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    getProducts(currentPage);
+  }, []);
 
   const filteredProducts =
     selectedCategories.length === 0
@@ -40,6 +45,10 @@ const ProductCards = () => {
   const isProductInCart = (product) =>
     cart.some((item) => item._id === product._id);
 
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    getProducts(newPage);
+  };
   return (
     <div className="m-5">
       <Row>
@@ -92,7 +101,6 @@ const ProductCards = () => {
                       />
                     </div>
                     <Card.Body>
-                      {console.log(product)}
                       <Card.Title>{product.name}</Card.Title>
                       <Card.Text>${product.price}</Card.Text>
                       <div className="card-buttons d-flex justify-content-between">
@@ -121,6 +129,19 @@ const ProductCards = () => {
                 </Col>
               ))
             )}
+            <div className="pagination">
+              {Array.from({ length: totalPages }, (_, index) => (
+                <span
+                  key={index}
+                  className={`page-number ${
+                    currentPage === index + 1 ? "active" : ""
+                  }`}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </span>
+              ))}
+            </div>
           </Row>
         </Col>
       </Row>

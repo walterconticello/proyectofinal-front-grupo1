@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 const ProductContext = createContext();
@@ -6,16 +6,18 @@ const ProductContext = createContext();
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [totalPages, setTotalPages] = useState(1);
   const API = "http://localhost:8001/api/products/";
   useEffect(() => {
     getProducts();
   }, []);
 
   //GET ALL
-  const getProducts = async () => {
+  const getProducts = async (page = 1) => {
     try {
-      const response = await axios.get(API);
-      setProducts(response.data);
+      const response = await axios.get(`${API}?page=${page}`);
+      setProducts(response.data.products);
+      setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -71,6 +73,7 @@ const ProductProvider = ({ children }) => {
         addProduct,
         updateProducts,
         deleteProduct,
+        totalPages,
       }}
     >
       {children}

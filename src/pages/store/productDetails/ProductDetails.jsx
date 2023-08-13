@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext";
 import "./productDetails.css";
-import { MdPayments, MdGrade, MdTaskAlt } from "react-icons/md";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { MdPayments, MdGrade, MdTaskAlt, MdCancel } from "react-icons/md";
+import { Modal, Form, Button, Row, Col } from "react-bootstrap";
 import {
   MdOutlineShoppingCart,
   MdOutlineRemoveShoppingCart,
@@ -16,6 +16,27 @@ const ProductDetails = () => {
   useEffect(() => {
     getProduct(productId);
   }, []);
+
+  const [showModal, setShowModal] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setQuantity(1);
+  };
+
+  const handleQuantityChange = (event) => {
+    const newQuantity = parseInt(event.target.value);
+    setQuantity(newQuantity);
+  };
+
+  const handleBuyNow = () => {
+    handleCloseModal();
+  };
 
   if (!selectedProduct) {
     return <p>Loading...</p>;
@@ -35,20 +56,35 @@ const ProductDetails = () => {
   const isProductInCart = (product) =>
     cart.some((item) => item._id === product._id);
 
+  const handleIncrement = () => {
+    if (quantity < 25) {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const total = selectedProduct.price * quantity;
   return (
-    <div className="container mt-5">
+    <div className="container bg-white p- mt-5">
       <Row>
         <Col lg={6} className="mb-4">
           <img
             src={selectedProduct.image.url}
             alt={selectedProduct.name}
-            className="img-fluid border"
+            className="img-fluid  border p-5"
           />
         </Col>
         <Col lg={6} className="my-5">
           <h2>{selectedProduct.name}</h2>
-          <p>{selectedProduct.description}</p>
+          <hr />
           <p className="product-price">${selectedProduct.price}</p>
+          <h5 className="product-category">{selectedProduct.categories}</h5>
+          <p>{selectedProduct.description}</p>
           <div className="d-flex justify-content-between align-items-center mt-4">
             <Button
               variant="primary"
@@ -63,9 +99,65 @@ const ProductDetails = () => {
                 <MdOutlineShoppingCart />
               )}
             </Button>
-            <Button className="buy-button px-5 mt-3">Buy now</Button>
+            <Button className="buy-button px-5 mt-3" onClick={handleShowModal}>
+              Buy now
+            </Button>
           </div>
         </Col>
+        {/* Modal */}
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Confirmar Compra</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h5>{selectedProduct.name}</h5>
+            <span className="d-flex ">
+              <p>Subtotal: </p>
+              <h5 className="mx-3">${selectedProduct.price}</h5>
+            </span>
+            <Form.Group
+              controlId="quantity"
+              className="d-flex align-items-center"
+            >
+              <Form.Label className="mr-3 align-items-center">
+                Cantidad:
+              </Form.Label>
+              <div className="mx-3 d-flex">
+                <Button variant="outline-success  " onClick={handleDecrement}>
+                  -
+                </Button>
+                <Form.Control
+                  type="number"
+                  min="1"
+                  max="25"
+                  value={quantity}
+                  onChange={handleQuantityChange}
+                  className="text-center w-auto mx-3"
+                />
+                <Button variant="outline-success" onClick={handleIncrement}>
+                  +
+                </Button>
+              </div>
+            </Form.Group>
+            <hr />
+            <span className="d-flex align-items-center justify-content-end">
+              <p className="p-2">Total: </p>
+              <h5 className="mx-3 border p-2">${total.toFixed(2)}</h5>
+            </span>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="danger"
+              className="cancel-btn"
+              onClick={handleCloseModal}
+            >
+              <MdCancel />
+            </Button>
+            <Button className="buy-button" onClick={handleBuyNow}>
+              Comprar
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Row>
       <Row className="mt-5">
         <Col md={4} className="mb-4 text-center">

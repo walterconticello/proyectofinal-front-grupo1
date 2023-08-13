@@ -1,6 +1,11 @@
 .buy-button {
     background-color: #71B641 !important;
-    border: none !important;
+    border: none !important
+  }
+  
+  .cancel-btn{
+  border: none !important
+
 }
 
 .sidebarCol {
