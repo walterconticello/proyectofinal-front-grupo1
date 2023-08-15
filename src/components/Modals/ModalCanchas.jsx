@@ -31,11 +31,21 @@ const ModalCancha = () => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form className="formik-form">
+              <div className="form-group">
+                <label htmlFor="idSportCenter">Complejo:</label>
+                <Field
+                  type="text"
+                  id="idSportCenter"
+                  name="idSportCenter"
+                  className="form-control-plaintext fs-4 fw-bolder"
+                  value="SportCenter.name"
+                />
+              </div>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <Field
@@ -77,17 +87,6 @@ const ModalCancha = () => {
                     className="form-control"
                   />
                 </div>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="idSportCenter">Sport Center</label>
-                <Field
-                  type="text"
-                  id="idSportCenter"
-                  name="idSportCenter"
-                  className="form-control-plaintext fs-4 fw-bolder"
-                  value="SportCenter.name"
-                />
               </div>
             </Form>
           </Formik>

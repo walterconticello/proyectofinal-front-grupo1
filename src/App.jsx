@@ -7,9 +7,11 @@ function App() {
   return (
     <>
     <UserContext>
+      {/* Nav */}
       <Routes />
+      {/* Footer */}
       </UserContext>
-
+ 
     </>
   )
 }

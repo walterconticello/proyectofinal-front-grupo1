@@ -1,19 +1,32 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { Formik, Form, Field } from "formik";
+import "./Modal.css";
 
-const ModalComplex = (id) => { 
-
+const ModalComplex = (id) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
+  const handleShow = () => setShow(true);
+
+  const initialValues = {
+    name: "",
+    openHour: "",
+    closeHour: "",
+    priceperhour: "",
+    idSportCenter: "",
+  };
+
+  const handleSubmit = (values) => {
+    // Handle form submission here
+    console.log(values);
+    handleClose();
+  };
 
   return (
     <>
-      <Button variant="warning" className="ms-1"onClick={handleShow}>
+      <Button variant="warning" className="ms-1" onClick={handleShow}>
         Editar
       </Button>
 
@@ -22,42 +35,51 @@ const ModalComplex = (id) => {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Nombre del Complejo</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Complejo nombreEjemplo"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Capacidad de Personas</Form.Label>
-              <Form.Control
-                type="Number"
-                placeholder="1000"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Example textarea</Form.Label>
-              <Form.Control as="textarea" rows={3} />
-            </Form.Group>
-          </Form>
+          <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+            <Form>
+              <div className="form-group">
+                <label htmlFor="nombre">Nombre</label>
+                <Field
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  className="form-control"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="capacidad">Capacidad</label>
+                <Field
+                  type="number"
+                  id="capacidad"
+                  name="capacidad"
+                  className="form-control"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="direccion">Dirección</label>
+                <Field
+                  type="text"
+                  id="direccion"
+                  name="direccion"
+                  className="form-control"
+                />
+              </div>
+            </Form>
+          </Formik>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cerrar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="primary" type="submit" onClick={handleClose}>
+            Guardar
           </Button>
         </Modal.Footer>
       </Modal>
     </>
   );
-}
+};
 
-export default  ModalComplex;
+export default ModalComplex;

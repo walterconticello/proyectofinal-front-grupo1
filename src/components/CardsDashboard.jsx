@@ -47,7 +47,7 @@ const CardsDashboard = () => {
         </Card.Body>
       </Card>
       </Link>
-      <Link to ={'./CardUsers.jsx'} className='buy-button btn m-2'>
+      <Link to ={'/Users'} className='buy-button btn m-2'>
       <Card id="cardDash">
         <Card.Body>
         <Card.Img variant="top" src="src\img\Usuarios.png" />

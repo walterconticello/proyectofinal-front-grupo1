@@ -4,8 +4,7 @@ const  Reservation = () => {
 
   return (
     <>
-    <div>
-      <Table responsive="sm">
+      <Table responsive oveflorw-auto>
         <thead>
           <tr>
             <th>#</th>
@@ -47,7 +46,6 @@ const  Reservation = () => {
           </tr>
         </tbody>
       </Table>
-    </div>
     </>
   );
 }

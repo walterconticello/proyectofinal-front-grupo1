@@ -3,6 +3,7 @@ import {Dashboard} from '../pages/Dashboard'
 import SportCenter from '../pages/SportCenter'
 import Fields from '../pages/Fields'
 import Reservation from '../components/Cards/Reservations'
+import Users from '../pages/Users'
 
 
 
@@ -15,7 +16,7 @@ const Routes = () => {
               <Route path="/SportCenter" element={<SportCenter/>}/>
               <Route path="/Field" element={<Fields/>} />
               <Route path='/Reservation' element={<Reservation/>} />
-
+              <Route path='/Users' element={<Users/>} />
           </Ruta>
       </>
     )
