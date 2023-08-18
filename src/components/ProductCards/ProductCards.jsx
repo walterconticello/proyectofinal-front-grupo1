@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { ProductContext, ProductProvider } from "../../context/ProductContext";
+import { ProductContext } from "../../context/ProductContext";
 import "./productCards.css";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -11,15 +11,10 @@ import {
 } from "react-icons/md";
 
 const ProductCards = () => {
-  const { products, getProducts, totalPages } = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [cart, setCart] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    getProducts(currentPage);
-  }, []);
 
   const filteredProducts =
     selectedCategories.length === 0
@@ -45,10 +40,6 @@ const ProductCards = () => {
   const isProductInCart = (product) =>
     cart.some((item) => item._id === product._id);
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-    getProducts(newPage);
-  };
   return (
     <div className="m-5">
       <Row>
@@ -71,7 +62,7 @@ const ProductCards = () => {
               setSelectedCategories={setSelectedCategories}
             />
           )}
-          <div className="categories-scroll-container d-flex overflow-auto">
+          <div className="categories-scroll-container d-flex d-lg-none overflow-auto">
             <Categories
               selectedCategories={selectedCategories}
               setSelectedCategories={setSelectedCategories}
@@ -129,19 +120,6 @@ const ProductCards = () => {
                 </Col>
               ))
             )}
-            <div className="pagination">
-              {Array.from({ length: totalPages }, (_, index) => (
-                <span
-                  key={index}
-                  className={`page-number ${
-                    currentPage === index + 1 ? "active" : ""
-                  }`}
-                  onClick={() => handlePageChange(index + 1)}
-                >
-                  {index + 1}
-                </span>
-              ))}
-            </div>
           </Row>
         </Col>
       </Row>

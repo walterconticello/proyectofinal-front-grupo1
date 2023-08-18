@@ -5,3 +5,7 @@
 .product-category {
 color: #656565;
 }
+
+.payment-icon:hover{
+    color: 71B641;
+}

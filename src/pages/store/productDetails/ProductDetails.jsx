@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext";
 import "./productDetails.css";
 import { MdPayments, MdGrade, MdTaskAlt, MdCancel } from "react-icons/md";
-import { Modal, Form, Button, Row, Col } from "react-bootstrap";
+import { FaCreditCard, FaMoneyBill, FaBitcoin, FaPaypal } from "react-icons/fa";
+import { Modal, Form, Button, Row, Col, Dropdown } from "react-bootstrap";
 import {
   MdOutlineShoppingCart,
   MdOutlineRemoveShoppingCart,
@@ -102,6 +103,30 @@ const ProductDetails = () => {
             <Button className="buy-button px-5 mt-3" onClick={handleShowModal}>
               Buy now
             </Button>
+          </div>
+          <hr />
+          <h5>Metodos de pago</h5>
+          <div className="paymentmethods">
+            <FaCreditCard
+              size={30}
+              className="payment-icon"
+              style={{ marginRight: "10px" }}
+            />
+            <FaMoneyBill
+              size={30}
+              className="payment-icon"
+              style={{ marginRight: "10px" }}
+            />
+            <FaBitcoin
+              size={30}
+              className="payment-icon"
+              style={{ marginRight: "10px" }}
+            />
+            <FaPaypal
+              size={30}
+              className="payment-icon"
+              style={{ marginRight: "10px" }}
+            />
           </div>
         </Col>
         {/* Modal */}
