@@ -1,14 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
+import './CardSportCenter.css';
 
 function CardSportCenter() {
   return (
-    <Card style={{ width: '200px', height: '300px', marginLeft: '20px', marginBottom: '20px' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+    <Card className="card-sport-center">
       <Card.Body>
         <Card.Title>cardSportCenter</Card.Title>
-        <Button variant="danger">Alquilar</Button>
+        <Button>Alquilar</Button>
       </Card.Body>
     </Card>
   );

@@ -1,0 +1,24 @@
+.card-sport-center {
+  width: 300px;
+  height: 175px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+}
+
+.card-sport-center button {
+  margin-top: 70px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+} 
+
+.card-sport-center .card-body {
+  background-image: url('https://darturnos.com/assets/images/turneros/84.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px
+}
