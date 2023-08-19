@@ -1,7 +1,15 @@
 import { Col, Container, Row } from "react-bootstrap";
+import Service from "./Map/ServicePin/Service";
 import "./SportCenterDetail.css";
 import MapView from "./Map/MapView";
 import Phone from "../../assets/telephone-fill.svg";
+import Instagram from "../../assets/instagram.svg";
+import Facebook from "../../assets/facebook.svg";
+import Bar from "../../assets/burger.svg";
+import Parking from "../../assets/parking.svg";
+import Grill from "../../assets/parrilla.svg";
+import Dressing from "../../assets/percha.svg";
+import Showers from "../../assets/shower.svg";
 
 const SportCenterDetail = ({sportCenter}) => {
     /*
@@ -43,11 +51,18 @@ const SportCenterDetail = ({sportCenter}) => {
                     </article>
                 </section>
                 <section className="text-center my-5">
+                    <article className="services d-flex justify-content-center">
+                        <Service img={Grill} alt={"Grill service"} isAvaiable={true}></Service>
+                        <Service img={Bar} alt={"Food service"} isAvaiable={true}></Service>
+                        <Service img={Parking} alt={"Parking service"} isAvaiable={true}></Service>
+                        <Service img={Dressing} alt={"Grill service"} isAvaiable={true}></Service>
+                        <Service img={Showers} alt={"Grill service"} isAvaiable={true}></Service>
+                    </article>
                     <p className="fs-5">{sportCenter.description}</p>
-                    <div className="d-flex justify-content-center my-3">
+                    <article className="d-flex justify-content-center my-3">
                         <img src={Phone} alt="Phone number" />
                         <p>{sportCenter.contact.phone}</p>
-                    </div>
+                    </article>
                 </section>
             </div>
             <section className="my-4 bg-cards py-4">{/*We have to use the component Card here, but it hasn't been developed yet*/}
