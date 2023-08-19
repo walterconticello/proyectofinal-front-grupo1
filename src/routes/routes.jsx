@@ -1,8 +1,8 @@
 // Routes.jsx
 import React from "react";
 import { Route, Routes as Rutas } from "react-router-dom";
-
 import Store from "../pages/store/Store";
+
 import ProductDetails from "../pages/store/productDetails/ProductDetails";
 
 const Routes = () => {

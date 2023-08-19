@@ -4,7 +4,7 @@ import { ProductContext } from "../../../context/ProductContext";
 import "./productDetails.css";
 import { MdPayments, MdGrade, MdTaskAlt, MdCancel } from "react-icons/md";
 import { FaCreditCard, FaMoneyBill, FaBitcoin, FaPaypal } from "react-icons/fa";
-import { Modal, Form, Button, Row, Col, Dropdown } from "react-bootstrap";
+import { Modal, Form, Button, Row, Col } from "react-bootstrap";
 import {
   MdOutlineShoppingCart,
   MdOutlineRemoveShoppingCart,
@@ -105,28 +105,26 @@ const ProductDetails = () => {
             </Button>
           </div>
           <hr />
-          <h5>Metodos de pago</h5>
-          <div className="paymentmethods">
-            <FaCreditCard
-              size={30}
-              className="payment-icon"
-              style={{ marginRight: "10px" }}
-            />
-            <FaMoneyBill
-              size={30}
-              className="payment-icon"
-              style={{ marginRight: "10px" }}
-            />
-            <FaBitcoin
-              size={30}
-              className="payment-icon"
-              style={{ marginRight: "10px" }}
-            />
-            <FaPaypal
-              size={30}
-              className="payment-icon"
-              style={{ marginRight: "10px" }}
-            />
+          <div className="paymentmethods ">
+            <h5>Metodos de pago</h5>
+            <Row className=" g-2 d-flex justify-content-between">
+              <Col md={6} sm={6} xs={6} className="payment ">
+                <FaCreditCard size={30} className="payment-icon" />
+                Tarjeta
+              </Col>
+              <Col md={6} sm={6} xs={6} className="payment ">
+                <FaMoneyBill size={30} className="payment-icon" />
+                Efectivo
+              </Col>
+              <Col md={6} sm={6} xs={6} className="payment ">
+                <FaBitcoin size={30} className="payment-icon" />
+                Bitcoin
+              </Col>
+              <Col md={6} sm={6} xs={6} className="payment ">
+                <FaPaypal size={30} className="payment-icon" />
+                Paypal
+              </Col>
+            </Row>
           </div>
         </Col>
         {/* Modal */}
@@ -185,21 +183,30 @@ const ProductDetails = () => {
         </Modal>
       </Row>
       <Row className="mt-5">
-        <Col md={4} className="mb-4 text-center">
+        <Col
+          md={4}
+          className="mb-4 text-center p-2 d-flex flex-column align-items-center"
+        >
           <div className="mb-3">
             <MdPayments style={{ color: "#71B641" }} size={50} />
           </div>
           <h4>Pago seguro</h4>
           <p>Tu informacion es segura con nosotros.</p>
         </Col>
-        <Col md={4} className="mb-4 text-center">
+        <Col
+          md={4}
+          className="mb-4 text-center p-2 d-flex flex-column align-items-center"
+        >
           <div className="mb-3">
             <MdGrade style={{ color: "#71B641" }} size={50} />
           </div>
           <h4>Calidad</h4>
           <p>Ofrecemos productos de alta calidad</p>
         </Col>
-        <Col md={4} className="mb-4 text-center">
+        <Col
+          md={4}
+          className="mb-4 text-center p-2 d-flex flex-column align-items-center"
+        >
           <div className="mb-3">
             <MdTaskAlt style={{ color: "#71B641" }} size={50} />
           </div>
