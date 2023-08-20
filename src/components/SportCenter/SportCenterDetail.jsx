@@ -184,7 +184,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                     }                
                 </article>
             </section>
-            <NewComment show={show} onHide={handleClose}></NewComment>
+            <NewComment show={show} onHide={handleClose} idSportCenter={sportCenter._id}></NewComment>
         </main>
     );
 }

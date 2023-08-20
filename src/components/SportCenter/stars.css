@@ -12,8 +12,8 @@
 .rating > label:before{
 	content: '\f005';
 	font-family: FontAwesome;
-	margin: 5px;
-	font-size: 1.5rem;
+	margin: 2px;
+	font-size: 1.2rem;
 	display: inline-block;
 	cursor: pointer;
 }
@@ -27,7 +27,7 @@
 
 .rating > label{
 	color: #acacac;
-	float: right;
+	float: right; /*right*/
 	cursor: pointer;
 }
 
@@ -42,4 +42,11 @@
 .rating > label:hover ~ input:checked ~ label,
 .rating > input:checked ~ label:hover ~ label{
 	color: #71B641;
+}
+
+@media all and (min-width:768px){
+	.rating > label:before{
+		margin: 5px;
+		font-size: 1.5rem;
+	}
 }

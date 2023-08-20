@@ -4,13 +4,33 @@ import * as Yup from "yup";
 import clsx from "clsx";
 import { useFormik } from "formik";
 
-const NewComment = ({show, onHide}) => {
+const NewComment = ({show, onHide, idSportCenter}) => {
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("hola");
+    const commentSchema = Yup.object().shape({
+        text: Yup.string().required("Requerido").min(5, "Comentario muy corto").max(500,"Comentario muy largo").trim(),
+        rating: Yup.number().required("Requerido").positive("Debe ser positivo").integer("Debe ser un entero").min(0, "Rating muy corto").max(10,"Rating muy largo"),
+        sportCenterId: Yup.string(),
+        userId: Yup.string(),
+    });
+
+    const initialValues = {
+        text: "",
+        rating: 0,
+        sportCenterId: idSportCenter,
+        userId: "AJSndfjkasndkjasn", //Sacar el Id desde el context
     }
 
+    const formik = useFormik({
+        initialValues,
+        validationSchema: commentSchema,
+        validateOnChange: true,
+        validateOnBlur: true,
+        onSubmit: (values)=>{
+            console.log(values); //aqui es el on submit
+            formik.resetForm();
+            onHide();
+        }
+    });
 
     return (
         <>
@@ -21,29 +41,55 @@ const NewComment = ({show, onHide}) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Escribe tu reseña:</Form.Label>
-                            <Form.Control as="textarea" maxLength={500} minLength={5} required placeholder="Escribe un comentario aquí..." className="newcomment-text" rows={5} />
+                    <Form onSubmit={formik.handleSubmit} noValidate>
+                        <Form.Group className="mb-3">
+                            <Form.Label htmlFor="commentArea">Escribe tu reseña:</Form.Label>
+                            <Form.Control as="textarea" id="commentArea" maxLength={500} minLength={5} required placeholder="Escribe un comentario aquí..." rows={5} {...formik.getFieldProps("text")} className={`newcomment-text ${clsx(
+                                "form-control",
+                                {
+                                    "is-invalid": formik.touched.text && formik.errors.text,
+                                },
+                                {
+                                    "is-valid": formik.touched.text && !formik.errors.text,
+                                }
+                            )}`}/>
+                            {formik.touched.text && formik.errors.text && (
+                            <div className="text-danger fw-bolder my-2">
+                                <span rol="alert">{formik.errors.text}</span>
+                            </div>
+                            )}
                         </Form.Group>
 
-                        <Form.Group className="mb-3 d-flex flex-column align-items-start" controlId="formBasicPassword">
+                        <Form.Group className="mb-3 d-flex flex-row align-items-center flex-nowrap" controlId="formBasicPassword">
                             <Form.Label>Califícanos:</Form.Label>
-                            <fieldset class="rating">
-                                <input type="radio" id="star10" name="rating" value="10"/><label for="star10" class="full" title="Awesome"></label>
-                                <input type="radio" id="star9" name="rating" value="9"/><label for="star9" class="half"></label>
-                                <input type="radio" id="star8" name="rating" value="8"/><label for="star8" class="full"></label>
-                                <input type="radio" id="star7" name="rating" value="7"/><label for="star7" class="half"></label>
-                                <input type="radio" id="star6" name="rating" value="6"/><label for="star6" class="full"></label>
-                                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="half"></label>
-                                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
-                                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="half"></label>
-                                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
-                                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="half"></label>
+                            <fieldset {...formik.getFieldProps("rating")} className={`rating ${clsx(
+                                "form-control",
+                                {
+                                    "is-invalid": formik.touched.rating && formik.errors.rating,
+                                },
+                                {
+                                    "is-valid": formik.touched.rating && !formik.errors.ratin,
+                                }
+                            )}`}>
+                                <input type="radio" id="star10" name="rating" value="10"/><label htmlFor="star10" className="full" title="Awesome"></label>
+                                <input type="radio" id="star9" name="rating" value="9"/><label htmlFor="star9" className="half"></label>
+                                <input type="radio" id="star8" name="rating" value="8"/><label htmlFor="star8" className="full"></label>
+                                <input type="radio" id="star7" name="rating" value="7"/><label htmlFor="star7" className="half"></label>
+                                <input type="radio" id="star6" name="rating" value="6"/><label htmlFor="star6" className="full"></label>
+                                <input type="radio" id="star5" name="rating" value="5"/><label htmlFor="star5" className="half"></label>
+                                <input type="radio" id="star4" name="rating" value="4"/><label htmlFor="star4" className="full"></label>
+                                <input type="radio" id="star3" name="rating" value="3"/><label htmlFor="star3" className="half"></label>
+                                <input type="radio" id="star2" name="rating" value="2"/><label htmlFor="star2" className="full"></label>
+                                <input type="radio" id="star1" name="rating" value="1"/><label htmlFor="star1" className="half"></label>
                             </fieldset>
+                            {formik.touched.rating && formik.errors.rating && (
+                            <div className="text-danger fw-bolder my-2">
+                                <span rol="alert">{formik.errors.rating}</span>
+                            </div>
+                            )}
                         </Form.Group>
                         <Form.Group className="d-flex flex-column flex-md-row justify-content-md-end gap-3">
-                            <Button variant="outline-danger" className="btn-reservation" type="button" onClick={onHide}>Cerrar</Button>
+                            <Button variant="outline-danger" className="btn-reservation" type="button" onClick={()=>{formik.resetForm(); onHide()}}>Cerrar</Button>
                             <Button variant="outline-success" className="btn-reservation" type="submit">Comentar</Button>
                         </Form.Group>
                     </Form>
