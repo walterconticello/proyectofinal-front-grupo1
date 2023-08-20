@@ -16,6 +16,7 @@ import Right from "../../assets/arrow-right-square.svg";
 import RightD from "../../assets/arrow-right-square-disabled.svg";
 import { useEffect } from "react";
 import { useState } from "react";
+import Comment from "./Comment";
 
 const SportCenterDetail = ({idSportCenter}) => {
     const [sportCenter, setSportCenter] = useState(false);
@@ -114,8 +115,8 @@ const SportCenterDetail = ({idSportCenter}) => {
                             {
                                 comments.map(comment => {
                                     return (
-                                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4} key={comment._id}>
-                                            <div className="card bg-white m-2">{comment._id}</div>
+                                        <Col className="d-flex justify-content-center align-items-center" xs={12} key={comment._id}>
+                                            <Comment comment={comment}></Comment>
                                         </Col>
                                     );
                                 })

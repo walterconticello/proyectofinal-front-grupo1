@@ -81,28 +81,31 @@
         {
             "_id": "djhmvkcmvm123mvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 6,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
                 "username":"diego_vacapaz1",
                 "email":"diegovca@hotmail.com5",
-                "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                "photo": "https://www.xtrafondos.com/descargar.php?id=5846&resolucion=2560x1440"
             }
         },
         {
             "_id": "djhmvkcmvmmv44mvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 3,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
                 "username":"diego_vacapaz2",
                 "email":"diegovca@hotmail.com4",
-                "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                "photo": "https://concepto.de/wp-content/uploads/2015/03/paisaje-e1549600034372.jpg"
             }
         },
         {
             "_id": "djhmvkcmv455454mmvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 4,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -114,6 +117,7 @@
         {
             "_id": "djhmvkcmvmmvm6666vmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 6,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -125,6 +129,7 @@
         {
             "_id": "djhmvkcmvmm76764vmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 9,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -138,6 +143,7 @@
         {
             "_id": "djhmvkcmv55mmvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 6,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -149,6 +155,7 @@
         {
             "_id": "djhmvkcmvm44mvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 6,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -160,6 +167,7 @@
         {
             "_id": "djhmvkcmvmm33vmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 2,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -171,6 +179,7 @@
         {
             "_id": "djhmvkcmvm22mvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 6,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -182,6 +191,7 @@
         {
             "_id": "djhmvkc11mvmmvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 6,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -195,6 +205,7 @@
         {
             "_id": "djhmvkc5mvmmvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 6,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -206,6 +217,7 @@
         {
             "_id": "djhmvkcm4vmmvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 1,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -217,6 +229,7 @@
         {
             "_id": "djhmvkc3mvmmvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 6,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -228,6 +241,7 @@
         {
             "_id": "djhmvkc2mvmmvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 6,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
@@ -239,6 +253,7 @@
         {
             "_id": "djhmvkc1mvmmvmvmvm1",
             "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+            "rating": 6,
             "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
             "userId": "jannnnvjvnjdsnfkd",
             "user": {
