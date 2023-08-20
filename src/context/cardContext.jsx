@@ -16,63 +16,77 @@ const CardProvider = ({ children }) => {
 
         //GET ALL CARDS
 
-        const getCards = async () => {
-            const response = await axios.get(API);
-            setCards(response.data);
-            setTotalPages(response.data.length);
-        }
+        const getCards = async (page=1) => {
+            try {
+                const response = await axios.get(`${API}?page=${page}`);
+                setCards(response.data.cards);
+                setTotalPages(response.data.meta.totalPages);
+            } catch (error) {
+                console.log("Error al obtener las Complex");
+            }
+        };
 
-        //GET CARD 
+
+        //GET CARDS 
 
         const getCard = async (id) => {
-            const response = await axios.get(`${API}/${id}`);
-            setSelectedCard(response.data);
-        }
-        Catch (error) {
-            console.log("Error al obtener la Complex");
-        }
+            try {
+                const response = await axios.get(`${API}/${id}`);
+                setSelectedCard(response.data);
+            } catch (error) {
+                console.log("Error al obtener la Complex");
+            }
+        };
 
-        //POST CARD
+    
+        //POST CARDS
 
-        const postCard = async (card) => {
-            const response = await axios.post(API, card);
-            setAddCard(true);
-            getCards();
-        }
-        Catch (error) {
-            console.log("Error al agregar la Complex");
-        }
+        const postCards = async (cards) => {
+            try {
+                const response = await axios.post(`${API}`, cards);
+                getCards();
+            } catch (error) {
+                console.log("Error al crear la Complex");
+            }
+        };
 
-        //PUT CARD
+    
+        //PUT CARDS
 
-        const putCard = async (card) => {
-            const response = await axios.put(`${API}/${card.id}`, card);
-            getCards();
-        }
-        Catch (error) {
-            console.log("Error al editar la Complex");
-        }
+        const updateCards = async (id, cards) => {
+            try {
+                await axios.put(`${API}/${cards.id}`, cards);
+                getCards();
+            } catch (error) {
+                console.log("Error al actualizar la Complex");
+            }
+        };
 
-        //DELETE CARD
+        //DELETE CARDS
 
-        const deleteCard = async (id) => {
-            const response = await axios.delete(`${API}/${id}`);
-            getCards();
-        }
-        Catch (error) {
+      const deleteCard = async (id) => {
+        try {
+          await axios.delete(`${API}/${id}`);
+          const deleteCard = cards.filter((card) => card.id !== id);
+            setCards(deleteCard);
+        } catch (error) {
             console.log("Error al eliminar la Complex");
         }
-
-        return (
-            <cardContext.Provider value={{ cards, selectedCard, addCard, totalPages, getCards, getCard, postCard, putCard, deleteCard }}>
-                {children}
-            </cardContext.Provider>
-        );
     };
 
-export { CardProvider };
+    return (
+        <cardContext.Provider
+            value={{ cards , getCards , getCard , postCards , updateCards , deleteCard , selectedCard , totalPages }}  
+        >
+            {children}
+        </cardContext.Provider>
+    );
+};
+
+export { CardProvider , cardContext };
+
+
 
 export default cardContext;
 
 // Path: src\components\cardSportCenter\CardSportCenter.jsx
-
