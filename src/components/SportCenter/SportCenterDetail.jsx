@@ -15,6 +15,8 @@ import { useState } from "react";
 
 const SportCenterDetail = ({idSportCenter}) => {
     const [sportCenter, setSportCenter] = useState(false);
+    const [comments, setComments] = useState([]);
+    const [pages, setPages] = useState(1);
 
     const URL = import.meta.env.VITE_DB;
 
@@ -28,9 +30,26 @@ const SportCenterDetail = ({idSportCenter}) => {
             console.log('Error fetching data:', error);
         }
     }
+    //Estos fetch borrarlos cuando se use el back
+    const fetchinComments1 = async () => {
+        const response = await fetch("http://localhost:3000/comments1");
+        const data = await response.json();
+        setComments(data);
+    }
+    const fetchinComments2 = async () => {
+        const response = await fetch("http://localhost:3000/comments2");
+        const data = await response.json();
+        console.log(data);
+    }
+    const fetchinComments3 = async () => {
+        const response = await fetch("http://localhost:3000/comments3");
+        const data = await response.json();
+        console.log(data);
+    }
 
     useEffect(()=>{
         fetchingSportCenter();
+        fetchinComments1();
     },[]);
 
     return (!sportCenter)? (<h1 className="text-green my-3">Cargando...</h1>):
@@ -66,36 +85,33 @@ const SportCenterDetail = ({idSportCenter}) => {
                 <article>
                     <Container>
                         <Row>
-                            <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
-                                <div className="card bg-white m-2">Cancha 1</div>
-                            </Col>
-                            <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
-                                <div className="card bg-white m-2">Cancha 2</div>
-                            </Col>
-                            <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
-                                <div className="card bg-white m-2">Cancha 4</div>
-                            </Col>
-                            <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
-                                <div className="card bg-white m-2">Cancha 4</div>
-                            </Col>
-                            <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
-                                <div className="card bg-white m-2">Cancha 5</div>
-                            </Col>
-                            <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
-                                <div className="card bg-white m-2">Cancha 6</div>
-                            </Col>
-                            <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
-                                <div className="card bg-white m-2">Cancha 7</div>
-                            </Col>
-                            <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
-                                <div className="card bg-white m-2">Cancha 8</div>
-                            </Col>
-                            <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
-                                <div className="card bg-white m-2">Cancha 9</div>
-                            </Col>
-                            <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4}>
-                                <div className="card bg-white m-2">Cancha 10</div>
-                            </Col>
+                            {
+                                sportCenter.fields.map(field => {
+                                    return (
+                                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4} key={field._id}>
+                                            <div className="card bg-white m-2">{field.name}</div>
+                                        </Col>
+                                    );
+                                })
+                            }
+                        </Row>
+                    </Container>
+                </article>
+            </section>
+            <section>
+                <h2 className="text-center fs-2 text-light my-5">Canchas disponibles:</h2>
+                <article>
+                    <Container>
+                        <Row>
+                            {
+                                comments.map(comment => {
+                                    return (
+                                        <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4} key={comment._id}>
+                                            <div className="card bg-white m-2">{comment.userId}</div>
+                                        </Col>
+                                    );
+                                })
+                            }
                         </Row>
                     </Container>
                 </article>
