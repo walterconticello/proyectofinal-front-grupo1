@@ -32,7 +32,12 @@ const ContactForm = () => {
 
   return (
     <div className="container-form h-100 ">
-      <h1 className="title">Contactanos</h1>
+      <div className="head d-flex flex-column align-items-center">
+        <h1 className="title m-3">Contactanos</h1>
+        <p className="w-75 text-center">
+          ¿Tenés preguntas? Nuestro equipo está para ayudarte
+        </p>
+      </div>
       <Formik
         initialValues={{ name: "", email: "", message: "" }}
         onSubmit={handleSubmit}

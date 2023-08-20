@@ -10,6 +10,12 @@
   .title {
     color: #fff;
     text-align: center;
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .head{
+    color: #fff;
   }
   
   .form-group {
