@@ -10,35 +10,31 @@ import Parking from "../../assets/parking.svg";
 import Grill from "../../assets/parrilla.svg";
 import Dressing from "../../assets/percha.svg";
 import Showers from "../../assets/shower.svg";
+import { useEffect } from "react";
+import { useState } from "react";
 
-const SportCenterDetail = ({sportCenter}) => {
-    /*
-      const sportCenter = {
-    _id: "ObjectId(sportCenter)",
-    name: "Sport Center",
-    location: {
-        latitude: "-26.803525",
-        longitude: "-65.278823",
-    },
-    photo: "",
-    owner: "ObjectId(owner)",
-    description: "Contamos con 10 canchas impecables y vestuarios, parrilla y bar",
-        contact: {
-        phone: "+54-381-1532115",
-        instagram: "+54-381-1532115",
-        facebook: "+54-381-1532115",
-    },
-    services: {
-        showers: true,
-        dressingRooms: true,
-        bar: false,
-        grill: true,
-        parking: false,
-    },
-    isActive: true,
-  }*/
-    
-    return (
+const SportCenterDetail = ({idSportCenter}) => {
+    const [sportCenter, setSportCenter] = useState(false);
+
+    const URL = import.meta.env.VITE_DB;
+
+    const fetchingSportCenter = async () => {
+        try {
+            const response = await fetch(URL);
+            const data = await response.json();
+            setSportCenter(data[0]);
+        }
+        catch (error){
+            console.log('Error fetching data:', error);
+        }
+    }
+
+    useEffect(()=>{
+        fetchingSportCenter();
+    },[]);
+
+    return (!sportCenter)? (<h1 className="text-green my-3">Cargando...</h1>):
+        (
         <main>
             <div className="container">
                 <h1 className="text-center fs-1 text-green my-4">{sportCenter.name}</h1>
@@ -61,7 +57,7 @@ const SportCenterDetail = ({sportCenter}) => {
                     <p className="fs-5">{sportCenter.description}</p>
                     <article className="d-flex justify-content-center my-3">
                         <img src={Phone} alt="Phone number" />
-                        <p>{sportCenter.contact.phone}</p>
+                        <p>{sportCenter.phone}</p>
                     </article>
                 </section>
             </div>

@@ -1,0 +1,137 @@
+{
+    "sportCenter": [
+        { 
+            "_id": "DAHSvkusdgnfcoidgfhasdv",
+            "name": "La Morocha",
+            "location": {
+                "latitude": "-26.803525",
+                "longitude": "-65.278823"
+            },
+            "photo": "https://www.economiayviveros.com.ar/imagenes/ciencia-y-arte/cesped-canchas-futbol-1.jpg",
+            "owner": "Ojhd<jlfksdfhbsakjdfh",
+            "description": "Contamos con 10 canchas impecables y vestuarios, parrilla y bar",
+            "phone": "+54-381-1532115",
+            "social": {
+                "instagram": "https://www.instagram.com",
+                "facebook": "https://www.facebook.com"
+            },
+            "services": {
+                "showers": true,
+                "dressingRooms": true,
+                "bar": false,
+                "grill": true,
+                "parking": false
+            },
+            "isActive": true,
+            "fields": [
+                {
+                    "name": "Cancha 1",
+                    "openHour": 10,
+                    "closeHour": 23,
+                    "pricePerHour": 7000,
+                    "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
+                    "isActive": true,
+                    "type": 7,
+                    "_id": "ajfh1sdjfhkjsdnvjksvno"
+                },
+                {
+                    "name": "Cancha 2",
+                    "openHour": 10,
+                    "closeHour": 23,
+                    "pricePerHour": 3000,
+                    "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
+                    "isActive": true,
+                    "type": 5,
+                    "_id": "ajfhsdj2fhkjsdnvjksvno"
+                },
+                {
+                    "name": "Cancha 3",
+                    "openHour": 10,
+                    "closeHour": 23,
+                    "pricePerHour": 9000,
+                    "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
+                    "isActive": true,
+                    "type": 5,
+                    "_id": "ajfhsdjfhk3jsdnvjksvno"
+                },
+                {
+                    "name": "Cancha 4",
+                    "openHour": 10,
+                    "closeHour": 23,
+                    "pricePerHour": 8000,
+                    "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
+                    "isActive": true,
+                    "type": 7,
+                    "_id": "ajfhsdjfhkj4sdnvjksvno"
+                },
+                {
+                    "name": "Cancha 5",
+                    "openHour": 10,
+                    "closeHour": 23,
+                    "pricePerHour": 6000,
+                    "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
+                    "isActive": true,
+                    "type": 7,
+                    "_id": "ajfhsdjfhkjsdn5vjksvno"
+                }
+            ],
+            "comments": [
+                {
+                    "_id": "djhmvkcmvmmvmvmvm1",
+                    "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+                    "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+                    "userId": "jannnnvjvnjdsnfkd",
+                    "user": {
+                        "username":"diego_vacapaz1",
+                        "email":"diegovca@hotmail.com5",
+                        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    }
+                },
+                {
+                    "_id": "djhmvkcmvmmvmvmvm1",
+                    "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+                    "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+                    "userId": "jannnnvjvnjdsnfkd",
+                    "user": {
+                        "username":"diego_vacapaz2",
+                        "email":"diegovca@hotmail.com4",
+                        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    }
+                },
+                {
+                    "_id": "djhmvkcmvmmvmvmvm1",
+                    "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+                    "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+                    "userId": "jannnnvjvnjdsnfkd",
+                    "user": {
+                        "username":"diego_vacapaz3",
+                        "email":"diegovca@hotmail.com3",
+                        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    }
+                },
+                {
+                    "_id": "djhmvkcmvmmvmvmvm1",
+                    "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+                    "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+                    "userId": "jannnnvjvnjdsnfkd",
+                    "user": {
+                        "username":"diego_vacapaz4",
+                        "email":"diegovca@hotmail.com2",
+                        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    }
+                },
+                {
+                    "_id": "djhmvkcmvmmvmvmvm1",
+                    "text": "lorem1jksdfgvnksdjfnakdjnfcajkdncjknaskjnajscdnakjcnkja",
+                    "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+                    "userId": "jannnnvjvnjdsnfkd",
+                    "user": {
+                        "username":"diego_vacapaz5",
+                        "email":"diegovca@hotmail.com1",
+                        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    }
+                }
+            ]
+        }
+    ]
+}
