@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, FormControl, Button } from 'react-bootstrap';
 import './SearchBar.css';
 
 function SearchBar(props) {
@@ -13,12 +14,18 @@ function SearchBar(props) {
   };
 
   return (
-    <div className="search-bar">
-      <form>
-        <input type="text" value={searchTerm} onChange={handleInputChange} />
-        <button onClick={handleSearch}>Buscar</button>
-      </form>
-    </div>
+    <Form>
+      <FormControl
+        type="text"
+        value={searchTerm}
+        onChange={handleInputChange}
+        placeholder="Buscar"
+        className="sm-2"
+      />
+      <Button variant="outline-success" onClick={handleSearch}>
+        Buscar
+      </Button>
+    </Form>
   );
 }
 
