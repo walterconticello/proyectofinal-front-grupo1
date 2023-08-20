@@ -72,7 +72,11 @@
 }
 
 .btn-reservation{
-    width: 47%;
+    width: 100%;
+}
+
+.newcomment-text{
+    resize: none !important;
 }
 
 @media all and (min-width:768px){

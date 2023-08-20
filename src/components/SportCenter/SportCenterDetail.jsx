@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Service from "./Map/ServicePin/Service";
 import "./SportCenterDetail.css";
 import MapView from "./Map/MapView";
@@ -21,17 +21,21 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Comment from "./Comment";
 import Field from "./Field";
+import NewComment from "./NewComment";
 
 const SportCenterDetail = ({idSportCenter}) => {
     const [sportCenter, setSportCenter] = useState(false);
     const [comments, setComments] = useState([]);
     const [page, setPage] = useState(1);
     const [lastPage, setLastPage] = useState(1);
+    const [show, setShow] = useState(false);
 
     const URL = import.meta.env.VITE_DB;
-
     const stars = [];
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);  
+    
     const starsFactory = () => {
         for(let i = 1; i <= sportCenter.rating/2 ; i++) { //1
             stars.push("fill");
@@ -150,6 +154,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                 <h2 className="text-center text-green fs-2 my-5">Comentarios:</h2>
                 <article>
                     <Container>
+                        <Button variant="outline-success" onClick={handleShow}>Comentar</Button>
                             {
                                 comments.map(comment => {
                                     return (
@@ -179,6 +184,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                     }                
                 </article>
             </section>
+            <NewComment show={show} onHide={handleClose}></NewComment>
         </main>
     );
 }
