@@ -20,9 +20,10 @@
                 "dressingRooms": true,
                 "bar": false,
                 "grill": true,
-                "parking": false
+                "parking": true
             },
             "isActive": true,
+            "rating": 7,
             "fields": [
                 {
                     "name": "Cancha 1",

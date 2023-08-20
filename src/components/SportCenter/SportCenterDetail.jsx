@@ -14,6 +14,9 @@ import Left from "../../assets/arrow-left-square.svg";
 import LeftD from "../../assets/arrow-left-square-disabled.svg";
 import Right from "../../assets/arrow-right-square.svg";
 import RightD from "../../assets/arrow-right-square-disabled.svg";
+import StarEmpty from "../../assets/star.svg";
+import Star from "../../assets/star-fill.svg";
+import HalfStar from "../../assets/star-half.svg";
 import { useEffect } from "react";
 import { useState } from "react";
 import Comment from "./Comment";
@@ -37,7 +40,7 @@ const SportCenterDetail = ({idSportCenter}) => {
         }
     }
 
-    const fetchingComments = async () => {
+    const fetchingComments = async () => { //El fetch debe hacerse solo de comentarios activos
         if(page <= lastPage){
             try{
                 const response = await fetch(`http://localhost:3000/comments${page}`);
@@ -75,17 +78,26 @@ const SportCenterDetail = ({idSportCenter}) => {
                     </article>
                 </section>
                 <section className="text-center my-5">
-                    <article className="services d-flex justify-content-center">
-                        <Service img={Grill} alt={"Grill service"} isAvaiable={true}></Service>
-                        <Service img={Bar} alt={"Food service"} isAvaiable={true}></Service>
-                        <Service img={Parking} alt={"Parking service"} isAvaiable={true}></Service>
-                        <Service img={Dressing} alt={"Grill service"} isAvaiable={true}></Service>
-                        <Service img={Showers} alt={"Grill service"} isAvaiable={true}></Service>
+                    <article className="services d-flex justify-content-center my-3">
+                        {sportCenter.services.showers && <Service img={Showers} alt={"Grill service"} isAvaiable={true}></Service>}
+                        {sportCenter.services.dressingRooms && <Service img={Dressing} alt={"Grill service"} isAvaiable={true}></Service>}
+                        {sportCenter.services.bar && <Service img={Bar} alt={"Food service"} isAvaiable={true}></Service>}
+                        {sportCenter.services.grill && <Service img={Grill} alt={"Grill service"} isAvaiable={true}></Service>}
+                        {sportCenter.services.parking && <Service img={Parking} alt={"Parking service"} isAvaiable={true}></Service>}
                     </article>
                     <p className="fs-5">{sportCenter.description}</p>
                     <article className="d-flex justify-content-center my-3">
                         <img src={Phone} alt="Phone number" />
                         <p>{sportCenter.phone}</p>
+                        {/* IG y FB */}
+                    </article>
+                    <article className="d-flex justify-content-center gap-3 my-3">
+                        <a href={sportCenter.social.instagram} target="_blank">
+                            <img src={Instagram} alt="Instagram" />
+                        </a>
+                        <a href={sportCenter.social.facebook} target="_blank">
+                            <img src={Facebook} alt="Facebook" />
+                        </a>
                     </article>
                 </section>
             </div>

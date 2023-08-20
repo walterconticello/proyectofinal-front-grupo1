@@ -31,10 +31,10 @@ const Comment = ({comment}) => {
                 </div>
                 <div className="d-flex align-items-center">
                     {
-                        stars.map((star) => {
-                            if(star === "fill") return <img src={Star} alt="filled star" />;
-                            if(star === "half") return <img src={HalfStar} alt="half star" />;
-                            if(star === "empty") return <img src={StarEmpty} alt="empty star" />;
+                        stars.map((star,index) => {
+                            if(star === "fill") return <img src={Star} alt="filled star" key={index}/>;
+                            if(star === "half") return <img src={HalfStar} alt="half star" key={index}/>;
+                            if(star === "empty") return <img src={StarEmpty} alt="empty star" key={index}/>;
                         })
                     }
                 </div>
