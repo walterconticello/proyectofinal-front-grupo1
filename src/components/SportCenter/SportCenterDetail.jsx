@@ -20,6 +20,7 @@ import HalfStar from "../../assets/star-half.svg";
 import { useEffect } from "react";
 import { useState } from "react";
 import Comment from "./Comment";
+import Field from "./Field";
 
 const SportCenterDetail = ({idSportCenter}) => {
     const [sportCenter, setSportCenter] = useState(false);
@@ -136,7 +137,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                                 sportCenter.fields.map(field => {
                                     return (
                                         <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4} key={field._id}>
-                                            <div className="card bg-white m-2">{field.name}</div>
+                                            <Field field={field}></Field>          
                                         </Col>
                                     );
                                 })

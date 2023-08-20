@@ -53,16 +53,22 @@
     object-position: center;
 }
 
-.card {
-    /* Delete when card component is developed */
-    width: 80vw;
-    height: 80vw;
-    max-width: 350px;
-    max-height: 350px;
-}
-
 .pages {
     height: 30px;
+}
+
+.card {
+    max-height: auto !important;
+}
+
+.card-photo {
+    min-height: 150px !important;
+    height: 13vw !important;
+    object-fit: cover;
+}
+
+.btn-card{
+    width: 100%;
 }
 
 @media all and (min-width:768px){
@@ -72,13 +78,6 @@
         max-height: 350px;
         max-width: 350px;
     }
-    .card {
-        /* Delete when card component is developed */
-        width: 30vw;
-        height: 30vw;
-        max-width: 300px;
-        max-height: 300px;
-    }
 
     .leaflet-container {
         width: 50vw;
@@ -86,7 +85,14 @@
         max-height: 350px;
         max-width: 350px;
     }
+
+    .btn-card{
+        width: 50%;
+    }
 }
 
 @media all and (min-width:992px){
+    .btn-card{
+        width: 40%;
+    }
 }
