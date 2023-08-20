@@ -111,17 +111,13 @@ const SportCenterDetail = ({idSportCenter}) => {
                 <h2 className="text-center text-green fs-2 my-5">Comentarios:</h2>
                 <article>
                     <Container>
-                        <Row>
                             {
                                 comments.map(comment => {
                                     return (
-                                        <Col className="d-flex justify-content-center align-items-center" xs={12} key={comment._id}>
-                                            <Comment comment={comment}></Comment>
-                                        </Col>
+                                        <Comment key={comment._id} comment={comment}></Comment>
                                     );
                                 })
                             }
-                        </Row>
                     </Container>
                 </article>
                 <article className="d-flex gap-3 justify-content-center pages my-4">
