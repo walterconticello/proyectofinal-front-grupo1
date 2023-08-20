@@ -15,12 +15,8 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        <div>
         <Slider />
-        </div>
-        <div>
         <SearchBar />
-        </div>
         <CardSportCenter />
         <Footer />
       </BrowserRouter>
