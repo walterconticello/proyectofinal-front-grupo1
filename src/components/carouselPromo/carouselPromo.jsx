@@ -1,5 +1,4 @@
 import Carousel from 'react-bootstrap/Carousel';
-import './carouselPromo.css';
 
 import sliderImage1 from './imgCarouselPromo/slider1.jpeg';
 import sliderImage2 from './imgCarouselPromo/slider2.jpeg';

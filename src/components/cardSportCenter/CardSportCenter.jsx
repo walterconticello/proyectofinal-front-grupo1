@@ -6,11 +6,13 @@ function CardSportCenter() {
   return (
     <Card className="card-sport-center">
       <Card.Body>
-        <Card.Title>cardSportCenter</Card.Title>
+        <Card.Title>SportCenter</Card.Title>
         <Button>Alquilar</Button>
       </Card.Body>
     </Card>
+    
   );
 }
+
 
 export default CardSportCenter;
