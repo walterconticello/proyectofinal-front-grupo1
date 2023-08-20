@@ -42,6 +42,10 @@
     max-height: 350px;
 }
 
+.pages {
+    height: 30px;
+}
+
 @media all and (min-width:768px){
     .main-picture {
         width: 25vw;

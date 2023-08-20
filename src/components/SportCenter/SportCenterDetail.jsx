@@ -10,14 +10,18 @@ import Parking from "../../assets/parking.svg";
 import Grill from "../../assets/parrilla.svg";
 import Dressing from "../../assets/percha.svg";
 import Showers from "../../assets/shower.svg";
+import Left from "../../assets/arrow-left-square.svg";
+import LeftD from "../../assets/arrow-left-square-disabled.svg";
+import Right from "../../assets/arrow-right-square.svg";
+import RightD from "../../assets/arrow-right-square-disabled.svg";
 import { useEffect } from "react";
 import { useState } from "react";
-import { main } from "@popperjs/core";
 
 const SportCenterDetail = ({idSportCenter}) => {
     const [sportCenter, setSportCenter] = useState(false);
     const [comments, setComments] = useState([]);
     const [page, setPage] = useState(1);
+    const [lastPage, setLastPage] = useState(1);
 
     const URL = import.meta.env.VITE_DB;
 
@@ -33,11 +37,12 @@ const SportCenterDetail = ({idSportCenter}) => {
     }
 
     const fetchingComments = async () => {
-        if(page <= 3){
+        if(page <= lastPage){
             try{
                 const response = await fetch(`http://localhost:3000/comments${page}`);
                 const data = await response.json();
-                setComments([...comments, ...data]);
+                setComments([...data]);
+                setLastPage(3); //Traer desde back
             }
             catch (error){
                 console.log('Error fetching data:', error);
@@ -47,8 +52,11 @@ const SportCenterDetail = ({idSportCenter}) => {
 
     useEffect(()=>{
         fetchingSportCenter();
-        fetchingComments();
     },[]);
+    
+    useEffect(()=> {
+        fetchingComments();
+    }, [page]);
 
     return (!sportCenter)? (
             <h1 className="text-green my-3">Cargando...</h1>
@@ -107,13 +115,32 @@ const SportCenterDetail = ({idSportCenter}) => {
                                 comments.map(comment => {
                                     return (
                                         <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4} key={comment._id}>
-                                            <div className="card bg-white m-2">{comment.userId}</div>
+                                            <div className="card bg-white m-2">{comment._id}</div>
                                         </Col>
                                     );
                                 })
                             }
                         </Row>
                     </Container>
+                </article>
+                <article className="d-flex gap-3 justify-content-center pages my-4">
+                    {
+                        (page > 1)?(
+                            <div onClick={()=> setPage(page - 1)} className="h-100">
+                                <img src={Left} alt="Previous page" className="h-100"/>
+                            </div>
+                        ):(
+                            <img src={LeftD} alt="Previous page" className="h-100"/>
+                        )
+                    }{
+                        (page < lastPage)?(
+                            <div onClick={()=> setPage(page + 1)} className="h-100">
+                                <img src={Right} alt="Next page" className="h-100"/>
+                            </div>
+                        ):(
+                            <img src={RightD} alt="Next page"  className="h-100"/>
+                        )
+                    }                
                 </article>
             </section>
         </main>
