@@ -12,11 +12,12 @@ import Dressing from "../../assets/percha.svg";
 import Showers from "../../assets/shower.svg";
 import { useEffect } from "react";
 import { useState } from "react";
+import { main } from "@popperjs/core";
 
 const SportCenterDetail = ({idSportCenter}) => {
     const [sportCenter, setSportCenter] = useState(false);
     const [comments, setComments] = useState([]);
-    const [pages, setPages] = useState(1);
+    const [page, setPage] = useState(1);
 
     const URL = import.meta.env.VITE_DB;
 
@@ -30,29 +31,28 @@ const SportCenterDetail = ({idSportCenter}) => {
             console.log('Error fetching data:', error);
         }
     }
-    //Estos fetch borrarlos cuando se use el back
-    const fetchinComments1 = async () => {
-        const response = await fetch("http://localhost:3000/comments1");
-        const data = await response.json();
-        setComments(data);
-    }
-    const fetchinComments2 = async () => {
-        const response = await fetch("http://localhost:3000/comments2");
-        const data = await response.json();
-        console.log(data);
-    }
-    const fetchinComments3 = async () => {
-        const response = await fetch("http://localhost:3000/comments3");
-        const data = await response.json();
-        console.log(data);
+
+    const fetchingComments = async () => {
+        if(page <= 3){
+            try{
+                const response = await fetch(`http://localhost:3000/comments${page}`);
+                const data = await response.json();
+                setComments([...comments, ...data]);
+            }
+            catch (error){
+                console.log('Error fetching data:', error);
+            }
+        }
     }
 
     useEffect(()=>{
         fetchingSportCenter();
-        fetchinComments1();
+        fetchingComments();
     },[]);
 
-    return (!sportCenter)? (<h1 className="text-green my-3">Cargando...</h1>):
+    return (!sportCenter)? (
+            <h1 className="text-green my-3">Cargando...</h1>
+        ):
         (
         <main>
             <div className="container">
@@ -99,7 +99,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                 </article>
             </section>
             <section>
-                <h2 className="text-center fs-2 text-light my-5">Canchas disponibles:</h2>
+                <h2 className="text-center text-green fs-2 my-5">Comentarios:</h2>
                 <article>
                     <Container>
                         <Row>
