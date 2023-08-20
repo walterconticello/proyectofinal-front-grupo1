@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { Button, Card } from "react-bootstrap";
+import Reservation from "./Reservation";
 
 const Field = ({field}) => {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);  
+
     return (
         <>
             <Card style={{ width: '26rem'}} className="m-3 card">
@@ -15,9 +22,10 @@ const Field = ({field}) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Button variant="outline-success" className="btn-card">Reservar</Button>
+                    <Button variant="outline-success" className="btn-card" onClick={handleShow}>Reservar</Button>
                 </Card.Footer>
             </Card>
+            <Reservation show={show} onHide={handleClose}></Reservation>
         </>
     );
 }

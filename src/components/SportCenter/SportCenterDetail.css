@@ -71,6 +71,10 @@
     width: 100%;
 }
 
+.btn-reservation{
+    width: 47%;
+}
+
 @media all and (min-width:768px){
     .main-picture {
         width: 25vw;
@@ -89,10 +93,19 @@
     .btn-card{
         width: 50%;
     }
+
+    .btn-reservation{
+        width: 35%;
+    }
 }
 
 @media all and (min-width:992px){
     .btn-card{
         width: 40%;
+        min-width: 140px;
+    }
+
+    .btn-reservation{
+        width: 25%;
     }
 }
