@@ -29,6 +29,22 @@ const SportCenterDetail = ({idSportCenter}) => {
 
     const URL = import.meta.env.VITE_DB;
 
+    const stars = [];
+
+    const starsFactory = () => {
+        for(let i = 1; i <= sportCenter.rating/2 ; i++) { //1
+            stars.push("fill");
+        }
+        for(let j = 0; j < sportCenter.rating%2 ; j++) {
+            stars.push("half");
+        }
+        for(let k = stars.length; k < 5; k++) {
+            stars.push("empty");
+        }
+    }
+
+    starsFactory();
+
     const fetchingSportCenter = async () => {
         try {
             const response = await fetch(URL);
@@ -68,7 +84,18 @@ const SportCenterDetail = ({idSportCenter}) => {
         (
         <main>
             <div className="container">
-                <h1 className="text-center fs-1 text-green my-4">{sportCenter.name}</h1>
+                <section className="d-flex flex-column align-items-center">
+                    <h1 className="fs-1 text-green my-4">{sportCenter.name}</h1>
+                    <article className="mb-2 d-flex align-items-center">
+                        {
+                            stars.map((star,index) => {
+                                if(star === "fill") return <img src={Star} alt="filled star" key={index}/>;
+                                if(star === "half") return <img src={HalfStar} alt="half star" key={index}/>;
+                                if(star === "empty") return <img src={StarEmpty} alt="empty star" key={index}/>;
+                            })
+                        }
+                    </article>
+                </section>
                 <section className="d-flex gap-5 flex-column flex-md-row align-items-center justify-content-evenly">
                     <article className="main-picture">
                         <img className="rounded-3" src={sportCenter.photo} alt={`${sportCenter.name} photo`} />
@@ -89,7 +116,6 @@ const SportCenterDetail = ({idSportCenter}) => {
                     <article className="d-flex justify-content-center my-3">
                         <img src={Phone} alt="Phone number" />
                         <p>{sportCenter.phone}</p>
-                        {/* IG y FB */}
                     </article>
                     <article className="d-flex justify-content-center gap-3 my-3">
                         <a href={sportCenter.social.instagram} target="_blank">
