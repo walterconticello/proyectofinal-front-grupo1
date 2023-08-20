@@ -30,7 +30,6 @@ const Comment = ({comment}) => {
                     <h3>{comment.user.username}</h3>
                 </div>
                 <div className="d-flex align-items-center">
-                    {comment.rating}
                     {
                         stars.map((star) => {
                             if(star === "fill") return <img src={Star} alt="filled star" />;
