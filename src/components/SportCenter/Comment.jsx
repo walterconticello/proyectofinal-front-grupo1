@@ -22,7 +22,7 @@ const Comment = ({comment}) => {
 
     return (
         <article className="my-2 comment-border p-3 rounded-3 w-100">
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between flex-wrap">
                 <div className="d-flex comment-header justify-content-start align-items-center gap-3">
                     <div className="comment-header-portrait">
                         <img src={comment.user.photo} alt="profile img" className="comment-header-img"/>
