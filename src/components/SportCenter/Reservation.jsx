@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const Reservation = ({show, onHide, field}) => {
     
     const [startDate, setStartDate] = useState(null);
+    const [reservations, setReservations] = useState([]);
 
     const user = {
         username: "diego_vacapaz",
@@ -18,9 +19,32 @@ const Reservation = ({show, onHide, field}) => {
         }
         return (month + offset - 11);
     }
+
+    const URL = import.meta.env.VITE_DB;
     const endDate = new Date(new Date().getFullYear(), addMonth(new Date().getMonth(), 2), new Date().getDate());
     const startTime = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(),field.openHour);
     const endTime = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(),field.closeHour - 1);
+
+    const fetchReservas = async () => { //Esto deberia filtrar por id de field, pero el dbjson no puedo por eso lo filtro en el try-catch
+        try {
+            const response = await fetch(`${URL}reservations`);
+            const data = await response.json();
+            const fieldReservations = data.filter((reservation) => reservation.IdField === field._id);
+            setReservations(fieldReservations);
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const filterReservedHours = () => {
+
+    }
+
+    useEffect(() => {
+        fetchReservas();
+    },[]);
+
     return (
         <>
             <Modal show={show} onHide={onHide} backdrop="static" keyboard={false}  size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -39,8 +63,8 @@ const Reservation = ({show, onHide, field}) => {
                             </Form.Group>
                             <Form.Group className="d-flex flex-column reservation-input-size mb-4 mb-md-0">
                                 <Form.Label className="fw-medium">Seleccione una fecha: </Form.Label>  {/*FALTA EL LIMITE INFERIOR DE HS Y FALTA EL EXCLUDE POR RESERVAS HECHAS*/}
-                                <DatePicker showIcon showTimeSelect minDate={new Date()} maxDate={endDate} excludeDates={[]} excludeTimes={[]} className="comment-border" timeCaption="Hora" minTime={startTime} maxTime={endTime} placeholderText="Click aquí" timeFormat="HH:mm" timeIntervals={60} dateFormat="dd/MM/yyyy h aa" selected={startDate} onChange={(date) => setStartDate(date)} />
-                            </Form.Group> {/*filterTime={funcion}*/ }
+                                <DatePicker showIcon showTimeSelect minDate={new Date()} maxDate={endDate} filterTime={filterReservedHours} className="comment-border" timeCaption="Hora" minTime={startTime} maxTime={endTime} placeholderText="Click aquí" timeFormat="HH:mm" timeIntervals={60} dateFormat="dd/MM/yyyy h aa" selected={startDate} onChange={(date) => setStartDate(date)} />
+                            </Form.Group> {/*filterDate={}  excludeDates={[]} excludeTimes={[]}*/ }
                         </div>
                         <Form.Group className="d-flex flex-column flex-md-row justify-content-md-end gap-3">
                             <Button variant="outline-danger" className="btn-reservation" type="button" onClick={onHide}>Cerrar</Button>
