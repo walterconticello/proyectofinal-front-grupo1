@@ -52,7 +52,7 @@ const SportCenterDetail = ({idSportCenter}) => {
 
     const fetchingSportCenter = async () => {
         try {
-            const response = await fetch(URL);
+            const response = await fetch(`${URL}sportcenter`);
             const data = await response.json();
             setSportCenter(data[0]);
         }
@@ -64,7 +64,7 @@ const SportCenterDetail = ({idSportCenter}) => {
     const fetchingComments = async () => { //El fetch debe hacerse solo de comentarios activos
         if(page <= lastPage){
             try{
-                const response = await fetch(`http://localhost:3000/comments${page}`);
+                const response = await fetch(`${URL}comments${page}`);
                 const data = await response.json();
                 setComments([...data]);
                 setLastPage(3); //Traer desde back

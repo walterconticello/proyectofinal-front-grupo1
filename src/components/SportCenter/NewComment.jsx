@@ -5,6 +5,27 @@ import clsx from "clsx";
 import { useFormik } from "formik";
 
 const NewComment = ({show, onHide, idSportCenter}) => {
+    
+    const URL = import.meta.env.VITE_DB;
+    
+    const postComment = async (comment) => {
+        try{
+            comment.rating = parseInt(comment.rating);
+            const response = await fetch(`${URL}comments2`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(comment),
+            });
+            const data = await response.json();
+            console.log((comment));
+            console.log(data);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
 
     const commentSchema = Yup.object().shape({
         text: Yup.string().required("Requerido").min(5, "Comentario muy corto").max(500,"Comentario muy largo").trim(),
@@ -26,7 +47,7 @@ const NewComment = ({show, onHide, idSportCenter}) => {
         validateOnChange: true,
         validateOnBlur: true,
         onSubmit: (values)=>{
-            console.log(values); //aqui es el on submit
+            postComment(values);
             formik.resetForm();
             onHide();
         }
