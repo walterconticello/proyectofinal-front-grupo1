@@ -8,7 +8,7 @@ const CardProvider = ({ children }) => {
      const [selectedCard, setSelectedCard] = useState(null);
      const [addCard , setAddCard] = useState(false);
      const [totalPages, setTotalPages] = useState(1);
-     const API = "http://localhost:8001/api/Complex";
+     const API = "http://localhost:8001/api/CardsSportCenter";
 
      useEffect(() => {
         getCards();
@@ -22,7 +22,7 @@ const CardProvider = ({ children }) => {
                 setCards(response.data.cards);
                 setTotalPages(response.data.meta.totalPages);
             } catch (error) {
-                console.log("Error al obtener las Complex");
+                console.log("Error al obtener los SportCenter");
             }
         };
 
@@ -34,7 +34,7 @@ const CardProvider = ({ children }) => {
                 const response = await axios.get(`${API}/${id}`);
                 setSelectedCard(response.data);
             } catch (error) {
-                console.log("Error al obtener la Complex");
+                console.log("Error al obtener el SportCenter");
             }
         };
 
@@ -46,7 +46,7 @@ const CardProvider = ({ children }) => {
                 const response = await axios.post(`${API}`, cards);
                 getCards();
             } catch (error) {
-                console.log("Error al crear la Complex");
+                console.log("Error al crear el SportCenter");
             }
         };
 
@@ -58,7 +58,7 @@ const CardProvider = ({ children }) => {
                 await axios.put(`${API}/${cards.id}`, cards);
                 getCards();
             } catch (error) {
-                console.log("Error al actualizar la Complex");
+                console.log("Error al actualizar el SportCenter");
             }
         };
 
@@ -70,7 +70,7 @@ const CardProvider = ({ children }) => {
           const deleteCard = cards.filter((card) => card.id !== id);
             setCards(deleteCard);
         } catch (error) {
-            console.log("Error al eliminar la Complex");
+            console.log("Error al eliminar el SportCenter");
         }
     };
 
@@ -84,8 +84,6 @@ const CardProvider = ({ children }) => {
 };
 
 export { CardProvider , cardContext };
-
-
 
 export default cardContext;
 
