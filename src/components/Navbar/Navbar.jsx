@@ -1,5 +1,4 @@
 import { Fragment, useState } from "react";
-import { Modal, Button } from "react-bootstrap";
 
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -7,7 +6,7 @@ import logoApp from "../../assets/logo-canchas.png";
 import "./navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
-// import CartModal from "../cart/CartModal";
+import CartModal from "../cart/CartModal";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -90,20 +89,7 @@ const Navbar = () => {
                     size="xl"
                   />
                 </button>
-                <Modal show={showModal} onHide={handleCloseModal}>
-                  <Modal.Header closeButton>
-                    <Modal.Title>Carrito de Compras</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    {/* Your cart content */}
-                    <p>Cart content goes here.</p>
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModal}>
-                      Cerrar
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
+                {showModal && <CartModal onClose={handleCloseModal} />}
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">

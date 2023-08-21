@@ -40,6 +40,11 @@ const ProductCards = () => {
   const isProductInCart = (product) =>
     cart.some((item) => item._id === product._id);
 
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, []);
+
   return (
     <div className="m-5">
       <Row>
