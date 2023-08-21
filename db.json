@@ -286,12 +286,12 @@
       }
     }
   ],
-  "reservations" : [
+  "reservations": [
     {
-        "IdUser": "sdofihwcnoiufhw",
-        "IdSportCenter": "ljfdsnldsjnbjdfnjkdf",
-        "IdField": "dlmvmvmfkmbdsfl",
-        "ReservationTime": "faksndjoanjkxnjskcn"
+      "IdUser": "sdofihwcnoiufhw",
+      "IdSportCenter": "ljfdsnldsjnbjdfnjkdf",
+      "IdField": "dlmvmvmfkmbdsfl",
+      "ReservationTime": "faksndjoanjkxnjskcn"
     }
   ]
 }

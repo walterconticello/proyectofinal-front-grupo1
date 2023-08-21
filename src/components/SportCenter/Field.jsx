@@ -26,7 +26,7 @@ const Field = ({field}) => {
                     <Button variant="outline-success" className="btn-card" onClick={handleShow}>Reservar</Button>
                 </Card.Footer>
             </Card>
-            <Reservation show={show} onHide={handleClose}></Reservation>
+            <Reservation field={field} show={show} onHide={handleClose}></Reservation>
         </>
     );
 }

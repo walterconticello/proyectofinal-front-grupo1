@@ -61,7 +61,7 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
 
     return (
         <>
-            <Modal show={show} onHide={onHide} size="lg" aria-labelledby="contained-modal-title-vcenter"centered>
+            <Modal show={show} onHide={onHide} backdrop="static" keyboard={false} size="lg" aria-labelledby="contained-modal-title-vcenter"centered>
                 <Modal.Header>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Comentá tu experiencia
