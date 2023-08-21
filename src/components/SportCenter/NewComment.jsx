@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import clsx from "clsx";
 import { useFormik } from "formik";
 
-const NewComment = ({show, onHide, idSportCenter}) => {
+const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
     
     const URL = import.meta.env.VITE_DB;
     
@@ -23,9 +23,10 @@ const NewComment = ({show, onHide, idSportCenter}) => {
                 },
                 body: JSON.stringify(comment),
             });
-            const data = await response.json();
-            console.log((comment));
-            console.log(data);
+
+            const updateResponse = await  fetch(`${URL}comments${page}`);
+            const data = await updateResponse.json();
+            setComments([...data]);
         }
         catch(error){
             console.log(error);

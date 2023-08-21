@@ -11,11 +11,11 @@
 }
 
 .comment-header{
-    height: 40px;
+    height: 30px;
 }
 
 .comment-header-portrait{
-    width: 40px;
+    width: 30px;
     height: 100%;
 }
 
@@ -79,6 +79,20 @@
     resize: none !important;
 }
 
+.trash {
+    height: 20px;
+}
+
+.delete-comment-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.comment-username {
+    font-size: small;
+}
+
 @media all and (min-width:768px){
     .main-picture {
         width: 25vw;
@@ -87,11 +101,23 @@
         max-width: 350px;
     }
 
+    .comment-header-portrait{
+        width: 40px;
+    }
+
+    .comment-header{
+        height: 40px;
+    }
+
     .leaflet-container {
         width: 50vw;
         height: 25vw;
         max-height: 350px;
         max-width: 350px;
+    }
+
+    .comment-username {
+        font-size: medium;
     }
 
     .btn-card{

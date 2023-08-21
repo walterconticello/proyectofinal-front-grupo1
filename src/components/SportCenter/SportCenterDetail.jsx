@@ -162,7 +162,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                             {
                                 comments.map(comment => {
                                     return (
-                                        <Comment key={comment._id} comment={comment}></Comment> //PONER COMO KEY el _id
+                                        <Comment key={comment._id} comment={comment} page={page} setComments={setComments}></Comment> //PONER COMO KEY el _id
                                     );
                                 })
                             }
@@ -188,7 +188,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                     }                
                 </article>
             </section>
-            <NewComment show={show} onHide={handleClose} idSportCenter={sportCenter._id}></NewComment>
+            <NewComment page={page} setComments={setComments} show={show} onHide={handleClose} idSportCenter={sportCenter._id}></NewComment>
         </main>
     );
 }

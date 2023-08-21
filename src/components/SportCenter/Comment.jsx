@@ -3,9 +3,12 @@ import StarEmpty from "../../assets/star.svg";
 import Star from "../../assets/star-fill.svg";
 import HalfStar from "../../assets/star-half.svg";
 import UserPhoto from "../../assets/avatar-default.jpg";
+import Delete from "../../assets/trash3-fill.svg";
 
-const Comment = ({comment}) => {
+const Comment = ({comment, page, setComments}) => {
     const stars = [];
+    const URL = import.meta.env.VITE_DB;
+    const loggedUser = "AJSndfjkasndkjasn"; //Traer desde el context
 
     const starsFactory = () => {
         for(let i = 1; i <= comment.rating/2 ; i++) { //1
@@ -20,23 +23,51 @@ const Comment = ({comment}) => {
     }
     starsFactory();
 
+    const fetchDeleteComment = async ()=> { //Sweet alert
+        try {
+            const response = await fetch(`${URL}comments2/${comment.id}`,{ //Luego aca va el _id en el fetch
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const updateResponse = await  fetch(`${URL}comments${page}`);
+            const data = await updateResponse.json();
+            setComments([...data]);
+
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+    const handleDelete = () => {
+        fetchDeleteComment();
+    }
 
     return (
         <article className="my-2 comment-border p-3 rounded-3 w-100">
-            <div className="d-flex justify-content-between flex-wrap">
-                <div className="d-flex comment-header justify-content-start align-items-center gap-3">
-                    <div className="comment-header-portrait">
-                        <img src={comment.user.photo || UserPhoto} alt="profile img" className="comment-header-img"/>
+            <div className="d-flex justify-content-between flex-wrap position-relative">
+                <div className="d-flex gap-3 flex-column flex-md-row align-items-md-center justify-content-md-between">
+                    <div className="d-flex comment-header justify-content-start align-items-center gap-1 gap-md-3">
+                        <div className="comment-header-portrait">
+                            <img src={comment.user.photo || UserPhoto} alt="profile img" className="comment-header-img"/>
+                        </div>
+                        <h3 className="comment-username">{comment.user.username}</h3>
                     </div>
-                    <h3>{comment.user.username}</h3>
+                    <div className="d-flex align-items-center">
+                        {
+                            stars.map((star,index) => {
+                                if(star === "fill") return <img src={Star} alt="filled star" key={index}/>;
+                                if(star === "half") return <img src={HalfStar} alt="half star" key={index}/>;
+                                if(star === "empty") return <img src={StarEmpty} alt="empty star" key={index}/>;
+                            })
+                        }
+                    </div>
                 </div>
-                <div className="d-flex align-items-center">
+                <div className="delete-comment-button">
                     {
-                        stars.map((star,index) => {
-                            if(star === "fill") return <img src={Star} alt="filled star" key={index}/>;
-                            if(star === "half") return <img src={HalfStar} alt="half star" key={index}/>;
-                            if(star === "empty") return <img src={StarEmpty} alt="empty star" key={index}/>;
-                        })
+                        (comment.userId === loggedUser)&&<img src={Delete} alt="delete comment" onClick={handleDelete} className="trash"></img>
                     }
                 </div>
             </div>

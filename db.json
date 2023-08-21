@@ -166,7 +166,7 @@
       "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
       "userId": "jannnnvjvnjdsnfkd",
       "user": {
-        "username": "diego_vacapaz2",
+        "username": "diego_vacafaapaz2",
         "email": "diegovca@hotmail.com4",
         "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
       },
@@ -212,55 +212,7 @@
       "id": 5
     },
     {
-      "text": "Comentario",
-      "rating": 9,
-      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
-      "userId": "AJSndfjkasndkjasn",
-      "user": {
-        "username": "diego_vacapaz5",
-        "email": "diegovca@hotmail.com1",
-        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-      },
-      "id": 6
-    },
-    {
-      "text": "Comentarrrr",
-      "rating": 6,
-      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
-      "userId": "AJSndfjkasndkjasn",
-      "user": {
-        "username": "diego_vacapaz5",
-        "email": "diegovca@hotmail.com1",
-        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-      },
-      "id": 7
-    },
-    {
-      "text": "asdADFKAGKJLNDHOF",
-      "rating": 0,
-      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
-      "userId": "AJSndfjkasndkjasn",
-      "user": {
-        "username": "diego_vacapaz5",
-        "email": "diegovca@hotmail.com1",
-        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-      },
-      "id": 8
-    },
-    {
-      "text": "cOMAFNSADKFHBASDF",
-      "rating": 6,
-      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
-      "userId": "AJSndfjkasndkjasn",
-      "user": {
-        "username": "diego_vacapaz5",
-        "email": "diegovca@hotmail.com1",
-        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-      },
-      "id": 9
-    },
-    {
-      "text": "ULTITAMKJDMKLASD",
+      "text": "HOLA SOY TESTEO",
       "rating": 5,
       "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
       "userId": "AJSndfjkasndkjasn",
@@ -269,7 +221,19 @@
         "email": "diegovca@hotmail.com1",
         "photo": ""
       },
-      "id": 10
+      "id": 6
+    },
+    {
+      "text": "YO TAMBIEN SOY TESTEO",
+      "rating": 5,
+      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+      "userId": "AJSndfjkasndkjasn",
+      "user": {
+        "username": "diego_vacapaz5",
+        "email": "diegovca@hotmail.com1",
+        "photo": ""
+      },
+      "id": 7
     }
   ],
   "comments3": [
