@@ -71,7 +71,7 @@
         },
         {
           "name": "Cancha 5",
-          "openHour": 10,
+          "openHour": 0,
           "closeHour": 23,
           "pricePerHour": 6000,
           "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
@@ -222,6 +222,18 @@
         "photo": ""
       },
       "id": 6
+    },
+    {
+      "text": "adasdasd",
+      "rating": 6,
+      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+      "userId": "AJSndfjkasndkjasn",
+      "user": {
+        "username": "diego_vacapaz5",
+        "email": "diegovca@hotmail.com1",
+        "photo": ""
+      },
+      "id": 7
     }
   ],
   "comments3": [
