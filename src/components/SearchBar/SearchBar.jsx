@@ -19,7 +19,7 @@ function SearchBar(props) {
         type="text"
         value={searchTerm}
         onChange={handleInputChange}
-        placeholder="Buscar"
+        placeholder="Busca tu complejo deportivo!"
         className="sm-2"
       />
       <Button variant="outline-success" onClick={handleSearch}>

@@ -1,8 +1,8 @@
 import Carousel from 'react-bootstrap/Carousel';
 
-import sliderImage1 from './imgCarouselPromo/slider1.jpeg';
-import sliderImage2 from './imgCarouselPromo/slider2.jpeg';
-import sliderImage3 from './imgCarouselPromo/slider3.jpeg';
+import sliderImage1 from './imgCarouselPromo/slider1.jpg';
+import sliderImage2 from './imgCarouselPromo/slider2.jpg';
+import sliderImage3 from './imgCarouselPromo/slider3.jpg';
 
 const Slider = () => {
   return (
