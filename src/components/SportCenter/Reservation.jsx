@@ -42,8 +42,23 @@ const Reservation = ({show, onHide, field}) => {
         }
     }
     const filterReservedHours = () => {
-
+        if(startDate){
+            const todayReservations = reservations.filter((reservation) => {
+                let date = Date.parse(reservation.ReservationTime)
+                date = new Date(date);
+                return (date.getFullYear()===startDate.getFullYear() &&  date.getMonth()===startDate.getMonth() && date.getDate()===startDate.getDate());
+            });
+            const reservatedHours = [];
+            for(let i = 0; i < todayReservations.length; i++) {
+                reservatedHours.push(new Date(Date.parse(todayReservations[i].ReservationTime)));
+            }
+            console.log(reservatedHours);
+            return reservatedHours;
+        }
+        return [];
     }
+
+    //Puedo hacer un filtro de dia cuando se completa todas las horas
 
     useEffect(() => {
         fetchReservas();
@@ -84,9 +99,12 @@ const Reservation = ({show, onHide, field}) => {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(startDate);
-        onHide();
-        setStartDate(null);
+        if(!errorFecha.error){
+            console.log(JSON.stringify(startDate));
+            onHide();
+            setStartDate(null);
+            setClicked(false);
+        }
     }
     
     useEffect(()=>{
@@ -107,7 +125,7 @@ const Reservation = ({show, onHide, field}) => {
                         <div className="d-flex flex-column flex-md-row my-3">
                             <Form.Group className="d-flex flex-column w-100">
                                 <Form.Label className="fw-medium">Seleccione una fecha: </Form.Label>  {/*FALTA EL LIMITE INFERIOR DE HS Y FALTA EL EXCLUDE POR RESERVAS HECHAS*/}
-                                <DatePicker showIcon showTimeSelect minDate={new Date()} maxDate={endDate} timeCaption="Hora" minTime={startTime} maxTime={endTime} placeholderText="Click aquí" timeFormat="HH:mm" timeIntervals={60} dateFormat="dd/MM/yyyy h aa" selected={startDate} onChange={(date) => {setStartDate(date); setClicked(true)}} required className={`comment-border ${clsx(
+                                <DatePicker showIcon showTimeSelect minDate={new Date()} maxDate={endDate} excludeTimes={filterReservedHours()} timeCaption="Hora" minTime={startTime} maxTime={endTime} placeholderText="Click aquí" timeFormat="HH:mm" timeIntervals={60} dateFormat="dd/MM/yyyy h aa" selected={startDate} onChange={(date) => {setStartDate(date); setClicked(true)}} required className={`comment-border ${clsx(
                                     "form-control", 
                                     {
                                         "is-invalid": errorFecha.error && clicked,
@@ -124,7 +142,7 @@ const Reservation = ({show, onHide, field}) => {
                             </Form.Group> {/*filterDate={} filterTime={filterReservedHours} excludeDates={[]} excludeTimes={[]}*/ }
                         </div>
                         <Form.Group className="d-flex flex-column flex-md-row justify-content-md-end gap-3">
-                            <Button variant="outline-danger" className="btn-reservation" type="button"  onClick={()=>{onHide(); setStartDate(null);}}>Cerrar</Button>
+                            <Button variant="outline-danger" className="btn-reservation" type="button"  onClick={()=>{onHide(); setStartDate(null); setClicked(false)}}>Cerrar</Button>
                             <Button variant="outline-success" className="btn-reservation" type="submit">Reservar</Button>
                         </Form.Group>
                     </Form>
