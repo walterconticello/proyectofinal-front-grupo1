@@ -9,17 +9,17 @@ const Slider = () => {
     <Carousel>
       <Carousel.Item>
         <a href="https://www.pepsi.com/" target="_blank" rel="noopener noreferrer">
-          <img className="d-block w-100 carousel-image" src={sliderImage1} alt="First slide" />
+          <img className="d-block w-100 carousel-image img-fluid" src={sliderImage1} alt="First slide" />
         </a>
       </Carousel.Item>
       <Carousel.Item>
         <a href="https://www.ypf.com/Paginas/home.aspx" target="_blank" rel="noopener noreferrer">
-          <img className="d-block w-100 carousel-image" src={sliderImage2} alt="First slide" />
+          <img className="d-block w-100 carousel-image img-fluid" src={sliderImage2} alt="First slide" />
         </a>
       </Carousel.Item>
       <Carousel.Item>
         <a href="https://lays.com/" target="_blank" rel="noopener noreferrer">
-          <img className="d-block w-100 carousel-image" src={sliderImage3} alt="First slide" />
+          <img className="d-block w-100 carousel-image img-fluid" src={sliderImage3} alt="First slide" />
         </a>
       </Carousel.Item>
     </Carousel>
