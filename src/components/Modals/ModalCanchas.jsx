@@ -1,17 +1,17 @@
 import { useContext, useState } from "react";
 import { Modal, Button, Image } from "react-bootstrap";
 import { Formik, Form, Field } from "formik";
-import {FieldContext} from "../../context/FieldContext";
+import { FieldContext } from "../../context/FieldContext";
 import "./Modal.css";
 
 const ModalCancha = ({ showModal, closeModal, isEditing, selectedId }) => {
-  const {field ,setFields , postfield } = useContext(FieldContext)
-  const [field , setFields] = useState({
-    name : "",
-    openHour : "",
+  const { postfield } = useContext(FieldContext);
+  const [field, setFields] = useState({
+    name: "",
+    openHour: "",
     closeHour: "",
     priceperhour: "",
-    idSportCenter : "",
+    idSportCenter: "",
   });
 
   const handleClose = () => setShow(closeModal);
@@ -25,9 +25,8 @@ const ModalCancha = ({ showModal, closeModal, isEditing, selectedId }) => {
   };
 
   const handleSubmit = (values) => {
-
     e.preventDefault();
-    postfield()
+    postfield();
 
     console.log(values);
     closeModal();
