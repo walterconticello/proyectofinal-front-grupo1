@@ -1,6 +1,6 @@
 #edit{
-    width: 2.5em;
-    height: 2.5em;
+    width: 100em;
+    
   }
   
 #edit:hover{
@@ -10,4 +10,10 @@
 #edit:hover {
     transform: scale(1.1);
     filter: brightness(70%);
+  }
+
+  .hover-row:hover {
+    background-color: #d1f7d1; /* Cambia el color de fondo a un verde claro */
+    cursor: default; 
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
   }

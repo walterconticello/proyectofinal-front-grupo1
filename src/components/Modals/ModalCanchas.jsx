@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Modal, Button, Image } from "react-bootstrap";
 import { Formik, Form, Field } from "formik";
+import {FieldContext} from "../../context/FieldContext";
 import "./Modal.css";
 
-const ModalCancha = () => {
-  const [show, setShow] = useState(false);
+const ModalCancha = ({ showModal, closeModal, isEditing, selectedId }) => {
+  const {field ,setFields , postfield } = useContext(FieldContext)
+  const [field , setFields] = useState({
+    name : "",
+    openHour : "",
+    closeHour: "",
+    priceperhour: "",
+    idSportCenter : "",
+  });
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(closeModal);
 
   const initialValues = {
     name: "",
@@ -18,18 +25,17 @@ const ModalCancha = () => {
   };
 
   const handleSubmit = (values) => {
-    // Handle form submission here
+
+    e.preventDefault();
+    postfield()
+
     console.log(values);
-    handleClose();
+    closeModal();
   };
 
   return (
     <>
-      <Button variant="" className="ms-1" onClick={handleShow}>
-        <Image src="src\img\Editar.png" id="edit" rounded fluid />
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={showModal} onHide={closeModal}>
         <Modal.Header closeButton>
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>

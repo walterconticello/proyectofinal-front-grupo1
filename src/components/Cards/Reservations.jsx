@@ -1,48 +1,33 @@
 import Table from 'react-bootstrap/Table';
 
-const  Reservation = () => {
-
+const Reservation = () => {
   return (
     <>
-      <Table responsive oveflorw-auto>
+      <Table responsive overflow-auto>
         <thead>
           <tr>
             <th>#</th>
-            <th>Id </th>
+            <th>Id</th>
             <th>Usuario</th>
             <th>Complejo</th>
             <th>Cancha</th>
             <th>Fecha</th>
-            <th>Horario</th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr className="hover-row">
             <td>1</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <td>reservation.id</td>
+            <td>reservation.user</td>
+            <td>reservation.Complejo</td>
+            <td>reservation.cancha</td>
+            <td>reservation.date</td>
+            <td>reservation.Status</td>
+            <td>edit</td>
+            <td>delete</td>
           </tr>
         </tbody>
       </Table>
