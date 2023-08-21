@@ -22,9 +22,6 @@ function SearchBar(props) {
         placeholder="Busca tu complejo deportivo!"
         className="sm-2"
       />
-      <Button variant="outline-success" onClick={handleSearch}>
-        Buscar
-      </Button>
     </Form>
   );
 }
