@@ -30,7 +30,7 @@ const Reservation = ({show, onHide, field}) => {
     const startTime = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(),field.openHour);
     const endTime = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(),field.closeHour - 1);
     
-    const fetchReservas = async () => { //Esto deberia filtrar por id de field, pero el dbjson no puedo por eso lo filtro en el try-catch
+    const fetchReservation = async () => { //Esto deberia filtrar por id de field, pero el dbjson no puedo por eso lo filtro en el try-catch
         try {
             const response = await fetch(`${URL}reservations`);
             const data = await response.json();
@@ -41,6 +41,26 @@ const Reservation = ({show, onHide, field}) => {
             console.log(error);
         }
     }
+
+    const fetchPostReservation = async (reservation) => {
+        try{
+            const response = await fetch(`${URL}reservations`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(reservation),
+            });
+
+            const updateResponse = await  fetch(`${URL}reservations`);
+            const data = await updateResponse.json();
+            setReservations([...data]);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
     const filterReservedHours = () => {
         if(startDate){
             const todayReservations = reservations.filter((reservation) => {
@@ -52,7 +72,6 @@ const Reservation = ({show, onHide, field}) => {
             for(let i = 0; i < todayReservations.length; i++) {
                 reservatedHours.push(new Date(Date.parse(todayReservations[i].ReservationTime)));
             }
-            console.log(reservatedHours);
             return reservatedHours;
         }
         return [];
@@ -61,7 +80,7 @@ const Reservation = ({show, onHide, field}) => {
     //Puedo hacer un filtro de dia cuando se completa todas las horas
 
     useEffect(() => {
-        fetchReservas();
+        fetchReservation();
     },[]);
 
     const validacionFecha = () => {
@@ -100,7 +119,12 @@ const Reservation = ({show, onHide, field}) => {
     const handleSubmit = (e)=>{
         e.preventDefault();
         if(!errorFecha.error){
-            console.log(JSON.stringify(startDate));
+            fetchPostReservation({
+                IdUser: user.userId,
+                IdSportCenter: field.IdSportCenter,
+                IdField: field._id,
+                ReservationTime: startDate,
+            });
             onHide();
             setStartDate(null);
             setClicked(false);
