@@ -87,7 +87,7 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
                             )}
                         </Form.Group>
 
-                        <Form.Group className="mb-3 d-flex flex-row align-items-center flex-nowrap" controlId="formBasicPassword">
+                        <Form.Group className="mb-3 d-flex flex-row align-items-center flex-nowrap">
                             <Form.Label>Califícanos:</Form.Label>
                             <fieldset {...formik.getFieldProps("rating")} className={`rating ${clsx(
                                 "form-control",

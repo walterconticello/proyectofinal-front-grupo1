@@ -97,6 +97,10 @@
     font-size: small;
 }
 
+.reservation-input-size{
+    width: 100%;
+}
+
 @media all and (min-width:768px){
     .main-picture {
         width: 25vw;
@@ -130,6 +134,10 @@
 
     .btn-reservation{
         width: 35%;
+    }
+
+    .reservation-input-size{
+        width: 50%;
     }
 }
 
