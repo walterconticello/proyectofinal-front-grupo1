@@ -212,11 +212,28 @@
       "id": 5
     },
     {
-      "text": "adasdasdad",
-      "rating": 5,
+      "text": "Comentario",
+      "rating": 9,
       "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
       "userId": "AJSndfjkasndkjasn",
+      "user": {
+        "username": "diego_vacapaz5",
+        "email": "diegovca@hotmail.com1",
+        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      },
       "id": 6
+    },
+    {
+      "text": "Comentarrrr",
+      "rating": 6,
+      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+      "userId": "AJSndfjkasndkjasn",
+      "user": {
+        "username": "diego_vacapaz5",
+        "email": "diegovca@hotmail.com1",
+        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      },
+      "id": 7
     }
   ],
   "comments3": [

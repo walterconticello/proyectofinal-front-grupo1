@@ -158,7 +158,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                             {
                                 comments.map(comment => {
                                     return (
-                                        <Comment key={comment._id} comment={comment}></Comment>
+                                        <Comment key={comment._id} comment={comment}></Comment> //PONER COMO KEY el _id
                                     );
                                 })
                             }

@@ -11,6 +11,11 @@ const NewComment = ({show, onHide, idSportCenter}) => {
     const postComment = async (comment) => {
         try{
             comment.rating = parseInt(comment.rating);
+            comment.user = {
+                username: "diego_vacapaz5",
+                email: "diegovca@hotmail.com1",
+                photo: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            }
             const response = await fetch(`${URL}comments2`, {
                 method: "POST",
                 headers: {
