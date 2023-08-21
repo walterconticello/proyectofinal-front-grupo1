@@ -81,7 +81,7 @@ const SportCenterDetail = ({idSportCenter}) => {
     },[]);
     
     useEffect(()=> {
-        fetchingComments();
+        fetchingComments(); //Se podria hacer que los comentarios mas recientes esten primero
     }, [page]);
 
     return (!sportCenter)? (

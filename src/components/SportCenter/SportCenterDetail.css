@@ -83,6 +83,10 @@
     height: 20px;
 }
 
+.trash:hover{
+    filter:saturate(35%);
+}
+
 .delete-comment-button{
     position: absolute;
     top: 0;

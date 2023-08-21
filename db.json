@@ -222,18 +222,6 @@
         "photo": ""
       },
       "id": 6
-    },
-    {
-      "text": "YO TAMBIEN SOY TESTEO",
-      "rating": 5,
-      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
-      "userId": "AJSndfjkasndkjasn",
-      "user": {
-        "username": "diego_vacapaz5",
-        "email": "diegovca@hotmail.com1",
-        "photo": ""
-      },
-      "id": 7
     }
   ],
   "comments3": [
@@ -296,6 +284,14 @@
         "email": "diegovca@hotmail.com1",
         "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
       }
+    }
+  ],
+  "reservations" : [
+    {
+        "IdUser": "sdofihwcnoiufhw",
+        "IdSportCenter": "ljfdsnldsjnbjdfnjkdf",
+        "IdField": "dlmvmvmfkmbdsfl",
+        "ReservationTime": "faksndjoanjkxnjskcn"
     }
   ]
 }
