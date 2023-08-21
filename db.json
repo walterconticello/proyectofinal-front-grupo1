@@ -27,8 +27,8 @@
       "fields": [
         {
           "name": "Cancha 1",
-          "openHour": 10,
-          "closeHour": 23,
+          "openHour": 8,
+          "closeHour": 18,
           "pricePerHour": 7000,
           "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
           "isActive": true,
@@ -38,8 +38,8 @@
         },
         {
           "name": "Cancha 2",
-          "openHour": 10,
-          "closeHour": 23,
+          "openHour": 5,
+          "closeHour": 21,
           "pricePerHour": 3000,
           "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
           "isActive": true,
@@ -49,8 +49,8 @@
         },
         {
           "name": "Cancha 3",
-          "openHour": 10,
-          "closeHour": 23,
+          "openHour": 7,
+          "closeHour": 20,
           "pricePerHour": 9000,
           "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
           "isActive": true,
@@ -61,7 +61,7 @@
         {
           "name": "Cancha 4",
           "openHour": 10,
-          "closeHour": 23,
+          "closeHour": 24,
           "pricePerHour": 8000,
           "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
           "isActive": true,

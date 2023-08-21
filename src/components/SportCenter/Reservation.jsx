@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const Reservation = ({show, onHide, field}) => {
     
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(null);
 
     const user = {
         username: "diego_vacapaz",
@@ -18,7 +18,9 @@ const Reservation = ({show, onHide, field}) => {
         }
         return (month + offset - 11);
     }
-    const endDate = new Date(startDate.getFullYear(), addMonth(startDate.getMonth(), 2), startDate.getDate());
+    const endDate = new Date(new Date().getFullYear(), addMonth(new Date().getMonth(), 2), new Date().getDate());
+    const startTime = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(),field.openHour);
+    const endTime = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(),field.closeHour - 1);
     return (
         <>
             <Modal show={show} onHide={onHide} backdrop="static" keyboard={false}  size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -36,9 +38,9 @@ const Reservation = ({show, onHide, field}) => {
                                 <Form.Control type="text" placeholder="Ingresa tu Nombre"/>
                             </Form.Group>
                             <Form.Group className="d-flex flex-column reservation-input-size mb-4 mb-md-0">
-                                <Form.Label className="fw-medium">Seleccione una fecha: </Form.Label>
-                                <DatePicker showIcon showTimeSelect minDate={new Date()} maxDate={endDate} excludeDates={[]} className="comment-border" dateFormat="dd/MM/yyyy" selected={startDate} onChange={(date) => setStartDate(date)} />
-                            </Form.Group>
+                                <Form.Label className="fw-medium">Seleccione una fecha: </Form.Label>  {/*FALTA EL LIMITE INFERIOR DE HS Y FALTA EL EXCLUDE POR RESERVAS HECHAS*/}
+                                <DatePicker showIcon showTimeSelect minDate={new Date()} maxDate={endDate} excludeDates={[]} excludeTimes={[]} className="comment-border" timeCaption="Hora" minTime={startTime} maxTime={endTime} placeholderText="Click aquí" timeFormat="HH:mm" timeIntervals={60} dateFormat="dd/MM/yyyy h aa" selected={startDate} onChange={(date) => setStartDate(date)} />
+                            </Form.Group> {/*filterTime={funcion}*/ }
                         </div>
                         <Form.Group className="d-flex flex-column flex-md-row justify-content-md-end gap-3">
                             <Button variant="outline-danger" className="btn-reservation" type="button" onClick={onHide}>Cerrar</Button>
