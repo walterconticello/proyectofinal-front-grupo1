@@ -2,9 +2,11 @@ import React from 'react';
 import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
 import SearchBar from './components/SearchBar/SearchBar';
-import CardSportCenter from './components/cardSportCenter/CardSportCenter';
 import { BrowserRouter } from 'react-router-dom';
 import Slider from './components/carouselPromo/carouselPromo';
+import { CardProvider } from './context/cardContext';
+import Routes from './routes/Router';
+
 
 
 
@@ -12,15 +14,15 @@ import Slider from './components/carouselPromo/carouselPromo';
 function App() {
   
   return (
-    <>
+    <CardProvider>
       <BrowserRouter>
         <Navbar />
         <Slider />
         <SearchBar />
-        <CardSportCenter />
+        <Routes />
         <Footer />
       </BrowserRouter>
-    </>
+    </CardProvider>
   );
 }
 
