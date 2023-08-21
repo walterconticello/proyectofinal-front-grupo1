@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import StarEmpty from "../../assets/star.svg";
 import Star from "../../assets/star-fill.svg";
 import HalfStar from "../../assets/star-half.svg";
+import UserPhoto from "../../assets/avatar-default.jpg";
 
 const Comment = ({comment}) => {
     const stars = [];
@@ -25,7 +26,7 @@ const Comment = ({comment}) => {
             <div className="d-flex justify-content-between flex-wrap">
                 <div className="d-flex comment-header justify-content-start align-items-center gap-3">
                     <div className="comment-header-portrait">
-                        <img src={comment.user.photo} alt="profile img" className="comment-header-img"/>
+                        <img src={comment.user.photo || UserPhoto} alt="profile img" className="comment-header-img"/>
                     </div>
                     <h3>{comment.user.username}</h3>
                 </div>

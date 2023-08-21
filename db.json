@@ -18,12 +18,12 @@
       "services": {
         "showers": true,
         "dressingRooms": true,
-        "bar": false,
+        "bar": true,
         "grill": true,
         "parking": true
       },
       "isActive": true,
-      "rating": 7,
+      "rating": 10,
       "fields": [
         {
           "name": "Cancha 1",
@@ -77,7 +77,7 @@
           "idSportCenter": "DAHSvkusdgnfcoidgfhasdv",
           "isActive": true,
           "type": 7,
-          "photo": "https://ichef.bbci.co.uk/news/640/cpsprodpb/238D/production/_95410190_gettyimages-488144002.jpg",
+          "photo": "",
           "_id": "ajfhsdjfhkjsdn5vjksvno"
         }
       ]
@@ -234,6 +234,42 @@
         "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
       },
       "id": 7
+    },
+    {
+      "text": "asdADFKAGKJLNDHOF",
+      "rating": 0,
+      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+      "userId": "AJSndfjkasndkjasn",
+      "user": {
+        "username": "diego_vacapaz5",
+        "email": "diegovca@hotmail.com1",
+        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      },
+      "id": 8
+    },
+    {
+      "text": "cOMAFNSADKFHBASDF",
+      "rating": 6,
+      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+      "userId": "AJSndfjkasndkjasn",
+      "user": {
+        "username": "diego_vacapaz5",
+        "email": "diegovca@hotmail.com1",
+        "photo": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      },
+      "id": 9
+    },
+    {
+      "text": "ULTITAMKJDMKLASD",
+      "rating": 5,
+      "sportCenterId": "DAHSvkusdgnfcoidgfhasdv",
+      "userId": "AJSndfjkasndkjasn",
+      "user": {
+        "username": "diego_vacapaz5",
+        "email": "diegovca@hotmail.com1",
+        "photo": ""
+      },
+      "id": 10
     }
   ],
   "comments3": [

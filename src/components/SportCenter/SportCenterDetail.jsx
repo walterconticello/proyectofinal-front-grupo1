@@ -17,6 +17,7 @@ import RightD from "../../assets/arrow-right-square-disabled.svg";
 import StarEmpty from "../../assets/star.svg";
 import Star from "../../assets/star-fill.svg";
 import HalfStar from "../../assets/star-half.svg";
+import NoPhoto from "../../assets/no-photo.jpg";
 import { useEffect } from "react";
 import { useState } from "react";
 import Comment from "./Comment";
@@ -103,10 +104,13 @@ const SportCenterDetail = ({idSportCenter}) => {
                 </section>
                 <section className="d-flex gap-5 flex-column flex-md-row align-items-center justify-content-evenly">
                     <article className="main-picture">
-                        <img className="rounded-3" src={sportCenter.photo} alt={`${sportCenter.name} photo`} />
+                        <img className="rounded-3" src={sportCenter.photo || NoPhoto} alt={`${sportCenter.name} photo`} />
                     </article>
                     <article>
-                        <MapView latitude={sportCenter.location.latitude} longitude={sportCenter.location.longitude}></MapView>
+                        {
+                            
+                        }
+                        <MapView latitude={sportCenter.location.latitude || 0} longitude={sportCenter.location.longitude || 0}></MapView>
                     </article>
                 </section>
                 <section className="text-center my-5">

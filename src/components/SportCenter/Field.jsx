@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import Reservation from "./Reservation";
+import NoPhoto from "../../assets/no-photo.jpg";
 
 const Field = ({field}) => {
     const [show, setShow] = useState(false);
@@ -11,7 +12,7 @@ const Field = ({field}) => {
     return (
         <>
             <Card style={{ width: '26rem'}} className="m-3 card">
-                <Card.Img variant="top" src={field.photo} className="card-photo"/>
+                <Card.Img variant="top" src={field.photo || NoPhoto} className="card-photo"/>
                 <Card.Header>{field.name}</Card.Header>
                 <Card.Body>
                     <Card.Title>Fútbol {field.type}</Card.Title>
