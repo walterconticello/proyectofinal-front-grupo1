@@ -49,13 +49,13 @@ export const AuthProvider = ({ children }) => {
 					setLoading(false);
 					return;
 				}
-				axios.defaults.headers.common["Authorization"] = token;
+				axios.defaults.headers.common["access_token"] = token;
 				setAuthenticated(true);
 			} catch (error) {
 				setLoading(false);
 				setUser(null);
 				setAuthenticated(false);
-				axios.defaults.headers.common["Authorization"] = "";
+				axios.defaults.headers.common["access_token"] = "";
 				localStorage.removeItem("access_token");
 			}
 		}
