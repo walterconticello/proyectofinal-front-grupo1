@@ -13,3 +13,7 @@
 .searchContainer {
 	background-color: #71B641;
 }
+
+.heroButton {
+	text-decoration: none !important;
+}
