@@ -13,38 +13,38 @@ const Login = () => {
 
 	const loginValidationSchema = Yup.object().shape({
 		username: Yup.string()
-			.required("Username is required")
-			.min(4, "Username must be at least 4 characters")
-			.max(20, "Username must be at most 20 characters")
-			.matches(/^[a-zA-Z0-9]+$/, "Username can only contain letters and numbers"),
+			.required("El nombre de usuario es obligatorio")
+			.min(4, "El nombre de usuario debe tener al menos 4 caracteres")
+			.max(20, "El nombre de usuario debe tener como máximo 20 caracteres")
+			.matches(/^[a-zA-Z0-9]+$/, "El nombre de usuario solo puede contener letras y números"),
 		password: Yup.string()
-			.required("Password is required")
-			.min(6, "Password must be at least 6 characters")
-			.max(16, "Password must be at most 16 characters")
+			.required("La contraseña es obligatoria")
+			.min(6, "La contraseña debe tener al menos 6 caracteres")
+			.max(16, "La contraseña debe tener como máximo 16 caracteres")
 			.matches(
 				/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/,
-				"Password can only contain letters, numbers, and special characters"
+				"La contraseña solo puede contener letras, números y caracteres especiales"
 			),
 	});
 
 	const registerValidationSchema = Yup.object().shape({
 		username: Yup.string()
-			.required("Username is required")
-			.min(4, "Username must be at least 4 characters")
-			.max(20, "Username must be at most 20 characters")
-			.matches(/^[a-zA-Z0-9]+$/, "Username can only contain letters and numbers"),
+			.required("El nombre de usuario es obligatorio")
+			.min(4, "El nombre de usuario debe tener al menos 4 caracteres")
+			.max(20, "El nombre de usuario debe tener como máximo 20 caracteres")
+			.matches(/^[a-zA-Z0-9]+$/, "El nombre de usuario solo puede contener letras y números"),
 		email: Yup.string()
-			.email("Invalid email")
-			.required("Email is required")
-			.min(4, "Email must be at least 4 characters")
-			.max(24, "Email must be at most 24 characters"),
+			.email("Correo electrónico inválido")
+			.required("El correo electrónico es obligatorio")
+			.min(4, "El correo electrónico debe tener al menos 4 caracteres")
+			.max(24, "El correo electrónico debe tener como máximo 24 caracteres"),
 		password: Yup.string()
-			.required("Password is required")
-			.min(6, "Password must be at least 6 characters")
-			.max(16, "Password must be at most 16 characters")
+			.required("La contraseña es obligatoria")
+			.min(6, "La contraseña debe tener al menos 6 caracteres")
+			.max(16, "La contraseña debe tener como máximo 16 caracteres")
 			.matches(
 				/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/,
-				"Password can only contain letters, numbers, and special characters"
+				"La contraseña solo puede contener letras, números y caracteres especiales"
 			),
 	});
 
@@ -95,35 +95,39 @@ const Login = () => {
 							validationSchema={loginValidationSchema}
 							onSubmit={handleLoginSubmit}
 						>
-							{({ isSubmitting  }) => (
+							{({ isSubmitting, errors, touched }) => (
 								<Form className="sign-in-form">
-									<h2 className="title">Sign in</h2>
-									<div className="input-field">
+									<h2 className="title">Ingresar</h2>
+									<div className={`input-field ${errors.username && touched.username ? 'input-error' : ''}`}>
 										<i className="fas fa-user"></i>
 										<Field
 											type="text"
-											placeholder="Username"
+											placeholder="Nombre de Usuario"
 											name="username"
+											className={errors.username && touched.username ? 'input-error' : ''}
 										/>
-										<ErrorMessage name="username" component="div" className="error-message" />
 									</div>
-									<div className="input-field">
+									{errors.username && touched.username && <div className="error-message">{errors.username}</div>}
+
+									<div className={`input-field ${errors.password && touched.password ? 'input-error' : ''}`}>
 										<i className="fas fa-lock"></i>
 										<Field
 											type="password"
-											placeholder="Password"
+											placeholder="Contraseña"
 											name="password"
+											className={errors.password && touched.password ? 'input-error' : ''}
 										/>
-										<ErrorMessage name="password" component="div" className="error-message" />
 									</div>
+									{errors.password && touched.password && <div className="error-message">{errors.password}</div>}
+
 									<button
 										type="submit"
 										className={`btn1 solid ${isLoading || isSubmitting ? "disabled" : ""}`}
 										disabled={isLoading || isSubmitting}
 									>
-										{isLoading || isSubmitting ? "Loading..." : "Login"}
+										{isLoading || isSubmitting ? "Cargando..." : "Ingresar"}
 									</button>
-									<p className="social-text">Or Sign in with social platforms</p>
+									<p className="social-text">O inicia con redes sociales</p>
 									<div className="social-media">
 										<a href="#" className="social-icon">
 											<i className="fab fa-facebook-f"></i>
@@ -147,40 +151,50 @@ const Login = () => {
 							validationSchema={registerValidationSchema}
 							onSubmit={handleRegisterSubmit}
 						>
-							{({ isSubmitting  }) => (
+							{({ isSubmitting, errors, touched }) => (
 								<Form className="sign-up-form">
-									<h2 className="title">Sign up</h2>
-									<div className="input-field">
+									<h2 className="title">Registrarse</h2>
+									<div className={`input-field ${errors.username && touched.username ? 'input-error' : ''}`}>
 										<i className="fas fa-user"></i>
-										<Field type="text" placeholder="Username" name="username" />
-										<ErrorMessage name="username" component="div" className="error-message" />
+										<Field
+											type="text"
+											placeholder="Nombre de Usuario"
+											name="username"
+											className={errors.username && touched.username ? 'input-error' : ''}
+										/>
 									</div>
-									<div className="input-field">
+									{errors.username && touched.username && <div className="error-message">{errors.username}</div>}
+
+									<div className={`input-field ${errors.email && touched.email ? 'input-error' : ''}`}>
 										<i className="fas fa-envelope"></i>
 										<Field
 											type="email"
 											placeholder="Email"
 											name="email"
+											className={errors.email && touched.email ? 'input-error' : ''}
 										/>
-										<ErrorMessage name="email" component="div" className="error-message" />
 									</div>
-									<div className="input-field">
+									{errors.email && touched.email && <div className="error-message">{errors.email}</div>}
+
+									<div className={`input-field ${errors.password && touched.password ? 'input-error' : ''}`}>
 										<i className="fas fa-lock"></i>
 										<Field
 											type="password"
-											placeholder="Password"
+											placeholder="Contraseña"
 											name="password"
+											className={errors.password && touched.password ? 'input-error' : ''}
 										/>
-										<ErrorMessage name="password" component="div" className="error-message" />
 									</div>
+									{errors.password && touched.password && <div className="error-message">{errors.password}</div>}
+
 									<button
 										type="submit"
 										className={`btn1 solid ${isLoading || isSubmitting ? "disabled" : ""}`}
 										disabled={isLoading || isSubmitting}
 									>
-										{isLoading || isSubmitting ? "Loading..." : "Sign up"}
+										{isLoading || isSubmitting ? "Cargando..." : "Registrarme"}
 									</button>
-									<p className="social-text">Or Sign up with social platforms</p>
+									<p className="social-text">O registrate con redes sociales</p>
 									<div className="social-media">
 										<a href="#" className="social-icon">
 											<i className="fab fa-facebook-f"></i>
@@ -204,26 +218,24 @@ const Login = () => {
 				<div className="panels-container">
 					<div className="panel left-panel">
 						<div className="content">
-							<h3>New here ?</h3>
+							<h3>¿Nuevo aquí?</h3>
 							<p>
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-								ex ratione. Aliquid!
+								Bienvenido al formulario de registro. ¡Únete a nuestra comunidad hoy mismo y comienza a disfrutar de todos los beneficios!
 							</p>
 							<button className="btn1 transparent" id="sign-up-btn" onClick={handleToggleMode}>
-								Sign up
+								Registrarse
 							</button>
 						</div>
 						<img src={logSVG} className="image" alt="" />
 					</div>
 					<div className="panel right-panel">
 						<div className="content">
-							<h3>One of us ?</h3>
+							<h3>¿Uno de nosotros?</h3>
 							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-								laboriosam ad deleniti.
+								Bienvenido de vuelta. Inicie sesión en su cuenta para acceder a todas las funciones y contenido exclusivo que ofrecemos.
 							</p>
 							<button className="btn1 transparent" id="sign-in-btn" onClick={handleToggleMode}>
-								Sign in
+								Iniciar sesión
 							</button>
 						</div>
 						<img src={logReg} className="image" alt="" />

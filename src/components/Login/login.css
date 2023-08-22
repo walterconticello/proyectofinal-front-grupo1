@@ -219,6 +219,19 @@ form.sign-in-form {
 	transform: translateX(800px);
 }
 
+/* Estilos para los campos de entrada con errores */
+.input-error {
+	border-color: red !important;
+	/* Cambiar el borde del campo a rojo */
+}
+
+/* Estilos para los mensajes de error de Formik */
+.error-message {
+	color: red !important;
+	/* Cambiar el color del mensaje de error a rojo */
+}
+
+
 /* ANIMATION */
 
 .container1.sign-up-mode:before {
