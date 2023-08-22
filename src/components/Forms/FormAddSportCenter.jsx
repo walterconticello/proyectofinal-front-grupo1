@@ -1,4 +1,6 @@
-import React from 'react'
+import {useState} from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const FormAddSportCenter = () => {
   const validationSchema = Yup.object().shape({
@@ -106,20 +108,39 @@ const FormAddSportCenter = () => {
         <ErrorMessage name="services" component="div" />
       </div>
       <div>
-        <label>Facebook:</label>
-        <Field type="text" name="social.facebook" />
-        {errors.social?.facebook && touched.social?.facebook && (
-          <div>{errors.social.facebook}</div>
-        )}
-      </div>
-      
+          <label>Owner ID</label>
+          <Field type="text" name="ownerId" />
+          <ErrorMessage name="ownerId" component="div" />
+        </div>
+        <div>
+          <label>Owner ID</label>
+          <Field type="text" name="ownerId" />
+          <ErrorMessage name="ownerId" component="div" />
+        </div>
       <div>
-        <label>Instagram:</label>
-        <Field type="text" name="social.instagram" />
-        {errors.social?.instagram && touched.social?.instagram && (
-          <div>{errors.social.instagram}</div>
-        )}
+        <label>Social:</label>
+        <div>
+          <label>Facebook:</label>
+          <Field type="text" name="social.facebook" />
+          <ErrorMessage name="social.facebook" component="div" />
+        </div>
+        
+        <div>
+          <label>Instagram:</label>
+          <Field type="text" name="social.instagram" />
+          <ErrorMessage name="social.instagram" component="div" />
+        </div>
       </div>
+      <div>
+          <label>Owner ID</label>
+          <Field type="text" name="ownerId" />
+          <ErrorMessage name="ownerId" component="div" />
+        </div>
+        <div>
+          <label>Owner ID</label>
+          <Field type="text" name="ownerId" />
+          <ErrorMessage name="ownerId" component="div" />
+        </div>
 
         <button type="submit">Submit</button>
       </Form>

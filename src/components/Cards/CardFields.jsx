@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ModalCancha from "../Modals/ModalCanchas";
 import { Image } from "react-bootstrap";
+import { FieldsContext } from "../../context/FieldContext"
 import "./Card.css";
 
 const CardField = () => {
+
+  const { fields } = useContext(FieldsContext);
  
   const [show, setShow] = useState(false);
 
@@ -14,13 +17,14 @@ const CardField = () => {
 
   return (
     <>
-       {/* Va un Map */}
-            <div >
+       {fields === undefined ? "No hay canchas" : fields.map((field) => (
+        <>
+       <div >
               <Card style={{ width: "16rem" }}>
                 <Card.Img variant="top" src="src\img\Ejemplos\2.jpg" />
                 <Card.Body className="d-flex flex-column">
-                  <Card.Title>field.name</Card.Title>
-                  <Card.Text>field.price</Card.Text>
+                  <Card.Title>{field.name}</Card.Title>
+                  <Card.Text>{field.price}</Card.Text>
                   <div className="d-flex justify-content-between">
                     <Button variant="success" size="sm">
                       Ver Cancha
@@ -41,6 +45,8 @@ const CardField = () => {
                         handleClose={handleClose}
                        /*  selectId={selectedId} */
                       />
+                      </>
+                      ))};
     </>
   );
 };
