@@ -10,7 +10,7 @@ const CardsDashboard = () => {
           <Card id="cardDash">
             <Card.Body>
               <Card.Img variant="top" src="src\img\Complejos.png" />
-              <Card.Title class="text-center pt-3">
+              <Card.Title className="text-center pt-3">
                 <h3>Complejos</h3>
               </Card.Title>
               <Card.Text>
@@ -23,7 +23,7 @@ const CardsDashboard = () => {
           <Card id="cardDash">
             <Card.Body>
               <Card.Img variant="top" src="src\img\Canchas.png" />
-              <Card.Title class="text-center pt-3">
+              <Card.Title className="text-center pt-3">
                 <h3>Canchas</h3>
               </Card.Title>
               <Card.Text>
@@ -36,7 +36,7 @@ const CardsDashboard = () => {
           <Card id="cardDash">
             <Card.Body>
               <Card.Img variant="top" src="src\img\Reservas.png" />
-              <Card.Title class="text-center pt-3">
+              <Card.Title className="text-center pt-3">
                 <h3>Reservas</h3>
               </Card.Title>
               <Card.Text>
@@ -49,7 +49,7 @@ const CardsDashboard = () => {
           <Card id="cardDash">
             <Card.Body>
               <Card.Img variant="top" src="src\img\Usuarios.png" />
-              <Card.Title class="text-center pt-3">
+              <Card.Title className="text-center pt-3">
                 <h3>Usuarios</h3>
               </Card.Title>
               <Card.Text>
@@ -59,11 +59,11 @@ const CardsDashboard = () => {
           </Card>
         </Link>
         {/*  */}
-        <Link to={"/Users"} className="buy-button btn m-2">
+        <Link to={"/admin/products"} className="buy-button btn m-2">
           <Card id="cardDash">
             <Card.Body>
               <Card.Img variant="top" src="src\img\Usuarios.png" />
-              <Card.Title class="text-center pt-3">
+              <Card.Title className="text-center pt-3">
                 <h3>Store</h3>
               </Card.Title>
               <Card.Text>

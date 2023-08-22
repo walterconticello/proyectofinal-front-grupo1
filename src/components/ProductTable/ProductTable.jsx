@@ -4,7 +4,7 @@ import "./ProductTable.css";
 import { MdDelete } from "react-icons/md";
 const ProductTable = () => {
   const { products, getProducts, deleteProduct } = useContext(ProductContext);
-  const [showIdColumn, setShowIdColumn] = useState(false); // Estado para controlar la columna de ID
+  const [showIdColumn, setShowIdColumn] = useState(false);
 
   useEffect(() => {
     getProducts();
@@ -15,18 +15,17 @@ const ProductTable = () => {
   };
 
   return (
-    <div className="product-table-container mx-5">
-      <h2>Product List</h2>
-      <div className="table-container d-flex align-items-center">
+    <div className="table-container mx-auto ">
+      <div className="switch-container m-2 ">
+        <input
+          type="checkbox"
+          checked={showIdColumn}
+          onChange={handleIdColumnToggle}
+        />
+      </div>
+      <div className="table-responsive mx-auto text-center">
         <table>
           <thead>
-            <div className="switch-container m-2 ">
-              <input
-                type="checkbox"
-                checked={showIdColumn}
-                onChange={handleIdColumnToggle}
-              />
-            </div>
             <tr>
               {showIdColumn && <th>ID</th>}
               <th>Name</th>
@@ -45,7 +44,12 @@ const ProductTable = () => {
                 <td className="w-25">{product.description}</td>
                 <td>{product.stock}</td>
                 <td>
-                  <button onClick={() => deleteProduct(product._id)}>
+                  <button
+                    onClick={() => {
+                      deleteProduct(product._id),
+                        console.log("product deleted");
+                    }}
+                  >
                     <MdDelete />
                   </button>
                 </td>

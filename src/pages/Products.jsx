@@ -1,14 +1,16 @@
 import React from "react";
 import ProductForm from "../components/ProductForm/ProductForm";
 import ProductTable from "../components/ProductTable/ProductTable";
+import { Row, Col } from "react-bootstrap";
 const Products = () => {
   return (
-    <div className="container d-flex flex-column justify-content-center">
-      <h3>Admin Dashboard</h3>
-      <h1>Product Management</h1>
-      <ProductTable />
-      <ProductForm />
-    </div>
+    <Row className="mx-auto justify-content-center my-5">
+      <Col lg={9} md={9} sm={12}>
+        <h4>Product Management</h4>
+        <ProductTable />
+        <ProductForm />
+      </Col>
+    </Row>
   );
 };
 
