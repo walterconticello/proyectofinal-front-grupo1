@@ -18,7 +18,7 @@ const validationSchema = Yup.object().shape({
   pricePerHour: Yup.number()
     .required('El precio por hora es requerido')
     .min(0, 'El precio por hora no puede ser menor que 0')
-    .max(100000, 'El precio por hora no puede ser mayor que $100,000'),
+    .max(10000, 'El precio por hora no puede ser mayor que $10,000'),
   size: Yup.number()
     .required('El tamaño es requerido')
     .min(5, 'El tamaño no puede ser menor que 5')
@@ -44,8 +44,11 @@ const validationSchema = Yup.object().shape({
         pricePerHour: "",
         size: "",
         isActive: true,
-        idSportCenter: "",
+        idSportCenter: "OwnerId",
     })
+    const handleChange = (e) =>{
+        setField({...field , [e.target]})
+    }
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -64,11 +67,11 @@ const validationSchema = Yup.object().shape({
         ) : null}
       </div>
       <div>
-        <label htmlFor="name">Hora de Apertura</label>
+        <label htmlFor="openHour">Hora de Apertura</label>
         <input
-          type="text"
-          id="name"
-          name="name"
+          type="date"
+          id="openHour"
+          name="openHour"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.openHour}
@@ -77,8 +80,48 @@ const validationSchema = Yup.object().shape({
           <div>{formik.errors.openHour}</div>
         ) : null}
       </div>
-      
-      
+      <div>
+        <label htmlFor="closeHour">Horario de Cierre</label>
+        <input
+          type="date"
+          id="closeHour"
+          name="closeHour"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.closeHour}
+        />
+        {formik.touched.closeHour && formik.errors.closeHour ? (
+          <div>{formik.errors.closeHour}</div>
+        ) : null}
+      </div>
+      <div>
+        <label htmlFor="pricePerHour">Precio por hora</label>
+        <input
+          type="date"
+          id="pricePerHour"
+          name="pricePerHour"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.pricePerHour}
+        />
+        {formik.touched.pricePerHour && formik.errors.pricePerHour ? (
+          <div>{formik.errors.pricePerHour}</div>
+        ) : null}
+      </div>
+      <div>
+        <label htmlFor="size">Cantidad de Jugadores Maximo</label>
+        <input
+          type="number"
+          id="size"
+          name="size"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.size}
+        />
+        {formik.touched.size && formik.errors.size ? (
+          <div>{formik.errors.size}</div>
+        ) : null}
+      </div>    
       <button type="submit">Enviar</button>
     </form>
   )

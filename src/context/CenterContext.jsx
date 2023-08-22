@@ -7,7 +7,7 @@ const CenterContext = ({ children }) => {
 
     const [complexs, setComplexs] = useState([]);
 
-    const getComplexs= async () => {
+    const getSportCenter= async () => {
         try {
             const response = await axios.get("http://localhost:5173/SportCenter")
             setComplexs(response.data)
@@ -16,7 +16,7 @@ const CenterContext = ({ children }) => {
         }
     }
 
-    const postComplex = async (complexs) =>{
+    const postSportCenter = async (complexs) =>{
         try {
             const response = axios.post("http://localhost:5173/SportCenter", complexs)
             console.log(response)
@@ -25,7 +25,7 @@ const CenterContext = ({ children }) => {
         }
     }
 
-    const deleteComplex = async (id) => {
+    const deleteSportCenter = async (id) => {
         console.log(id, "id de context");
         try {
           await axios.delete(`http://localhost:5173/SportCenter/${id}`);
@@ -36,16 +36,22 @@ const CenterContext = ({ children }) => {
         }
       };
 
+      const updateSportCenter = async (SportCenter) => {
+        try{
+            await axios.put(`http://localhost:5173/SportCenter/${SportCenter.id}`);
+        } catch(error){
+            console.log(error, "error al borrar cancha");
+        }
+      }
 
       useEffect(() => {
-        getComplexs()
+        getSportCenter()
     }, [])
 
     return (
-        <SportCenterContext.Provider value={{complexs , getComplexs, setComplexs ,postComplex , deleteComplex}}>
+        <SportCenterContext.Provider value={{complexs , getSportCenter, setComplexs ,postSportCenter , deleteSportCenter , updateSportCenter}}>
             {children}
         </SportCenterContext.Provider>
-        
       )
 }
 
