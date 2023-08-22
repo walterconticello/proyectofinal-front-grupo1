@@ -1,20 +1,9 @@
-import { useContext, useState } from "react";
-import { Modal, Button, Image } from "react-bootstrap";
+import { useState } from "react";
+import { Modal, Button} from "react-bootstrap";
 import { Formik, Form, Field } from "formik";
-import {FieldContext} from "../../context/FieldContext";
 import "./Modal.css";
 
-const ModalCancha = ({ showModal, closeModal, isEditing, selectedId }) => {
-  const {field ,setFields , postfield } = useContext(FieldContext)
-  const [field , setFields] = useState({
-    name : "",
-    openHour : "",
-    closeHour: "",
-    priceperhour: "",
-    idSportCenter : "",
-  });
-
-  const handleClose = () => setShow(closeModal);
+const ModalCancha = ({show , handleClose}) => {
 
   const initialValues = {
     name: "",
@@ -25,17 +14,15 @@ const ModalCancha = ({ showModal, closeModal, isEditing, selectedId }) => {
   };
 
   const handleSubmit = (values) => {
-
-    e.preventDefault();
-    postfield()
-
+    // Handle form submission here
     console.log(values);
-    closeModal();
+    handleClose();
   };
+
 
   return (
     <>
-      <Modal show={showModal} onHide={closeModal}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
@@ -98,7 +85,7 @@ const ModalCancha = ({ showModal, closeModal, isEditing, selectedId }) => {
           </Formik>
         </Modal.Body>
         <Modal.Footer>
-          <Button type="submit">Save Changes</Button>
+          <Button type="submit"  onClick={handleClose} >Save Changes</Button>
           <Button variant="danger" onClick={handleClose}>
             Eliminar Cancha
           </Button>

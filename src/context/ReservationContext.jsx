@@ -53,9 +53,9 @@ const ReserveContext = ({ children }) => {
     }, [])
 
     return (
-        <UsersContext.Provider value={{bookings , setBookings, getReservations ,postReseration , deleteResevation , viewBooking}}>
+        <ReservationContext.Provider value={{bookings , setBookings, getReservations ,postReseration , deleteResevation , viewBooking}}>
             {children}
-        </UsersContext.Provider>
+        </ReservationContext.Provider>
         
       )
 }

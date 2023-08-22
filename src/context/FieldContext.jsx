@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { createContext, useEffect, useState } from 'react'
 
-export const FieldContext = createContext()
+export const FieldsContext = createContext()
 
 const FieldContext = ({ children }) => {
 
@@ -41,7 +41,7 @@ const FieldContext = ({ children }) => {
         try {
               await axios.get(`http://localhost:3000/fields/${id}`)  
           const viewField = fields.filter((field) => field.id !== id);
-          console.log(viewUser);      
+          console.log(viewField);      
       }catch (error) {
         console.log(error, "error de productos");
       }
@@ -53,9 +53,9 @@ const FieldContext = ({ children }) => {
     }, [])
 
     return (
-        <UsersContext.Provider value={{fields , getFields, setFields ,postFields , deleteField, viewFieldById}}>
+        <FieldsContext.Provider value={{fields , getFields, setFields ,postFields , deleteField, viewFieldById}}>
             {children}
-        </UsersContext.Provider>
+        </FieldsContext.Provider>
         
       )
 }

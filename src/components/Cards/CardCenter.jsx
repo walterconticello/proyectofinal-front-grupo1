@@ -1,9 +1,15 @@
-import React from 'react'
+import React , {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import ModalComplex from '../Modals/ModalComplex';
+import ModalCenter from '../Modals/ModalCenter';
 
 const CardCenter = () => {
+  
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
     // const id = id;
 
@@ -20,12 +26,15 @@ const CardCenter = () => {
         </Card.Text>
         <Button variant="primary" className="ms-1" >Ver Complejo</Button>
         {/* Aqui Abajo se le pasara el parametor Id */}
-        <ModalComplex />
+        <Button variant="warning" className="ms-1" onClick={handleShow}>
+        Editar
+      </Button>
       </Card.Body>
     </Card>
 
    
     </div>
+    <ModalCenter show={show} handleClose={handleClose} />
     </>
   );
 }

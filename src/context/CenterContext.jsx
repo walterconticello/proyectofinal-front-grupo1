@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { createContext, useEffect, useState } from 'react'
 
-export const FieldContext = createContext()
+export const SportCenterContext = createContext()
 
-const ComplexContext = ({ children }) => {
+const CenterContext = ({ children }) => {
 
     const [complexs, setComplexs] = useState([]);
 
@@ -42,11 +42,11 @@ const ComplexContext = ({ children }) => {
     }, [])
 
     return (
-        <UsersContext.Provider value={{complexs , getComplexs, setComplexs ,postComplex , deleteComplex}}>
+        <SportCenterContext.Provider value={{complexs , getComplexs, setComplexs ,postComplex , deleteComplex}}>
             {children}
-        </UsersContext.Provider>
+        </SportCenterContext.Provider>
         
       )
 }
 
-export default FieldContext;
+export default CenterContext;

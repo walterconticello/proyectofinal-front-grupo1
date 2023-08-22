@@ -4,11 +4,8 @@ import Modal from "react-bootstrap/Modal";
 import { Formik, Form, Field } from "formik";
 import "./Modal.css";
 
-const ModalComplex = (id) => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const ModalComplex = ({show , handleClose , id}) => {
+  
 
   const initialValues = {
     name: "",
@@ -26,9 +23,7 @@ const ModalComplex = (id) => {
 
   return (
     <>
-      <Button variant="warning" className="ms-1" onClick={handleShow}>
-        Editar
-      </Button>
+     
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
