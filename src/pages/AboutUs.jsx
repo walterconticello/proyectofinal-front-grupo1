@@ -29,7 +29,7 @@ const AboutUs = () => {
     {
      name: "Paul Walker" ,
       position: "Desarrollador" ,
-      description: "Descripción del desarrollador",
+      description: "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       imageSrc: "/TeamImg/PaulWalker.jpg",
       imageAlt: "Foto del desarrollador",
     },
