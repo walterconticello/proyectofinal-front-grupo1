@@ -48,9 +48,9 @@ const teamMembers = [
 
 const CardsTeam = () => {
     return (
-      <div className="d-flex justify-content-around">
+      <div className="row">
         {teamMembers.map((member, index) => (
-          <Card key={index} style={{ width: '18rem' }}>
+          <Card key={index} className="col-sm-6 col-md-4 col-lg-3 mb-4">
             <Card.Img variant="top" src={member.image} />
             <Card.Body>
               <Card.Title>{member.name}</Card.Title>
@@ -66,7 +66,7 @@ const CardsTeam = () => {
         ))}
       </div>
     );
-};
+  };
   
 
 export default CardsTeam;
