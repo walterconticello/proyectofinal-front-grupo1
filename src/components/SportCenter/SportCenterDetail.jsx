@@ -25,6 +25,19 @@ import Field from "./Field";
 import NewComment from "./NewComment";
 import Swal from 'sweetalert2'
 
+
+/*
+CONECTAR CON EL BACKEND:
+-MODIFICAR LAS GET
+-PONER LOS MENSAJES DE LAS RESPONSE EN LOS ALERT
+
+EXTRAER LA INFO DE USUARIO DESDE EL JWT
+
+REVISAR LOS COMMENTS ASI NO QUEDA NADA COLGADO POR PULIR
+
+DESINTALAR DBJSON Y ELIMINAR EL ARCHIVO
+*/
+
 const SportCenterDetail = ({idSportCenter}) => {
     const [sportCenter, setSportCenter] = useState(false);
     const [comments, setComments] = useState([]);
