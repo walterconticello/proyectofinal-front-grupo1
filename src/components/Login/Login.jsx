@@ -95,27 +95,49 @@ const Login = () => {
 							validationSchema={loginValidationSchema}
 							onSubmit={handleLoginSubmit}
 						>
-							{({ isSubmitting, errors, touched }) => (
+							{({ isSubmitting, errors, touched, isValid }) => (
 								<Form className="sign-in-form">
 									<h2 className="title">Ingresar</h2>
-									<div className={`input-field ${errors.username && touched.username ? 'input-error' : ''}`}>
+									<div
+										className={`input-field ${errors.username && touched.username
+											? "input-error"
+											: ""
+											} ${touched.username && isValid ? "input-success" : ""
+											}`}
+									>
 										<i className="fas fa-user"></i>
 										<Field
 											type="text"
 											placeholder="Nombre de Usuario"
 											name="username"
-											className={errors.username && touched.username ? 'input-error' : ''}
+											className={`${errors.username && touched.username
+												? "input-error"
+												: ""
+												} ${touched.username && isValid ? "input-success" : ""
+												}`}
 										/>
 									</div>
-									{errors.username && touched.username && <div className="error-message">{errors.username}</div>}
+									{errors.username && touched.username && (
+										<div className="error-message">{errors.username}</div>
+									)}
 
-									<div className={`input-field ${errors.password && touched.password ? 'input-error' : ''}`}>
+									<div
+										className={`input-field ${errors.password && touched.password
+												? "input-error"
+												: ""
+											} ${touched.password && isValid ? "input-success" : ""
+											}`}
+									>
 										<i className="fas fa-lock"></i>
 										<Field
 											type="password"
 											placeholder="Contraseña"
 											name="password"
-											className={errors.password && touched.password ? 'input-error' : ''}
+											className={`${errors.password && touched.password
+													? "input-error"
+													: ""
+												} ${touched.password && isValid ? "input-success" : ""
+												}`}
 										/>
 									</div>
 									{errors.password && touched.password && <div className="error-message">{errors.password}</div>}

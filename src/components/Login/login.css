@@ -222,6 +222,7 @@ form.sign-in-form {
 /* Estilos para los campos de entrada con errores */
 .input-error {
 	border-color: red !important;
+	border: 1px solid;
 	/* Cambiar el borde del campo a rojo */
 }
 
@@ -229,6 +230,11 @@ form.sign-in-form {
 .error-message {
 	color: red !important;
 	/* Cambiar el color del mensaje de error a rojo */
+}
+
+.input-success {
+	border-color: green !important;
+	border: 1px solid;
 }
 
 
