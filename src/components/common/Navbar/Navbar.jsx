@@ -1,10 +1,12 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
+import { Modal, Button } from "react-bootstrap";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logoApp from "../../../assets/logo-canchas.png";
 import "./navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
+import CartModal from "../../cart/CartModal";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -18,6 +20,15 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <Disclosure as="nav" className="navbarContainer">
       {({ open }) => (
@@ -67,6 +78,7 @@ const Navbar = () => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
+                  onClick={handleOpenModal}
                   className="relative rounded-full carrito p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-1 focus:ring-lime-500 focus:ring-offset-2 focus:ring-offset-lime-500 transition"
                 >
                   <span className="absolute -inset-1.5" />
@@ -77,6 +89,7 @@ const Navbar = () => {
                     size="xl"
                   />
                 </button>
+                {showModal && <CartModal onClose={handleCloseModal} />}
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">

@@ -4,11 +4,13 @@ import { ProductProvider } from "./context/ProductContext";
 import Routes from "./routes/routes";
 import { BrowserRouter } from "react-router-dom";
 import Layout from "./components/common/Layout";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
   return (
     <ProductProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Layout>
           <Routes />
         </Layout>
