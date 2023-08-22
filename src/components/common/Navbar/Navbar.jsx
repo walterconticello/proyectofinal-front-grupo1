@@ -1,20 +1,20 @@
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import logoApp from "../../assets/logo-canchas.png"
-import "./navbar.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons'
+import { Fragment } from 'react';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import logoApp from "../../../assets/logo-canchas.png";
+import "./navbar.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const navigation = [
 	{ name: 'Dashboard', href: '#', current: true },
 	{ name: 'Team', href: '#', current: false },
 	{ name: 'Projects', href: '#', current: false },
 	{ name: 'Calendar', href: '#', current: false },
-]
+];
 
 function classNames(...classes) {
-	return classes.filter(Boolean).join(' ')
+	return classes.filter(Boolean).join(' ');
 }
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
 		<Disclosure as="nav" className="navbarContainer">
 			{({ open }) => (
 				<>
-					<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+					<div className="container mx-auto px-2 sm:px-6 lg:px-8">
 						<div className="relative flex h-16 items-center justify-between">
 							<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 								{/* Mobile menu button*/}
@@ -39,7 +39,7 @@ const Navbar = () => {
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 								<div className="flex flex-shrink-0 items-center">
 									<img
-										className="h-8 w-auto"
+										className="h-9 w-auto"
 										src={logoApp}
 										alt="LogoReservaGol"
 									/>
@@ -79,7 +79,7 @@ const Navbar = () => {
 										<Menu.Button className="relative flex rounded-full  text-sm focus:outline-none">
 											<span className="absolute -inset-1.5" />
 											<span className="sr-only">Open user menu</span>
-											<FontAwesomeIcon icon={faUser} className="h-8 w-8 rounded-full userIcon" size='lg'/>
+											<FontAwesomeIcon icon={faUser} className="h-8 w-8 rounded-full userIcon" size='lg' />
 										</Menu.Button>
 									</div>
 									<Transition
@@ -153,4 +153,4 @@ const Navbar = () => {
 	)
 }
 
-export default Navbar
+export default Navbar;
