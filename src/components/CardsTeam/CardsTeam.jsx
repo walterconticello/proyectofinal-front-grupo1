@@ -1,62 +1,72 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+
+
+const teamMembers = [
+    {
+        name: 'Lautaro Srur',
+        description: 'Descripción breve del miembro del equipo y su rol en el proyecto.',
+        github: 'https://github.com/LautaroCruzSrur',
+        linkedin: 'https://www.linkedin.com/in/lautarocruzs/',
+        image: './public/Lautaro.jpg'
+    },
+    {
+        name: 'Walter Conticello',
+        description: 'Descripción breve del miembro del equipo y su rol en el proyecto.',
+        github: 'https://github.com/walterconticello', 
+        linkedin: 'https://www.linkedin.com/in/walter-conticello/',
+        image: './public/Walter.jpg'
+
+    },
+    {
+        name: 'Marcos Quinteros',
+        description: 'Descripción breve del miembro del equipo y su rol en el proyecto.',
+        github: 'https://github.com/marcosquinteros ',
+        linkedin: 'https://www.linkedin.com/in/marcos-quinteros-135b87237/' ,
+        image: './public/Marcos.jpg'
+    },
+    {
+        name: 'Diego Vaca Paz',
+        description: 'Descripción breve del miembro del equipo y su rol en el proyecto.',
+        github: 'https://github.com/diegovacapaz' ,
+        linkedin: 'https://www.linkedin.com/in/diego-isaias-vaca-paz-a9b6361b8/',
+        image: './public/Diego.jpg'
+    },
+    {
+        name: 'Pablo Matias Rodriguez',
+        description: 'Descripción breve del miembro del equipo y su rol en el proyecto.',
+        github: 'https://github.com/PabloRodriguez95',
+        linkedin: 'https://www.linkedin.com/in/pablo-rodriguez-372845285/',
+        image: './public/Pablo.jpg'
+
+    }
+];
+
 
 const CardsTeam = () => {
-  return (
-    <div className="d-flex justify-content-around">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://via.placeholder.com/100x180" />
-        <Card.Body>
-          <Card.Title>Nombre del miembro del equipo 1</Card.Title>
-          <Card.Text>
-            Descripción breve del miembro del equipo y su rol en el proyecto.
-          </Card.Text>
-          <Button variant="primary">Ver perfil</Button>
-        </Card.Body>
-      </Card>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://via.placeholder.com/100x180" />
-        <Card.Body>
-          <Card.Title>Nombre del miembro del equipo 2</Card.Title>
-          <Card.Text>
-            Descripción breve del miembro del equipo y su rol en el proyecto.
-          </Card.Text>
-          <Button variant="primary">Ver perfil</Button>
-        </Card.Body>
-      </Card>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://via.placeholder.com/100x180" />
-        <Card.Body>
-          <Card.Title>Nombre del miembro del equipo 3</Card.Title>
-          <Card.Text>
-            Descripción breve del miembro del equipo y su rol en el proyecto.
-          </Card.Text>
-          <Button variant="primary">Ver perfil</Button>
-        </Card.Body>
-      </Card>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://via.placeholder.com/100x180" />
-        <Card.Body>
-          <Card.Title>Nombre del miembro del equipo 4</Card.Title>
-          <Card.Text>
-            Descripción breve del miembro del equipo y su rol en el proyecto.
-          </Card.Text>
-          <Button variant="primary">Ver perfil</Button>
-        </Card.Body>
-      </Card>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://via.placeholder.com/100x180" />
-        <Card.Body>
-          <Card.Title>Nombre del miembro del equipo 5</Card.Title>
-          <Card.Text>
-            Descripción breve del miembro del equipo y su rol en el proyecto.
-          </Card.Text>
-          <Button variant="primary">Ver perfil</Button>
-        </Card.Body>
-      </Card>
-    </div>
-  );
+    return (
+      <div className="d-flex justify-content-around">
+        {teamMembers.map((member, index) => (
+          <Card key={index} style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={member.image} />
+            <Card.Body>
+              <Card.Title>{member.name}</Card.Title>
+              <Card.Text>{member.description}</Card.Text>
+              <Button variant="primary" href={member.github}>
+                <FontAwesomeIcon icon={faGithub} />
+              </Button>
+              <Button variant="primary" href={member.linkedin}>
+                <FontAwesomeIcon icon={faLinkedin} /> 
+              </Button>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
+    );
 };
+  
 
 export default CardsTeam;
