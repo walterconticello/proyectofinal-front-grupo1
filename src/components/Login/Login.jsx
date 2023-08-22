@@ -3,55 +3,83 @@ import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
 import logSVG from "../../assets/log.svg";
 import logReg from "../../assets/register.svg";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const Login = () => {
 	const { login, register, authenticated, user } = useContext(AuthContext);
 	const [isSignUp, setIsSignUp] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
-	const [loginValues, setLoginValues] = useState({
-		username: "",
-		password: "",
+	const loginValidationSchema = Yup.object().shape({
+		username: Yup.string()
+			.required("Username is required")
+			.min(4, "Username must be at least 4 characters")
+			.max(20, "Username must be at most 20 characters")
+			.matches(/^[a-zA-Z0-9]+$/, "Username can only contain letters and numbers"),
+		password: Yup.string()
+			.required("Password is required")
+			.min(6, "Password must be at least 6 characters")
+			.max(16, "Password must be at most 16 characters")
+			.matches(
+				/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/,
+				"Password can only contain letters, numbers, and special characters"
+			),
 	});
 
-	const [registerValues, setRegisterValues] = useState({
-		username: "",
-		email: "",
-		password: "",
+	const registerValidationSchema = Yup.object().shape({
+		username: Yup.string()
+			.required("Username is required")
+			.min(4, "Username must be at least 4 characters")
+			.max(20, "Username must be at most 20 characters")
+			.matches(/^[a-zA-Z0-9]+$/, "Username can only contain letters and numbers"),
+		email: Yup.string()
+			.email("Invalid email")
+			.required("Email is required")
+			.min(4, "Email must be at least 4 characters")
+			.max(24, "Email must be at most 24 characters"),
+		password: Yup.string()
+			.required("Password is required")
+			.min(6, "Password must be at least 6 characters")
+			.max(16, "Password must be at most 16 characters")
+			.matches(
+				/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/,
+				"Password can only contain letters, numbers, and special characters"
+			),
 	});
+
 
 	const handleToggleMode = () => {
 		setIsSignUp(!isSignUp);
 	};
 
-	const handleLoginChange = (e) => {
-		const { name, value } = e.target;
-		setLoginValues((prevValues) => ({
-			...prevValues,
-			[name]: value,
-		}));
+
+	const handleLoginSubmit = async (values, { setSubmitting }) => {
+		setIsLoading(true);
+		try {
+			await login(values);
+		} catch (error) {
+			console.error("Login error:", error);
+		} finally {
+			setIsLoading(false);
+			setSubmitting(false); // Reset the submitting state
+		}
 	};
 
-	const handleRegisterChange = (e) => {
-		const { name, value } = e.target;
-		setRegisterValues((prevValues) => ({
-			...prevValues,
-			[name]: value,
-		}));
-	};
-
-	const handleLoginSubmit = async (e) => {
-		e.preventDefault();
-		await login(loginValues);
-	};
-
-	const handleRegisterSubmit = async (e) => {
-		e.preventDefault();
-		await register(registerValues);
+	const handleRegisterSubmit = async (values, { setSubmitting }) => {
+		setIsLoading(true);
+		try {
+			await register(values);
+		} catch (error) {
+			console.error("Register error:", error);
+		} finally {
+			setIsLoading(false);
+			setSubmitting(false); // Reset the submitting state
+		}
 	};
 
 	return (
 		<>
-			{console.log("Authenticated:", authenticated)}
 			{console.log("User:", user)}
 			{authenticated && user && (
 				<div className="authenticated-message">
@@ -62,98 +90,114 @@ const Login = () => {
 			<div className={`container1 ${isSignUp ? "sign-up-mode" : ""}`}>
 				<div className="forms-container">
 					<div className="signin-signup">
-						<form
-							action="#"
-							className="sign-in-form"
+						<Formik
+							initialValues={{ username: "", password: "" }}
+							validationSchema={loginValidationSchema}
 							onSubmit={handleLoginSubmit}
 						>
-							<h2 className="title">Sign in</h2>
-							<div className="input-field">
-								<i className="fas fa-user"></i>
-								<input type="text" placeholder="Username" name="username" value={loginValues.username}
-									onChange={handleLoginChange} />
-							</div>
-							<div className="input-field">
-								<i className="fas fa-lock"></i>
-								<input
-									type="password"
-									placeholder="Password"
-									name="password"
-									value={loginValues.password}
-									onChange={handleLoginChange}
-								/>
-							</div>
-							<input
-								type="submit"
-								value="Login"
-								className="btn1 solid"
-							/>
-							<p className="social-text">Or Sign in with social platforms</p>
-							<div className="social-media">
-								<a href="#" className="social-icon">
-									<i className="fab fa-facebook-f"></i>
-								</a>
-								<a href="#" className="social-icon">
-									<i className="fab fa-twitter"></i>
-								</a>
-								<a href="#" className="social-icon">
-									<i className="fab fa-google"></i>
-								</a>
-								<a href="#" className="social-icon">
-									<i className="fab fa-linkedin-in"></i>
-								</a>
-							</div>
-						</form>
+							{({ isSubmitting  }) => (
+								<Form className="sign-in-form">
+									<h2 className="title">Sign in</h2>
+									<div className="input-field">
+										<i className="fas fa-user"></i>
+										<Field
+											type="text"
+											placeholder="Username"
+											name="username"
+										/>
+										<ErrorMessage name="username" component="div" className="error-message" />
+									</div>
+									<div className="input-field">
+										<i className="fas fa-lock"></i>
+										<Field
+											type="password"
+											placeholder="Password"
+											name="password"
+										/>
+										<ErrorMessage name="password" component="div" className="error-message" />
+									</div>
+									<button
+										type="submit"
+										className={`btn1 solid ${isLoading || isSubmitting ? "disabled" : ""}`}
+										disabled={isLoading || isSubmitting}
+									>
+										{isLoading || isSubmitting ? "Loading..." : "Login"}
+									</button>
+									<p className="social-text">Or Sign in with social platforms</p>
+									<div className="social-media">
+										<a href="#" className="social-icon">
+											<i className="fab fa-facebook-f"></i>
+										</a>
+										<a href="#" className="social-icon">
+											<i className="fab fa-twitter"></i>
+										</a>
+										<a href="#" className="social-icon">
+											<i className="fab fa-google"></i>
+										</a>
+										<a href="#" className="social-icon">
+											<i className="fab fa-linkedin-in"></i>
+										</a>
+									</div>
+								</Form>
+							)}
+						</Formik>
 
-						<form
-							action="#"
-							className="sign-up-form"
+						<Formik
+							initialValues={{ username: "", email: "", password: "" }}
+							validationSchema={registerValidationSchema}
 							onSubmit={handleRegisterSubmit}
 						>
-							<h2 className="title">Sign up</h2>
-							<div className="input-field">
-								<i className="fas fa-user"></i>
-								<input type="text" placeholder="Username" name="username" value={registerValues.username}
-									onChange={handleRegisterChange} />
-							</div>
-							<div className="input-field">
-								<i className="fas fa-envelope"></i>
-								<input type="email" placeholder="Email"
-								name="email"
-									value={registerValues.email}
-									onChange={handleRegisterChange} />
-							</div>
-							<div className="input-field">
-								<i className="fas fa-lock"></i>
-								<input
-									type="password"
-									placeholder="Password"
-									name="password"
-									value={registerValues.password}
-									onChange={handleRegisterChange}
-								/>
-							</div>
-							<input
-								type="submit"
-								value="Sign up"
-								className="btn1 solid"
-							/>
-							<p className="social-text">Or Sign up with social platforms</p>
-							<div className="social-media">
-								<a href="#" className="social-icon">
-									<i className="fab fa-facebook-f"></i>
-								</a>
-								<a href="#" className="social-icon">
-									<i className="fab fa-twitter"></i>
-								</a>
-								<a href="#" className="social-icon">
-									<i className="fab fa-google"></i>
-								</a>
-								<a href="#" className="social-icon">
-									<i className="fab fa-linkedin-in"></i>
-								</a>
-							</div>
-						</form>
+							{({ isSubmitting  }) => (
+								<Form className="sign-up-form">
+									<h2 className="title">Sign up</h2>
+									<div className="input-field">
+										<i className="fas fa-user"></i>
+										<Field type="text" placeholder="Username" name="username" />
+										<ErrorMessage name="username" component="div" className="error-message" />
+									</div>
+									<div className="input-field">
+										<i className="fas fa-envelope"></i>
+										<Field
+											type="email"
+											placeholder="Email"
+											name="email"
+										/>
+										<ErrorMessage name="email" component="div" className="error-message" />
+									</div>
+									<div className="input-field">
+										<i className="fas fa-lock"></i>
+										<Field
+											type="password"
+											placeholder="Password"
+											name="password"
+										/>
+										<ErrorMessage name="password" component="div" className="error-message" />
+									</div>
+									<button
+										type="submit"
+										className={`btn1 solid ${isLoading || isSubmitting ? "disabled" : ""}`}
+										disabled={isLoading || isSubmitting}
+									>
+										{isLoading || isSubmitting ? "Loading..." : "Sign up"}
+									</button>
+									<p className="social-text">Or Sign up with social platforms</p>
+									<div className="social-media">
+										<a href="#" className="social-icon">
+											<i className="fab fa-facebook-f"></i>
+										</a>
+										<a href="#" className="social-icon">
+											<i className="fab fa-twitter"></i>
+										</a>
+										<a href="#" className="social-icon">
+											<i className="fab fa-google"></i>
+										</a>
+										<a href="#" className="social-icon">
+											<i className="fab fa-linkedin-in"></i>
+										</a>
+									</div>
+								</Form>
+							)}
+						</Formik>
 					</div>
 				</div>
 
