@@ -1,23 +1,22 @@
-
-
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Layout from './components/common/Layout'
-import Home from './pages/Home/Home'
-import List from './pages/list/List'
+import React from "react";
+import "./App.css";
+import { ProductProvider } from "./context/ProductContext";
+import Routes from "./routes/routes";
+import { BrowserRouter } from "react-router-dom";
+import Layout from "./components/common/Layout";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
-
-
   return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/complejos" element={<List />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
-  )
+    <ProductProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Layout>
+          <Routes />
+        </Layout>
+      </BrowserRouter>
+    </ProductProvider>
+  );
 }
 
-export default App
+export default App;
