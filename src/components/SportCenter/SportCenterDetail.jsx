@@ -23,6 +23,7 @@ import { useState } from "react";
 import Comment from "./Comment";
 import Field from "./Field";
 import NewComment from "./NewComment";
+import Swal from 'sweetalert2'
 
 const SportCenterDetail = ({idSportCenter}) => {
     const [sportCenter, setSportCenter] = useState(false);
@@ -58,7 +59,11 @@ const SportCenterDetail = ({idSportCenter}) => {
             setSportCenter(data[0]);
         }
         catch (error){
-            console.log('Error fetching data:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!', //Poner el mensaje del backend
+            });
         }
     }
 
@@ -71,7 +76,11 @@ const SportCenterDetail = ({idSportCenter}) => {
                 setLastPage(3); //Traer desde back
             }
             catch (error){
-                console.log('Error fetching data:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!', //Poner el mensaje del backend
+                });
             }
         }
     }

@@ -3,6 +3,7 @@ import "./stars.css";
 import * as Yup from "yup";
 import clsx from "clsx";
 import { useFormik } from "formik";
+import Swal from 'sweetalert2'
 
 const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
     
@@ -27,9 +28,20 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
             const updateResponse = await  fetch(`${URL}comments${page}`);
             const data = await updateResponse.json();
             setComments([...data]);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Nice!',
+                text: 'Yo`ve comment succesfully!', //Poner el mensaje del backend
+            });
+
         }
         catch(error){
-            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!', //Poner el mensaje del backend
+            });
         }
     }
 

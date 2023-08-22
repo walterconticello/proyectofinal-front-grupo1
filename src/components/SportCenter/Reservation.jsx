@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import clsx from "clsx";
+import Swal from 'sweetalert2'
 
 const Reservation = ({show, onHide, field}) => {
     
@@ -77,7 +78,11 @@ const Reservation = ({show, onHide, field}) => {
             setReservations(fieldReservations);
         }
         catch (error) {
-            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!', //Poner el mensaje del backend
+            });
         }
     }
 
@@ -94,9 +99,18 @@ const Reservation = ({show, onHide, field}) => {
             const updateResponse = await  fetch(`${URL}reservations`);
             const data = await updateResponse.json();
             setReservations([...data]);
+            Swal.fire({
+                icon: 'success',
+                title: 'Nice!',
+                text: 'Yo`ve reserverd succesfully!', //Poner el mensaje del backend
+            });
         }
         catch(error){
-            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!', //Poner el mensaje del backend
+            });
         }
     }
 
@@ -148,7 +162,17 @@ const Reservation = ({show, onHide, field}) => {
                 message: "Elija una hora donde la cancha esté abierta"
             }
         }
-        //Validacion por si se elije una fecha con reserva
+
+        if(filterReservedHours()){
+            const colission = filterReservedHours().find((reservated)=> startDate.getHours()===reservated.getHours());
+            if(colission) {
+                return {
+                    error: true,
+                    message: "Elija una hora donde la cancha esté libre"
+                }
+            }
+        }
+
         return {
             error: false,
             message: ""

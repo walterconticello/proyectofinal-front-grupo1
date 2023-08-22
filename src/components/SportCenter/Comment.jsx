@@ -4,6 +4,7 @@ import Star from "../../assets/star-fill.svg";
 import HalfStar from "../../assets/star-half.svg";
 import UserPhoto from "../../assets/avatar-default.jpg";
 import Delete from "../../assets/trash3-fill.svg";
+import Swal from 'sweetalert2';
 
 const Comment = ({comment, page, setComments}) => {
     const stars = [];
@@ -23,7 +24,7 @@ const Comment = ({comment, page, setComments}) => {
     }
     starsFactory();
 
-    const fetchDeleteComment = async ()=> { //Sweet alert
+    const fetchDeleteComment = async ()=> {
         try {
             const response = await fetch(`${URL}comments2/${comment.id}`,{ //Luego aca va el _id en el fetch
                 method: "DELETE",
@@ -34,15 +35,35 @@ const Comment = ({comment, page, setComments}) => {
             const updateResponse = await  fetch(`${URL}comments${page}`);
             const data = await updateResponse.json();
             setComments([...data]);
-
+            Swal.fire({
+                icon: 'success',
+                title: 'Nice!',
+                text: 'Comment deleted succesfully!', //Poner el mensaje del backend
+            });
         }
         catch(error){
-            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!', //Poner el mensaje del backend
+            });
         }
     }
 
     const handleDelete = () => {
-        fetchDeleteComment();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetchDeleteComment();
+            }
+        })
     }
 
     return (
