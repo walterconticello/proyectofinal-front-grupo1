@@ -3,16 +3,15 @@ import "./App.css";
 import { ProductProvider } from "./context/ProductContext";
 import Routes from "./routes/routes";
 import { BrowserRouter } from "react-router-dom";
-import Footer from './components/Footer/Footer'
-import Navbar from './components/Navbar/Navbar'
+import Layout from "./components/common/Layout";
 
 function App() {
   return (
     <ProductProvider>
       <BrowserRouter>
-      <Navbar />
-        <Routes />
-      <Footer />
+        <Layout>
+          <Routes />
+        </Layout>
       </BrowserRouter>
     </ProductProvider>
   );

@@ -1,12 +1,10 @@
-import { Fragment, useState } from "react";
-
+import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import logoApp from "../../assets/logo-canchas.png";
+import logoApp from "../../../assets/logo-canchas.png";
 import "./navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
-import CartModal from "../cart/CartModal";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -20,15 +18,6 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
-  const [showModal, setShowModal] = useState(false);
-
-  const handleOpenModal = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
   return (
     <Disclosure as="nav" className="navbarContainer">
       {({ open }) => (
@@ -50,7 +39,7 @@ const Navbar = () => {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <img
-                    className="h-10 w-auto"
+                    className="h-8 w-auto"
                     src={logoApp}
                     alt="LogoReservaGol"
                   />
@@ -79,7 +68,6 @@ const Navbar = () => {
                 <button
                   type="button"
                   className="relative rounded-full carrito p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-1 focus:ring-lime-500 focus:ring-offset-2 focus:ring-offset-lime-500 transition"
-                  onClick={handleOpenModal}
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">Agrega tus productos!</span>
@@ -89,7 +77,6 @@ const Navbar = () => {
                     size="xl"
                   />
                 </button>
-                {showModal && <CartModal onClose={handleCloseModal} />}
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
