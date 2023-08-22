@@ -37,28 +37,30 @@ const Comment = ({comment, page, setComments}) => {
             setComments([...data]);
             Swal.fire({
                 icon: 'success',
-                title: 'Nice!',
-                text: 'Comment deleted succesfully!', //Poner el mensaje del backend
+                title: 'Genial!',
+                confirmButtonColor: '#71B641',
+                text: 'El comentario fue borrado con éxito!', //Poner el mensaje del backend
             });
         }
         catch(error){
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!', //Poner el mensaje del backend
+                confirmButtonColor: '#71B641',
+                text: 'Algo salió mal', //Poner el mensaje del backend
             });
         }
     }
 
     const handleDelete = () => {
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Seguro?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: '#71B641',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Borrar',
+            cancelButtonText: "Cancelar",
         }).then((result) => {
             if (result.isConfirmed) {
                 fetchDeleteComment();

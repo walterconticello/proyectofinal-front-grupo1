@@ -62,7 +62,8 @@ const SportCenterDetail = ({idSportCenter}) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!', //Poner el mensaje del backend
+                confirmButtonColor: '#71B641',
+                text: 'Algo salió mal', //Poner el mensaje del backend
             });
         }
     }
@@ -79,7 +80,8 @@ const SportCenterDetail = ({idSportCenter}) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Something went wrong!', //Poner el mensaje del backend
+                    confirmButtonColor: '#71B641',
+                    text: 'Algo salió mal', //Poner el mensaje del backend
                 });
             }
         }

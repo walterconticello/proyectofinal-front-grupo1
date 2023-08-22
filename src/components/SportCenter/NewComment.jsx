@@ -31,8 +31,9 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
 
             Swal.fire({
                 icon: 'success',
-                title: 'Nice!',
-                text: 'Yo`ve comment succesfully!', //Poner el mensaje del backend
+                title: 'Genial!',
+                confirmButtonColor: '#71B641',
+                text: 'Tu comentario se guardo con éxito', //Poner el mensaje del backend
             });
 
         }
@@ -40,7 +41,8 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!', //Poner el mensaje del backend
+                confirmButtonColor: '#71B641',
+                text: 'Algo salió mal', //Poner el mensaje del backend
             });
         }
     }

@@ -81,7 +81,8 @@ const Reservation = ({show, onHide, field}) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!', //Poner el mensaje del backend
+                confirmButtonColor: '#71B641',
+                text: 'Algo salió mal', //Poner el mensaje del backend
             });
         }
     }
@@ -101,15 +102,17 @@ const Reservation = ({show, onHide, field}) => {
             setReservations([...data]);
             Swal.fire({
                 icon: 'success',
-                title: 'Nice!',
-                text: 'Yo`ve reserverd succesfully!', //Poner el mensaje del backend
+                title: 'Genial!',
+                confirmButtonColor: '#71B641',
+                text: 'Tu reserva se guardo correctamente!', //Poner el mensaje del backend
             });
         }
         catch(error){
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!', //Poner el mensaje del backend
+                confirmButtonColor: '#71B641',
+                text: 'Algo salió mal', //Poner el mensaje del backend
             });
         }
     }
