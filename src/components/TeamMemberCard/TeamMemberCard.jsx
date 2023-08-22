@@ -5,6 +5,7 @@ import member2 from './TeamImg/WalterWhite.jpg';
 import member3 from './TeamImg/DiegoMaradonaCow.jpg';
 import member4 from './TeamImg/PaulWalker.jpg';
 import member5 from './TeamImg/Marquinhos.jpg';
+import './TeamMemberCard.css';
 
 const TeamMemberCard = ({ name, position, description, imageSrc, imageAlt }) => {
   let image;
@@ -29,7 +30,7 @@ const TeamMemberCard = ({ name, position, description, imageSrc, imageAlt }) => 
   }
 
   return (
-    <Card>
+    <Card className="team-member-card">
       <Card.Img variant="top" src={image} alt={imageAlt} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
