@@ -9,6 +9,7 @@
 	margin: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+	text-decoration: none !important;
 }
 
 body {
