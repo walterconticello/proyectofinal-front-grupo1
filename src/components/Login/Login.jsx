@@ -1,23 +1,52 @@
 import { useState, useContext } from "react";
 import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
-import useForm from "../../hooks/useForm";
-import { LOGIN_VALUES } from "../../constants/index";
-import logSVG from "../../assets/log.svg"
-import logReg from "../../assets/register.svg"
+import logSVG from "../../assets/log.svg";
+import logReg from "../../assets/register.svg";
 
 const Login = () => {
 	const { login, register, authenticated, user } = useContext(AuthContext);
-
-	const { handleChange, handleSubmit, values, errors } = useForm(
-		LOGIN_VALUES,
-		login,
-	);
-
 	const [isSignUp, setIsSignUp] = useState(false);
+
+	const [loginValues, setLoginValues] = useState({
+		username: "",
+		password: "",
+	});
+
+	const [registerValues, setRegisterValues] = useState({
+		username: "",
+		email: "",
+		password: "",
+	});
 
 	const handleToggleMode = () => {
 		setIsSignUp(!isSignUp);
+	};
+
+	const handleLoginChange = (e) => {
+		const { name, value } = e.target;
+		setLoginValues((prevValues) => ({
+			...prevValues,
+			[name]: value,
+		}));
+	};
+
+	const handleRegisterChange = (e) => {
+		const { name, value } = e.target;
+		setRegisterValues((prevValues) => ({
+			...prevValues,
+			[name]: value,
+		}));
+	};
+
+	const handleLoginSubmit = async (e) => {
+		e.preventDefault();
+		await login(loginValues);
+	};
+
+	const handleRegisterSubmit = async (e) => {
+		e.preventDefault();
+		await register(registerValues);
 	};
 
 	return (
@@ -36,13 +65,13 @@ const Login = () => {
 						<form
 							action="#"
 							className="sign-in-form"
-							onSubmit={handleSubmit}
+							onSubmit={handleLoginSubmit}
 						>
 							<h2 className="title">Sign in</h2>
 							<div className="input-field">
 								<i className="fas fa-user"></i>
-								<input type="text" placeholder="Username" name="username" value={values.username}
-									onChange={handleChange} />
+								<input type="text" placeholder="Username" name="username" value={loginValues.username}
+									onChange={handleLoginChange} />
 							</div>
 							<div className="input-field">
 								<i className="fas fa-lock"></i>
@@ -50,8 +79,8 @@ const Login = () => {
 									type="password"
 									placeholder="Password"
 									name="password"
-									value={values.password}
-									onChange={handleChange}
+									value={loginValues.password}
+									onChange={handleLoginChange}
 								/>
 							</div>
 							<input
@@ -75,29 +104,39 @@ const Login = () => {
 								</a>
 							</div>
 						</form>
+
 						<form
 							action="#"
 							className="sign-up-form"
-							onSubmit={handleSubmit} // Prevent form submission for now
+							onSubmit={handleRegisterSubmit}
 						>
 							<h2 className="title">Sign up</h2>
 							<div className="input-field">
 								<i className="fas fa-user"></i>
-								<input type="text" placeholder="Username" />
+								<input type="text" placeholder="Username" name="username" value={registerValues.username}
+									onChange={handleRegisterChange} />
 							</div>
 							<div className="input-field">
 								<i className="fas fa-envelope"></i>
-								<input type="email" placeholder="Email" />
+								<input type="email" placeholder="Email"
+								name="email"
+									value={registerValues.email}
+									onChange={handleRegisterChange} />
 							</div>
 							<div className="input-field">
 								<i className="fas fa-lock"></i>
-								<input type="password" placeholder="Password" />
+								<input
+									type="password"
+									placeholder="Password"
+									name="password"
+									value={registerValues.password}
+									onChange={handleRegisterChange}
+								/>
 							</div>
 							<input
 								type="submit"
-								className="btn1"
 								value="Sign up"
-								onClick={register} // Call your register function here
+								className="btn1 solid"
 							/>
 							<p className="social-text">Or Sign up with social platforms</p>
 							<div className="social-media">
