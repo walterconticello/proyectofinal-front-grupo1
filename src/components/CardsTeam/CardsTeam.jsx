@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 
+
 const teamMembers = [
     {
         name: 'Lautaro Srur',
@@ -48,7 +49,7 @@ const teamMembers = [
 
 const CardsTeam = () => {
     return (
-      <div className="row">
+      <div className="d-flex flex-wrap justify-content-center">
         {teamMembers.map((member, index) => (
           <Card key={index} className="col-sm-6 col-md-4 col-lg-3 mb-4">
             <Card.Img variant="top" src={member.image} />
