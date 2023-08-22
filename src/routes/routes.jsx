@@ -6,10 +6,9 @@ import AboutUs from "../pages/AboutUs";
 const Routes = () => {
     return (
         <Rutas>
-        <Route path="/about-us" element={<AboutUs />} />
+            <Route exact path="/AboutUs" element={<AboutUs />} />
         </Rutas>
     );
-    }
+}
 
 export default Routes;
-
