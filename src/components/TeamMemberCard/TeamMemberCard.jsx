@@ -1,27 +1,27 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import member1 from '../../images/member1.jpg';
-import member2 from '../../images/member2.jpg';
-import member3 from '../../images/member3.jpg';
-import member4 from '../../images/member4.jpg';
-import member5 from '../../images/member5.jpg';
+import member1 from './TeamImg/ToritoSrur.jpg';
+import member2 from './TeamImg/WalterWhite.jpg';
+import member3 from './TeamImg/DiegoMaradonaCow.jpg';
+import member4 from './TeamImg/PaulWalker.jpg';
+import member5 from './TeamImg/Marquinhos.jpg';
 
 const TeamMemberCard = ({ name, position, description, imageSrc, imageAlt }) => {
   let image;
   switch (imageSrc) {
-    case 'member1':
+    case '/TeamImg/ToritoSrur.jpg':
       image = member1;
       break;
-    case 'member2':
+    case '/TeamImg/WalterWhite.jpg':
       image = member2;
       break;
-    case 'member3':
+    case '/TeamImg/DiegoMaradonaCow.jpg':
       image = member3;
       break;
-    case 'member4':
+    case '/TeamImg/PaulWalker.jpg':
       image = member4;
       break;
-    case 'member5':
+    case '/TeamImg/Marquinhos.jpg':
       image = member5;
       break;
     default:
@@ -41,5 +41,4 @@ const TeamMemberCard = ({ name, position, description, imageSrc, imageAlt }) => 
 };
 
 export default TeamMemberCard;
-
 // Path: src\components\TeamMemberCard.jsx\TeamMemberCard.jsx
