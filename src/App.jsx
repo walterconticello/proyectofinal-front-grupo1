@@ -1,21 +1,22 @@
 
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './components/common/Layout'
 import Home from './pages/Home/Home'
-import LoginRegister from './pages/LoginRegister/LoginRegister'
+import List from './pages/list/List'
 
 function App() {
 
 
   return (
-    <>
-      {/* 
-        <Home />
-      </Layout> */}
+    <BrowserRouter>
       <Layout>
-        <LoginRegister />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/complejos" element={<List />} />
+        </Routes>
       </Layout>
-    </>
+    </BrowserRouter>
   )
 }
 

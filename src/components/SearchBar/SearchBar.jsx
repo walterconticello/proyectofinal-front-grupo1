@@ -9,6 +9,7 @@ import DatePicker from "react-date-picker";
 import TimePicker from "react-time-picker";
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
+import { useNavigate } from "react-router";
 
 const SearchBar = () => {
 	const [selectedFutbol, setSelectedFutbol] = useState('5');
@@ -25,6 +26,12 @@ const SearchBar = () => {
 	};
 	const handleTimeChange = (time) => {
 		setSelectedTime(time);
+	};
+
+	const navigate = useNavigate();
+
+	const handleSearch = () => {
+		navigate("/complejos", { state: { selectedDate, selectedTime, selectedFutbol } });
 	};
 
 
@@ -56,7 +63,6 @@ const SearchBar = () => {
 					</div>
 				</div>
 				<div className="inputFecha">
-					<FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
 					<div className="headerDateTimePicker">
 						<DatePicker
 							onChange={handleDateChange}
@@ -74,6 +80,16 @@ const SearchBar = () => {
 							className="hour"
 						/>
 					</div>
+				</div>
+				<div className="headerSearchItem">
+					<button
+						className="bg-lime-500 hover:bg-white h-5 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-20 mx-4 transition text-gray-50 heroButton"
+						onClick={handleSearch}
+					>
+						<span className="flex items-center justify-center h-full">
+							Buscar
+						</span>
+					</button>
 				</div>
 			</div>
 		</div>
