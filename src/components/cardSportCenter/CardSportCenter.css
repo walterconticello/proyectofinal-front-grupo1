@@ -1,27 +1,14 @@
-.card-sport-center {
-  width: 220px;
-  height: 175px;
-  margin-top: 50px;
-  margin-left: 20px;
-  margin-bottom: 20px;
-  border-radius: 50px;
+
+.card-custom {
+  width: 200px;
+  border: gray 1px solid;
+  border-radius: 10px;
+  margin : 10px;
 }
 
-.card-sport-center button {
-  width: 90px;
-  height: 35px;
-  margin-top: 70px;
-  margin-left: 10px;
-  border: none;
-  border-radius: 20px;
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-} 
-
-.card-sport-center .card-body {
-  background-image: url('https://darturnos.com/assets/images/turneros/84.jpg');
-  background-size: cover;
-  background-position: center;
-  border-radius: 20px
+.card-container {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  
 }

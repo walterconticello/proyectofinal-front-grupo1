@@ -9,7 +9,7 @@ const CardSportCenter = () => {
     return (
       <>
       { cards === undefined ? <h1>Cargando...</h1> : cards.map((card) =>(
-      <Card key={card.id} className="h-100">
+      <Card key={card.id} className="h-80 card-custom">
         <div className="card-image-container">
         <Card.Img src={card.image?.url} alt={card.name} className="card-image img-fluid" />
         </div>

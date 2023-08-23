@@ -4,7 +4,7 @@ import CardSportCenter from '../components/cardSportCenter/CardSportCenter'
 const SportCenter = () => {
   return (
 
-    <div>
+    <div className="card-container">
       <CardSportCenter/>
     </div>
   )
