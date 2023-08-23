@@ -1,0 +1,231 @@
+{
+    "ownerId": "615f7b0c1c8d8d8d8d8d8d8d",
+    "name": "Sport Center 1",
+    "address": "123 Main St",
+    "phone": 1234567890,
+    "services": {
+      "bar": true,
+      "showers": true,
+      "Grill": true,
+      "parking": true
+    },
+    "fields": "football",
+    "openHour": 8,
+    "closeHour": 20,
+    "photo": "photo_url_1.jpg",
+    "social": {
+      "facebook": "facebook.com/sportcenter1",
+      "instagram": "instagram.com/sportcenter1"
+    },
+    "latitude": 40.7128,
+    "location": "Cityville"
+  }
+
+
+  {
+    "ownerId": "615f7b0c1c8d8d8d8d8d8d8e",
+    "name": "Sport Center 2",
+    "address": "456 Elm St",
+    "phone": 1234567890,
+    "services": {
+      "bar": false,
+      "showers": true,
+      "Grill": true,
+      "parking": true
+    },
+    "fields": "basketball",
+    "openHour": 9,
+    "closeHour": 21,
+    "photo": "photo_url_2.jpg",
+    "social": {
+      "facebook": "facebook.com/sportcenter2",
+      "instagram": "instagram.com/sportcenter2"
+    },
+    "latitude": 40.7128,
+    "location": "Townsville"
+    }
+{
+    {
+        "ownerId": "615f7b0c1c8d8d8d8d8d8d8d",
+        "name": "Sport Center 3",
+        "address": "789 Oak St",
+        "phone": 1234567890,
+        "services": {
+          "bar": true,
+          "showers": false,
+          "Grill": false,
+          "parking": true
+        },
+        "fields": "tennis",
+        "openHour": 7,
+        "closeHour": 19,
+        "photo": "photo_url_3.jpg",
+        "social": {
+          "facebook": "facebook.com/sportcenter3",
+          "instagram": "instagram.com/sportcenter3"
+        },
+        "latitude": 42.3601,
+        "location": "Villageville"
+      }
+}
+
+{
+    "ownerId": "615f7b0c1c8d8d8d8d8d8d8d",
+    "name": "Sport Center 4",
+    "address": "321 Pine St",
+    "phone": 1234567890,
+    "services": {
+      "bar": false,
+      "showers": true,
+      "Grill": true,
+      "parking": false
+    },
+    "fields": "soccer",
+    "openHour": 10,
+    "closeHour": 22,
+    "photo": "photo_url_4.jpg",
+    "social": {
+      "facebook": "facebook.com/sportcenter4",
+      "instagram": "instagram.com/sportcenter4"
+    },
+    "latitude": 43.6532,
+    "location": "Hamletville"
+  }
+
+  {
+    "ownerId": "615f7b0c1c8d8d8d8d8d8d8d",
+    "name": "Sport Center 5",
+    "address": "987 Maple St",
+    "phone": 1234567890,
+    "services": {
+      "bar": true,
+      "showers": true,
+      "Grill": false,
+      "parking": true
+    },
+    "fields": "volleyball",
+    "openHour": 6,
+    "closeHour": 18,
+    "photo": "photo_url_5.jpg",
+    "social": {
+      "facebook": "facebook.com/sportcenter5",
+      "instagram": "instagram.com/sportcenter5"
+    },
+    "latitude": 44.9778,
+    "location": "Citytown"
+  }
+
+  {
+    "ownerId": "615f7b0c1c8d8d8d8d8d8d8d",
+    "name": "Sport Center 6",
+    "address": "654 Cedar St",
+    "phone": 1234567890,
+    "services": {
+      "bar": false,
+      "showers": false,
+      "Grill": true,
+      "parking": true
+    },
+    "fields": "baseball",
+    "openHour": 11,
+    "closeHour": 23,
+    "photo": "photo_url_6.jpg",
+    "social": {
+      "facebook": "facebook.com/sportcenter6",
+      "instagram": "instagram.com/sportcenter6"
+    },
+    "latitude": 45.5231,
+    "location": "Villagetown"
+  }
+
+  {
+    "ownerId": "615f7b0c1c8d8d8d8d8d8d8d",
+    "name": "Sport Center 7",
+    "address": "321 Oak St",
+    "phone": 1234567890,
+    "services": {
+      "bar": true,
+      "showers": true,
+      "Grill": true,
+      "parking": true
+    },
+    "fields": "hockey",
+    "openHour": 12,
+    "closeHour": 0,
+    "photo": "photo_url_7.jpg",
+    "social": {
+      "facebook": "facebook.com/sportcenter7",
+      "instagram": "instagram.com/sportcenter7"
+    },
+    "latitude": 46.7296,
+    "location": "Hamlettown"
+  }
+
+  {
+    "ownerId": "615f7b0c1c8d8d8d8d8d8d8d",
+    "name": "Sport Center 8",
+    "address": "789 Elm St",
+    "phone": 1234567890,
+    "services": {
+      "bar": false,
+      "showers": true,
+      "Grill": false,
+      "parking": true
+    },
+    "fields": "golf",
+    "openHour": 13,
+    "closeHour": 1,
+    "photo": "photo_url_8.jpg",
+    "social": {
+      "facebook": "facebook.com/sportcenter8",
+      "instagram": "instagram.com/sportcenter8"
+    },
+    "latitude": 47.6062,
+    "location": "Cityhamlet"
+  }
+
+  {
+    "ownerId": "615f7b0c1c8d8d8d8d8d8d8d",
+    "name": "Sport Center 9",
+    "address": "456 Pine St",
+    "phone": 1234567890,
+    "services": {
+      "bar": true,
+      "showers": false,
+      "Grill": true,
+      "parking": false
+    },
+    "fields": "swimming",
+    "openHour": 14,
+    "closeHour": 2,
+    "photo": "photo_url_9.jpg",
+    "social": {
+      "facebook": "facebook.com/sportcenter9",
+      "instagram": "instagram.com/sportcenter9"
+    },
+    "latitude": 48.8566,
+    "location": "Villagehamlet"
+  }
+
+  {
+    "ownerId": "615f7b0c1c8d8d8d8d8d8d8d",
+    "name": "Sport Center 10",
+    "address": "123 Cedar St",
+    "phone": 1234567890,
+    "services": {
+      "bar": false,
+      "showers": true,
+      "Grill": true,
+      "parking": true
+    },
+    "fields": "rugby",
+    "openHour": 15,
+    "closeHour": 3,
+    "photo": "photo_url_10.jpg",
+    "social": {
+      "facebook": "facebook.com/sportcenter10",
+      "instagram": "instagram.com/sportcenter10"
+    },
+    "latitude": 49.2827,
+    "location": "Townhamlet"
+  }
