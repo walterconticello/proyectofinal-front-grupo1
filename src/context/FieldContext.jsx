@@ -36,7 +36,7 @@ const FieldContext = ({ children }) => {
         }
       };
 
-      const viewFieldById= async (id) => {
+      const getFieldById = async (id) => {
         console.log(id);
         try {
               await axios.get(`http://localhost:3000/field/${id}`)  
@@ -47,13 +47,22 @@ const FieldContext = ({ children }) => {
       }
     }
 
+    const updateField = async ( field ) => {
+      console.log( field );
+      try{
+          await axios.put(`http://localhost:3000/SportCenter/${field.id}`);
+      } catch(error){
+          console.log(error, "error al editar");
+      }
+    }
+
 
       useEffect(() => {
         getFields()
     }, [])
 
     return (
-        <FieldsContext.Provider value={{fields , getFields, setFields ,addField , deleteField, viewFieldById}}>
+        <FieldsContext.Provider value={{fields , getFields, setFields ,addField , deleteField, getFieldById , updateField}}>
             {children}
         </FieldsContext.Provider>
         

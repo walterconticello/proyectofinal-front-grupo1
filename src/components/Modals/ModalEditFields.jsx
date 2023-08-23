@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Modal, Button} from "react-bootstrap";
-import FormAddField from "../Forms/FormAddField";
+import FormEditField from "../Forms/FormEditField";
 import "./Modal.css";
 
 const ModalCancha = ({show , handleClose , id}) => {
 
-  
 
 
   return (
@@ -15,7 +14,7 @@ const ModalCancha = ({show , handleClose , id}) => {
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FormAddField/>
+          <FormEditField field={id} />
         </Modal.Body>
         <Modal.Footer>
           <Button type="submit"  onClick={handleClose} >Save Changes</Button>

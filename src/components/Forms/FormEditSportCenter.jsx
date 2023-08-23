@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import { Modal, Button} from "react-bootstrap";
+import { Button} from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import CenterContext, { SportCenterContext } from '../../context/CenterContext';
+import { SportCenterContext } from '../../context/CenterContext';
 
-export const FormEditSportCenter = ({editSportCenter}) => {
+export const FormEditSportCenter = ({ field }) => {
     const validationSchema = Yup.object().shape({
         name: Yup.string()
           .required('El nombre es requerido')
@@ -29,17 +29,32 @@ export const FormEditSportCenter = ({editSportCenter}) => {
         isActive: Yup.boolean().required('Este campo es requerido'),
         idSportCenter: Yup.string().required('El ID del centro deportivo es requerido'),
       });
-      
-      const[portCenter , setSportCenter] = useState(editSportCenter);
-      
-      const {updateSportCenter} = useContext(CenterContext);
 
-      const handleChange = (e) => {
-        setProducto({
-            ...producto,
-            [e.target.name]: e.target.value
-        })
-    };
+      
+      const[sportCenter , setSportCenter] = useState(field);
+      
+      const {updateSportCenter} = useContext(SportCenterContext);
+
+      const initialValues = {
+        ownerId: sportCenter.ownerId ,
+        name: sportCenter.name,
+        address: sportCenter.address,
+        phone: sportCenter.phone,
+        services: {
+          bar: sportCenter.services.bar ,
+          showers: sportCenter.services.showers,
+          Grill: sportCenter.services.grill ,
+          parking: sportCenter.services.parking ,
+        },
+        fields: sportCenter.field,
+        photo: sportCenter.photo ,
+        social: {
+          facebook: sportCenter.social.facebook,
+          instagram: sportCenter.social.instagram ,
+        },
+        latitude: sportCenter.latitude,
+        location: sportCenter.location,
+      };
 
     const handleEdit = (e) => {
         e.preventDefault()
@@ -52,7 +67,7 @@ export const FormEditSportCenter = ({editSportCenter}) => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={handleSubmit}
+      onSubmit={handleEdit}
     >
       <Form>
         <div>
@@ -131,8 +146,9 @@ export const FormEditSportCenter = ({editSportCenter}) => {
           <Field type="text" name="ownerId" />
           <ErrorMessage name="ownerId" component="div" />
         </div>
-
-        <button type="submit">Submit</button>
+        <Button variant="primary" type="submit">
+            Guardar
+          </Button>
       </Form>
     </Formik>
     </div>

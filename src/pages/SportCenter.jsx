@@ -1,16 +1,21 @@
-import CardCenter from '../components/Cards/CardCenter'
+import { useState } from 'react';
 import { Button } from 'react-bootstrap';
+import CardCenter from "../components/Cards/CardCenter"
+import ModalNewComplex from '../components/Modals/ModalNewComplex';
 
 const SportCenter = () => {
+  const [show, setShow] = useState(false);
+  const handleOpen = () => setShow(true);
+
   return (
-    <>
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-  <CardCenter />
-  <Button variant="primary" style={{ marginLeft: '10px' }}>
-    Nuevo complejo
-  </Button>
-</div>
-    </>
-  )
-}
+    <div className='ContainerCard container-fluid'>
+      <Button variant="primary" onClick={handleOpen}>
+        Nuevo complejo
+      </Button>
+      <CardCenter />
+      <ModalNewComplex show={show} setShow={setShow} />
+    </div>
+  );
+};
+
 export default SportCenter;

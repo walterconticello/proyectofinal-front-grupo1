@@ -24,8 +24,8 @@ const FormAddSportCenter = () => {
     location: Yup.string().required('Required').min(3, 'Must be at least 3 characters').max(30, 'Must be at most 30 characters'),
   });
 
-    const [sportCenter , setSportCenter] = useState({
-      ownerId: '',
+   const initialValues = {
+      ownerId: '', //idUser
       name: '',
       address: '',
       phone: '',
@@ -43,13 +43,11 @@ const FormAddSportCenter = () => {
       },
       latitude: '',
       location: '',
-    });
-
-    const handleChange = (e) => {
-      setSportCenter({ ...sportCenter, [e.target.name]: e.target.value });
     };
+
     const handleSubmit = async (e) => {
       e.preventDefault();
+      if()
       postSportCenter(sportCenter)
       // Swal.fire({
       //   icon: "success",
@@ -90,19 +88,19 @@ const FormAddSportCenter = () => {
         <label>Services:</label>
         <div>
           <label>
-            <Field type="checkbox" name="services.bar" checked={sportCenter.services.bar} />
+            <Field type="checkbox" name="services.bar"  />
             Bar
           </label>
           <label>
-            <Field type="checkbox" name="services.showers" checked={sportCenter.services.showers} />
+            <Field type="checkbox" name="services.showers"  />
             Showers
           </label>
           <label>
-            <Field type="checkbox" name="services.Grill" checked={sportCenter.services.Grill} />
+            <Field type="checkbox" name="services.Grill"  />
             Grill
           </label>
           <label>
-            <Field type="checkbox" name="services.parking" checked={sportCenter.services.parking} />
+            <Field type="checkbox" name="services.parking" />
             Parking
           </label>
         </div>

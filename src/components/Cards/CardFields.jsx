@@ -22,16 +22,15 @@ const CardField = () => {
 
   return (
     <>
+    <div  className="d-flex flex-wrap justify-content-between gap-3 m-3 container-fluid">
        {fields === undefined ? "No hay canchas" : fields.map((field) => (
         <>
-       <div key={field.id}>
-              <Card style={{ width: "16rem" }}>
+              <Card style={{ width: '18rem' }} key={field.id}>
                 <Card.Img variant="top" src="src\img\Ejemplos\2.jpg" />
                 <Card.Body className="d-flex flex-column">
-                  <Card.Title>{field.name}</Card.Title>
-                  <Card.Text>{field.price}</Card.Text>
+                  <Card.Title >{field.name}</Card.Title>
                   <div className="d-flex justify-content-between">
-                    <Button variant="success" size="sm">
+                    <Button className="buttonCardDashboar" size="sm">
                       Ver Cancha
                     </Button>
                     <Button variant="" id="edit" onClick={handleShow}>
@@ -44,7 +43,6 @@ const CardField = () => {
                   </div>
                 </Card.Body>
               </Card>
-            </div>
             <ModalCancha
                         show={show}
                         handleClose={handleClose}
@@ -52,6 +50,7 @@ const CardField = () => {
                       />
                       </>
                       ))};
+                      </div>
     </>
   );
 };
