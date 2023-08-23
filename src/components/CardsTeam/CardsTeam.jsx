@@ -26,7 +26,7 @@ const teamMembers = [
     },
     {
         name: 'Marcos Quinteros',
-        description: "Diseñador y programador web creativo, une la estética con la funcionalidad de manera magistral.",
+        description: "Scrum Master y programador web creativo, une la estética con la funcionalidad de manera magistral.",
         github: 'https://github.com/marcosquinteros ',
         linkedin: 'https://www.linkedin.com/in/marcos-quinteros-135b87237/' ,
         image: './public/Marcos.jpg'

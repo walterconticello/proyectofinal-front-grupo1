@@ -20,6 +20,8 @@ const AboutUs = () => {
       </div>
           
       <h2 className='title bigger'>¿Quienes somos?</h2>
+      <h2 className='h2'>Conocenos más haciendo click en nosotros!</h2>
+      <br />
       <CardsTeam />
     </div>
   );
