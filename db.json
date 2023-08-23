@@ -94,5 +94,21 @@
       "isActive": true,
       "idSportCenter": "614a5d75c32e42b75c135f49"
     }
+  ],
+  "reservation" : [
+    {
+      "IdUser": "615aeb8d1c2b79245e90eabc",
+      "IdSportCenter": "614a5d75c32e42b75c135f47",
+      "IdField": "614a5d75c32e42b75c135f54",
+      "ReservationTime": "2023-08-23T15:00:00Z",
+      "Status": "confirmada"
+    },
+    {
+      "IdUser": "614a5d75c32e42b75c135f49",
+      "IdSportCenter": "614a5d75c32e42b75c135f53",
+      "IdField": "615af32e8abf9a8723a45ce0",
+      "ReservationTime": "2023-09-10T18:30:00Z",
+      "Status": "pendiente"
+    }    
   ]
 }
