@@ -1,238 +1,202 @@
 {
-    "SportCenter": [
-      {
-        "id": "614a5d75c32e42b75c135f47",
-        "ownerId": "614a5d75c32e42b75c135f44",
-        "name": "Bar de Ejemplo",
-        "address": "Calle de la Fiesta, 123",
-        "phone": 1234567890,
-        "services": {
-          "bar": true,
-          "showers": false,
-          "Grill": true,
-          "parking": true
-        },
-        "fields": [
-          "futbol 5",
-          "futbol 11"
-        ],
-        "openHour": 18,
-        "closeHour": 2,
-        "photo": "bar_example.jpg",
-        "social": {
-          "facebook": "facebook.com/bar_example",
-          "instagram": "instagram.com/bar_example"
-        },
-        "latitude": 40.7128,
-        "location": "Ciudad Ejemplo"
+  "SportCenter": [
+    {
+      "ownerId": "615f7dabf4c55e001c9a87f1",
+      "name": "sports center 1",
+      "address": "123 Main St",
+      "phone": 1234567890,
+      "services": {
+        "bar": true,
+        "showers": false,
+        "Grill": true,
+        "parking": true
       },
-      {
-        "id": "614a5d75c32e42b75c135f49",
-        "ownerId": "614a5d75c32e42b75c135f45",
-        "name": "Parque de Aventuras",
-        "address": "Ruta de la Aventura, Km 5",
-        "phone": 9876543210,
-        "services": {
-          "bar": true,
-          "showers": true,
-          "Grill": false,
-          "parking": true
-        },
-        "fields": [
-          "futbol 11",
-            "futbol 7"
-        ],
-        "openHour": 9,
-        "closeHour": 18,
-        "photo": "adventure_park.jpg",
-        "social": {
-          "facebook": "facebook.com/adventure_park",
-          "instagram": "instagram.com/adventure_park"
-        },
-        "latitude": 35.6895,
-        "location": "Ciudad Aventura"
+      "fields": "football",
+      "openHour": 8,
+      "closeHour": 20,
+      "photo": "photo_url_1.jpg",
+      "social": {
+        "facebook": "facebook.com/sportcenter1",
+        "instagram": "instagram.com/sportcenter1"
       },
-      {
-        "id": "614a5d75c32e42b75c135f50",
-        "ownerId": "614a5d75c32e42b75c135f46",
-        "name": "Gimnasio Fitness",
-        "address": "Calle del Deporte, 456",
-        "phone": 5555555555,
-        "services": {
-          "gym": true,
-          "pool": true,
-          "sauna": false,
-          "parking": true
-        },
-        "fields": [
-          "futbol 5",
-            "futbol 7"
-        ],
-        "openHour": 6,
-        "closeHour": 22,
-        "photo": "gym_fitness.jpg",
-        "social": {
-          "facebook": "facebook.com/gym_fitness",
-          "instagram": "instagram.com/gym_fitness"
-        },
-        "latitude": 37.7749,
-        "location": "Ciudad Fitness"
+      "latitude": 40.7128,
+      "location": "Cityville"
+    },
+    {
+      "ownerId": "615f7dabf4c55e001c9a87f1",
+      "name": "sports center 2",
+      "address": "456 Main St",
+      "phone": 1234567890,
+      "services": {
+        "bar": true,
+        "showers": true,
+        "Grill": false,
+        "parking": true
       },
-      {
-        "id": "614a5d75c32e42b75c135f51",
-        "ownerId": "614a5d75c32e42b75c135f47",
-        "name": "Piscina Olímpica",
-        "address": "Avenida de la Natación, 789",
-        "phone": 1111111111,
-        "services": {
-          "pool": true,
-          "diving": true,
-          "sauna": true,
-          "parking": true
-        },
-        "fields": [
-          "futbol 5",
-          "futbol 7"
-        ],
-        "openHour": 7,
-        "closeHour": 20,
-        "photo": "olympic_pool.jpg",
-        "social": {
-          "facebook": "facebook.com/olympic_pool",
-          "instagram": "instagram.com/olympic_pool"
-        },
-        "latitude": 41.8781,
-        "location": "Ciudad Natación"
+      "fields": "basketball",
+      "openHour": 9,
+      "closeHour": 21,
+      "photo": "photo_url_2.jpg",
+      "social": {
+        "facebook": "facebook.com/sportcenter2",
+        "instagram": "instagram.com/sportcenter2"
       },
-      {
-        "id": "614a5d75c32e42b75c135f52",
-        "ownerId": "614a5d75c32e42b75c135f48",
-        "name": "Canchas de Tenis",
-        "address": "Avenida del Deporte, 789",
-        "phone": 9999999999,
-        "services": {
-          "tennis": true,
-          "padel": true,
-          "basketball": false,
-          "parking": true
-        },
-        "fields": [
-          "futbol 11",
-            "futbol 7"
-        ],
-        "openHour": 8,
-        "closeHour": 20,
-        "photo": "tennis_courts.jpg",
-        "social": {
-          "facebook": "facebook.com/tennis_courts",
-          "instagram": "instagram.com/tennis_courts"
-        },
-        "latitude": 34.0522,
-        "location": "Ciudad Tenis"
+      "latitude": 40.7128,
+      "location": "Cityville"
+    },
+    {
+      "ownerId": "615f7dabf4c55e001c9a87f1",
+      "name": "sports center 3",
+      "address": "789 Main St",
+      "phone": 1234567890,
+      "services": {
+        "bar": false,
+        "showers": true,
+        "Grill": true,
+        "parking": true
       },
-      {
-        "id": "614a5d75c32e42b75c135f53",
-        "ownerId": "614a5d75c32e42b75c135f49",
-        "name": "Parque de Atracciones",
-        "address": "Calle de la Diversión, 456",
-        "phone": 2222222222,
-        "services": {
-          "rides": true,
-          "games": true,
-          "food": true,
-          "parking": true
-        },
-        "fields": [
-          "futbol 11",
-          "futbol 5"
-        ],
-        "openHour": 10,
-        "closeHour": 22,
-        "photo": "amusement_park.jpg",
-        "social": {
-          "facebook": "facebook.com/amusement_park",
-          "instagram": "instagram.com/amusement_park"
-        },
-        "latitude": 39.7392,
-        "location": "Ciudad Diversión"
+      "fields": "tennis",
+      "openHour": 10,
+      "closeHour": 22,
+      "photo": "photo_url_3.jpg",
+      "social": {
+        "facebook": "facebook.com/sportcenter3",
+        "instagram": "instagram.com/sportcenter3"
       },
-      {
-        "id": "614a5d75c32e42b75c135f54",
-        "ownerId": "614a5d75c32e42b75c135f50",
-        "name": "Centro de Esquí",
-        "address": "Carretera de la Nieve, Km 10",
-        "phone": 3333333333,
-        "services": {
-          "ski": true,
-          "snowboard": true,
-          "restaurant": true,
-          "parking": true
-        },
-        "fields": [
-          "futbol 5",
-          "futbol 11"
-        ],
-        "openHour": 9,
-        "closeHour": 17,
-        "photo": "ski_center.jpg",
-        "social": {
-          "facebook": "facebook.com/ski_center",
-          "instagram": "instagram.com/ski_center"
-        },
-        "latitude": 45.5231,
-        "location": "Ciudad Nieve"
+      "latitude": 40.7128,
+      "location": "Cityville"
+    },
+    {
+      "ownerId": "615f7dabf4c55e001c9a87f1",
+      "name": "sports center 4",
+      "address": "1011 Main St",
+      "phone": 1234567890,
+      "services": {
+        "bar": true,
+        "showers": true,
+        "Grill": true,
+        "parking": false
       },
-      {
-        "id": "614a5d75c32e42b75c135f55",
-        "ownerId": "614a5d75c32e42b75c135f51",
-        "name": "Gimnasio de Boxeo",
-        "address": "Calle del Ring, 789",
-        "phone": 4444444444,
-        "services": {
-          "boxing": true,
-          "kickboxing": true,
-          "weights": true,
-          "parking": true
-        },
-        "fields": [
-          "futbol 5",
-          "futbol 7"
-        ],
-        "openHour": 5,
-        "closeHour": 23,
-        "photo": "boxing_gym.jpg",
-        "social": {
-          "facebook": "facebook.com/boxing_gym",
-          "instagram": "instagram.com/boxing_gym"
-        },
-        "latitude": 42.3601,
-        "location": "Ciudad Boxeo"
+      "fields": "volleyball",
+      "openHour": 11,
+      "closeHour": 23,
+      "photo": "photo_url_4.jpg",
+      "social": {
+        "facebook": "facebook.com/sportcenter4",
+        "instagram": "instagram.com/sportcenter4"
       },
-      {
-        "id": "614a5d75c32e42b75c135f56",
-        "ownerId": "614a5d75c32e42b75c135f52",
-        "name": "Canchas de Fútbol",
-        "address": "Avenida del Gol, 456",
-        "phone": 7777777777,
-        "services": {
-          "futbol5": true,
-          "futbol11": true,
-          "lights": true,
-          "parking": true
-        },
-        "fields": [
-          "futbol 11",
-          "futbol 7"
-        ],
-        "openHour": 7,
-        "closeHour": 23,
-        "photo": "soccer_fields.jpg",
-        "social": {
-          "facebook": "facebook.com/soccer_fields",
-          "instagram": "instagram.com/soccer_fields"
-        },
-        "latitude": 33.7490,
-        "location": "Ciudad Gol"
-      }
-    ]
-  }
+      "latitude": 40.7128,
+      "location": "Cityville"
+    },
+    {
+      "ownerId": "615f7dabf4c55e001c9a87f1",
+      "name": "sports center 5",
+      "address": "1213 Main St",
+      "phone": 1234567890,
+      "services": {
+        "bar": true,
+        "showers": true,
+        "Grill": false,
+        "parking": true
+      },
+      "fields": "swimming",
+      "openHour": 12,
+      "closeHour": 24,
+      "photo": "photo_url_5.jpg",
+      "social": {
+        "facebook": "facebook.com/sportcenter5",
+        "instagram": "instagram.com/sportcenter5"
+      },
+      "latitude": 40.7128,
+      "location": "Cityville"
+    },
+    {
+      "ownerId": "615f7dabf4c55e001c9a87f1",
+      "name": "sports center 6",
+      "address": "1415 Main St",
+      "phone": 1234567890,
+      "services": {
+        "bar": false,
+        "showers": true,
+        "Grill": true,
+        "parking": true
+      },
+      "fields": "golf",
+      "openHour": 13,
+      "closeHour": 1,
+      "photo": "photo_url_6.jpg",
+      "social": {
+        "facebook": "facebook.com/sportcenter6",
+        "instagram": "instagram.com/sportcenter6"
+      },
+      "latitude": 40.7128,
+      "location": "Cityville"
+    },
+    {
+      "ownerId": "615f7dabf4c55e001c9a87f1",
+      "name": "sports center 7",
+      "address": "1617 Main St",
+      "phone": 1234567890,
+      "services": {
+        "bar": true,
+        "showers": false,
+        "Grill": true,
+        "parking": true
+      },
+      "fields": "hockey",
+      "openHour": 14,
+      "closeHour": 2,
+      "photo": "photo_url_7.jpg",
+      "social": {
+        "facebook": "facebook.com/sportcenter7",
+        "instagram": "instagram.com/sportcenter7"
+      },
+      "latitude": 40.7128,
+      "location": "Cityville"
+    },
+    {
+      "ownerId": "615f7dabf4c55e001c9a87f1",
+      "name": "sports center 8",
+      "address": "1819 Main St",
+      "phone": 1234567890,
+      "services": {
+        "bar": true,
+        "showers": true,
+        "Grill": false,
+        "parking": true
+      },
+      "fields": "baseball",
+      "openHour": 15,
+      "closeHour": 3,
+      "photo": "photo_url_8.jpg",
+      "social": {
+        "facebook": "facebook.com/sportcenter8",
+        "instagram": "instagram.com/sportcenter8"
+      },
+      "latitude": 40.7128,
+      "location": "Cityville"
+    },
+    {
+      "ownerId": "615f7dabf4c55e001c9a87f1",
+      "name": "sports center 9",
+      "address": "2021 Main St",
+      "phone": 1234567890,
+      "services": {
+        "bar": false,
+        "showers": true,
+        "Grill": true,
+        "parking": true
+      },
+      "fields": "rugby",
+      "openHour": 16,
+      "closeHour": 4,
+      "photo": "photo_url_9.jpg",
+      "social": {
+        "facebook": "facebook.com/sportcenter9",
+        "instagram": "instagram.com/sportcenter9"
+      },
+      "latitude": 40.7128,
+      "location": "Cityville"
+    }
+  ]
+}
