@@ -5,6 +5,8 @@ import CenterContext from './context/CenterContext';
 import ReserveContext from './context/ReservationContext';
 import NavBar from "./components/Navbar/Navbar"
 import Footer from "./components/Footer/Footer"
+import Login from "./components/Login/Login"
+import AuthProvider from './context/AuthContext';
 
 function App() {
 
@@ -13,9 +15,11 @@ function App() {
       <ReserveContext>
     <CenterContext>
       <FieldContext>
+        <AuthProvider>
         <NavBar/>
-      <Routes />
-      <Footer/>
+        <Routes/>
+        <Footer />
+        </AuthProvider>
       </FieldContext>
       </CenterContext>
       </ReserveContext>
