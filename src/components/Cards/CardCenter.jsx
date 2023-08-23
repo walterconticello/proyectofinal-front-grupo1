@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ModalCenter from '../Modals/ModalCenter';
 import { SportCenterContext } from '../../context/CenterContext';
+import "./Card.css";
+
 
 const CardCenter = () => {
 
@@ -21,6 +23,7 @@ const CardCenter = () => {
 
   return (
     <>
+    <div className="d-flex gap-3" >
       {complexs === undefined
         ? "No Hay Complejos"
         : complexs.map((complex) => (
@@ -44,8 +47,10 @@ const CardCenter = () => {
               </Card.Body>
             </Card>
           ))}
-      {show && <ModalCenter show={show} handleClose={handleClose} editComplex={editComplex} />}
+      {show && <ModalCenter show={show} handleClose={handleClose} editComplex={editComplex} />};
+      </div>
     </>
+    
   );
   
 }
