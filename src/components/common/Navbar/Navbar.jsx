@@ -1,5 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Fragment, useState, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logoApp from "../../../assets/logo-canchas.png";
@@ -7,6 +6,8 @@ import "./navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 import CartModal from "../../cart/CartModal";
+import { AuthContext } from "../../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -20,6 +21,7 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
+  const { authenticated } = useContext(AuthContext);
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -58,9 +60,9 @@ const Navbar = () => {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         className={classNames(
                           item.current
                             ? "text-white navBtn"
@@ -70,92 +72,101 @@ const Navbar = () => {
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  onClick={handleOpenModal}
-                  className="relative rounded-full carrito p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-1 focus:ring-lime-500 focus:ring-offset-2 focus:ring-offset-lime-500 transition"
-                >
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">Agrega tus productos!</span>
-                  <FontAwesomeIcon
-                    icon={faCartShopping}
-                    className="carrito"
-                    size="xl"
-                  />
-                </button>
-                {showModal && <CartModal onClose={handleCloseModal} />}
-
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
-                  <div>
-                    <Menu.Button className="relative flex rounded-full  text-sm focus:outline-none">
+                {authenticated ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handleOpenModal}
+                      className="relative rounded-full carrito p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-1 focus:ring-lime-500 focus:ring-offset-2 focus:ring-offset-lime-500 transition"
+                    >
                       <span className="absolute -inset-1.5" />
-                      <span className="sr-only">Open user menu</span>
+                      <span className="sr-only">Agrega tus productos!</span>
                       <FontAwesomeIcon
-                        icon={faUser}
-                        className="h-8 w-8 rounded-full userIcon"
-                        size="lg"
+                        icon={faCartShopping}
+                        className="carrito"
+                        size="xl"
                       />
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
+                    </button>
+                    {showModal && <CartModal onClose={handleCloseModal} />}
+                    <Menu as="div" className="relative ml-3">
+                      <div>
+                        <Menu.Button className="relative flex rounded-full text-sm focus:outline-none">
+                          <span className="absolute -inset-1.5" />
+                          <span className="sr-only">Open user menu</span>
+                          <FontAwesomeIcon
+                            icon={faUser}
+                            className="h-8 w-8 rounded-full userIcon"
+                            size="lg"
+                          />
+                        </Menu.Button>
+                      </div>
+                      <Transition
+                        as={Fragment}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95"
+                      >
+                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                          <Menu.Item>
+                            {({ active }) => (
+                              <a
+                                href="#"
+                                className={classNames(
+                                  active ? "bg-lime-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Your Profile
+                              </a>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <a
+                                href="#"
+                                className={classNames(
+                                  active ? "bg-lime-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Settings
+                              </a>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <a
+                                href="#"
+                                className={classNames(
+                                  active ? "bg-lime-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Sign out
+                              </a>
+                            )}
+                          </Menu.Item>
+                        </Menu.Items>
+                      </Transition>
+                    </Menu>
+                  </>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="text-white hover:text-white hover:bg-lime-500 navBtn rounded-md px-3 py-2 text-sm font-medium navBtn transition"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-lime-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Your Profile
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-lime-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-lime-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
+                    Iniciar Sesion
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -163,20 +174,19 @@ const Navbar = () => {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
-                <Disclosure.Button
+                <Link
                   key={item.name}
-                  as="a"
-                  href={item.href}
+                  to={item.href}
                   className={classNames(
                     item.current
                       ? "navBtn text-white transition"
-                      : "text-gray-400  hover:text-white hover:bg-lime-500 transition",
+                      : "text-gray-400 hover:text-white hover:bg-lime-500 transition",
                     "block rounded-md px-3 py-2 text-base font-medium transition"
                   )}
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
-                </Disclosure.Button>
+                </Link>
               ))}
             </div>
           </Disclosure.Panel>
