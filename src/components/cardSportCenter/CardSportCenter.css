@@ -1,4 +1,10 @@
-
+.card-title {
+  color : #71B641;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+} 
 .card-custom {
   width: 200px;
   border: gray 1px solid;
@@ -9,6 +15,24 @@
 .card-container {
   justify-content: center;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   
+}
+.button-alquilar {
+  font-size: large;
+  font-weight: normal;
+  margin-top: 1.5rem;
+  border: black solid 2px;
+  color : #71B641;
+}
+
+.button-alquilar:hover {
+  background-color: #71B641;
+  color: white solid 2px;
+}
+
+.card-custom {
+  background-image: url('https://img.freepik.com/vector-gratis/fondo-campo-futbol-degradado_52683-67789.jpg');
+  background-size: flex;  
+  background-position: center;
 }
