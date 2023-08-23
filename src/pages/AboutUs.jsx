@@ -1,6 +1,4 @@
 import CardsTeam from '../components/CardsTeam/CardsTeam';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./AboutUs.css"
 
 const AboutUs = () => {
