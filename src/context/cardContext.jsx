@@ -1,7 +1,5 @@
 import { createContext , useState, useEffect } from "react";
 import axios from 'axios';
-import { Console } from "console";
-import { get } from "http";
 
 const cardContext = createContext();
 
@@ -9,7 +7,7 @@ const CardProvider = ({ children }) => {
      const [cards, setCards] = useState([]);
      const [selectedCard, setSelectedCard] = useState(null);
      const [totalPages, setTotalPages] = useState(1);
-     const API = "http://localhost:8001/api/CardsSportCenter";
+     const API =  "http://localhost:3000/SportCenter";
 
      useEffect(() => {
         getCards();
@@ -17,12 +15,10 @@ const CardProvider = ({ children }) => {
 
         //GET ALL CARDS
 
-        const getCards = async (page=1) => {
+        const getCards = async () => {
             try {
-                const response = await axios.get(`${API}?page=${page}`);
-                const data = response.data;
-                setCards(data.cards);
-                setTotalPages(data.meta.totalPages);
+                const response = await axios.get(`${API}`);
+                setCards(response.data);
             } catch (error) {
                 console.log("Error al obtener los SportCenter");
             }
@@ -33,14 +29,15 @@ const CardProvider = ({ children }) => {
 
         const getCard = async (id) => {
             try {
-                const response = await axios.get(`${API}/${id}`);
-                const data = response.data;
-                setSelectedCard(data);
+              const response = await axios.get(`${API}/${id}`);
+              console.log(id);
+              const complexId = cards.filter((card) => card.id === id);
+              console.log(complexId);
+              setSelectedCard(complexId);
             } catch (error) {
-                console.log("Error al obtener el SportCenter");
+              console.log("Error al obtener el SportCenter:", error);
             }
-        };
-
+          };
     
         //POST CARDS
 

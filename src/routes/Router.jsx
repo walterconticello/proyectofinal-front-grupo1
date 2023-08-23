@@ -1,10 +1,10 @@
 import { Route, Routes as Rutas } from "react-router-dom";
-import CardSportCenter from "../components/cardSportCenter/CardSportCenter";
+import SportCenter from "../pages/SportCenter"
 
 const Routes = () => {
     return (
         <Rutas>
-            <Route exact path="/" element={<CardSportCenter />} />
+            <Route exact path="/SportCenter" element={<SportCenter />} />
         </Rutas>
     );
 };
