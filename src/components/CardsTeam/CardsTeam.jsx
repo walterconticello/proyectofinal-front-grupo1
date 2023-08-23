@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import ReactCardFlip from 'react-card-flip';
-
+import './CardsTeam.css';
 
 
 
@@ -58,23 +58,33 @@ const CardTeam = ({ member }) => {
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-      <Card className="col-sm-6 col-md-4 col-lg-3 mb-4" onClick={handleClick}>
+      <Card className="col-sm-6 col-md-4 col-lg-3 mb-4 custom-card" onClick={handleClick}>
         <Card.Img variant="top" src={member.image} />
         <Card.Body>
           <Card.Title>{member.name}</Card.Title>
-          <Button variant="primary" href={member.github}>
-            <FontAwesomeIcon icon={faGithub} />
-          </Button>
-          <Button variant="primary" href={member.linkedin}>
-            <FontAwesomeIcon icon={faLinkedin} />
-          </Button>
+          <div className="buttons-container">
+            <Button className="github-button" variant="primary" href={member.github}>
+              <FontAwesomeIcon icon={faGithub} />
+            </Button>
+            <Button className="linkedin-button" variant="primary" href={member.linkedin}>
+              <FontAwesomeIcon icon={faLinkedin} />
+            </Button>
+          </div>
         </Card.Body>
       </Card>
 
-      <Card className="col-sm-6 col-md-4 col-lg-3 mb-4" onClick={handleClick}>
+      <Card className="col-sm-6 col-md-4 col-lg-3 mb-4 custom-card" onClick={handleClick}>
         <Card.Body>
           <Card.Text>{member.description}</Card.Text>
         </Card.Body>
+        <div className="buttons-container">
+          <Button className="github-button" variant="primary" href={member.github}>
+            <FontAwesomeIcon icon={faGithub} />
+          </Button>
+          <Button className="linkedin-button" variant="primary" href={member.linkedin}>
+            <FontAwesomeIcon icon={faLinkedin} />
+          </Button>
+        </div>
       </Card>
     </ReactCardFlip>
   );

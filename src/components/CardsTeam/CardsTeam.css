@@ -1,0 +1,20 @@
+.custom-card {
+    width: 200px;
+    height: 250px;
+  }
+
+  .custom-card .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .custom-card .buttons-container .github-button {
+    flex: 1;
+    margin-right: 5px;
+  }
+  
+  .custom-card .buttons-container .linkedin-button {
+    flex: 1;
+    margin-left: 5px;
+  }
