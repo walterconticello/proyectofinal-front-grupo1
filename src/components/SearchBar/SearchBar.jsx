@@ -36,7 +36,7 @@ const SearchBar = () => {
 
 
 	return (
-		<div className="searchBar rounded-3xl lg:rounded-full shadow-buscador bg-misc-white max-w-xl lg:max-w-5xl mx-auto">
+		<div className="searchBarContainer searchBar rounded-3xl lg:rounded-full shadow-buscador bg-misc-white max-w-xl lg:max-w-5xl mx-auto">
 			<div className="py-3 pl-7 pr-3 flex flex-col lg:flex-row lg:justify-between">
 				<div className="inputStyled position-relative">
 					<svg width="26" height="25" viewBox="0 0 30 29" fill="none"><path d="M14.81 15.708a3.625 3.625 0 100-7.25 3.625 3.625 0 000 7.25z" stroke="#00B04B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path><path d="M14.81 2.417a9.667 9.667 0 00-9.666 9.666c0 2.287.485 3.782 1.812 5.438l7.854 9.062 7.854-9.062c1.327-1.656 1.813-3.152 1.813-5.438a9.667 9.667 0 00-9.667-9.666v0z" stroke="#00B04B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path></svg>
