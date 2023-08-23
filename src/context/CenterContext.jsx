@@ -36,11 +36,12 @@ const CenterContext = ({ children }) => {
         }
       };
 
-      const updateSportCenter = async (SportCenter) => {
+      const updateSportCenter = async (complexs) => {
+        console.log(complexs);
         try{
-            await axios.put(`http://localhost:3000/SportCenter/${SportCenter.id}`);
+            await axios.put(`http://localhost:3000/SportCenter/${complexs.id}`);
         } catch(error){
-            console.log(error, "error al borrar cancha");
+            console.log(error, "error al editar");
         }
       }
 

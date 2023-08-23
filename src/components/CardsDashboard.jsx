@@ -60,6 +60,19 @@ const CardsDashboard = () => {
         </Card.Body>
       </Card>
       </Link>
+      <Link to ={'/Users'} className='buy-button btn m-2'>
+      <Card id="cardDash">
+        <Card.Body>
+        <Card.Img variant="top" src="src\img\Carrito.png" />
+        <Card.Title class="text-center pt-3">
+          <h3>Productos</h3>
+        </Card.Title>
+          <Card.Text>
+           <strong>Productos activos :</strong>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      </Link>
       </div>
       </>
   )
