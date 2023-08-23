@@ -7,25 +7,24 @@ import NavBar from "./components/Navbar/Navbar"
 import Footer from "./components/Footer/Footer"
 import Login from "./components/Login/Login"
 import AuthProvider from './context/AuthContext';
+import React from "react";
+import "./App.css";
+import { ProductProvider } from "./context/ProductContext";
+import Routes from "./routes/routes";
+import { BrowserRouter } from "react-router-dom";
+import Layout from "./components/common/Layout";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import AuthProvider from "./context/AuthContext";
 
 function App() {
 
-  return (
-    <> 
-      <ReserveContext>
-    <CenterContext>
-      <FieldContext>
-        <AuthProvider>
-        <NavBar/>
-        <Routes/>
-        <Footer />
-        </AuthProvider>
-      </FieldContext>
-      </CenterContext>
-      </ReserveContext>
 
+  return (
+    <>
+      <Navbar />
+      <Footer />
     </>
-  ) 
+  )
 }
 
-export default App
+export default App;
