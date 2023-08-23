@@ -14,3 +14,7 @@
 .userIcon {
 	color: #71B641
 }
+
+.botonCierre{
+	cursor: pointer;
+}

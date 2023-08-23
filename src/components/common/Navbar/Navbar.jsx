@@ -7,13 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 import CartModal from "../../cart/CartModal";
 import { AuthContext } from "../../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Home", href: "/", current: false },
+  { name: "Store", href: "/store", current: false },
+  // Agregar otras rutas aqui
 ];
 
 function classNames(...classes) {
@@ -21,8 +20,9 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
-  const { authenticated } = useContext(AuthContext);
+  const { authenticated, logout } = useContext(AuthContext);
   const [showModal, setShowModal] = useState(false);
+  const location = useLocation();
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -60,11 +60,13 @@ const Navbar = () => {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <Link
+                      <NavLink
                         key={item.name}
                         to={item.href}
+                        exact
+                        activeClassName="text-white navBtn" // Apply active class
                         className={classNames(
-                          item.current
+                          location.pathname === item.href // Check if the current path matches the item's href
                             ? "text-white navBtn"
                             : "text-gray-300 hover:text-white hover:bg-lime-500 navBtn",
                           "rounded-md px-3 py-2 text-sm font-medium navBtn"
@@ -72,7 +74,7 @@ const Navbar = () => {
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
-                      </Link>
+                      </NavLink>
                     ))}
                   </div>
                 </div>
@@ -119,39 +121,25 @@ const Navbar = () => {
                           <Menu.Item>
                             {({ active }) => (
                               <a
-                                href="#"
                                 className={classNames(
-                                  active ? "bg-lime-100" : "",
+                                  active ? "bg-lime-100 botonCierre" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                Your Profile
+                                Mi Perfil
                               </a>
                             )}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
                               <a
-                                href="#"
+                                onClick={logout}
                                 className={classNames(
-                                  active ? "bg-lime-100" : "",
+                                  active ? "bg-lime-100 botonCierre" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                Settings
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active ? "bg-lime-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
-                                )}
-                              >
-                                Sign out
+                                Cerrar Sesion
                               </a>
                             )}
                           </Menu.Item>
@@ -174,11 +162,13 @@ const Navbar = () => {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
-                <Link
+                <NavLink
                   key={item.name}
                   to={item.href}
+                  exact
+                  activeClassName="text-white navBtn" // Apply active class
                   className={classNames(
-                    item.current
+                    location.pathname === item.href
                       ? "navBtn text-white transition"
                       : "text-gray-400 hover:text-white hover:bg-lime-500 transition",
                     "block rounded-md px-3 py-2 text-base font-medium transition"
@@ -186,7 +176,7 @@ const Navbar = () => {
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </Disclosure.Panel>
