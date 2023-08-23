@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import sliderImage1 from './imgCarouselPromo/slider1.jpeg';
 import sliderImage2 from './imgCarouselPromo/slider2.jpg';
 import sliderImage3 from './imgCarouselPromo/slider3.jpg';
+import './CarouselPromo.css';
 
 const Slider = () => {
   return (
+    <div className='carousel-container'>
     <Carousel>
       <Carousel.Item>
         <a href="https://www.pepsi.com/" target="_blank" rel="noopener noreferrer">
@@ -23,6 +25,7 @@ const Slider = () => {
         </a>
       </Carousel.Item>
     </Carousel>
+    </div>
   );
 };
 
