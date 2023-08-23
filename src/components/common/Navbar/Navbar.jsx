@@ -63,8 +63,7 @@ const Navbar = () => {
                       <NavLink
                         key={item.name}
                         to={item.href}
-                        exact
-                        activeClassName="text-white navBtn" // Apply active class
+                        activeclassname ="text-white navBtn" // Apply active class
                         className={classNames(
                           location.pathname === item.href // Check if the current path matches the item's href
                             ? "text-white navBtn"
@@ -120,14 +119,15 @@ const Navbar = () => {
                         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                           <Menu.Item>
                             {({ active }) => (
-                              <a
+                              <NavLink
+                              to="/perfil"
                                 className={classNames(
                                   active ? "bg-lime-100 botonCierre" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 Mi Perfil
-                              </a>
+                              </NavLink>
                             )}
                           </Menu.Item>
                           <Menu.Item>
@@ -165,8 +165,7 @@ const Navbar = () => {
                 <NavLink
                   key={item.name}
                   to={item.href}
-                  exact
-                  activeClassName="text-white navBtn" // Apply active class
+                  activeclassname ="text-white navBtn" // Apply active class
                   className={classNames(
                     location.pathname === item.href
                       ? "navBtn text-white transition"

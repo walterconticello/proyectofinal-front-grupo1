@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
 	const getAuth = async () => {
 		try {
-			const token = localStorage.getItem("token");
+			const token = localStorage.getItem("access_token");
 			if (!token) {
 				setLoading(false);
 				return setAuthenticated(false);
@@ -54,26 +54,6 @@ export const AuthProvider = ({ children }) => {
 		localStorage.removeItem("access_token");
 	};
 
-	useEffect(() => {
-		async function checkAuth() {
-			try {
-				const token = localStorage.getItem("access_token");
-				if (!token) {
-					setLoading(false);
-					return;
-				}
-				axios.defaults.headers.common["access_token"] = token;
-				setAuthenticated(true);
-			} catch (error) {
-				setLoading(false);
-				setUser(null);
-				setAuthenticated(false);
-				axios.defaults.headers.common["access_token"] = "";
-				localStorage.removeItem("access_token");
-			}
-		}
-		checkAuth();
-	}, []);
 
 	return (
 		<AuthContext.Provider
