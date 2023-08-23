@@ -11,7 +11,7 @@ const FieldContext = ({ children }) => {
         try {
             const response = await axios.get("http://localhost:3000/field")
             setFields(response.data);
-        } catch (error) {
+        }catch (error) {
             console.log(error)
         }
     }

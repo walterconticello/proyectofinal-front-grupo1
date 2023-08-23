@@ -59,6 +59,7 @@ const FormAddSportCenter = () => {
       e.target.reset();
       };
   return (
+    <div>
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
@@ -145,6 +146,7 @@ const FormAddSportCenter = () => {
         <button type="submit">Submit</button>
       </Form>
     </Formik>
+    </div>
   );
 };
 

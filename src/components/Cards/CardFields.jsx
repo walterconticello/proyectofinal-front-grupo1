@@ -8,18 +8,23 @@ import "./Card.css";
 
 const CardField = () => {
 
-  const { fields } = useContext(FieldsContext);
+  const { fields , deleteField } = useContext(FieldsContext);
  
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleDelete = (id) =>{
+    console.log(id);
+    deleteField(id);
+  }
+
   return (
     <>
        {fields === undefined ? "No hay canchas" : fields.map((field) => (
         <>
-       <div >
+       <div key={field.id}>
               <Card style={{ width: "16rem" }}>
                 <Card.Img variant="top" src="src\img\Ejemplos\2.jpg" />
                 <Card.Body className="d-flex flex-column">
@@ -33,7 +38,7 @@ const CardField = () => {
                       
                       <Image src="src\img\Editar.png" rounded fluid />
                     </Button>
-                    <Button variant="" id="edit" /* onClick={() => deleteField(field.id)} */>
+                    <Button variant="" id="edit" onClick={() => handleDelete(field.id)}>
                       <Image src="src\img\Delete.png" rounded fluid />
                     </Button>
                   </div>
@@ -43,7 +48,7 @@ const CardField = () => {
             <ModalCancha
                         show={show}
                         handleClose={handleClose}
-                       /*  selectId={selectedId} */
+                        id={field.id}
                       />
                       </>
                       ))};

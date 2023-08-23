@@ -3,7 +3,7 @@ import { Modal, Button} from "react-bootstrap";
 import FormAddField from "../Forms/FormAddField";
 import "./Modal.css";
 
-const ModalCancha = ({show , handleClose}) => {
+const ModalCancha = ({show , handleClose , id}) => {
 
   
 
