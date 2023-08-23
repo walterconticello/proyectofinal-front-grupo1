@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import svgPelota from "../../assets/icono-sport-futbol.svg"
 import "./searchbar.css"
 import { faCalendarDays, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import DatePicker from "react-date-picker";
@@ -10,16 +10,23 @@ import TimePicker from "react-time-picker";
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
 import { useNavigate } from "react-router";
+import {cardContext} from '../../context/cardContext';
 
 const SearchBar = () => {
 	const [selectedFutbol, setSelectedFutbol] = useState('5');
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [selectedTime, setSelectedTime] = useState('10:00');
+  const {getCards} = useContext(cardContext);
 
-
+  useEffect(() => { 
+    getCards();
+  }, [1]);
+  
+  
 
 	const handleFutbolChange = (event) => {
 		setSelectedFutbol(event.target.value);
+    console.log(event.target.value);
 	};
 	const handleDateChange = (date) => {
 		setSelectedDate(date);
@@ -31,7 +38,7 @@ const SearchBar = () => {
 	const navigate = useNavigate();
 
 	const handleSearch = () => {
-		navigate("/complejos", { state: { selectedDate, selectedTime, selectedFutbol } });
+		navigate("/", { state: { selectedDate, selectedTime, selectedFutbol } });
 	};
 
 

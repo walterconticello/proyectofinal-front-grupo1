@@ -13,8 +13,8 @@
           "parking": true
         },
         "fields": [
-          "futbol5",
-          "futbol11"
+          "futbol 5",
+          "futbol 11"
         ],
         "openHour": 18,
         "closeHour": 2,
@@ -29,7 +29,7 @@
       {
         "id": "614a5d75c32e42b75c135f49",
         "ownerId": "614a5d75c32e42b75c135f45",
-        "name": "Parque de Aventuras Extremas",
+        "name": "Parque de Aventuras",
         "address": "Ruta de la Aventura, Km 5",
         "phone": 9876543210,
         "services": {
@@ -39,8 +39,8 @@
           "parking": true
         },
         "fields": [
-          "futbol11",
-            "futbol7"
+          "futbol 11",
+            "futbol 7"
         ],
         "openHour": 9,
         "closeHour": 18,
@@ -65,8 +65,8 @@
           "parking": true
         },
         "fields": [
-          "futbol5",
-            "futbol7"
+          "futbol 5",
+            "futbol 7"
         ],
         "openHour": 6,
         "closeHour": 22,
@@ -91,8 +91,8 @@
           "parking": true
         },
         "fields": [
-          "futbol5",
-          "futbol7"
+          "futbol 5",
+          "futbol 7"
         ],
         "openHour": 7,
         "closeHour": 20,
@@ -117,8 +117,8 @@
           "parking": true
         },
         "fields": [
-          "futbol11",
-            "futbol7"
+          "futbol 11",
+            "futbol 7"
         ],
         "openHour": 8,
         "closeHour": 20,
@@ -143,8 +143,8 @@
           "parking": true
         },
         "fields": [
-          "futbol11",
-          "futbol5"
+          "futbol 11",
+          "futbol 5"
         ],
         "openHour": 10,
         "closeHour": 22,
@@ -169,8 +169,8 @@
           "parking": true
         },
         "fields": [
-          "futbol5",
-          "futbol11"
+          "futbol 5",
+          "futbol 11"
         ],
         "openHour": 9,
         "closeHour": 17,
@@ -195,8 +195,8 @@
           "parking": true
         },
         "fields": [
-          "futbol5",
-          "futbol7"
+          "futbol 5",
+          "futbol 7"
         ],
         "openHour": 5,
         "closeHour": 23,
@@ -221,8 +221,8 @@
           "parking": true
         },
         "fields": [
-          "futbol11",
-          "futbol7"
+          "futbol 11",
+          "futbol 7"
         ],
         "openHour": 7,
         "closeHour": 23,
