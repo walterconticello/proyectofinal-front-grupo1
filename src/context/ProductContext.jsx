@@ -34,20 +34,31 @@ const ProductProvider = ({ children }) => {
   //POST PRODUCT
   const addProduct = async (products) => {
     try {
-      const response = await axios.post(API, products);
-      console.log(response, "product posted successfully");
+      const form = new FormData();
+      for (let key in products) {
+        form.append(key, products[key]);
+      }
+      const res = await axios.post(API, form, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      // setProducts(res.data);
+      return res, console.log(form, "product posted successfully");
     } catch (err) {
       console.log(err, "error posting product");
     }
   };
 
   //PUT PRODUCT
-  const updateProducts = async (products) => {
+  const updateProducts = async (id, updatedProduct) => {
     try {
-      await axios.put(`${API}/${products.id}`, products);
-      await getProducts();
-    } catch (err) {
-      console.log(err, `error updating product: ${products.id}`);
+      const response = await axios.put(`${API}${id}`, updatedProduct);
+      const updatedProducts = products.map((product) =>
+        product._id === id ? response.data : product
+      );
+      setProducts(updatedProducts);
+      console.log("Product updated successfully");
+    } catch (error) {
+      console.error("Error updating product:", error);
     }
   };
 
@@ -55,7 +66,7 @@ const ProductProvider = ({ children }) => {
 
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`${API}/${id}`);
+      await axios.delete(`${API}${id}`);
       const deleteProduct = products.filter((product) => product.id !== id);
       setProducts(deleteProduct);
     } catch (err) {
