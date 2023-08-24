@@ -1,9 +1,9 @@
 import React from "react";
-import ContactForm from "../components/ContactForm/ContactForm";
+import ContactForm from "../../components/ContactForm/ContactForm";
 import { Row, Col } from "react-bootstrap";
-import GoogleMapComponent from "../components/GoogleMap/GoogleMapComponent";
-import ContactInfo from "../components/contact-info/ContactInfo";
-// import "../components/contactForm/contactForm.css";
+import GoogleMapComponent from "../../components/GoogleMap/GoogleMapComponent";
+import ContactInfo from "../../components/contact-info/ContactInfo";
+
 const Contact = () => {
   return (
     <div>

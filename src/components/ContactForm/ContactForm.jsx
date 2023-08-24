@@ -31,9 +31,9 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="container-form h-100 ">
+    <div className="container-form-contact h-100 ">
       <div className="head d-flex flex-column align-items-center">
-        <h1 className="title m-3">Contactanos</h1>
+        <h1 className="title-contact m-3">Contactanos</h1>
         <p className="w-75 text-center">
           ¿Tenés preguntas? Nuestro equipo está para ayudarte
         </p>
@@ -54,7 +54,7 @@ const ContactForm = () => {
                 <div className="error-message">{errors.name}</div>
               )}
             </div>
-            <div className="form-group">
+            <div className="form-group w-100">
               <label htmlFor="email" className="label">
                 Email:
               </label>
@@ -63,7 +63,7 @@ const ContactForm = () => {
                 <div className="error-message">{errors.email}</div>
               )}
             </div>
-            <div className="form-group">
+            <div className="form-group w-100">
               <label htmlFor="message" className="label">
                 Message:
               </label>
