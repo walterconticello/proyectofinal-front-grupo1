@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react';
+import  React , {useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ModalEditSportCenter from '../Modals/ModalEditSportCenter';
@@ -27,7 +27,8 @@ const CardCenter = () => {
       {complexs === undefined
         ? "No Hay Complejos"
         : complexs.map((complex) => (
-            <Card style={{ width: '16rem' }} key={complex.id}>
+          <React.Fragment key={complex.id}>
+            <Card style={{ width: '16rem' }}>
               <Card.Img variant="top" src="src\img\Ejemplos\1.jpg" />
               <Card.Body>
                 <Card.Title>{complex.name}</Card.Title>
@@ -46,6 +47,7 @@ const CardCenter = () => {
                 </Button>
               </Card.Body>
             </Card>
+            </React.Fragment>
           ))}
       {show && <ModalEditSportCenter show={show}  handleClose={handleClose} editComplex={editComplex} />};
       </div>

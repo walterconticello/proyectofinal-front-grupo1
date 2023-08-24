@@ -19,13 +19,13 @@ const validationSchema = Yup.object().shape({
     facebook: Yup.string().min(3, 'Must be at least 3 characters'),
     instagram: Yup.string().min(3, 'Must be at least 3 characters'),
   }),
-  latitude: Yup.number().required('Required').min(-90, 'Must be at least -90').max(90, 'Must be at most 90'),
-  location: Yup.string().required('Required').min(3, 'Must be at least 3 characters').max(30, 'Must be at most 30 characters'),
+  latitude: Yup.number().min(-90, 'Must be at least -90').max(90, 'Must be at most 90'),
+  location: Yup.string().min(3, 'Must be at least 3 characters').max(30, 'Must be at most 30 characters'),
 });
 
 const ModalNewSportCenter = ({ show, handleClose }) => {
 
-    const {postSportCenter , getSportCenter} = useContext(SportCenterContext);
+    const {postSportCenter} = useContext(SportCenterContext);
   
 
   const initialValues = {
@@ -75,7 +75,7 @@ const ModalNewSportCenter = ({ show, handleClose }) => {
         <Modal.Body>
         <Formik
             initialValues={initialValues}
-            validationSchema=""
+            validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
             <Form>

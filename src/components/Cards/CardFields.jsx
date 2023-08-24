@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React , { useContext, useState  } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ModalEditField from "../Modals/ModalEditFields";
@@ -9,11 +9,17 @@ import "./Card.css";
 const CardField = () => {
 
   const { fields , deleteField } = useContext(FieldsContext);
+
+  const [editField , setEditField] = useState();
  
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleEdit = (field) =>{
+    setEditField(field)
+    handleShow(true);
+  }
 
   const handleDelete = (id) =>{
     console.log(id);
@@ -24,8 +30,8 @@ const CardField = () => {
     <>
     <div  className="d-flex flex-wrap justify-content-between gap-3 m-3 container-fluid">
        {fields === undefined ? "No hay canchas" : fields.map((field) => (
-        <>
-              <Card style={{ width: '18rem' }} key={field.id}>
+        <React.Fragment key={field.id}>
+              <Card style={{ width: '18rem' }} >
                 <Card.Img variant="top" src="src\img\Ejemplos\2.jpg" />
                 <Card.Body className="d-flex flex-column">
                   <Card.Title >{field.name}</Card.Title>
@@ -33,8 +39,7 @@ const CardField = () => {
                     <Button className="buttonCardDashboar" size="sm">
                       Ver Cancha
                     </Button>
-                    <Button variant="" id="edit" onClick={handleShow}>
-                      
+                    <Button variant="" id="edit" onClick={() => handleEdit(field)}>
                       <Image src="src\img\Editar.png" rounded fluid />
                     </Button>
                     <Button variant="" id="edit" onClick={() => handleDelete(field.id)}>
@@ -46,9 +51,9 @@ const CardField = () => {
             <ModalEditField
                         show={show}
                         handleClose={handleClose}
-                        id={field.id}
+                        editField={editField}
                       />
-                      </>
+                      </React.Fragment>
                       ))};
                       </div>
     </>
