@@ -2,7 +2,7 @@
   "SportCenter": [
     {
       "ownerId": "615f7dabf4c55e001c9a87f1",
-      "name": "Riverplate",
+      "name": "Monumental",
       "address": "123 Main St",
       "phone": 1234567890,
       "services": {
@@ -24,7 +24,7 @@
     },
     {
       "ownerId": "615f7dabf4c55e001c9a87f1",
-      "name": "randomly",
+      "name": "Ojo de agua",
       "address": "456 Main St",
       "phone": 1234567890,
       "services": {
@@ -46,7 +46,7 @@
     },
     {
       "ownerId": "615f7dabf4c55e001c9a87f1",
-      "name": "sports center 3",
+      "name": "Futbolitos",
       "address": "789 Main St",
       "phone": 1234567890,
       "services": {
@@ -68,7 +68,7 @@
     },
     {
       "ownerId": "615f7dabf4c55e001c9a87f1",
-      "name": "sisisi!",
+      "name": "100% futbol",
       "address": "1011 Main St",
       "phone": 1234567890,
       "services": {
@@ -90,7 +90,7 @@
     },
     {
       "ownerId": "615f7dabf4c55e001c9a87f1",
-      "name": "sports center 5",
+      "name": "Atletico Tucumán",
       "address": "1213 Main St",
       "phone": 1234567890,
       "services": {
@@ -112,7 +112,7 @@
     },
     {
       "ownerId": "615f7dabf4c55e001c9a87f1",
-      "name": "sports center 6",
+      "name": "San Martin de Tucumán",
       "address": "1415 Main St",
       "phone": 1234567890,
       "services": {
