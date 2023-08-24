@@ -6,7 +6,6 @@ import { Navigate } from 'react-router-dom';
 const PrivateRoute = ({ children }) => {
 	const { getAuth, authenticated, loading } = useContext(AuthContext)
 
-	console.log(authenticated)
 
 	useEffect(() => {
 		getAuth();
@@ -17,7 +16,7 @@ const PrivateRoute = ({ children }) => {
 	) : authenticated ? (
 		children
 	) : (
-		<Navigate to="/login" />
+		<Navigate to="/" />
 	);
 };
 
