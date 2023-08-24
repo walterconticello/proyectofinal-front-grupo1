@@ -4,28 +4,31 @@ import { Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import { SportCenterContext } from '../../context/CenterContext';
 
-const ModalNewSportCenter = (show , handleClose) => {
+const validationSchema = Yup.object().shape({
+  ownerId: Yup.string().required('Required'),
+  name: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
+  address: Yup.string().required('Required').min(3, 'Must be at least 3 characters').max(30, 'Must be at most 30 characters'),
+  phone: Yup.number().required('Required'),
+  services: Yup.object().shape({
+    bar: Yup.boolean().required('Required'),
+    showers: Yup.boolean().required('Required'),
+    Grill: Yup.boolean().required('Required'),
+    parking: Yup.boolean().required('Required'),
+  }),
+  fields: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
+  photo: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
+  social: Yup.object().shape({
+    facebook: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
+    instagram: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
+  }),
+  latitude: Yup.number().required('Required').min(-90, 'Must be at least -90').max(90, 'Must be at most 90'),
+  location: Yup.string().required('Required').min(3, 'Must be at least 3 characters').max(30, 'Must be at most 30 characters'),
+});
 
-  const validationSchema = Yup.object().shape({
-    ownerId: Yup.string().required('Required'),
-    name: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
-    address: Yup.string().required('Required').min(3, 'Must be at least 3 characters').max(30, 'Must be at most 30 characters'),
-    phone: Yup.number().required('Required'),
-    services: Yup.object().shape({
-      bar: Yup.boolean().required('Required'),
-      showers: Yup.boolean().required('Required'),
-      Grill: Yup.boolean().required('Required'),
-      parking: Yup.boolean().required('Required'),
-    }),
-    fields: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
-    photo: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
-    social: Yup.object().shape({
-      facebook: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
-      instagram: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
-    }),
-    latitude: Yup.number().required('Required').min(-90, 'Must be at least -90').max(90, 'Must be at most 90'),
-    location: Yup.string().required('Required').min(3, 'Must be at least 3 characters').max(30, 'Must be at most 30 characters'),
-  });
+const ModalNewSportCenter = ({show , handleClose}) => {
+
+    const {postSportCenter , getSportCenter} = useContext(SportCenterContext);
+  
 
    const initialValues = {
       ownerId: '', //idUser Json
@@ -62,13 +65,12 @@ const ModalNewSportCenter = (show , handleClose) => {
       };
     
 
-  const {postSportCenter} = useContext(SportCenterContext);
- 
+  // const { postSportCenter } = useContext(SportCenterContext);
 
   return (
     <>
       <Modal show={show}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton onHide={handleClose}>
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>

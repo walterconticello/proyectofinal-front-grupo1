@@ -5,12 +5,15 @@ import ModalNewSportCenter from '../components/Modals/ModalNewSportCenter';
 
 const SportCenter = () => {
   const [show, setShow] = useState(false);
-  const handleOpen = () => setShow(true);
   const handleClose = () => setShow(false);
+
+  const OpenModal = () =>{
+    setShow(true);
+  }
 
   return (
     <div className='ContainerCard container-fluid'>
-      <Button variant="primary" onClick={handleOpen}>
+      <Button variant="primary" onClick={OpenModal}>
   Nuevo complejo
 </Button>
       <CardCenter />
