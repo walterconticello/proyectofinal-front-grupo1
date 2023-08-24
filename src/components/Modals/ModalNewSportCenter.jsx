@@ -30,6 +30,8 @@ const validationSchema = Yup.object().shape({
 const ModalNewSportCenter = ({show , handleClose}) => {
 
     const {postSportCenter , getSportCenter} = useContext(SportCenterContext);
+
+    const [isLoading , setIsLoading] = useState(false);
   
 
    const initialValues = {
@@ -53,6 +55,18 @@ const ModalNewSportCenter = ({show , handleClose}) => {
       location: '',
     };
 
+    const handleSubmit = async (values , { setSubmitting})  =>{
+      setIsLoading(true);
+      try{
+        await postSportCenter(values);
+      }catch (error) {
+        console.log(error);
+      }finally {
+        setIsLoading(false);
+        setSubmitting(false);
+      }
+    }
+
   
     
 
@@ -68,37 +82,24 @@ const ModalNewSportCenter = ({show , handleClose}) => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={async (values, actions) => {
-        try {
-          await postSportCenter(values);
-          handleClose();
-          getSportCenter();
-          toast.success("Complejo Creado Exitosamente", {
-            position: toast.POSITION.TOP_CENTER,
-          });
-        } catch (error) {
-          toast.error("Error al cargar el complejo", {
-            position: toast.POSITION.TOP_CENTER,
-          });
-        }
-      }}
+      onSubmit={handleSubmit}
     >
-      {({ handleSubmit, setFieldValue }) => (
+      {({ isSubbmitting, errors , touched , isValid }) => (
       <Form>
       <div className="mb-3">
           <label  className="form-label">Name</label>
-          <Field type="text" name="ownerId" />
-          <ErrorMessage name="ownerId" component="div" />
+          <Field type="text" name="name" />
+          <ErrorMessage name="name" component="div" />
         </div>
         <div className="mb-3">
           <label  className="form-label">Direccion</label>
-          <Field type="text" name="ownerId" />
-          <ErrorMessage name="ownerId" component="div" placeholder="Direccion de Google Maps" />
+          <Field type="text" name="address" />
+          <ErrorMessage name="address" component="div" placeholder="Direccion de Google Maps" />
         </div>
         <div className="mb-3">
           <label className="form-label">Telefono</label>
-          <Field type="text" name="ownerId" />
-          <ErrorMessage name="ownerId" component="div" />
+          <Field type="text" name="phone" />
+          <ErrorMessage name="phone" component="div" />
         </div>
         <div className="mb-3">
         <label className="form-label">Services:</label>
@@ -124,8 +125,8 @@ const ModalNewSportCenter = ({show , handleClose}) => {
       </div>
         <div className="mb-3">
           <label className="form-label">Imagen</label>
-          <Field type="text" name="ownerId" />
-          <ErrorMessage name="ownerId" component="div" />
+          <Field type="text" name="photo" />
+          <ErrorMessage name="photo" component="div" />
         </div>
         <div className="mb-3">
         <label className="form-label">Social:</label>
