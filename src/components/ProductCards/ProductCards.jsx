@@ -20,9 +20,7 @@ const ProductCards = () => {
     selectedCategories.length === 0
       ? products
       : products.filter((product) =>
-          product.categories.some((category) =>
-            selectedCategories.includes(category)
-          )
+          selectedCategories.includes(product.categories)
         );
 
   const addToCart = (product) => {

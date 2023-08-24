@@ -135,7 +135,7 @@ const ProductDetails = () => {
           <Modal.Body>
             <h5>{selectedProduct.name}</h5>
             <span className="d-flex ">
-              <p>Subtotal: </p>
+              <p>Precio: </p>
               <h5 className="mx-3">${selectedProduct.price}</h5>
             </span>
             <Form.Group
