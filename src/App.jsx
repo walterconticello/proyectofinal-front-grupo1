@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import Layout from "./components/common/Layout";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import AuthProvider from "./context/AuthContext";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <ScrollToTop />
           <Layout>
             <Routes />
+            <ToastContainer />
           </Layout>
         </BrowserRouter>
       </ProductProvider>
