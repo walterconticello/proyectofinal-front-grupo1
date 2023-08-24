@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { SportCenterContext } from "../../context/CenterContext";
 import "./Modal.css";
 
-const ModalComplex = ({ show, handleClose, editComplex }) => {
+const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .required("El nombre es requerido")
@@ -60,16 +60,7 @@ const ModalComplex = ({ show, handleClose, editComplex }) => {
     },
     location: complex.location,
   };
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    validateOnChange: true,
-    validateOnBlur: true,
-    onSubmit:(values) => {
-      console.log("Valores de Formik-->", values);
-      updateSportCenter(values);
-    }, });
-
+  
   const maxFileSize = 10 * 1024 * 1024; // 10MB
 
   return (
@@ -314,7 +305,7 @@ const ModalComplex = ({ show, handleClose, editComplex }) => {
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" type="submit" onClick={handleClose}>
+          <Button variant="primary" type="submit" >
             Guardar
           </Button>
         </Modal.Footer>
@@ -323,4 +314,4 @@ const ModalComplex = ({ show, handleClose, editComplex }) => {
   );
 };
 
-export default ModalComplex;
+export default ModalEditSportCenter;

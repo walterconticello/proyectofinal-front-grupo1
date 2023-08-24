@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import CardCenter from "../components/Cards/CardCenter"
-import ModalNewComplex from '../components/Modals/ModalNewComplex';
+import ModalNewSportCenter from '../components/Modals/ModalNewSportCenter';
 
 const SportCenter = () => {
   const [show, setShow] = useState(false);
   const handleOpen = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   return (
     <div className='ContainerCard container-fluid'>
       <Button variant="primary" onClick={handleOpen}>
-        Nuevo complejo
-      </Button>
+  Nuevo complejo
+</Button>
       <CardCenter />
-      <ModalNewComplex show={show} setShow={setShow} />
+      <ModalNewSportCenter show={show} handleClose={handleClose} />
     </div>
   );
 };

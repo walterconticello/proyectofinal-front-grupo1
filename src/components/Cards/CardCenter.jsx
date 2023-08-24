@@ -1,7 +1,7 @@
 import {useContext, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import ModalEditComplex from '../Modals/ModalEditComplex';
+import ModalEditSportCenter from '../Modals/ModalEditSportCenter';
 import { SportCenterContext } from '../../context/CenterContext';
 import "./Card.css";
 
@@ -47,7 +47,7 @@ const CardCenter = () => {
               </Card.Body>
             </Card>
           ))}
-      {show && <ModalEditComplex show={show}  handleClose={handleClose} editComplex={editComplex} />};
+      {show && <ModalEditSportCenter show={show}  handleClose={handleClose} editComplex={editComplex} />};
       </div>
     </>
     

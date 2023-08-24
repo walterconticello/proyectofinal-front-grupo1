@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useFormik , Formik } from "formik";
 import {Form,FormGroup,FormControl,FormLabel, Button,Alert,} from "react-bootstrap";
 import * as Yup from "yup";
@@ -6,7 +6,7 @@ import { FieldsContext} from "../../context/FieldContext";
 
 const FormEditField = ( id ) => {
 
-  const { update } = useContext(FieldsContext);
+  const { getFieldById , updateField} = useContext(FieldsContext);
 
 
   const validationSchema = Yup.object().shape({
@@ -37,8 +37,17 @@ const FormEditField = ( id ) => {
     openHour : "",
     closeHour : "",
     pricePerHour: "",
-    size : 5
+    size : 5 ,
+  };
+
+  const handleEdit = (e) => {
+    e.preventDefault()
+    updateField(setSportCenter);
   }
+
+  useEffect(() =>{
+    const field = getFieldById(id)
+  } , [id]);
 
   const formik = useFormik({
     initialValues: "",

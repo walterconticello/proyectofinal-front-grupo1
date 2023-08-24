@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import ModalCancha from "../Modals/ModalCanchas";
+import ModalEditField from "../Modals/ModalEditFields";
 import { Image } from "react-bootstrap";
 import { FieldsContext } from "../../context/FieldContext"
 import "./Card.css";
@@ -43,7 +43,7 @@ const CardField = () => {
                   </div>
                 </Card.Body>
               </Card>
-            <ModalCancha
+            <ModalEditField
                         show={show}
                         handleClose={handleClose}
                         id={field.id}

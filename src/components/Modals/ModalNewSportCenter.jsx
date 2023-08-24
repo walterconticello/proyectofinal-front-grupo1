@@ -4,7 +4,8 @@ import { Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import { SportCenterContext } from '../../context/CenterContext';
 
-const ModalNewComplex = () => {
+const ModalNewSportCenter = (show , handleClose) => {
+
   const validationSchema = Yup.object().shape({
     ownerId: Yup.string().required('Required'),
     name: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
@@ -62,13 +63,11 @@ const ModalNewComplex = () => {
     
 
   const {postSportCenter} = useContext(SportCenterContext);
-  const [show, setShow] = useState(true);
-
-  const handleClose = () => setShow(false);
+ 
 
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show}>
         <Modal.Header closeButton>
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
@@ -163,7 +162,7 @@ const ModalNewComplex = () => {
     </Formik>
         </Modal.Body>
         <Modal.Footer>
-          <Button type="submit" onClick={handleClose}>Save Changes</Button>
+          <Button type="submit">Save Changes</Button>
           <Button variant="danger" onClick={handleClose}>
             Eliminar Cancha
           </Button>
@@ -173,4 +172,4 @@ const ModalNewComplex = () => {
   );
 };
 
-export default ModalNewComplex;
+export default ModalNewSportCenter;
