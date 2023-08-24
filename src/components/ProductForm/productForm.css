@@ -1,0 +1,74 @@
+
+.form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+  }
+.add-button{
+  background-color: #71B641 !important;
+    border: none !important;
+    color: #fff !important
+}
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  .modal-dialog {
+    max-width: 800px;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+  
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .modal-footer {
+    justify-content: flex-start;
+    border-top: none;
+  }
+  
+
+  .add-product-button {
+    margin-bottom: 20px;
+  }
+  
+
+  .modal-submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+  }
+  
+  .modal-submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  .close {
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  
+  .close:hover {
+    opacity: 1;
+  }
+  
