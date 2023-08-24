@@ -41,7 +41,6 @@ const ProductProvider = ({ children }) => {
       const res = await axios.post(API, form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      // setProducts(res.data);
       return res, console.log(form, "product posted successfully");
     } catch (err) {
       console.log(err, "error posting product");
@@ -51,14 +50,19 @@ const ProductProvider = ({ children }) => {
   //PUT PRODUCT
   const updateProducts = async (id, updatedProduct) => {
     try {
-      const response = await axios.put(`${API}${id}`, updatedProduct);
-      const updatedProducts = products.map((product) =>
-        product._id === id ? response.data : product
-      );
-      setProducts(updatedProducts);
-      console.log("Product updated successfully");
-    } catch (error) {
-      console.error("Error updating product:", error);
+      const form = new FormData();
+      for (let key in updatedProduct) {
+        form.append(key, updatedProduct[key]);
+      }
+
+      const res = await axios.put(`${API}${id}`, form, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      return res.data;
+    } catch (err) {
+      console.log(err, "error updating product");
+      throw err;
     }
   };
 

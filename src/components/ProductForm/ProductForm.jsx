@@ -46,7 +46,7 @@ const ProductForm = () => {
   return (
     <Container>
       <Button
-        variant="btn add-button d-flex align-items-center"
+        variant="btn add-button d-flex align-items-center justify-content-end m-2"
         onClick={handleShowModal}
       >
         <MdAddCircle className="m-2" />
@@ -75,14 +75,8 @@ const ProductForm = () => {
                 setIsLoading(false);
                 handleCloseModal();
                 getProducts();
-                toast.success("Producto cargado exitosamente", {
-                  position: toast.POSITION.TOP_CENTER,
-                });
               } catch (error) {
                 setIsLoading(false);
-                toast.error("Error al cargar el producto", {
-                  position: toast.POSITION.TOP_CENTER,
-                });
               }
             }}
           >

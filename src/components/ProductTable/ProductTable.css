@@ -34,6 +34,10 @@
     border: none;
     cursor: pointer;
   }
+  .btnEdit {
+    background-color: #71B641 !important;
+
+  }
   
   button:hover {
     background-color: #c82333;

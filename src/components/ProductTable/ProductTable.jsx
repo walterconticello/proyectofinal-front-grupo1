@@ -1,22 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import "./ProductTable.css";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 import ProductForm from "../ProductForm/ProductForm";
 import EditProductForm from "../ProductForm/EditProductForm";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 const ProductTable = () => {
   const { products, getProducts, deleteProduct, updateProducts } =
     useContext(ProductContext);
-  const [showIdColumn, setShowIdColumn] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editProduct, setEditProduct] = useState(null);
   useEffect(() => {
     getProducts();
   }, []);
-
-  const handleIdColumnToggle = () => {
-    setShowIdColumn(!showIdColumn);
-  };
+  const MySwal = withReactContent(Swal);
 
   const handleEditModalShow = (product) => {
     setEditProduct(product);
@@ -30,19 +29,14 @@ const ProductTable = () => {
 
   return (
     <div className="table-container mx-auto ">
-      <div className="switch-container d-flex  ">
-        <input
-          type="checkbox"
-          checked={showIdColumn}
-          onChange={handleIdColumnToggle}
-        />
+      <div className="switch-container align-items-center">
         <ProductForm />
       </div>
       <div className="table-responsive mx-auto text-center">
         <table>
           <thead>
             <tr>
-              {showIdColumn && <th>ID</th>}
+              <th>Imagen</th>
               <th>Name</th>
               <th>Price</th>
               <th>Description</th>
@@ -53,21 +47,49 @@ const ProductTable = () => {
           <tbody>
             {products.map((product) => (
               <tr key={product._id}>
-                {showIdColumn && <td>{product._id}</td>}
+                <td>
+                  <img
+                    className="w-50"
+                    src={product.image.url}
+                    alt={product.name}
+                  />
+                </td>
                 <td className="w-25">{product.name}</td>
                 <td>${product.price}</td>
                 <td className="w-25">{product.description}</td>
                 <td>{product.stock}</td>
                 <td>
-                  <button onClick={() => handleEditModalShow(product)}>
-                    Editar
+                  <button
+                    className="btnEdit m-2"
+                    onClick={() => handleEditModalShow(product)}
+                  >
+                    <MdEdit />
                   </button>
                   <button
                     onClick={async () => {
-                      await deleteProduct(product._id);
-                      console.log("product deleted");
-                      getProducts();
+                      const result = await MySwal.fire({
+                        title: "¿Estás seguro?",
+                        text: "Esta acción eliminará el producto de forma permanente.",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Sí, eliminar",
+                        cancelButtonText: "Cancelar",
+                      });
+
+                      if (result.isConfirmed) {
+                        await deleteProduct(product._id);
+                        console.log("product deleted");
+                        getProducts();
+                        MySwal.fire(
+                          "Eliminado",
+                          "El producto ha sido eliminado.",
+                          "success"
+                        );
+                      }
                     }}
+                    className="m-2"
                   >
                     <MdDelete />
                   </button>

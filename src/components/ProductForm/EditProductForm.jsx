@@ -7,11 +7,11 @@ import {
   Modal,
   Button,
 } from "react-bootstrap";
+import { ProductContext } from "../../context/ProductContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { ProductContext } from "../../context/ProductContext";
 const categories = [
   "Balones",
   "Calzado",
@@ -31,6 +31,7 @@ const EditProductForm = ({ show, onHide, product, updateProducts }) => {
       .integer("El stock debe ser un número entero")
       .min(0, "El stock mínimo es 0"),
   });
+  const { getProducts } = useContext(ProductContext);
 
   return (
     <Modal show={show} onHide={onHide}>
@@ -51,6 +52,7 @@ const EditProductForm = ({ show, onHide, product, updateProducts }) => {
           onSubmit={async (values, actions) => {
             await updateProducts(product._id, values);
             onHide();
+            getProducts();
           }}
         >
           {({ handleSubmit, setFieldValue }) => (
@@ -122,11 +124,6 @@ const EditProductForm = ({ show, onHide, product, updateProducts }) => {
                       as="select"
                       name="categories"
                       className="form-control m-2"
-                      value={
-                        categories.includes(product.categories)
-                          ? product.categories
-                          : ""
-                      }
                     >
                       <option value="">Seleccionar categoría</option>
                       {categories.map((category) => (

@@ -66,9 +66,6 @@ const CardsDashboard = () => {
               <Card.Title className="text-center pt-3">
                 <h3>Store</h3>
               </Card.Title>
-              <Card.Text>
-                <strong>Usuarios activos :</strong>
-              </Card.Text>
             </Card.Body>
           </Card>
         </Link>
