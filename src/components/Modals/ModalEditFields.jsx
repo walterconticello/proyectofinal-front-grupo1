@@ -36,8 +36,6 @@ const ModalEditField = ({ show, handleClose, editField }) => {
 
   const [field, setField] = useState(editField);
 
-  const [field , setField] = useState(editField);
-
   const initialValues = {
     name: field?.name || '',
     openHour: field?.openHour || '',

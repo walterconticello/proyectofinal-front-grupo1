@@ -4,7 +4,6 @@ import { createContext, useEffect, useState } from "react";
 export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
-  const API = "http://localhost:4000/api/fields/";
   const [fields, setFields] = useState([]);
   const API = "http://localhost:5500/api/fields/";
   const getFields = async () => {
