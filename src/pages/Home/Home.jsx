@@ -1,6 +1,7 @@
 import SearchBar from "../../components/SearchBar/SearchBar";
 import "./home.css";
 import messiImg from "../../assets/Frame_2.png"
+import { Link } from "react-router-dom";
 
 const Home = () => {
 	return (
@@ -26,50 +27,50 @@ const Home = () => {
 					<div className="grid gap-4 justify-center md:grid-cols-3">
 						<div className="card p-3">
 							<img
-								src="https://civideportes.com.co/wp-content/uploads/2019/08/Cancha-de-f%C3%BAtbol-11.jpg"
+								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzFBC4q818qo2kVFF6rLvHcjn-HE75CZ42qQ&usqp=CAU"
 								className="card-img-top"
 								alt="..."
 							/>
 							<div className="card-body">
-								<h5 className="card-title">Card title</h5>
+								<h5 className="card-title">Ojo de agua</h5>
 								<p className="card-text">
-									Some quick example text to build on the card title and make up the bulk of the cards content.
+									La mas grande del norte Argentino.
 								</p>
-								<a href="#" className="btn btn-primary">
-									Go somewhere
-								</a>
+								<Link to={"/complejos"} className="btn btn-primary">
+									Alquilar!
+								</Link>
 							</div>
 						</div>
 						<div className="card p-3">
 							<img
-								src="https://civideportes.com.co/wp-content/uploads/2019/08/Cancha-de-f%C3%BAtbol-11.jpg"
+								src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/84/2023/08/08/persis-solo-vs-persib-bandung-796388239.jpg"
 								className="card-img-top"
 								alt="..."
 							/>
 							<div className="card-body">
-								<h5 className="card-title">Card title</h5>
+								<h5 className="card-title">San Martin de Tucumán</h5>
 								<p className="card-text">
-									Some quick example text to build on the card title and make up the bulk of the cards content.
+									La mas picante del pais.
 								</p>
-								<a href="#" className="btn btn-primary">
-									Go somewhere
-								</a>
+								<Link to={"/complejos"} className="btn btn-primary">
+									Alquilar!
+								</Link>
 							</div>
 						</div>
 						<div className="card p-3">
 							<img
-								src="https://civideportes.com.co/wp-content/uploads/2019/08/Cancha-de-f%C3%BAtbol-11.jpg"
+								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF2C8G8M2fKwh_5LaZ4_SzIfZZXplRWG1hfnRagPtYMqoJkfPwf0SiQC89ngm3SJlOVEc&usqp=CAU"
 								className="card-img-top"
 								alt="..."
 							/>
 							<div className="card-body">
-								<h5 className="card-title">Card title</h5>
+								<h5 className="card-title">Central Cordoba</h5>
 								<p className="card-text">
-									Some quick example text to build on the card title and make up the bulk of the cards content.
+									Juega sin limites!.
 								</p>
-								<a href="#" className="btn btn-primary">
-									Go somewhere
-								</a>
+								<Link to={"/complejos"} className="btn btn-primary">
+									Alquilar!
+								</Link>
 							</div>
 						</div>
 					</div>
