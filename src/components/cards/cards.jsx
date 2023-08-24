@@ -1,1 +1,0 @@
-//preparando el componente para la pagina de cards

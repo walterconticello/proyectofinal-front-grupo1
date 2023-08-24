@@ -1,0 +1,32 @@
+  
+  .slider-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    background-color:gray
+  }
+  
+  .searchbar-container {
+    justify-content: center;
+   margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    background-color:gray
+  }
+  
+  .card-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    background-color:gray
+  }
+  
+  .footer-container {
+    /* Estilo para el contenedor de Footer */
+  }

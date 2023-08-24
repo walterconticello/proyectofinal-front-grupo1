@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+import { Route, Routes as Rutas } from "react-router-dom";
+import SportCenter from "../pages/SportCenter"
+
+const Routes = () => {
+    return (
+        <Rutas>
+            <Route exact path="/SportCenter" element={<SportCenter />} />
+        </Rutas>
+    );
+};
+
+export default Routes;
+
+// Path: src\components\cardSportCenter\CardSportCenter.jsx
+=======
 import {Route , Routes as Ruta} from 'react-router-dom'
 import {Dashboard} from '../pages/Dashboard'
 import SportCenter from '../pages/SportCenter'
@@ -37,3 +53,4 @@ const Routes = () => {
   //         <Route path="/admin/Users" element={<PrivateRoute><Users /></PrivateRoute>} />
   //         <Route path="/admin/products" element={<PrivateRoute><Products /></PrivateRoute>} />
   //         <Route exact path='/login' element={<Login />} />
+>>>>>>> dev
