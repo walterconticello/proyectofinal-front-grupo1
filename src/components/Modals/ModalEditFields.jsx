@@ -1,4 +1,4 @@
-import { useState , useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -11,14 +11,14 @@ const validationSchema = Yup.object().shape({
     .required("El nombre es requerido")
     .min(3, "El nombre debe tener al menos 3 caracteres")
     .max(50, "El nombre no debe exceder los 50 caracteres"),
-    openHour: Yup.string().matches(
-      /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,
-      'Formato de hora inválido'
-    ).required("La hora de apertura es requerida"),
-    closeHour: Yup.string().matches(
-      /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,
-      'Formato de hora inválido'
-    ).required("La hora de cierre es requerida"),
+  openHour: Yup.string().matches(
+    /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,
+    'Formato de hora inválido'
+  ).required("La hora de apertura es requerida"),
+  closeHour: Yup.string().matches(
+    /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,
+    'Formato de hora inválido'
+  ).required("La hora de cierre es requerida"),
   pricePerHour: Yup.number()
     .required("El precio por hora es requerido")
     .min(0, "El precio por hora no puede ser menor que 0")
@@ -30,18 +30,22 @@ const validationSchema = Yup.object().shape({
 });
 
 
-const ModalEditField = ({show , handleClose , editField}) => {
+const ModalEditField = ({ show, handleClose, editField }) => {
 
-  const { updateField } = useContext(FieldsContext);
+  const { updateField, } = useContext(FieldsContext);
 
-  const [field , setField] = useState(editField);
+  const [field, setField] = useState(editField);
+
+  useEffect(() => {
+    setField(editField);
+  }, [editField]);
 
   const initialValues = {
-    name : field.name,
-    openHour : field.openHour,
-    closeHour : field.closeHour ,
-    pricePerHour: field.pricePerHour ,
-    size : field.size ,
+    name: field?.name || '',
+    openHour: field?.openHour || '',
+    closeHour: field?.closeHour || '',
+    pricePerHour: field?.pricePerHour || '',
+    size: field?.size || '',
   };
 
   const handleChange = async (values) => {
@@ -61,7 +65,7 @@ const ModalEditField = ({show , handleClose , editField}) => {
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Formik
+          <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleChange}
@@ -69,7 +73,7 @@ const ModalEditField = ({show , handleClose , editField}) => {
             <Form>
               <div className="mb-3">
                 <label className="form-label">Nombre</label>
-                <Field type="text" name="name"  disabled={true} />
+                <Field type="text" name="name" disabled={true} />
                 <ErrorMessage name="name" component="div" />
               </div>
               <div className="mb-3">
@@ -96,14 +100,14 @@ const ModalEditField = ({show , handleClose , editField}) => {
                 <label className="form-label">IdSportCenter</label>
                 <Field type="text" name="IdSportCenter" />
                 <ErrorMessage name="IdSportCenter" component="div" />
-          
-                </div>
+
+              </div>
               <Button variant="primary" type="submit" >
-            Guardar
-          </Button>
-          <Button variant="danger" onClick={handleClose}>
-            Cancel
-          </Button>
+                Guardar
+              </Button>
+              <Button variant="danger" onClick={handleClose}>
+                Cancel
+              </Button>
             </Form>
           </Formik>
         </Modal.Body>
@@ -114,4 +118,4 @@ const ModalEditField = ({show , handleClose , editField}) => {
   );
 };
 
-export default ModalEditField ;
+export default ModalEditField;
