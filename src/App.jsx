@@ -1,3 +1,4 @@
+
 import "./App.css";
 import { ProductProvider } from "./context/ProductContext";
 import Routes from "./routes/routes";
@@ -20,6 +21,7 @@ function App() {
         </BrowserRouter>
       </ProductProvider>
     </AuthProvider>
+
   );
 }
 
