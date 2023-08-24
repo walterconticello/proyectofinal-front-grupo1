@@ -5,13 +5,24 @@
 </head>
 <body>
     <h1>Reserva tu Gol</h1>
-    <p>Una breve descripción de tu proyecto y sus funcionalidades.</p>
-    
-    <h2>Instrucciones de Instalación</h2>
-    <p>Indica aquí los pasos necesarios para instalar y configurar tu proyecto.</p>
+    <p>Proyecto Final de Rolling Code School</p>
+
+    h2>Instrucciones de Instalación</h2>
+    <pre>
+        <code>npm i</code>
+    </pre>
+    <p>Para instalar las dependencias.</p>
     
     <h2>Guía de Uso</h2>
-    <p>Explica cómo los usuarios pueden utilizar tu proyecto. Proporciona ejemplos y comandos relevantes.</p>
+    <pre>
+        <code>npm start</code>
+    </pre>
+    <p>Para ejecutar nuestra app de React.</p>
+    
+    <pre>
+        <code>json-server --watch db.json --port 3004</code>
+    </pre>
+    <p>Para ejecutar nuestra base de datos (Ejecutar en otra terminal/consola distinta a donde se está ejecutando React).</p>
     
     <h2>Configuración</h2>
     <p>Si hay configuraciones personalizables, explica cómo los usuarios pueden modificarlas y su impacto.</p>
