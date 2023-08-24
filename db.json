@@ -2,7 +2,7 @@
   "SportCenter": [
     {
       "ownerId": "615f7dabf4c55e001c9a87f1",
-      "name": "sports center 1",
+      "name": "Riverplate",
       "address": "123 Main St",
       "phone": 1234567890,
       "services": {
@@ -11,7 +11,7 @@
         "Grill": true,
         "parking": true
       },
-      "fields": "football",
+      "fields": "Gameforever",
       "openHour": 8,
       "closeHour": 20,
       "photo": "photo_url_1.jpg",
@@ -24,7 +24,7 @@
     },
     {
       "ownerId": "615f7dabf4c55e001c9a87f1",
-      "name": "sports center 2",
+      "name": "randomly",
       "address": "456 Main St",
       "phone": 1234567890,
       "services": {
@@ -33,7 +33,7 @@
         "Grill": false,
         "parking": true
       },
-      "fields": "basketball",
+      "fields": "futbol 5" ,
       "openHour": 9,
       "closeHour": 21,
       "photo": "photo_url_2.jpg",
@@ -55,7 +55,7 @@
         "Grill": true,
         "parking": true
       },
-      "fields": "tennis",
+      "fields": "futbol 9",
       "openHour": 10,
       "closeHour": 22,
       "photo": "photo_url_3.jpg",
@@ -68,7 +68,7 @@
     },
     {
       "ownerId": "615f7dabf4c55e001c9a87f1",
-      "name": "sports center 4",
+      "name": "sisisi!",
       "address": "1011 Main St",
       "phone": 1234567890,
       "services": {
@@ -77,7 +77,7 @@
         "Grill": true,
         "parking": false
       },
-      "fields": "volleyball",
+      "fields": "futbol 7",
       "openHour": 11,
       "closeHour": 23,
       "photo": "photo_url_4.jpg",
@@ -99,7 +99,7 @@
         "Grill": false,
         "parking": true
       },
-      "fields": "swimming",
+      "fields": "futbol 5",
       "openHour": 12,
       "closeHour": 24,
       "photo": "photo_url_5.jpg",
@@ -121,7 +121,7 @@
         "Grill": true,
         "parking": true
       },
-      "fields": "golf",
+      "fields": "futbol 11",
       "openHour": 13,
       "closeHour": 1,
       "photo": "photo_url_6.jpg",
@@ -143,7 +143,7 @@
         "Grill": true,
         "parking": true
       },
-      "fields": "hockey",
+      "fields": "futbol 9",
       "openHour": 14,
       "closeHour": 2,
       "photo": "photo_url_7.jpg",
@@ -165,7 +165,7 @@
         "Grill": false,
         "parking": true
       },
-      "fields": "baseball",
+      "fields": "futbol 11",
       "openHour": 15,
       "closeHour": 3,
       "photo": "photo_url_8.jpg",
@@ -187,7 +187,7 @@
         "Grill": true,
         "parking": true
       },
-      "fields": "rugby",
+      "fields": "futbol 5",
       "openHour": 16,
       "closeHour": 4,
       "photo": "photo_url_9.jpg",

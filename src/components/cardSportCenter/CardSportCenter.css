@@ -5,21 +5,6 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 } 
-.card-custom {
-  box-shadow: 0 0 10px rgba(0,0,0,.2);
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.2);
-  -moz-box-shadow: 0 0 10px rgba(0,0,0,.2);
-  width: 200px;
-  border: gray 1px solid;
-  border-radius: 10px;
-  margin : 10px;
-  transition: all 0.3s ease-in-out;
-}
-
-.card-custom:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0,0,0,.4);
-}
 
 .card-container {
   justify-content: center;
@@ -44,4 +29,20 @@
   background-image: url('https://img.freepik.com/vector-gratis/fondo-campo-futbol-degradado_52683-67789.jpg');
   background-size: flex;  
   background-position: center;
+}
+
+.card-custom {
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.2);
+  width: 200px;
+  border: gray 1px solid;
+  border-radius: 10px;
+  margin : 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card-custom:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,0,0,.4);
 }

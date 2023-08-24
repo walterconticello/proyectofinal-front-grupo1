@@ -4,7 +4,7 @@ const SportCenter = () => {
   return (
 
     <div className='card-container'>
-      <CardSportCenter />
+      <CardSportCenter/>
     </div>
   )
 };

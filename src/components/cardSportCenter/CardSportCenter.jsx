@@ -5,7 +5,6 @@ import {cardContext} from '../../context/cardContext';
 
 const CardSportCenter = () => {
   const { cards }= useContext(cardContext);
-  
 
     return (
       <>
@@ -14,7 +13,7 @@ const CardSportCenter = () => {
         <div className="card-image-container">
         </div>
         <Card.Body>
-          <Card.Title>{card.name}</Card.Title>
+          <Card.Title className='card-title'>{card.name}</Card.Title>
           <Card.Text>{card.description}</Card.Text>
           <div className="card-buttons d-flex justify-content-between">
             <Button className="button-alquilar">

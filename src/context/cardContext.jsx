@@ -7,6 +7,7 @@ const CardProvider = ({ children }) => {
      const [cards, setCards] = useState([]);
      const [selectedCard, setSelectedCard] = useState(null);
      const [totalPages, setTotalPages] = useState(1);
+     const [searchValue, setSearchValue] = useState("");
      const API =  "http://localhost:3000/SportCenter";
 
      useEffect(() => {
