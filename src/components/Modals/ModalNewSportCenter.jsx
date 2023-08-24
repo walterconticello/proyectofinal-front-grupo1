@@ -82,83 +82,62 @@ const ModalNewSportCenter = ({show , handleClose}) => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <div>
-          <label>Owner ID</label>
+      <div className="mb-3">
+          <label  className="form-label">Name</label>
           <Field type="text" name="ownerId" />
           <ErrorMessage name="ownerId" component="div" />
         </div>
-        <div>
-          <label>Owner ID</label>
+        <div className="mb-3">
+          <label  className="form-label">Direccion</label>
+          <Field type="text" name="ownerId" />
+          <ErrorMessage name="ownerId" component="div" placeholder="Direccion de Google Maps" />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Telefono</label>
           <Field type="text" name="ownerId" />
           <ErrorMessage name="ownerId" component="div" />
         </div>
-        <div>
-          <label>Owner ID</label>
-          <Field type="text" name="ownerId" />
-          <ErrorMessage name="ownerId" component="div" />
-        </div>
-        <div>
-          <label>Owner ID</label>
-          <Field type="text" name="ownerId" />
-          <ErrorMessage name="ownerId" component="div" />
-        </div>
-        <div>
-        <label>Services:</label>
-        <div>
-          <label>
+        <div className="mb-3">
+        <label className="form-label">Services:</label>
+        <div className="mb-3">
+          <label className="form-check">
             <Field type="checkbox" name="services.bar"  />
             Bar
           </label>
-          <label>
+          <label className="form-check">
             <Field type="checkbox" name="services.showers"  />
             Showers
           </label>
-          <label>
+          <label className="form-check ">
             <Field type="checkbox" name="services.Grill"  />
             Grill
           </label>
-          <label>
+          <label className="form-check">
             <Field type="checkbox" name="services.parking" />
             Parking
           </label>
         </div>
         <ErrorMessage name="services" component="div" />
       </div>
-      <div>
-          <label>Owner ID</label>
+        <div className="mb-3">
+          <label className="form-label">Photo</label>
           <Field type="text" name="ownerId" />
           <ErrorMessage name="ownerId" component="div" />
         </div>
+        <div className="mb-3">
+        <label className="form-label">Social:</label>
         <div>
-          <label>Owner ID</label>
-          <Field type="text" name="ownerId" />
-          <ErrorMessage name="ownerId" component="div" />
-        </div>
-      <div>
-        <label>Social:</label>
-        <div>
-          <label>Facebook:</label>
+          <label className="form-label">Facebook:</label>
           <Field type="text" name="social.facebook" />
           <ErrorMessage name="social.facebook" component="div" />
         </div>
         
         <div>
-          <label>Instagram:</label>
+          <label className="form-label">Instagram:</label>
           <Field type="text" name="social.instagram" />
           <ErrorMessage name="social.instagram" component="div" />
         </div>
       </div>
-      <div>
-          <label>Owner ID</label>
-          <Field type="text" name="ownerId" />
-          <ErrorMessage name="ownerId" component="div" />
-        </div>
-        <div>
-          <label>Owner ID</label>
-          <Field type="text" name="ownerId" />
-          <ErrorMessage name="ownerId" component="div" />
-        </div>
-
         <button type="submit">Submit</button>
       </Form>
     </Formik>
