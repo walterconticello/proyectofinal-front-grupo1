@@ -14,20 +14,20 @@
 	background-color: #71B641;
 }
 
-.card {
+.card-home-fields {
 	width: 350px;
 	box-shadow: 0 0 0 2px #222221; 
 }
 
-.card .card-body {
+.card-home-fields .card-body {
 	display: grid;
 }
 
-.card .card-body .card-title {
+.card-home-fields .card-body .card-title {
 	font-weight: 600;
 }
 
-.card .card-body .card-text {
+.card-home-fields .card-body .card-text {
 	font-size: 1.5 rem;
 }
 

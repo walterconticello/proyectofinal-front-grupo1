@@ -18,7 +18,10 @@
     background-color: #71B641 !important;
     color: white !important;
   }
-
+.card-store{
+  
+  box-shadow: none !important;
+}
   .card-image-container {
     display: flex;
     justify-content: center;

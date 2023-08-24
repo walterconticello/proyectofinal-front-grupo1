@@ -86,7 +86,7 @@ const ProductCards = () => {
                   lg={4}
                   className="mb-4"
                 >
-                  <Card className="h-100">
+                  <Card className="h-100 card-store">
                     <div className="card-image-container">
                       <Card.Img
                         src={product.image.url}

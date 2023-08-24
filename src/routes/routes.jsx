@@ -3,6 +3,7 @@ import Store from "../pages/store/Store";
 import Home from "../pages/Home/Home";
 import List from "../pages/list/List";
 import ProductDetails from "../pages/store/productDetails/ProductDetails";
+import Contact from "../pages/Contact/Contact";
 import Login from "../pages/Login/Login";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
@@ -22,7 +23,14 @@ const Routes = () => {
       <Route exact path="/contact" element={<Contact />} />
 
       <Route path="/complejos" element={<List />} />
-      <Route path="/store/product/:productId" element={<PrivateRoute><ProductDetails /></PrivateRoute>} />
+      <Route
+        path="/store/product/:productId"
+        element={
+          <PrivateRoute>
+            <ProductDetails />
+          </PrivateRoute>
+        }
+      />
       <Route path="/login" element={<Login />} />
       <Route
         path="/perfil"
