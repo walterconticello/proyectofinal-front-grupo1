@@ -1,6 +1,8 @@
 import {useState , useContext} from 'react'
 import { Button , Modal } from 'react-bootstrap'
 import { Formik, Form, Field, ErrorMessage} from 'formik';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import * as Yup from 'yup';
 import { SportCenterContext } from '../../context/CenterContext';
 
@@ -51,18 +53,7 @@ const ModalNewSportCenter = ({show , handleClose}) => {
       location: '',
     };
 
-    
-
-    const handleSubmit = async (e , values) => {
-      e.preventDefault();
-      postSportCenter(values)
-      // Swal.fire({
-      //   icon: "success",
-      //   title: "Producto agregado",
-      //   showConfirmButton: false,
-      //   timer: 1500,
-      e.target.reset();
-      };
+  
     
 
   // const { postSportCenter } = useContext(SportCenterContext);
@@ -77,10 +68,22 @@ const ModalNewSportCenter = ({show , handleClose}) => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      validateOnChange
-      validateOnBlur
-      onSubmit={handleSubmit}
+      onSubmit={async (values, actions) => {
+        try {
+          await postSportCenter(values);
+          handleClose();
+          getSportCenter();
+          toast.success("Complejo Creado Exitosamente", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        } catch (error) {
+          toast.error("Error al cargar el complejo", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        }
+      }}
     >
+      {({ handleSubmit, setFieldValue }) => (
       <Form>
       <div className="mb-3">
           <label  className="form-label">Name</label>
@@ -140,6 +143,7 @@ const ModalNewSportCenter = ({show , handleClose}) => {
       </div>
         <button type="submit">Submit</button>
       </Form>
+      )};
     </Formik>
         </Modal.Body>
         <Modal.Footer>
@@ -149,6 +153,7 @@ const ModalNewSportCenter = ({show , handleClose}) => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer />
     </>
   );
 };
