@@ -10,7 +10,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
 const navigation = [
-  { name: "Home", href: "/", current: false },
+  { name: "Inicio", href: "/", current: false },
   { name: "Store", href: "/store", current: false },
   // Agregar otras rutas aqui
 ];
