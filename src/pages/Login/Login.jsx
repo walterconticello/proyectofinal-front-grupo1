@@ -3,7 +3,8 @@ import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
 import logSVG from "../../assets/log.svg";
 import logReg from "../../assets/register.svg";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
+import { toast } from 'react-toastify';
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +12,8 @@ const Login = () => {
 	const { login, register, authenticated, user } = useContext(AuthContext);
 	const [isSignUp, setIsSignUp] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [loginLoading, setLoginLoading] = useState(false);
+	const [registerLoading, setRegisterLoading] = useState(false);
 	const navigate = useNavigate();
 
 	const loginValidationSchema = Yup.object().shape({
@@ -39,7 +42,7 @@ const Login = () => {
 			.email("Correo electrónico inválido")
 			.required("El correo electrónico es obligatorio")
 			.min(4, "El correo electrónico debe tener al menos 4 caracteres")
-			.max(24, "El correo electrónico debe tener como máximo 24 caracteres"),
+			.max(36, "El correo electrónico debe tener como máximo 24 caracteres"),
 		password: Yup.string()
 			.required("La contraseña es obligatoria")
 			.min(6, "La contraseña debe tener al menos 6 caracteres")
@@ -50,45 +53,55 @@ const Login = () => {
 			),
 	});
 
-
 	const handleToggleMode = () => {
 		setIsSignUp(!isSignUp);
 	};
 
-
 	const handleLoginSubmit = async (values, { setSubmitting }) => {
-		setIsLoading(true);
+		setLoginLoading(true);
 		try {
 			await login(values);
-			navigate('/')
+			toast.success('Inicio de sesión exitoso', {
+				position: toast.POSITION.TOP_CENTER,
+				autoClose: 2000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+			navigate('/');
 		} catch (error) {
-			console.error("Login error:", error);
+			toast.error('Error al iniciar sesión. Por favor, verifica tus credenciales y la conexión al servidor.', {
+				position: toast.POSITION.TOP_CENTER,
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
 		} finally {
-			setIsLoading(false);
+			setLoginLoading(false);
 			setSubmitting(false);
 		}
 	};
 
 	const handleRegisterSubmit = async (values, { setSubmitting }) => {
-		setIsLoading(true);
+		setRegisterLoading(true);
 		try {
 			await register(values);
+			toast.success('Registro exitoso');
 		} catch (error) {
-			console.error("Register error:", error);
+			toast.error('Error al registrar. Por favor, verifica tus datos y la conexión al servidor.');
 		} finally {
-			setIsLoading(false);
-			setSubmitting(false); 
+			setRegisterLoading(false);
+			setSubmitting(false);
 		}
 	};
 
 	return (
 		<>
-			{authenticated && user && (
-				<div className="authenticated-message">
-					<h2>Welcome, {user.username}!</h2>
-					{/* You can add more information or actions for authenticated users */}
-				</div>
-			)}
 			<div className={`container1 ${isSignUp ? "sign-up-mode" : ""}`}>
 				<div className="forms-container">
 					<div className="signin-signup">
@@ -100,71 +113,35 @@ const Login = () => {
 							{({ isSubmitting, errors, touched, isValid }) => (
 								<Form className="sign-in-form">
 									<h2 className="title">Ingresar</h2>
-									<div
-										className={`input-field ${errors.username && touched.username
-											? "input-error"
-											: ""
-											} ${touched.username && isValid ? "input-success" : ""
-											}`}
-									>
+									<div className={`input-field ${errors.username && touched.username ? "input-error" : ""} ${touched.username && isValid ? "input-success" : ""}`}>
 										<i className="fas fa-user"></i>
 										<Field
 											type="text"
 											placeholder="Nombre de Usuario"
 											name="username"
-											className={`${errors.username && touched.username
-												? "input-error"
-												: ""
-												} ${touched.username && isValid ? "input-success" : ""
-												}`}
+											className={`${errors.username && touched.username ? "input-error" : ""} ${touched.username && isValid ? "input-success" : ""}`}
 										/>
 									</div>
-									{errors.username && touched.username && (
-										<div className="error-message">{errors.username}</div>
-									)}
-
-									<div
-										className={`input-field ${errors.password && touched.password
-											? "input-error"
-											: ""
-											} ${touched.password && isValid ? "input-success" : ""
-											}`}
-									>
+									{errors.username && touched.username && <div className="error-message">{errors.username}</div>}
+									<div className={`input-field ${errors.password && touched.password ? "input-error" : ""} ${touched.password && isValid ? "input-success" : ""}`}>
 										<i className="fas fa-lock"></i>
 										<Field
 											type="password"
 											placeholder="Contraseña"
 											name="password"
-											className={`${errors.password && touched.password
-												? "input-error"
-												: ""
-												} ${touched.password && isValid ? "input-success" : ""
-												}`}
+											className={`${errors.password && touched.password ? "input-error" : ""} ${touched.password && isValid ? "input-success" : ""}`}
 										/>
 									</div>
 									{errors.password && touched.password && <div className="error-message">{errors.password}</div>}
-
-									<button
-										type="submit"
-										className={`btn1 solid ${isLoading || isSubmitting ? "disabled" : ""}`}
-										disabled={isLoading || isSubmitting}
-									>
+									<button type="submit" className={`btn1 solid ${isLoading || isSubmitting ? "disabled" : ""}`} disabled={isLoading || isSubmitting}>
 										{isLoading || isSubmitting ? "Cargando..." : "Ingresar"}
 									</button>
 									<p className="social-text">O inicia con redes sociales</p>
 									<div className="social-media">
-										<a href="#" className="social-icon">
-											<i className="fab fa-facebook-f"></i>
-										</a>
-										<a href="#" className="social-icon">
-											<i className="fab fa-twitter"></i>
-										</a>
-										<a href="#" className="social-icon">
-											<i className="fab fa-google"></i>
-										</a>
-										<a href="#" className="social-icon">
-											<i className="fab fa-linkedin-in"></i>
-										</a>
+										<a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
+										<a href="#" className="social-icon"><i className="fab fa-twitter"></i></a>
+										<a href="#" className="social-icon"><i className="fab fa-google"></i></a>
+										<a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
 									</div>
 								</Form>
 							)}
@@ -175,92 +152,68 @@ const Login = () => {
 							validationSchema={registerValidationSchema}
 							onSubmit={handleRegisterSubmit}
 						>
-							{({ isSubmitting, errors, touched }) => (
+							{({ isSubmitting, errors, touched, isValid }) => (
 								<Form className="sign-up-form">
 									<h2 className="title">Registrarse</h2>
-									<div className={`input-field ${errors.username && touched.username ? 'input-error' : ''}`}>
+									<div className={`input-field ${errors.username && touched.username ? "input-error" : ""} ${touched.username && isValid ? "input-success" : ""}`}>
 										<i className="fas fa-user"></i>
 										<Field
 											type="text"
 											placeholder="Nombre de Usuario"
 											name="username"
-											className={errors.username && touched.username ? 'input-error' : ''}
+											className={`${errors.username && touched.username ? "input-error" : ""} ${touched.username && isValid ? "input-success" : ""}`}
 										/>
 									</div>
 									{errors.username && touched.username && <div className="error-message">{errors.username}</div>}
-
-									<div className={`input-field ${errors.email && touched.email ? 'input-error' : ''}`}>
+									<div className={`input-field ${errors.email && touched.email ? "input-error" : ""} ${touched.email && isValid ? "input-success" : ""}`}>
 										<i className="fas fa-envelope"></i>
 										<Field
 											type="email"
 											placeholder="Email"
 											name="email"
-											className={errors.email && touched.email ? 'input-error' : ''}
+											className={`${errors.email && touched.email ? "input-error" : ""} ${touched.email && isValid ? "input-success" : ""}`}
 										/>
 									</div>
 									{errors.email && touched.email && <div className="error-message">{errors.email}</div>}
-
-									<div className={`input-field ${errors.password && touched.password ? 'input-error' : ''}`}>
+									<div className={`input-field ${errors.password && touched.password ? "input-error" : ""} ${touched.password && isValid ? "input-success" : ""}`}>
 										<i className="fas fa-lock"></i>
 										<Field
 											type="password"
 											placeholder="Contraseña"
 											name="password"
-											className={errors.password && touched.password ? 'input-error' : ''}
+											className={`${errors.password && touched.password ? "input-error" : ""} ${touched.password && isValid ? "input-success" : ""}`}
 										/>
 									</div>
 									{errors.password && touched.password && <div className="error-message">{errors.password}</div>}
-
-									<button
-										type="submit"
-										className={`btn1 solid ${isLoading || isSubmitting ? "disabled" : ""}`}
-										disabled={isLoading || isSubmitting}
-									>
+									<button type="submit" className={`btn1 solid ${isLoading || isSubmitting ? "disabled" : ""}`} disabled={isLoading || isSubmitting}>
 										{isLoading || isSubmitting ? "Cargando..." : "Registrarme"}
 									</button>
 									<p className="social-text">O registrate con redes sociales</p>
 									<div className="social-media">
-										<a href="#" className="social-icon">
-											<i className="fab fa-facebook-f"></i>
-										</a>
-										<a href="#" className="social-icon">
-											<i className="fab fa-twitter"></i>
-										</a>
-										<a href="#" className="social-icon">
-											<i className="fab fa-google"></i>
-										</a>
-										<a href="#" className="social-icon">
-											<i className="fab fa-linkedin-in"></i>
-										</a>
+										<a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
+										<a href="#" className="social-icon"><i className="fab fa-twitter"></i></a>
+										<a href="#" className="social-icon"><i className="fab fa-google"></i></a>
+										<a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
 									</div>
 								</Form>
 							)}
 						</Formik>
 					</div>
 				</div>
-
 				<div className="panels-container">
 					<div className="panel left-panel">
 						<div className="content">
 							<h3>¿Nuevo aquí?</h3>
-							<p>
-								Bienvenido al formulario de registro. ¡Únete a nuestra comunidad hoy mismo y comienza a disfrutar de todos los beneficios!
-							</p>
-							<button className="btn1 transparent" id="sign-up-btn" onClick={handleToggleMode}>
-								Registrarse
-							</button>
+							<p>Bienvenido al formulario de registro. ¡Únete a nuestra comunidad hoy mismo y comienza a disfrutar de todos los beneficios!</p>
+							<button className="btn1 transparent" id="sign-up-btn" onClick={handleToggleMode}>Registrarse</button>
 						</div>
 						<img src={logSVG} className="image" alt="" />
 					</div>
 					<div className="panel right-panel">
 						<div className="content">
 							<h3>¿Uno de nosotros?</h3>
-							<p>
-								Bienvenido de vuelta. Inicie sesión en su cuenta para acceder a todas las funciones y contenido exclusivo que ofrecemos.
-							</p>
-							<button className="btn1 transparent" id="sign-in-btn" onClick={handleToggleMode}>
-								Iniciar sesión
-							</button>
+							<p>Bienvenido de vuelta. Inicie sesión en su cuenta para acceder a todas las funciones y contenido exclusivo que ofrecemos.</p>
+							<button className="btn1 transparent" id="sign-in-btn" onClick={handleToggleMode}>Iniciar sesión</button>
 						</div>
 						<img src={logReg} className="image" alt="" />
 					</div>
@@ -270,4 +223,4 @@ const Login = () => {
 	);
 };
 
-export default Login
+export default Login;

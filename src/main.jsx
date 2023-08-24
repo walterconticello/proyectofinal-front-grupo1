@@ -4,6 +4,7 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
 import App from "./App.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 // eslint-disable-next-line no-unused-vars
 import * as bootstrap from "bootstrap";
 

@@ -6,11 +6,20 @@ import { Navigate } from "react-router-dom";
 const PrivateRoute = ({ children }) => {
   const { getAuth, authenticated, loading } = useContext(AuthContext);
 
-  useEffect(() => {
-    getAuth();
-  }, []);
 
-  return loading ? <></> : authenticated ? children : <Navigate to="/login" />;
+
+	useEffect(() => {
+		getAuth();
+	}, [])
+
+	return loading ? (
+		<></>
+	) : authenticated ? (
+		children
+	) : (
+		<Navigate to="/" />
+	);
+
 };
 
 export default PrivateRoute;

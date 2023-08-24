@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import axios from '../config/axios';
 import { createContext, useEffect, useState } from 'react';
 
@@ -17,15 +18,16 @@ export const AuthProvider = ({ children }) => {
 			localStorage.setItem("access_token", data.token);
 		} catch (error) {
 			console.error("Login error:", error);
+			throw error;
 		}
 	};
 
 	const register = async (values) => {
 		try {
 			const { data } = await axios.post("/api/auth/register", values);
-			console.log("Registered user:", data);
 		} catch (error) {
 			console.error("Register error:", error);
+			throw error;
 		}
 	};
 
@@ -48,10 +50,23 @@ export const AuthProvider = ({ children }) => {
 	};
 
 	const logout = () => {
-		setUser(null);
-		setAuthenticated(false);
-		axios.defaults.headers.common["access_token"] = "";
-		localStorage.removeItem("access_token");
+		try {
+			setUser(null);
+			setAuthenticated(false);
+			axios.defaults.headers.common["access_token"] = "";
+			localStorage.removeItem("access_token");
+			toast.success('Cerraste tu sesión! ¡Vuelve pronto!', {
+				position: toast.POSITION.TOP_CENTER,
+				autoClose: 2000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+		} catch (error) {
+			console.error("Logout error:", error);
+		}
 	};
 
 

@@ -1,3 +1,4 @@
+
 import "./App.css";
 import { ProductProvider } from "./context/ProductContext";
 import Routes from "./routes/routes";
@@ -7,20 +8,25 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import AuthProvider from "./context/AuthContext";
 import { SalesProvider } from "./context/SalesContext";
 
+import { ToastContainer } from "react-toastify";
+
 function App() {
   return (
-    <AuthProvider>
-      <SalesProvider>
-        <ProductProvider>
-          <BrowserRouter>
-            <ScrollToTop />
-            <Layout>
-              <Routes />
-            </Layout>
-          </BrowserRouter>
-        </ProductProvider>
-      </SalesProvider>
+    <AuthProvider>    
+    <SalesProvider>
+      <ProductProvider>
+    
+        <BrowserRouter>
+          <ScrollToTop />
+          <Layout>
+            <Routes />
+            <ToastContainer />
+          </Layout>
+        </BrowserRouter>
+      </ProductProvider>
+    </SalesProvider>
     </AuthProvider>
+
   );
 }
 

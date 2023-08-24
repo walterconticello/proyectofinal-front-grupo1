@@ -193,3 +193,7 @@
 .cardProfile .profileContent .detailsProfile .actionBtnProfile button:hover {
 	opacity: 1;
 }
+
+.editIconProfile {
+	cursor: pointer;
+}
