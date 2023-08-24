@@ -64,10 +64,10 @@ const CardCenter = () => {
                   Ver Complejo
                 </Button>
                     <Button variant="" id="edit" onClick={() => handleEdit(complex)}>
-                      <Image src="src\img\Editar.png" rounded fluid />
+                      <Image src="src/assets/Editar.png" rounded fluid />
                     </Button>
                     <Button variant="" id="edit" onClick={() => handleDelete(complex._id)}>
-                      <Image src="src\img\Delete.png" rounded fluid />
+                      <Image src="src\assets\Delete.png" rounded fluid />
                     </Button>
                     </div>
               </Card.Body>

@@ -72,49 +72,51 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+        <div className="form-container mb-3">
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleChange}
           >
+            
             <Form>
               <div className="mb-3">
                 <label className="form-label">Owner ID</label>
-                <Field type="text" name="ownerId"  disabled={true} />
+                <Field type="text" name="ownerId" className="form-label"  disabled={true} />
                 <ErrorMessage name="ownerId" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Name</label>
-                <Field type="text" name="name" />
+                <Field type="text" name="name" className="form-label" />
                 <ErrorMessage name="name" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Address</label>
-                <Field type="text" name="address" />
+                <Field type="text" name="address" className="form-label"/>
                 <ErrorMessage name="address" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Phone</label>
-                <Field type="text" name="phone" />
+                <Field type="text" name="phone" className="form-label" />
                 <ErrorMessage name="phone" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Services:</label>
                 <div className="mb-3">
                   <label className="form-check">
-                    <Field type="checkbox" name="services.bar" />
+                    <Field type="checkbox" name="services.bar" className="form-label" />
                     Bar
                   </label>
                   <label className="form-check">
-                    <Field type="checkbox" name="services.showers" />
+                    <Field type="checkbox" name="services.showers" className="form-label" />
                     Showers
                   </label>
                   <label className="form-check ">
-                    <Field type="checkbox" name="services.Grill" />
+                    <Field type="checkbox" name="services.Grill" className="form-label" />
                     Grill
                   </label>
                   <label className="form-check">
-                    <Field type="checkbox" name="services.parking" />
+                    <Field type="checkbox" name="services.parking" className="form-label" />
                     Parking
                   </label>
                 </div>
@@ -122,30 +124,30 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
               </div>
               <div className="mb-3">
                 <label className="form-label">Imagen</label>
-                <Field type="text" name="photo" />
+                <Field type="text" name="photo" className="form-label" />
                 <ErrorMessage name="photo" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Social:</label>
                 <div>
                   <label className="form-label">Facebook:</label>
-                  <Field type="text" name="social.facebook" />
+                  <Field type="text" name="social.facebook" className="form-label" />
                   <ErrorMessage name="social.facebook" component="div" />
                 </div>
                 <div>
                   <label className="form-label">Instagram:</label>
-                  <Field type="text" name="social.instagram" />
+                  <Field type="text" name="social.instagram" className="form-label" />
                   <ErrorMessage name="social.instagram" component="div" />
                 </div>
               </div>
               <div className="mb-3">
                 <label className="form-label">Latitude</label>
-                <Field type="number" name="latitude" />
+                <Field type="number" name="latitude"  className="form-label"/>
                 <ErrorMessage name="latitude" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Location</label>
-                <Field type="text" name="location" />
+                <Field type="text" name="location" className="form-label" />
                 <ErrorMessage name="location" component="div" />
               </div>
               <Button variant="primary" type="submit" >
@@ -156,6 +158,7 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
           </Button>
             </Form>
           </Formik>
+          </div>
         </Modal.Body>
         <Modal.Footer>
         </Modal.Footer>

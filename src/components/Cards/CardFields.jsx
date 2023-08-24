@@ -1,4 +1,4 @@
-import React , { useContext, useState  } from "react";
+import React , { useContext, useState , useEffect  } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ModalEditField from "../Modals/ModalEditFields";
@@ -9,9 +9,8 @@ import "./Card.css";
 
 const CardField = () => {
 
-  const { fields , deleteField } = useContext(FieldsContext);
-
-
+  const { fields , deleteField , loading } = useContext(FieldsContext);
+  const [dataLoaded, setDataLoaded] = useState(false);
   const [editField , setEditField] = useState();
  
   const [show, setShow] = useState(false);
@@ -65,7 +64,7 @@ const CardField = () => {
     <>
     <div  className="d-flex flex-wrap justify-content-between gap-3 m-3 container-fluid">
        {fields === undefined ? "No hay canchas" : fields.map((field) => (
-        <React.Fragment key={field.id}>
+        <React.Fragment key={field._id}>
               <Card style={{ width: '18rem' }} >
                 <Card.Img variant="top" src="src\img\Ejemplos\2.jpg" />
                 <Card.Body className="d-flex flex-column">
@@ -75,10 +74,10 @@ const CardField = () => {
                       Ver Cancha
                     </Button>
                     <Button variant="" id="edit" onClick={() => handleEdit(field)}>
-                      <Image src="src\img\Editar.png" rounded fluid />
+                      <Image src="src/assets/Editar.png" rounded fluid />
                     </Button>
                     <Button variant="" id="edit" onClick={() => handleDelete(field._id)}>
-                      <Image src="src\img\Delete.png" rounded fluid />
+                      <Image src="src/assets/Delete.png" rounded fluid />
                     </Button>
                   </div>
                 </Card.Body>

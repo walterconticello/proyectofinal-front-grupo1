@@ -53,6 +53,10 @@ const ModalEditField = ({ show, handleClose, editField }) => {
       console.log(error);
     }
   };
+  
+  useEffect(() => {
+    setField(editField);
+  }, [editField]);
 
   return (
     <>

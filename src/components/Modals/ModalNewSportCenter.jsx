@@ -73,41 +73,42 @@ const ModalNewSportCenter = ({ show, handleClose }) => {
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <div className="form-container mb-3">
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
-            <Form>
+            <Form className="modal-form">
               <div className="mb-3">
-                <label className="form-label">Owner ID</label>
-                <Field type="text" name="ownerId"  disabled={true} />
+                <Form className="form-label">Owner ID</Form>
+                <Field type="text" name="ownerId"className="form-control"  disabled={true} />
                 <ErrorMessage name="ownerId" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Name</label>
-                <Field type="text" name="name" />
+                <Field type="text" name="name" className="form-control" />
                 <ErrorMessage name="name" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Address</label>
-                <Field type="text" name="address" />
+                <Field type="text" name="address" className="form-control" />
                 <ErrorMessage name="address" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Phone</label>
-                <Field type="text" name="phone" />
+                <Field type="text" name="phone" className="form-control" />
                 <ErrorMessage name="phone" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Services:</label>
                 <div className="mb-3">
                   <label className="form-check">
-                    <Field type="checkbox" name="services.bar" />
+                    <Field type="checkbox" name="services.bar" className="check-control" />
                     Bar
                   </label>
                   <label className="form-check">
-                    <Field type="checkbox" name="services.showers" />
+                    <Field type="checkbox" name="services.showers"  className="check-control"/>
                     Showers
                   </label>
                   <label className="form-check ">
@@ -123,40 +124,43 @@ const ModalNewSportCenter = ({ show, handleClose }) => {
               </div>
               <div className="mb-3">
                 <label className="form-label">Imagen</label>
-                <Field type="text" name="photo" />
+                <Field type="text" name="photo" className="form-control" />
                 <ErrorMessage name="photo" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Social:</label>
                 <div>
                   <label className="form-label">Facebook:</label>
-                  <Field type="text" name="social.facebook" />
+                  <Field type="text" name="social.facebook"  className="form-control"/>
                   <ErrorMessage name="social.facebook" component="div" />
                 </div>
                 <div>
                   <label className="form-label">Instagram:</label>
-                  <Field type="text" name="social.instagram" />
+                  <Field type="text" name="social.instagram" className="form-control" />
                   <ErrorMessage name="social.instagram" component="div" />
                 </div>
               </div>
               <div className="mb-3">
                 <label className="form-label">Latitude</label>
-                <Field type="number" name="latitude" />
+                <Field type="number" name="latitude" className="form-control" />
                 <ErrorMessage name="latitude" component="div" />
               </div>
               <div className="mb-3">
                 <label className="form-label">Location</label>
-                <Field type="text" name="location" />
+                <Field type="text" name="location" className="form-control" />
                 <ErrorMessage name="location" component="div" />
               </div>
+              <div className="d-flex justify-content-end">
               <Button variant="primary" type="submit" >
             Guardar
           </Button>
           <Button variant="danger" onClick={handleClose}>
             Cancel
           </Button>
+          </div>
             </Form>
           </Formik>
+          </div>
         </Modal.Body>
         <Modal.Footer>
         </Modal.Footer>

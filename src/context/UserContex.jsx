@@ -11,6 +11,10 @@ const UserContext = ({children}) => {
     const [loading, setLoading] = useState(true);
     const API = "http://localhost:5500/api/user/";
 
+    useEffect(() => {
+        getUsers();
+      }, [setLoading]);
+
     const getUsers = async () => {
         try {
             const response = await axios.get(`${API}`)
@@ -65,10 +69,6 @@ const UserContext = ({children}) => {
         localStorage.removeItem("user")
         window.location.href = "/login"
     }
-
-    useEffect(() => {
-        getUsers();
-      }, [setLoading]);
 
   return (
     <UsersContext.Provider value={{users, setUsers, logout ,addUser , deleteUser ,viewProfileId ,updateUser, loading}}>

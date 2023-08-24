@@ -7,7 +7,7 @@ import "./Card.css";
 
 
 const CardUsers = () => {
-  const [status, setStatus] = useState(false);
+  const [user, setUser] = useState(false);
   const [dataLoaded, setDataLoaded] = useState(false);
   const {users ,userDelete , updateUser , loading } = useContext(UsersContext)
 
@@ -33,6 +33,13 @@ const CardUsers = () => {
     });
     
   };
+
+  useEffect(() => {
+    if (!loading) {
+      setDataLoaded(true);
+    }
+  }, [loading]);
+
   const statusText = user.status ? "Suspendido" : "Activo";
   // const { users , deleteUsers ,viewProfileId} = useContext(UsersContext);
 
@@ -79,8 +86,10 @@ return (
             checked={status} // Establecer el estado del switch
             onChange={() => handleSwitchChange(user.status)} // Manejar cambios en el switch
         />
-        <Button variant="" id="edit" onClick={() => handleDelete(user._id)}></Button>
+        <div className="d-flex justify-content-between">
+        <Button variant="" id="edit" onClick={() => handleDelete(user._id)}><img src="src/assets/Delete.png"/></Button>
         <Button variant="primary">Go somewhere</Button>
+        </div>
       </Card.Body>
     </Card>
     </>

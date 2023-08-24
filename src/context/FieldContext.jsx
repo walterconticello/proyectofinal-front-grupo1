@@ -5,6 +5,7 @@ export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
   const [fields, setFields] = useState([]);
+  const [loading, setLoading] = useState(true); 
   const API = "http://localhost:5500/api/fields/";
   const getFields = async () => {
     try {
