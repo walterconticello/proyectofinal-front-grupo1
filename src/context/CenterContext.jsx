@@ -10,9 +10,8 @@ const CenterContext = ({ children }) => {
 
     const getSportCenter= async () => {
         try {
-            const response = await axios.get("http://localhost:4000/api/sportCenter")
+            const response = await axios.get("http://localhost:5500/api/sportCenter")
             setComplexs(response.data)
-            console.log(response.data)
         } catch (error) {
             console.log(error)
         }
@@ -20,8 +19,9 @@ const CenterContext = ({ children }) => {
 
 
     const postSportCenter = async (complexs) =>{
+        console.log("data"+ complexs)
         try {
-            const response = axios.post("http://localhost:4000/api/sportCenter", complexs)
+            const response = axios.post("http://localhost:5500/api/sportCenter", complexs)
             console.log(response)
         }catch (error){
             console.log(error)
@@ -32,7 +32,7 @@ const CenterContext = ({ children }) => {
     const deleteSportCenter = async (id) => {
         console.log(id, "id de context");
         try {
-          await axios.delete(`http://localhost:4000/api/sportCenter/${id}`);
+          await axios.delete(`http://localhost:5500/api/sportCenter/${id}`);
           const deleteComplex = complexs.filter((complex) => complex.id !== id);
           setComplexs(deleteComplex);
         } catch (error) {
@@ -43,7 +43,7 @@ const CenterContext = ({ children }) => {
       const updateSportCenter = async (complexs) => {
         console.log(complexs);
         try{
-            await axios.put(`http://localhost:4000/api/sportCenter/${complexs.id}`);
+            await axios.put(`http://localhost:5500/api/sportCenter/${complexs.id}`);
         } catch(error){
             console.log(error, "error al editar");
         }

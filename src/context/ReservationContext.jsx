@@ -9,7 +9,7 @@ const ReserveContext = ({ children }) => {
 
     const getReservations = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/reservation")
+            const response = await axios.get("http://localhost:5500/api/reservation")
             setBookings(response.data)
         } catch (error) {
             console.log(error)
@@ -18,7 +18,7 @@ const ReserveContext = ({ children }) => {
 
     const postReseration = async (bookings) =>{
         try {
-            const response = axios.post("http://localhost:3000/resevation", bookings)
+            const response = axios.post("http://localhost:5500/api/resevation", bookings)
             console.log(response)
         }catch (error){
             console.log(error)
@@ -28,7 +28,7 @@ const ReserveContext = ({ children }) => {
     const deleteResevation = async (id) => {
         console.log(id, "id de context");
         try {
-          await axios.delete(`http://localhost:3000/reservation/${id}`);
+          await axios.delete(`http://localhost:5500/reservation/${id}`);
           const deleteResevation = bookings.filter((booking) => booking.id !== id);
           setBookings(deleteResevation);
         } catch (error) {
@@ -39,7 +39,7 @@ const ReserveContext = ({ children }) => {
       const viewBooking = async (id) => {
         console.log(id);
         try {
-              await axios.get(`http://localhost:3000/reservation/${id}`)  
+              await axios.get(`http://localhost:5500/reservation/${id}`)  
           const viewBooking = bookings.filter((booking) => booking.id !== id);
           console.log(viewBooking);      
       }catch (error) {
