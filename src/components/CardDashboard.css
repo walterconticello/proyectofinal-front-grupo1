@@ -1,0 +1,14 @@
+
+#cardDash{
+    width: 18rem;
+    position: relative;
+    border: 0.5px solid #71B641;
+    border-radius: 12px;
+    padding: 15px;
+    transition: box-shadow 0.4s, transform 0.4s;
+  }
+  #cardDash:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+  

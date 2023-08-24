@@ -1,0 +1,40 @@
+/* Add this CSS to your existing stylesheet or in a <style> tag within your component */
+
+.modal-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+}
+
+.check-control {
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .modal-form {
+    grid-template-columns: 1fr;
+  }
+}
+.modal-form button {
+  background-color: #007bff; /* Change to the desired background color */
+  color: #ffffff; /* Change to the desired text color */
+  border: none;
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-form button:hover {
+  background-color: #0056b3; /* Change to the desired hover background color */
+}
+
+/* Add this CSS to remove transparency from checkboxes */
+.form-check input[type="checkbox"] {
+  opacity: 1;
+}
