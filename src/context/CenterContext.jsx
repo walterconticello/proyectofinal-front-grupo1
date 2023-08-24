@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 import { createContext, useEffect, useState } from "react";
 
 export const SportCenterContext = createContext()
@@ -7,10 +7,12 @@ const CenterContext = ({ children }) => {
 
     const [complexs, setComplexs] = useState([]);
 
+
     const getSportCenter= async () => {
         try {
-            const response = await axios.get("http://localhost:3000/SportCenter")
+            const response = await axios.get("http://localhost:4000/api/sportCenter")
             setComplexs(response.data)
+            console.log(response.data)
         } catch (error) {
             console.log(error)
         }
@@ -19,7 +21,7 @@ const CenterContext = ({ children }) => {
 
     const postSportCenter = async (complexs) =>{
         try {
-            const response = axios.post("http://localhost:3000/SportCenter", complexs)
+            const response = axios.post("http://localhost:4000/api/sportCenter", complexs)
             console.log(response)
         }catch (error){
             console.log(error)
@@ -30,7 +32,7 @@ const CenterContext = ({ children }) => {
     const deleteSportCenter = async (id) => {
         console.log(id, "id de context");
         try {
-          await axios.delete(`http://localhost:3000/SportCenter/${id}`);
+          await axios.delete(`http://localhost:4000/api/sportCenter/${id}`);
           const deleteComplex = complexs.filter((complex) => complex.id !== id);
           setComplexs(deleteComplex);
         } catch (error) {
@@ -41,7 +43,7 @@ const CenterContext = ({ children }) => {
       const updateSportCenter = async (complexs) => {
         console.log(complexs);
         try{
-            await axios.put(`http://localhost:3000/SportCenter/${complexs.id}`);
+            await axios.put(`http://localhost:4000/api/sportCenter/${complexs.id}`);
         } catch(error){
             console.log(error, "error al editar");
         }
