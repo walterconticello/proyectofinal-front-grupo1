@@ -1,17 +1,13 @@
 import { createContext , useState, useEffect } from "react";
 import axios from 'axios';
 
-const cardContext = createContext();
+export const cardContext = createContext();
 
 const CardProvider = ({ children }) => {
      const [cards, setCards] = useState([]);
      const [selectedCard, setSelectedCard] = useState(null);
      const [totalPages, setTotalPages] = useState(1);
      const API =  "http://localhost:3000/SportCenter";
-
-     useEffect(() => {
-        getCards();
-        }, []);
 
         //GET ALL CARDS
 
@@ -30,7 +26,6 @@ const CardProvider = ({ children }) => {
         const getCard = async (id) => {
             try {
               const response = await axios.get(`${API}/${id}`);
-              console.log(id);
               const complexId = cards.filter((card) => card.id === id);
               console.log(complexId);
               setSelectedCard(complexId);
@@ -97,7 +92,5 @@ const CardProvider = ({ children }) => {
     );
 };
 
-export { CardProvider , cardContext };
-
-export default cardContext;
+export default CardProvider;
 // Path: src\components\cardSportCenter\CardSportCenter.jsx
