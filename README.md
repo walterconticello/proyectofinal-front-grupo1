@@ -7,7 +7,7 @@
     <h1>Reserva tu Gol</h1>
     <p>Proyecto Final de Rolling Code School</p>
 
-    h2>Instrucciones de Instalación</h2>
+    <h2>Instrucciones de Instalación</h2>
     <pre>
         <code>npm i</code>
     </pre>
