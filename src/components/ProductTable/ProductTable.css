@@ -27,7 +27,7 @@
     background-color: #f2f2f2;
   }
   
-  button {
+  .table-container button {
     /* padding: 5px 10px; */
     background-color: #dc3545 !important;
     color: white;
@@ -39,7 +39,7 @@
 
   }
   
-  button:hover {
+  .table-container button:hover {
     background-color: #c82333;
   }
   
