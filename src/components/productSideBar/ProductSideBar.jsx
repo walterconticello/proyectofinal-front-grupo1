@@ -24,16 +24,16 @@ const ProductSideBar = ({
   };
 
   return (
-    <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+    <div className={`sidebar  ${isSidebarOpen ? "open" : ""}`}>
       <h5>Filtrar</h5>
-      <Form>
+      <Form className="form-store">
         {uniqueCategories.map((category) => (
           <Form.Check
             key={category}
             type="checkbox"
             label={category}
             value={category}
-            className="category-field custom-checkbox p-3"
+            className="category-field custom-checkbox w-100"
             checked={selectedCategories.includes(category)}
             onChange={handleCategoryChange}
           />

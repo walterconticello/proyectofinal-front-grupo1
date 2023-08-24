@@ -20,9 +20,7 @@ const ProductCards = () => {
     selectedCategories.length === 0
       ? products
       : products.filter((product) =>
-          product.categories.some((category) =>
-            selectedCategories.includes(category)
-          )
+          selectedCategories.includes(product.categories)
         );
 
   const addToCart = (product) => {
@@ -50,7 +48,7 @@ const ProductCards = () => {
       <Row>
         <Col
           lg={3}
-          className={`sidebarCol d-none d-lg-block ${
+          className={`sidebarCol d-none d-lg-block  ${
             !isSidebarOpen ? "d-none" : ""
           }`}
         >

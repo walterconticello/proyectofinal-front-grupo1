@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from 'react'
-import { AuthContext } from '../context/AuthContext'
-import { Navigate } from 'react-router-dom';
+import React, { useContext, useEffect } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { Navigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
-	const { getAuth, authenticated, loading } = useContext(AuthContext)
+  const { getAuth, authenticated, loading } = useContext(AuthContext);
+
 
 
 	useEffect(() => {
@@ -18,6 +19,7 @@ const PrivateRoute = ({ children }) => {
 	) : (
 		<Navigate to="/" />
 	);
+
 };
 
-export default PrivateRoute
+export default PrivateRoute;

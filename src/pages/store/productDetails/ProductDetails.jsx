@@ -1,6 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext";
+import { useSalesContext } from "../../../context/SalesContext";
+import { AuthContext } from "../../../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./productDetails.css";
 import { MdPayments, MdGrade, MdTaskAlt, MdCancel } from "react-icons/md";
 import { FaCreditCard, FaMoneyBill, FaBitcoin, FaPaypal } from "react-icons/fa";
@@ -9,10 +13,13 @@ import {
   MdOutlineShoppingCart,
   MdOutlineRemoveShoppingCart,
 } from "react-icons/md";
+
 const ProductDetails = () => {
   const { getProduct, selectedProduct } = useContext(ProductContext);
   const { productId } = useParams();
   const [cart, setCart] = useState([]);
+  const { addSale } = useSalesContext();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     getProduct(productId);
@@ -36,7 +43,27 @@ const ProductDetails = () => {
   };
 
   const handleBuyNow = () => {
+    if (!user || !user._id) {
+      console.log(
+        "User is not authenticated. Please log in to make a purchase."
+      );
+      return;
+    }
     handleCloseModal();
+    const saleData = {
+      productId: selectedProduct._id,
+      userId: user._id,
+      quantity,
+      totalPrice: total.toFixed(2),
+    };
+
+    addSale(saleData)
+      .then(() => {
+        console.log("Sale created successfully.");
+      })
+      .catch((error) => {
+        console.error("Failed to create sale:", error);
+      });
   };
 
   if (!selectedProduct) {
@@ -135,7 +162,7 @@ const ProductDetails = () => {
           <Modal.Body>
             <h5>{selectedProduct.name}</h5>
             <span className="d-flex ">
-              <p>Subtotal: </p>
+              <p>Precio: </p>
               <h5 className="mx-3">${selectedProduct.price}</h5>
             </span>
             <Form.Group
@@ -176,8 +203,12 @@ const ProductDetails = () => {
             >
               <MdCancel />
             </Button>
-            <Button className="buy-button" onClick={handleBuyNow}>
-              Comprar
+            <Button
+              className="buy-button"
+              onClick={handleBuyNow}
+              disabled={!user}
+            >
+              Buy now
             </Button>
           </Modal.Footer>
         </Modal>

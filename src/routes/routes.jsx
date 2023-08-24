@@ -11,7 +11,16 @@ const Routes = () => {
   return (
     <Rutas>
       <Route path="/" element={<Home />} />
-      <Route path="/store" element={<Store />} />
+      <Route
+        path="/store"
+        element={
+          <PrivateRoute>
+            <Store />
+          </PrivateRoute>
+        }
+      />
+      <Route exact path="/contact" element={<Contact />} />
+
       <Route path="/complejos" element={<List />} />
       <Route path="/store/product/:productId" element={<PrivateRoute><ProductDetails /></PrivateRoute>} />
       <Route path="/login" element={<Login />} />
