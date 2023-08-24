@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext";
+import { useSalesContext } from "../../../context/SalesContext";
+import { AuthContext } from "../../../context/AuthContext";
 import "./productDetails.css";
 import { MdPayments, MdGrade, MdTaskAlt, MdCancel } from "react-icons/md";
 import { FaCreditCard, FaMoneyBill, FaBitcoin, FaPaypal } from "react-icons/fa";
@@ -9,10 +11,13 @@ import {
   MdOutlineShoppingCart,
   MdOutlineRemoveShoppingCart,
 } from "react-icons/md";
+
 const ProductDetails = () => {
   const { getProduct, selectedProduct } = useContext(ProductContext);
   const { productId } = useParams();
   const [cart, setCart] = useState([]);
+  const { addSale } = useSalesContext();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     getProduct(productId);
@@ -37,6 +42,20 @@ const ProductDetails = () => {
 
   const handleBuyNow = () => {
     handleCloseModal();
+    const saleData = {
+      productId: selectedProduct._id,
+      userId: user._id,
+      quantity,
+      totalPrice: total.toFixed(2),
+    };
+
+    addSale(saleData)
+      .then(() => {
+        console.log("Sale created successfully.");
+      })
+      .catch((error) => {
+        console.error("Failed to create sale:", error);
+      });
   };
 
   if (!selectedProduct) {
