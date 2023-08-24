@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <img src="https://trello.com/1/cards/64e6f6b67ec25d170aff1434/attachments/64e6f6bc4f3da80cb6a96794/previews/64e6f6be4f3da80cb6a968bb/download/ReservaGol.png"> 
+    <img src="https://drive.google.com/file/d/1CbeU6rMJNI1xXVS5xpxOfk8zuB8YWJiw/view?usp=sharing"> 
 </head>
 <body>
     <h1>Reserva tu Gol</h1>
