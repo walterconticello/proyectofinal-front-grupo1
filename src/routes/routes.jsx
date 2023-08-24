@@ -10,7 +10,7 @@ import SportCenterDetail from "../components/SportCenter/SportCenterDetail";
 const Routes = () => {
   return (
     <Rutas>
-      <Route path="/" element={<SportCenterDetail />} />
+      <Route path="/" element={<Home />} />
       <Route path="/store" element={<Store />} />
       <Route path="/complejos" element={<List />} />
       <Route path="/store/product/:productId" element={<ProductDetails />} />
