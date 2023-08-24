@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import "./ProductTable.css";
 import { MdDelete, MdEdit } from "react-icons/md";

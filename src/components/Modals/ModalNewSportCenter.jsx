@@ -120,7 +120,7 @@ const ModalNewSportCenter = ({show , handleClose}) => {
         <ErrorMessage name="services" component="div" />
       </div>
         <div className="mb-3">
-          <label className="form-label">Photo</label>
+          <label className="form-label">Imagen</label>
           <Field type="text" name="ownerId" />
           <ErrorMessage name="ownerId" component="div" />
         </div>
