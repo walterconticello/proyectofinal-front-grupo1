@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext";
 import { useSalesContext } from "../../../context/SalesContext";
 import { AuthContext } from "../../../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./productDetails.css";
 import { MdPayments, MdGrade, MdTaskAlt, MdCancel } from "react-icons/md";
 import { FaCreditCard, FaMoneyBill, FaBitcoin, FaPaypal } from "react-icons/fa";
@@ -41,6 +43,12 @@ const ProductDetails = () => {
   };
 
   const handleBuyNow = () => {
+    if (!user || !user._id) {
+      console.log(
+        "User is not authenticated. Please log in to make a purchase."
+      );
+      return;
+    }
     handleCloseModal();
     const saleData = {
       productId: selectedProduct._id,
@@ -195,8 +203,12 @@ const ProductDetails = () => {
             >
               <MdCancel />
             </Button>
-            <Button className="buy-button" onClick={handleBuyNow}>
-              Comprar
+            <Button
+              className="buy-button"
+              onClick={handleBuyNow}
+              disabled={!user}
+            >
+              Buy now
             </Button>
           </Modal.Footer>
         </Modal>

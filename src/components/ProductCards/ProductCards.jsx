@@ -48,7 +48,7 @@ const ProductCards = () => {
       <Row>
         <Col
           lg={3}
-          className={`sidebarCol d-none d-lg-block ${
+          className={`sidebarCol d-none d-lg-block  ${
             !isSidebarOpen ? "d-none" : ""
           }`}
         >
