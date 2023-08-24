@@ -19,8 +19,16 @@
     "@popperjs/core": "^2.11.8",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1443f0a7f21d16fd45375a5cd25312f964895b90
     "formik": "^2.4.3",
+
     "jwt-decode": "^3.1.2",
+    "lottie-web": "^5.12.2",
+
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-date-picker": "^10.5.0",
