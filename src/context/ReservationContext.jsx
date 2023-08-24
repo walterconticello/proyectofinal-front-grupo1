@@ -5,7 +5,7 @@ export const ReservationContext = createContext();
 
 const ReserveContext = ({ children }) => {
   const [bookings, setBookings] = useState([]);
-  const API = "http://localhost:5500/api/reservation";
+  const API = "http://localhost:5500/api/reservation/";
 
   const getReservations = async () => {
     try {

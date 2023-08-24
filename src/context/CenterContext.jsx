@@ -5,7 +5,7 @@ export const SportCenterContext = createContext();
 
 const CenterContext = ({ children }) => {
   const [complexs, setComplexs] = useState([]);
-  const API = "http://localhost:5500/api/sportCenter";
+  const API = "http://localhost:5500/api/sportCenter/";
 
   const getSportCenter = async () => {
     try {
