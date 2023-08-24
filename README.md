@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <img src="https://media.licdn.com/dms/image/C4E16AQEBguslNdnUnA/profile-displaybackgroundimage-shrink_350_1400/0/1655162041609?e=1698278400&v=beta&t=5mMLG-EXK0vnrPRGN58atAaaL5Qpvw1Bq7Qpbgut78Y"> 
+    <img src="https://trello.com/1/cards/64e6f6b67ec25d170aff1434/attachments/64e6f6bc4f3da80cb6a96794/previews/64e6f6be4f3da80cb6a968bb/download/ReservaGol.png"> 
 </head>
 <body>
-    <h1>Nombre de Tu Proyecto</h1>
+    <h1>Reserva tu Gol</h1>
     <p>Una breve descripción de tu proyecto y sus funcionalidades.</p>
     
     <h2>Instrucciones de Instalación</h2>
