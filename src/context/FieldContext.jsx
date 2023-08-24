@@ -4,15 +4,13 @@ import { createContext, useEffect, useState } from "react";
 export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
+  const API = "http://localhost:4000/api/fields/";
   const [fields, setFields] = useState([]);
-  const [loading, setLoading] = useState(true);
   const API = "http://localhost:5500/api/fields/";
-
   const getFields = async () => {
     try {
       const response = await axios.get(`${API}`);
       setFields(response.data);
-      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +70,6 @@ const FieldProvider = ({ children }) => {
         deleteField,
         getFieldById,
         updateField,
-        loading,
       }}
     >
       {children}
