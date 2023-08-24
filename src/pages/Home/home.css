@@ -14,6 +14,34 @@
 	background-color: #71B641;
 }
 
-.heroButton {
-	text-decoration: none !important;
+.card {
+	width: 350px;
+	box-shadow: 0 0 0 2px #222221; 
 }
+
+.card .card-body {
+	display: grid;
+}
+
+.card .card-body .card-title {
+	font-weight: 600;
+}
+
+.card .card-body .card-text {
+	font-size: 1.5 rem;
+}
+
+.card-img-top {
+	width: 100%;
+	padding: 10px;
+	height: auto;
+  }
+
+  .btn-primary {
+	  background-color: blue;
+  }
+
+  .card:hover {
+	  box-shadow: 0 0 0 2px #0a0a0a;
+	  transition: all 0.5s ease-in-out;
+  }

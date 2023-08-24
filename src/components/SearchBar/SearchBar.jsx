@@ -52,11 +52,8 @@ const SearchBar = () => {
 							onChange={handleFutbolChange}
 						>
 							<option value="5">Futbol 5</option>
-							<option value="6">Futbol 6</option>
 							<option value="7">Futbol 7</option>
-							<option value="8">Futbol 8</option>
-							<option value="9">Futbol 9</option>
-							<option value="10">Futbol 10</option>
+							<option value="9">Futbol 9</option>	
 							<option value="11">Futbol 11</option>
 						</select>
 						<FontAwesomeIcon icon={faChevronDown} className="headerSelectIcon" />
