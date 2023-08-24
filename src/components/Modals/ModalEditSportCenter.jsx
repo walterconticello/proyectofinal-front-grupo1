@@ -25,7 +25,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
-  
+
+  console.log(editComplex);
 
   // const UpdateFormComplex = { editComplex, handleClose };
 

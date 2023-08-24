@@ -29,11 +29,12 @@ const validationSchema = Yup.object().shape({
 });
 
 
-const ModalCancha = ({show , handleClose , editField}) => {
+const ModalEditField = ({show , handleClose , editField}) => {
 
   const { updateField } = useContext(FieldsContext);
 
   const [field , setField] = useState(editField)
+  console.log(editField)
 
   const initialValues = {
     name : field.name,
@@ -113,4 +114,4 @@ const ModalCancha = ({show , handleClose , editField}) => {
   );
 };
 
-export default ModalCancha;
+export default ModalEditField ;
