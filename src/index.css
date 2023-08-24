@@ -9,8 +9,12 @@
 	margin: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+	text-decoration: none !important;
 }
 
 body {
+	background-color: #f2f2f2;
+
 	background-color: #DFDFDF;
+
 }

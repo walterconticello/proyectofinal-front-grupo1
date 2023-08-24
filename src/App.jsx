@@ -1,16 +1,24 @@
-import Footer from "./components/Footer/Footer";
-import Navbar from "./components/Navbar/Navbar";
-import { BrowserRouter } from "react-router-dom";
+
+import "./App.css";
+import { ProductProvider } from "./context/ProductContext";
 import Routes from "./routes/routes";
+import { BrowserRouter } from "react-router-dom";
+import Layout from "./components/common/Layout";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import AuthProvider from "./context/AuthContext";
+
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes />
-        <Footer />
-      </BrowserRouter>
-    </>
+    <AuthProvider>
+      <ProductProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Layout>
+            <Routes />
+          </Layout>
+        </BrowserRouter>
+      </ProductProvider>
+    </AuthProvider>
   );
 }
 
