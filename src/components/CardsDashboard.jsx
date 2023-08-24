@@ -6,7 +6,7 @@ const CardsDashboard = () => {
   return (
     <>
       <div className="d-flex flex-wrap justify-content-center">
-        <Link to={"/SportCenter"} className="buy-button btn m-2">
+        <Link to={"/admin/SportCenter"} className="buy-button btn m-2">
           <Card id="cardDash">
             <Card.Body>
               <Card.Img variant="top" src="src\img\Complejos.png" />
@@ -19,7 +19,7 @@ const CardsDashboard = () => {
             </Card.Body>
           </Card>
         </Link>
-        <Link to={"/Field"} className="buy-button btn m-2">
+        <Link to={"/admin/Field"} className="buy-button btn m-2">
           <Card id="cardDash">
             <Card.Body>
               <Card.Img variant="top" src="src\img\Canchas.png" />
@@ -32,7 +32,7 @@ const CardsDashboard = () => {
             </Card.Body>
           </Card>
         </Link>
-        <Link to={"/Reservation"} className="buy-button btn m-2">
+        <Link to={"/admin/Reservation"} className="buy-button btn m-2">
           <Card id="cardDash">
             <Card.Body>
               <Card.Img variant="top" src="src\img\Reservas.png" />
@@ -45,7 +45,7 @@ const CardsDashboard = () => {
             </Card.Body>
           </Card>
         </Link>
-        <Link to={"/Users"} className="buy-button btn m-2">
+        <Link to={"/admin/Users"} className="buy-button btn m-2">
           <Card id="cardDash">
             <Card.Body>
               <Card.Img variant="top" src="src\img\Usuarios.png" />

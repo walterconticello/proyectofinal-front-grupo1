@@ -1,22 +1,42 @@
-// import { useContext ,useState } from "react";
 import { Button, Card } from "react-bootstrap";
-// import { UsersContext } from "../../context/UserContext"
-import { useState } from 'react';
+import { useState , useEffect, useContext } from 'react';
 import Form from 'react-bootstrap/Form';
+import {UsersContext} from "../../context/UserContex.jsx"
+import Swal from 'sweetalert2';
 import "./Card.css";
 
 
 const CardUsers = () => {
   const [status, setStatus] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const {users ,userDelete , updateUser , loading } = useContext(UsersContext)
 
-  const handleSwitchChange = () => {
-    setStatus(!status); 
+  const handleSwitchChange = (statusText) => {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, desactivarlo',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        updateUser(!statusText);
+        Swal.fire(
+          'Desactivado',
+          'El elemento ha sido desactivado correctamente',
+          'success'
+        );
+      }
+    });
+    
   };
-  const statusText = status ? "Suspendido" : "Activo"; 
-
+  const statusText = user.status ? "Suspendido" : "Activo";
   // const { users , deleteUsers ,viewProfileId} = useContext(UsersContext);
 
-  const handleDelete = (_id) => {
+  const handleDelete = (id) => {
     // Mostrar un cuadro de diálogo de SweetAlert para confirmar la eliminación
     Swal.fire({
       title: '¿Estás seguro?',
@@ -29,7 +49,7 @@ const CardUsers = () => {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteField(id);
+        userDelete(id);
         Swal.fire(
           'Eliminado',
           'El elemento ha sido eliminado correctamente',
@@ -38,28 +58,34 @@ const CardUsers = () => {
       }
     });
   };
-
+  useEffect(() => {
+    if (!loading) {
+      setDataLoaded(true);
+    }
+  }, [loading]);
 
 return (
   <div className="d-flex gap-3" >
-    <Card style={{ width: '18rem' }}>
+    {users === undefined ? "No Existen Usuarios" : users.map((user) =>(
+      <>
+    <Card style={{ width: '18rem' }} key={user._id}>
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
+        <Card.Title>{user.username}</Card.Title>
         <Form.Check
           type="switch"
           id="custom-switch"
-          label={`Estado: ${statusText}`} // Mostrar el estado actual
+          label={`Estado: ${user.status ? "Suspendido" : "Activo"}`} // Mostrar el estado actual
             checked={status} // Establecer el estado del switch
-            onChange={handleSwitchChange} // Manejar cambios en el switch
+            onChange={() => handleSwitchChange(user.status)} // Manejar cambios en el switch
         />
+        <Button variant="" id="edit" onClick={() => handleDelete(user._id)}></Button>
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>
     </Card>
+    </>
+    )) }; 
+    
   </div>
 );
 };

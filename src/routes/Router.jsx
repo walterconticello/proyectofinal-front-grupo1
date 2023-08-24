@@ -14,11 +14,11 @@ const Routes = () => {
   return (
     <>
       <Ruta>
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/SportCenter" element={<SportCenter />} />
-        <Route path="/Field" element={<Fields />} />
-        <Route path="/Reservation" element={<Reservation />} />
-        <Route path="/Users" element={<Users />} />
+        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin/SportCenter" element={<SportCenter />} />
+        <Route path="/admin/Field" element={<Fields />} />
+        <Route path="/admin/Reservation" element={<Reservation />} />
+        <Route path="/admin/Users" element={<Users />} />
         <Route path="/admin/products" element={<Products />} />
         <Route exact path='/login' element={<Login />} />
       </Ruta>
@@ -29,3 +29,11 @@ const Routes = () => {
 
   export default Routes;
 
+  
+  //         <Route path="/admin" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+  //         <Route path="/admin/SportCenter" element={<PrivateRoute><SportCenter /></PrivateRoute>} />
+  //         <Route path="/admin/Field" element={<PrivateRoute><Fields /></PrivateRoute>} />
+  //         <Route path="/admin/Reservation" element={<PrivateRoute><Reservation /></PrivateRoute>} />
+  //         <Route path="/admin/Users" element={<PrivateRoute><Users /></PrivateRoute>} />
+  //         <Route path="/admin/products" element={<PrivateRoute><Products /></PrivateRoute>} />
+  //         <Route exact path='/login' element={<Login />} />

@@ -1,4 +1,4 @@
-import { useState , useContext } from "react";
+import { useState , useContext , useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -36,12 +36,16 @@ const ModalEditField = ({show , handleClose , editField}) => {
 
   const [field , setField] = useState(editField);
 
+  useEffect(() => {
+    setField(editField);
+  }, [editField]);
+
   const initialValues = {
-    name : field.name,
-    openHour : field.openHour,
-    closeHour : field.closeHour ,
-    pricePerHour: field.pricePerHour ,
-    size : field.size ,
+    name: field?.name || '',
+    openHour: field?.openHour || '',
+    closeHour: field?.closeHour || '',
+    pricePerHour: field?.pricePerHour || '',
+    size: field?.size || '',
   };
 
   const handleChange = async (values) => {
