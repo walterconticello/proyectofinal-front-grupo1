@@ -5,10 +5,11 @@ export const SportCenterContext = createContext();
 
 const CenterContext = ({ children }) => {
   const [complexs, setComplexs] = useState([]);
+  const API = "http://localhost:5500/api/sportCenter";
 
   const getSportCenter = async () => {
     try {
-      const response = await axios.get("http://localhost:8001/api/sportCenter");
+      const response = await axios.get(`${API}`);
       setComplexs(response.data);
     } catch (error) {
       console.log(error);
@@ -19,7 +20,7 @@ const CenterContext = ({ children }) => {
     console.log("data" + complexs);
     try {
       const response = axios.post(
-        "http://localhost:8001/api/sportCenter",
+        `${API}`,
         complexs
       );
       console.log(response);
@@ -31,7 +32,7 @@ const CenterContext = ({ children }) => {
   const deleteSportCenter = async (id) => {
     console.log(id, "id de context");
     try {
-      await axios.delete(`http://localhost:8001/api/sportCenter/${id}`);
+      await axios.delete(`${API}${id}`);
       const deleteComplex = complexs.filter((complex) => complex.id !== id);
       setComplexs(deleteComplex);
     } catch (error) {
@@ -42,7 +43,7 @@ const CenterContext = ({ children }) => {
   const updateSportCenter = async (complexs) => {
     console.log(complexs);
     try {
-      await axios.put(`http://localhost:8001/api/sportCenter/${complexs.id}`);
+      await axios.put(`${API}${complexs.id}`);
     } catch (error) {
       console.log(error, "error al editar");
     }

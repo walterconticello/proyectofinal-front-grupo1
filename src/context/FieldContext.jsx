@@ -5,9 +5,10 @@ export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
   const [fields, setFields] = useState([]);
+  const API = "http://localhost:5500/api/fields";
   const getFields = async () => {
     try {
-      const response = await axios.get("http://localhost:8001/api/fields");
+      const response = await axios.get(`${API}`);
       setFields(response.data);
     } catch (error) {
       console.log(error);
@@ -16,7 +17,7 @@ const FieldProvider = ({ children }) => {
 
   const addField = async (fields) => {
     try {
-      const response = axios.post("http://localhost:8001/api/fields", fields);
+      const response = axios.post(`${API}`, fields);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -26,7 +27,7 @@ const FieldProvider = ({ children }) => {
   const deleteField = async (id) => {
     console.log(id, "id de context");
     try {
-      await axios.delete(`http://localhost:8001/api/fields/${id}`);
+      await axios.delete(`${API}${id}`);
       const deleteField = fields.filter((field) => field.id !== id);
       setFields(deleteField);
     } catch (error) {
@@ -37,7 +38,7 @@ const FieldProvider = ({ children }) => {
   const getFieldById = async (id) => {
     console.log(id);
     try {
-      await axios.get(`http://localhost:8001/fields/${id}`);
+      await axios.get(`${API}${id}`);
       const viewField = fields.filter((field) => field.id !== id);
       console.log(viewField);
     } catch (error) {
@@ -48,7 +49,7 @@ const FieldProvider = ({ children }) => {
   const updateField = async (field) => {
     console.log(field);
     try {
-      await axios.put(`http://localhost:8001/fields/${field.id}`);
+      await axios.put(`${API}${field.id}`);
     } catch (error) {
       console.log(error, "error al editar");
     }

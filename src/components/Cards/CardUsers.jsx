@@ -16,18 +16,29 @@ const CardUsers = () => {
 
   // const { users , deleteUsers ,viewProfileId} = useContext(UsersContext);
 
-// const handleDelete = (id) =>{
-//   console.log(id);
-//   deleteUsers(id);
-// }
+  const handleDelete = (_id) => {
+    // Mostrar un cuadro de diálogo de SweetAlert para confirmar la eliminación
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, eliminarlo',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteField(id);
+        Swal.fire(
+          'Eliminado',
+          'El elemento ha sido eliminado correctamente',
+          'success'
+        );
+      }
+    });
+  };
 
-
-
-
-// const viewPerfil = (id) =>{
-//   viewProfileId(id)
-//   setShow(true)
-// }
 
 return (
   <div className="d-flex gap-3" >

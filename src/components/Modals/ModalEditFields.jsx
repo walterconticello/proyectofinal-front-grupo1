@@ -1,5 +1,6 @@
 import { useState , useContext } from "react";
-import { Modal, Button} from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FieldsContext } from "../../context/FieldContext"
@@ -33,8 +34,7 @@ const ModalEditField = ({show , handleClose , editField}) => {
 
   const { updateField } = useContext(FieldsContext);
 
-  const [field , setField] = useState(editField)
-  console.log(editField)
+  const [field , setField] = useState(editField);
 
   const initialValues = {
     name : field.name,

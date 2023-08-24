@@ -7,8 +7,8 @@ import { SportCenterContext } from "../../context/CenterContext";
 import "./Modal.css";
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required('Required').min(3, 'Must be at least 3 characters'),
-  address: Yup.string().required('Required').min(3, 'Must be at least 3 characters').max(30, 'Must be at most 30 characters'),
+  name: Yup.string().required('Required').min(3, 'El nombre debe tener al mas 3 caracteres"'),
+  address: Yup.string().required('Required').min(3, 'La Direccion debe tener al mas 3 caracteres"').max(30, 'La Direccion debe tener al menos 30 caracteres"'),
   phone: Yup.number().required('Required'),
   services: Yup.object().shape({
     bar: Yup.boolean(),
@@ -17,11 +17,11 @@ const validationSchema = Yup.object().shape({
     parking: Yup.boolean(),
   }),
   social: Yup.object().shape({
-    facebook: Yup.string().min(3, 'Must be at least 3 characters'),
-    instagram: Yup.string().min(3, 'Must be at least 3 characters'),
+    facebook: Yup.string().min(3, 'Debe tener al mas 3 caracteres'),
+    instagram: Yup.string().min(3, 'Debe tener al mas 3 caracteres'),
   }),
-  latitude: Yup.number().min(-90, 'Must be at least -90').max(90, 'Must be at most 90'),
-  location: Yup.string().min(3, 'Must be at least 3 characters').max(30, 'Must be at most 30 characters'),
+  latitude: Yup.number(),
+  location: Yup.string().min(3, 'Debe tener al mas 3 caracteres').max(30, 'Debe tener al mas 3 caracteres'),
 });
 
 const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {

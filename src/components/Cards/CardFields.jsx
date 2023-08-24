@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import ModalEditField from "../Modals/ModalEditFields";
 import { Image } from "react-bootstrap";
 import { FieldsContext } from "../../context/FieldContext"
+import Swal from 'sweetalert2';
 import "./Card.css";
 
 const CardField = () => {
@@ -22,10 +23,28 @@ const CardField = () => {
     handleShow(true);
   }
 
-  const handleDelete = (id) =>{
-    console.log(id);
-    deleteField(id);
-  }
+  const handleDelete = (_id) => {
+    // Mostrar un cuadro de diálogo de SweetAlert para confirmar la eliminación
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, eliminarlo',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteField(_id);
+        Swal.fire(
+          'Eliminado',
+          'El elemento ha sido eliminado correctamente',
+          'success'
+        );
+      }
+    });
+  };
 
   return (
     <>
@@ -43,7 +62,7 @@ const CardField = () => {
                     <Button variant="" id="edit" onClick={() => handleEdit(field)}>
                       <Image src="src\img\Editar.png" rounded fluid />
                     </Button>
-                    <Button variant="" id="edit" onClick={() => handleDelete(field.id)}>
+                    <Button variant="" id="edit" onClick={() => handleDelete(field._id)}>
                       <Image src="src\img\Delete.png" rounded fluid />
                     </Button>
                   </div>
