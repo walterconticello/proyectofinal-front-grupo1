@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <img src="https://drive.google.com/file/d/1CbeU6rMJNI1xXVS5xpxOfk8zuB8YWJiw/view?usp=sharing"> 
+    <img src="https://res.cloudinary.com/dmmviigbv/image/upload/v1692886089/tjzkrnk4sauomcuyrxtd.png"> 
 </head>
 <body>
     <h1>Reserva tu Gol</h1>
