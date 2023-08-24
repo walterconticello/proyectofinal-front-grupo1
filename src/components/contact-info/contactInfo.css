@@ -1,0 +1,32 @@
+.contact-page {
+    padding: 20px;
+  }
+  
+  .contact-block {
+    background-color: #fff;
+    color: white;
+    padding: 20px;
+    /* text-align: center; */
+    border-radius: 5px;
+    /* margin: 10px; */
+  }
+
+  .contact-block h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #252525;
+  }
+  
+  .contact-icon {
+    font-size: 36px;
+    color: #71b641;
+    margin-bottom: 10px;
+  }
+  
+  .contact-text {
+    color: #252525;
+    font-size: large;
+  }
+  .contact-desc{
+    color: #3e3e3e;
+  }

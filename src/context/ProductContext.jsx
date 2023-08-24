@@ -7,7 +7,7 @@ const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
-  const API = "http://localhost:5500/api/products/";
+  const API = "http://localhost:8001/api/products/";
   useEffect(() => {
     getProducts();
   }, []);

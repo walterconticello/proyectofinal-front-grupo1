@@ -1,0 +1,146 @@
+.text-green{
+    color: #71B641;
+}
+
+.bg-cards {
+    background-color: #71B641;
+}
+
+.services {
+    height: 35px;
+}
+
+.comment-header{
+    height: 30px;
+}
+
+.comment-header-portrait{
+    width: 30px;
+    height: 100%;
+}
+
+.comment-border {
+    border: #cfcfcf 1px solid;
+}
+
+.comment-header-img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.services *{
+    height: 100%;
+}
+
+.main-picture {
+    width: 80vw;
+    height: 80vw;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.leaflet-container {
+    width: 80vw;
+    height: 80vw;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.main-picture img {
+    object-fit: cover;
+    height: 100%;
+    object-position: center;
+}
+
+.pages {
+    height: 30px;
+}
+
+.card {
+    max-height: auto !important;
+}
+
+.card-photo {
+    min-height: 150px !important;
+    height: 13vw !important;
+    object-fit: cover;
+}
+
+.btn-card{
+    width: 100%;
+}
+
+.btn-reservation{
+    width: 100%;
+}
+
+.newcomment-text{
+    resize: none !important;
+}
+
+.trash {
+    height: 20px;
+}
+
+.trash:hover{
+    filter:saturate(35%);
+}
+
+.delete-comment-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.comment-username {
+    font-size: small;
+}
+
+
+@media all and (min-width:768px){
+    .main-picture {
+        width: 25vw;
+        height: 25vw;
+        max-height: 350px;
+        max-width: 350px;
+    }
+
+    .comment-header-portrait{
+        width: 40px;
+    }
+
+    .comment-header{
+        height: 40px;
+    }
+
+    .leaflet-container {
+        width: 50vw;
+        height: 25vw;
+        max-height: 350px;
+        max-width: 350px;
+    }
+
+    .comment-username {
+        font-size: medium;
+    }
+
+    .btn-card{
+        width: 50%;
+    }
+
+    .btn-reservation{
+        width: 35%;
+    }
+}
+
+@media all and (min-width:992px){
+    .btn-card{
+        width: 40%;
+        min-width: 140px;
+    }
+
+    .btn-reservation{
+        width: 25%;
+    }
+}
