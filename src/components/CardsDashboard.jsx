@@ -1,10 +1,8 @@
-import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
+import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 import "./CardDashboard.css";
 
 const CardsDashboard = () => {
-
-  
   return (
     <>
     <div className="d-flex flex-wrap justify-content-center">
@@ -60,7 +58,7 @@ const CardsDashboard = () => {
         </Card.Body>
       </Card>
       </Link>
-      <Link to ={'/Users'} className='buy-button btn m-2'>
+      <Link to={"/admin/products"} className="buy-button btn m-2">
       <Card id="cardDash">
         <Card.Body>
         <Card.Img variant="top" src="src\img\Carrito.png" />
@@ -74,8 +72,8 @@ const CardsDashboard = () => {
       </Card>
       </Link>
       </div>
-      </>
-  )
-}
+    </>
+  );
+};
 
-export default CardsDashboard
+export default CardsDashboard;

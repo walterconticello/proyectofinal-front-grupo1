@@ -1,12 +1,10 @@
-import axios from 'axios'
-import { createContext, useEffect, useState } from 'react'
+import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 
 export const FieldsContext = createContext()
 
-const FieldContext = ({ children }) => {
-
-    const [fields, setFields] = useState([]);
-
+const FieldProvider = ({ children }) => {
+  const [fields, setFields] = useState([]); 
     const getFields = async () => {
         try {
             const response = await axios.get("http://localhost:3000/field")
@@ -16,6 +14,7 @@ const FieldContext = ({ children }) => {
         }
     }
 
+
     const addField = async (fields) =>{
         try {
             const response = axios.post("http://localhost:3000/field", fields)
@@ -23,7 +22,8 @@ const FieldContext = ({ children }) => {
         }catch (error){
             console.log(error)
         }
-    }
+    };
+  
 
     const deleteField = async (id) => {
         console.log(id, "id de context");
@@ -47,6 +47,7 @@ const FieldContext = ({ children }) => {
       }
     }
 
+
     const updateField = async ( field ) => {
       console.log( field );
       try{
@@ -57,9 +58,9 @@ const FieldContext = ({ children }) => {
     }
 
 
-      useEffect(() => {
-        getFields()
-    }, [])
+  useEffect(() => {
+    getFields();
+  }, []);
 
     return (
         <FieldsContext.Provider value={{fields , getFields, setFields ,addField , deleteField, getFieldById , updateField}}>
@@ -69,4 +70,4 @@ const FieldContext = ({ children }) => {
       )
 }
 
-export default FieldContext;
+export default FieldProvider;

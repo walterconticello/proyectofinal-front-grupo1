@@ -5,15 +5,16 @@ import CenterContext from './context/CenterContext';
 import ReserveContext from './context/ReservationContext';
 import NavBar from "./components/Navbar/Navbar"
 import Footer from "./components/Footer/Footer"
-import Login from "./components/Login/Login"
 import AuthProvider from './context/AuthContext';
+import { ProductProvider } from "./context/ProductContext";
 
 function App() {
-
   return (
+
     <> 
       <ReserveContext>
     <CenterContext>
+      <ProductProvider>
       <FieldContext>
         <AuthProvider>
         <NavBar/>
@@ -21,11 +22,12 @@ function App() {
         <Footer />
         </AuthProvider>
       </FieldContext>
+        </ProductProvider>
       </CenterContext>
       </ReserveContext>
 
     </>
-  ) 
+  )
 }
 
-export default App
+export default App;

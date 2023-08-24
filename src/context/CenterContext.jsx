@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { createContext, useEffect, useState } from 'react'
+import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 
 export const SportCenterContext = createContext()
 
@@ -16,6 +16,7 @@ const CenterContext = ({ children }) => {
         }
     }
 
+
     const postSportCenter = async (complexs) =>{
         try {
             const response = axios.post("http://localhost:3000/SportCenter", complexs)
@@ -24,6 +25,7 @@ const CenterContext = ({ children }) => {
             console.log(error)
         }
     }
+
 
     const deleteSportCenter = async (id) => {
         console.log(id, "id de context");
