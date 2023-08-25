@@ -5,7 +5,6 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import ProductForm from "../ProductForm/ProductForm";
 import EditProductForm from "../ProductForm/EditProductForm";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 
 const ProductTable = () => {
   const { products, getProducts, deleteProduct, updateProducts } =

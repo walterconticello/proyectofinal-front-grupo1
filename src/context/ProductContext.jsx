@@ -7,7 +7,8 @@ const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
-  const API = "http://localhost:8001/api/products/";
+  const API = "http://localhost:5500/api/products/";
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -15,7 +16,7 @@ const ProductProvider = ({ children }) => {
   //GET ALL
   const getProducts = async (page = 1) => {
     try {
-      const response = await axios.get(`${API}?page=${page}`);
+      const response = await axios.get(`${API}`);
       setProducts(response.data.products);
       setTotalPages(response.data.totalPages);
     } catch (error) {

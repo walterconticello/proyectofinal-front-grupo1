@@ -9,7 +9,7 @@ export const UsersContext = createContext() //universo. Todo lo que este aqui ad
 const UserContext = ({children}) => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
-    const API = "http://localhost:5500/api/user/";
+    const API = import.meta.env.VITE_DB;
 
     useEffect(() => {
         getUsers();

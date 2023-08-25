@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import svgPelota from "../../assets/icono-sport-futbol.svg"
-import "./searchbar.css"
 import { faCalendarDays, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import 'react-date-picker/dist/DatePicker.css';

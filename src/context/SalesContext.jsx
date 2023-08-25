@@ -6,7 +6,7 @@ const SalesContext = createContext();
 const SalesProvider = ({ children }) => {
   const [sales, setSales] = useState([]);
 
-  const API_URL = "http://localhost:8001/api/sales";
+  const API_URL = "http://localhost:5500/api/sales";
 
   const getSales = async () => {
     try {

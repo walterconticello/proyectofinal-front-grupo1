@@ -10,9 +10,11 @@ export const AuthProvider = ({ children }) => {
 	const [authenticated, setAuthenticated] = useState(false);
 	const [loading, setLoading] = useState(true);
 
+	const API = "http://localhost:5500";
+
 	const login = async (values) => {
 		try {
-			const response = await axios.post("/api/auth/login", values);
+			const response = await axios.post(`${API}/api/auth/login`, values);
 			const token = response.data.data.token;
 			const decodedToken = jwtDecode(token); // Decodifica el token
 			console.log("Token:", token);
@@ -28,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
 	const register = async (values) => {
 		try {
-			const { data } = await axios.post("/api/auth/register", values);
+			const { data } = await axios.post(`${API}/api/auth/register`, values);
 			console.log("Registered user:", data);
 		} catch (error) {
 			console.error("Register error:", error);
