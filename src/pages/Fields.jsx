@@ -6,7 +6,7 @@ const Fields= () => {
     <>
     <div className='ContainerCard container-fluid'>
      <Button variant="primary">
-        Nuevo complejo
+        Nuevo Cancha
       </Button>
         <CardField/>
         </div>

@@ -36,7 +36,7 @@ const CardsDashboard = () => {
       <Card id="cardDash">
         <Card.Body>
         <Card.Img variant="top" src="src\img\Reservas.png" />
-        <Card.Title class="text-center pt-3">
+        <Card.Title className="text-center pt-3">
           <h3>Reservas</h3>
         </Card.Title>
           <Card.Text>
@@ -49,7 +49,7 @@ const CardsDashboard = () => {
       <Card id="cardDash">
         <Card.Body>
         <Card.Img variant="top" src="src\img\Usuarios.png" />
-        <Card.Title class="text-center pt-3">
+        <Card.Title className="text-center pt-3">
           <h3>Usuarios</h3>
         </Card.Title>
           <Card.Text>
@@ -62,7 +62,7 @@ const CardsDashboard = () => {
       <Card id="cardDash">
         <Card.Body>
         <Card.Img variant="top" src="src\img\Carrito.png" />
-        <Card.Title class="text-center pt-3">
+        <Card.Title className="text-center pt-3">
           <h3>Productos</h3>
         </Card.Title>
           <Card.Text>
