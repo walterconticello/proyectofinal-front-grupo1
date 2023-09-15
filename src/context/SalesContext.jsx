@@ -1,16 +1,14 @@
 import React, { createContext, useContext, useState } from "react";
-import axios from "axios";
+import axios from "../config/axios";
 
 const SalesContext = createContext();
 
 const SalesProvider = ({ children }) => {
   const [sales, setSales] = useState([]);
 
-  const API_URL = "http://localhost:5500/api/sales";
-
   const getSales = async () => {
     try {
-      const response = await axios.get(API_URL);
+      const response = await axios.get("/api/sales");
       setSales(response.data);
     } catch (error) {
       console.error("Error fetching sales:", error);
@@ -19,7 +17,7 @@ const SalesProvider = ({ children }) => {
 
   const getSaleById = async (id) => {
     try {
-      const response = await axios.get(`${API_URL}/${id}`);
+      const response = await axios.get(`/api/sales/${id}`);
       return response.data;
     } catch (error) {
       console.error("Error fetching sale:", error);
@@ -29,7 +27,7 @@ const SalesProvider = ({ children }) => {
 
   const addSale = async (saleData) => {
     try {
-      const response = await axios.post(API_URL, saleData);
+      const response = await axios.post("/api/sales", saleData);
       setSales([...sales, response.data]);
     } catch (error) {
       console.error("Error creating sale:", error);

@@ -1,18 +1,15 @@
-import axios from "axios";
+import axios from "../config/axios";
 import { createContext, useEffect, useState } from "react";
 
 export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
   const [fields, setFields] = useState([]);
-  const [loading, setLoading] = useState(true); 
-  const API = "http://localhost:5500/api/fields/";
+  const [loading, setLoading] = useState(true);
 
-
-  
   const getFields = async () => {
     try {
-      const response = await axios.get(`${API}`);
+      const response = await axios.get(`/api/fields/`);
       setFields(response.data);
     } catch (error) {
       console.log(error);
@@ -21,7 +18,7 @@ const FieldProvider = ({ children }) => {
 
   const addField = async (fields) => {
     try {
-      const response = axios.post(`${API}`, fields);
+      const response = axios.post(`/api/fields/`, fields);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -31,7 +28,7 @@ const FieldProvider = ({ children }) => {
   const deleteField = async (id) => {
     console.log(id, "id de context");
     try {
-      await axios.delete(`${API}${id}`);
+      await axios.delete(`/api/fields/${id}`);
       const deleteField = fields.filter((field) => field.id !== id);
       setFields(deleteField);
     } catch (error) {
@@ -42,7 +39,7 @@ const FieldProvider = ({ children }) => {
   const getFieldById = async (id) => {
     console.log(id);
     try {
-      await axios.get(`${API}${id}`);
+      await axios.get(`/api/fields/${id}`);
       const viewField = fields.filter((field) => field.id !== id);
       console.log(viewField);
     } catch (error) {
@@ -53,7 +50,7 @@ const FieldProvider = ({ children }) => {
   const updateField = async (field) => {
     console.log(field);
     try {
-      await axios.put(`${API}${field.id}`);
+      await axios.put(`/api/fields/${field.id}`);
     } catch (error) {
       console.log(error, "error al editar");
     }

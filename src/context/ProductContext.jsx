@@ -1,13 +1,11 @@
 import { createContext, useState, useEffect } from "react";
-import axios from "axios";
-
+import axios from "../config/axios";
 const ProductContext = createContext();
 
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
-  const API = "http://localhost:5500/api/products/";
 
   useEffect(() => {
     getProducts();
@@ -16,7 +14,7 @@ const ProductProvider = ({ children }) => {
   //GET ALL
   const getProducts = async (page = 1) => {
     try {
-      const response = await axios.get(`${API}`);
+      const response = await axios.get(`/api/products`);
       setProducts(response.data.products);
       setTotalPages(response.data.totalPages);
     } catch (error) {
@@ -26,7 +24,7 @@ const ProductProvider = ({ children }) => {
   // GET PRODUCT
   const getProduct = async (id) => {
     try {
-      const response = await axios.get(`${API}${id}`);
+      const response = await axios.get(`/api/products/${id}`);
       setSelectedProduct(response.data);
     } catch (error) {
       console.error("Error fetching product:", error);
@@ -39,7 +37,7 @@ const ProductProvider = ({ children }) => {
       for (let key in products) {
         form.append(key, products[key]);
       }
-      const res = await axios.post(API, form, {
+      const res = await axios.post("/api/products", form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       return res, console.log(form, "product posted successfully");
@@ -56,7 +54,7 @@ const ProductProvider = ({ children }) => {
         form.append(key, updatedProduct[key]);
       }
 
-      const res = await axios.put(`${API}${id}`, form, {
+      const res = await axios.put(`/api/products/${id}`, form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -71,7 +69,7 @@ const ProductProvider = ({ children }) => {
 
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`${API}${id}`);
+      await axios.delete(`/api/products/${id}`);
       const deleteProduct = products.filter((product) => product.id !== id);
       setProducts(deleteProduct);
     } catch (err) {

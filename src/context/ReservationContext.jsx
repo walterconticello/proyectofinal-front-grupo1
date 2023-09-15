@@ -1,15 +1,14 @@
-import axios from "axios";
+import axios from "../config/axios";
 import { createContext, useEffect, useState } from "react";
 
 export const ReservationContext = createContext();
 
 const ReserveContext = ({ children }) => {
   const [bookings, setBookings] = useState([]);
-  const API = "http://localhost:5500/api/reservation/";
 
   const getReservations = async () => {
     try {
-      const response = await axios.get(`${API}`);
+      const response = await axios.get(`/api/reservation/`);
       setBookings(response.data);
     } catch (error) {
       console.log(error);
@@ -18,10 +17,7 @@ const ReserveContext = ({ children }) => {
 
   const postReseration = async (bookings) => {
     try {
-      const response = axios.post(
-        "http://localhost:8001/api/resevation",
-        bookings
-      );
+      const response = axios.post("/api/reservation/", bookings);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -31,7 +27,7 @@ const ReserveContext = ({ children }) => {
   const deleteResevation = async (id) => {
     console.log(id, "id de context");
     try {
-      await axios.delete(`${API}${id}`);
+      await axios.delete(`/api/reservation/${id}`);
       const deleteResevation = bookings.filter((booking) => booking.id !== id);
       setBookings(deleteResevation);
     } catch (error) {
@@ -42,7 +38,7 @@ const ReserveContext = ({ children }) => {
   const viewBooking = async (id) => {
     console.log(id);
     try {
-      await axios.get(`${API}${id}`);
+      await axios.get(`/api/reservation/${id}`);
       const viewBooking = bookings.filter((booking) => booking.id !== id);
       console.log(viewBooking);
     } catch (error) {
