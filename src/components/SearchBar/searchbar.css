@@ -30,6 +30,7 @@
 	min-width: 50px;
 	flex-grow: 2;
 	outline: none;
+	margin-bottom: 0px;
 }
 
 .selectTipoCancha {
@@ -115,3 +116,4 @@
     padding-top: 11px;
     cursor: pointer;
 }
+
