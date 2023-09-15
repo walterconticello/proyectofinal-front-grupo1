@@ -6,6 +6,10 @@ export const SportCenterContext = createContext();
 const CenterContext = ({ children }) => {
   const [complexs, setComplexs] = useState([]);
 
+  useEffect(() => {
+    getSportCenter();
+  }, []);
+
   const getSportCenter = async () => {
     try {
       const response = await axios.get(`/api/sportCenter/`);
@@ -43,10 +47,6 @@ const CenterContext = ({ children }) => {
       console.log(error, "error al editar");
     }
   };
-
-  useEffect(() => {
-    getSportCenter();
-  }, []);
 
   return (
     <SportCenterContext.Provider

@@ -7,7 +7,7 @@ import ProductDetails from "../pages/store/productDetails/ProductDetails";
 import Login from "../pages/Login/Login";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
-import SportCenter from "../pages/SportCenter";
+import SportCenter from "../pages/sportCenter/SportCenter";
 import Fields from "../pages/Fields";
 import Reservation from "../components/Cards/Reservations";
 import Users from "../pages/Users";
@@ -69,7 +69,7 @@ const Routes = () => {
         }
       />
 
-      <Route path="/complejos" element={<List />} />
+      <Route path="/complejos" element={<SportCenter />} />
       <Route
         path="/store/product/:productId"
         element={
