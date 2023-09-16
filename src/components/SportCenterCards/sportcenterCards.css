@@ -1,0 +1,46 @@
+.sportcenter-card {
+    background-color: white !important;
+    height: auto !important;
+}
+
+.card-cText{
+    color: rgb(102, 102, 102) !important;
+}
+
+.icon-futbol{
+padding-top: 1rem;
+}
+.icon-text {
+    font-weight:bold;
+}
+.card-cTitle{
+    transition: all 200ms ease !important;
+}
+.card-cTitle:hover{
+    text-decoration:underline;
+    color: #71B641;
+    cursor: pointer;
+}
+
+.card-cTex FaMapMarkerAlt{
+    margin-right: 0.3rem !important;
+}
+
+.btn-reserve {
+    background-color: #71B641;
+    color: #fff;
+    padding: 5px 12px;
+    margin-top: 0.4rem !important;
+    transition: all 200ms ease-in;
+    border: 2px solid #71B641;
+    border-radius: 7px;
+}
+
+.btn-reserve:hover{
+    color: #71B641;
+    background-color: #fff;
+}
+
+.btn-container{
+    margin-top: 1rem;
+}
