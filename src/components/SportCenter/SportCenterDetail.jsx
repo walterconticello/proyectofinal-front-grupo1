@@ -186,7 +186,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                     </article>
                 </section>
             </div>
-            <section className="my-4 bg-cards py-4">{/*We have to use the component Card here, but it hasn't been developed yet*/}
+            <section className="my-4 bg-cards py-4">
                 <h2 className="text-center fs-2 text-light my-5">Canchas disponibles:</h2>
                 <article>
                     <Container>

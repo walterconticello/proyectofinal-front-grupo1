@@ -9,15 +9,11 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
     
     const URL = import.meta.env.VITE_DB;
     
-    const postComment = async (comment) => {
-        try{
+    const postComment = async (comment) => { //Necesito estar logueado para poder hacer comments desde aca
+        try{                                    //Por ello necesito traer los cambios de walter para comprobarlo
             comment.rating = parseInt(comment.rating);
-            comment.user = {
-                username: "diego_vacapaz5",
-                email: "diegovca@hotmail.com1",
-                photo: ""
-            }
-            const response = await fetch(`${URL}comments2`, {
+            console.log(comment.rating);
+            const response = await fetch(`${URL}api/comments`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -58,7 +54,7 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
         text: "",
         rating: 0,
         sportCenterId: idSportCenter,
-        userId: "AJSndfjkasndkjasn", //Sacar el Id desde el context
+        userId: "64f37eef57221188560d9b9e", //Sacar el Id desde el context
     }
 
     const formik = useFormik({
