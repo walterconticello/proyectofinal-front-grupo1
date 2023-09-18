@@ -24,7 +24,7 @@ const Comment = ({comment, page, setComments}) => {
     }
     starsFactory();
 
-    const fetchDeleteComment = async ()=> {
+    const fetchDeleteComment = async ()=> { //Debo tener la parte de walter para probar esto
         try {
             const response = await fetch(`${URL}comments2/${comment.id}`,{ //Luego aca va el _id en el fetch
                 method: "DELETE",
@@ -74,9 +74,9 @@ const Comment = ({comment, page, setComments}) => {
                 <div className="d-flex gap-3 flex-column flex-md-row align-items-md-center justify-content-md-between">
                     <div className="d-flex comment-header justify-content-start align-items-center gap-1 gap-md-3">
                         <div className="comment-header-portrait">
-                            <img src={comment.user.photo || UserPhoto} alt="profile img" className="comment-header-img"/>
+                            <img src={comment.userId.photo.url || UserPhoto} alt="profile img" className="comment-header-img"/>
                         </div>
-                        <h3 className="comment-username">{comment.user.username}</h3>
+                        <h3 className="comment-username">{comment.userId.username}</h3>
                     </div>
                     <div className="d-flex align-items-center">
                         {
@@ -90,7 +90,7 @@ const Comment = ({comment, page, setComments}) => {
                 </div>
                 <div className="delete-comment-button">
                     {
-                        (comment.userId === loggedUser)&&<img src={Delete} alt="delete comment" onClick={handleDelete} className="trash"></img>
+                        (comment.userId.email === loggedUser)&&<img src={Delete} alt="delete comment" onClick={handleDelete} className="trash"></img>
                     }
                 </div>
             </div>

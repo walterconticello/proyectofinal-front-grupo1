@@ -90,7 +90,6 @@ const SportCenterDetail = ({idSportCenter}) => {
                 const response = await fetch(`${URL}api/comments/sportcenter/${idSportCenter}/${page}`);
                 const data = await response.json();
                 //setComments([...data]);
-                console.log(data);
                 setComments(data.comments);
                 setLastPage(data.pages);
             }
