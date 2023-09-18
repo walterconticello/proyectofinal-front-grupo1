@@ -44,32 +44,35 @@ const SportCenterDetail = ({idSportCenter}) => {
     const [page, setPage] = useState(1);
     const [lastPage, setLastPage] = useState(1);
     const [show, setShow] = useState(false);
-
+    const [rating, setRating] = useState(0);
+    const [stars, setStars] = useState([]);
     const URL = import.meta.env.VITE_DB;
-    const stars = [];
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
     
-    const starsFactory = () => {
-        for(let i = 1; i <= sportCenter.rating/2 ; i++) { //1
-            stars.push("fill");
+    const starsFactory = (s) => {
+        let auxStars = []
+        for(let i = 1; i <= rating/2 ; i++) { //1
+            //setStars([...stars, "fill"]);
+            auxStars.push("fill");
         }
-        for(let j = 0; j < sportCenter.rating%2 ; j++) {
-            stars.push("half");
+        for(let j = 0; j < rating%2 ; j++) {
+            //setStars([...stars, "half"]);
+            auxStars.push("half");
         }
-        for(let k = stars.length; k < 5; k++) {
-            stars.push("empty");
+        for(let k = auxStars.length; k < 5; k++) {
+            //setStars([...stars, "empty"]);
+            auxStars.push("empty");
         }
+        setStars(auxStars);
     }
-
-    starsFactory();
 
     const fetchingSportCenter = async () => {
         try {
-            const response = await fetch(`${URL}sportcenter`);
+            const response = await fetch(`${URL}api/sportCenter/${idSportCenter}`);
             const data = await response.json();
-            setSportCenter(data[0]);
+            setSportCenter(data);
         }
         catch (error){
             Swal.fire({
@@ -84,10 +87,12 @@ const SportCenterDetail = ({idSportCenter}) => {
     const fetchingComments = async () => { //El fetch debe hacerse solo de comentarios activos
         if(page <= lastPage){
             try{
-                const response = await fetch(`${URL}comments${page}`);
+                const response = await fetch(`${URL}api/comments/sportcenter/${idSportCenter}/${page}`);
                 const data = await response.json();
-                setComments([...data]);
-                setLastPage(3); //Traer desde back
+                //setComments([...data]);
+                console.log(data);
+                setComments(data.comments);
+                setLastPage(data.pages);
             }
             catch (error){
                 Swal.fire({
@@ -100,12 +105,36 @@ const SportCenterDetail = ({idSportCenter}) => {
         }
     }
 
+    const fetchingRating = async () => {
+        try {
+            const response = await fetch(`${URL}api/rating/${idSportCenter}`);
+            const data = await response.json();
+            setRating(data);
+        }
+        catch (error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                confirmButtonColor: '#71B641',
+                text: 'Algo salió mal', //Poner el mensaje del backend
+            });
+        }
+    }
+
     useEffect(()=>{
         fetchingSportCenter();
     },[]);
+
+    useEffect(()=>{
+        fetchingRating();
+    },[]);
+
+    useEffect(()=>{
+        starsFactory();
+    },[rating]);
     
     useEffect(()=> {
-        fetchingComments(); //Se podria hacer que los comentarios mas recientes esten primero
+        fetchingComments();
     }, [page]);
 
     return (!sportCenter)? (
@@ -128,19 +157,16 @@ const SportCenterDetail = ({idSportCenter}) => {
                 </section>
                 <section className="d-flex gap-5 flex-column flex-md-row align-items-center justify-content-evenly">
                     <article className="main-picture">
-                        <img className="rounded-3" src={sportCenter.photo || NoPhoto} alt={`${sportCenter.name} photo`} />
+                        <img className="rounded-3" src={sportCenter.photo.url || NoPhoto} alt={`${sportCenter.name} photo`} />
                     </article>
                     <article>
-                        {
-                            
-                        }
                         <MapView latitude={sportCenter.location.latitude || 0} longitude={sportCenter.location.longitude || 0}></MapView>
                     </article>
                 </section>
                 <section className="text-center my-5">
                     <article className="services d-flex justify-content-center my-3">
                         {sportCenter.services.showers && <Service img={Showers} alt={"Grill service"} isAvaiable={true}></Service>}
-                        {sportCenter.services.dressingRooms && <Service img={Dressing} alt={"Grill service"} isAvaiable={true}></Service>}
+                        {sportCenter.services.dressingRoom && <Service img={Dressing} alt={"Grill service"} isAvaiable={true}></Service>}
                         {sportCenter.services.bar && <Service img={Bar} alt={"Food service"} isAvaiable={true}></Service>}
                         {sportCenter.services.grill && <Service img={Grill} alt={"Grill service"} isAvaiable={true}></Service>}
                         {sportCenter.services.parking && <Service img={Parking} alt={"Parking service"} isAvaiable={true}></Service>}
@@ -183,12 +209,14 @@ const SportCenterDetail = ({idSportCenter}) => {
                 <article>
                     <Container>
                         <Button variant="outline-success" onClick={handleShow}>Comentar</Button>
-                            {
+                            {   
+                                (comments.length > 0)?
                                 comments.map(comment => {
                                     return (
                                         <Comment key={comment._id} comment={comment} page={page} setComments={setComments}></Comment> //PONER COMO KEY el _id
                                     );
-                                })
+                                }) :
+                                <h2 className="text-center text-green fs-6 my-5">No hay comentarios</h2>
                             }
                     </Container>
                 </article>

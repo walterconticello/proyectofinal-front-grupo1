@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <SportCenterDetail idSportCenter={"DAHSvkusdgnfcoidgfhasdv"}></SportCenterDetail>
+      <SportCenterDetail idSportCenter={"6506441ce5b61592c0a44bef"}></SportCenterDetail>
       <Footer />
     </>
   );
