@@ -1,0 +1,47 @@
+.buy-button {
+    background-color: #71B641 !important;
+    border: none !important
+  }
+  
+  .cancel-btn{
+  border: none !important
+
+}
+
+.sidebarCol {
+    background-color: #fff;
+    height: 100vh !important;
+    border-radius:12px ;
+    padding: 2rem;
+}
+.added {
+    background-color: #71B641 !important;
+    color: white !important;
+  }
+
+  .card-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    height: 200px; 
+    overflow: hidden;
+  }
+  
+  .card-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  
+  .card {
+    height: 100%;
+  }
+  
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px; 
+  }
+  

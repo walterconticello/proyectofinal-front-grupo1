@@ -1,0 +1,19 @@
+.not-found-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    height: 100vh;
+    text-align: center;
+  }
+
+  .lottie-container {
+    width: 500px;
+  }
+
+  .goback-button{
+    background-color: #71B641;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+  }

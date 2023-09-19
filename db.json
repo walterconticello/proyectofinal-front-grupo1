@@ -1,0 +1,114 @@
+{
+  "SportCenter": [
+    {
+      "id": "614a5d75c32e42b75c135f47",
+      "ownerId": "614a5d75c32e42b75c135f44",
+      "name": "Bar de Ejemplo",
+      "address": "Calle de la Fiesta, 123",
+      "phone": 1234567890,
+      "services": {
+        "bar": true,
+        "showers": false,
+        "Grill": true,
+        "parking": true
+      },
+      "fields": [
+        "614a5d75c32e42b75c135f51",
+        "614a5d75c32e42b75c135f52"
+      ],
+      "openHour": 18,
+      "closeHour": 2,
+      "photo": "bar_example.jpg",
+      "social": {
+        "facebook": "facebook.com/bar_example",
+        "instagram": "instagram.com/bar_example"
+      },
+      "latitude": 40.7128,
+      "location": "Ciudad Ejemplo"
+    },
+    {
+      "id": "614a5d75c32e42b75c135f49",
+      "ownerId": "614a5d75c32e42b75c135f45",
+      "name": "Parque de Aventuras Extremas",
+      "address": "Ruta de la Aventura, Km 5",
+      "phone": 9876543210,
+      "services": {
+        "bar": true,
+        "showers": true,
+        "Grill": false,
+        "parking": true
+      },
+      "fields": [
+        "614a5d75c32e42b75c135f53",
+        "614a5d75c32e42b75c135f54"
+      ],
+      "openHour": 9,
+      "closeHour": 18,
+      "photo": "adventure_park.jpg",
+      "social": {
+        "facebook": "facebook.com/adventure_park",
+        "instagram": "instagram.com/adventure_park"
+      },
+      "latitude": 35.6895,
+      "location": "Ciudad Aventura"
+    }
+  ],
+  "field": [
+    {
+      "id": "614a5d75c32e42b75c135f51",
+      "name": "Cancha de Baloncesto",
+      "openHour": 10,
+      "closeHour": 23,
+      "pricePerHour": 40,
+      "size": 6,
+      "isActive": true,
+      "idSportCenter": "614a5d75c32e42b75c135f49"
+    },
+    {
+      "id": "614a5d75c32e42b75c135f52",
+      "name": "Cancha de Tenis",
+      "openHour": 9,
+      "closeHour": 20,
+      "pricePerHour": 30,
+      "size": 5,
+      "isActive": true,
+      "idSportCenter": "614a5d75c32e42b75c135f47"
+    },
+    {
+      "id": "614a5d75c32e42b75c135f53",
+      "name": "Pista de Atletismo",
+      "openHour": 6,
+      "closeHour": 21,
+      "pricePerHour": 0,
+      "size": 11,
+      "isActive": true,
+      "idSportCenter": "614a5d75c32e42b75c135f49"
+    },
+    {
+      "id": "614a5d75c32e42b75c135f54",
+      "name": "Cancha de Baloncesto",
+      "openHour": 10,
+      "closeHour": 23,
+      "pricePerHour": 40,
+      "size": 6,
+      "isActive": true,
+      "idSportCenter": "614a5d75c32e42b75c135f49"
+    }
+  ],
+  "reservation" : [
+    {
+      "IdUser": "615aeb8d1c2b79245e90eabc",
+      "IdSportCenter": "614a5d75c32e42b75c135f47",
+      "IdField": "614a5d75c32e42b75c135f54",
+      "ReservationTime": "2023-08-23T15:00:00Z",
+      "Status": "confirmada"
+    },
+    {
+      "IdUser": "614a5d75c32e42b75c135f49",
+      "IdSportCenter": "614a5d75c32e42b75c135f53",
+      "IdField": "615af32e8abf9a8723a45ce0",
+      "ReservationTime": "2023-09-10T18:30:00Z",
+      "Status": "pendiente"
+    }    
+  ]
+}
