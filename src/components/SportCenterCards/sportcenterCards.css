@@ -49,3 +49,8 @@ padding-top: 1rem;
     background-color: #fff !important;
     padding: 2rem;
 }
+
+.category-filter-each.selected{
+    background-color: #71B641;
+    color: #fff;
+}

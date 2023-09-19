@@ -7,6 +7,7 @@ import {
   FaShower,
   FaGlassCheers,
   FaHouzz,
+  FaRestroom,
 } from "react-icons/fa";
 import { SportCenterContext } from "../../context/CenterContext";
 import { Card, Col, Row, Form, Button } from "react-bootstrap";
@@ -14,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const SportCenterCards = () => {
   const { complexs } = useContext(SportCenterContext);
-
+  const [selectedFilters, setSelectedFilters] = useState({});
   const [filteredComplexs, setFilteredComplexs] = useState(complexs);
   const [filters, setFilters] = useState({
     searchTerm: "",
@@ -22,17 +23,25 @@ const SportCenterCards = () => {
     Duchas: false,
     Bar: false,
     Parrillas: false,
+    Vestuario: false,
   });
 
   const categoryIcons = {
-    Estacionamiento: <FaCarAlt />,
-    Duchas: <FaShower />,
-    Bar: <FaGlassCheers />,
-    Parrillas: <FaHouzz />,
+    Estacionamiento: <FaCarAlt size={20} />,
+    Duchas: <FaShower size={20} />,
+    Bar: <FaGlassCheers size={20} />,
+    Parrillas: <FaHouzz size={20} />,
+    Vestuario: <FaRestroom size={20} />,
   };
 
   useEffect(() => {
     const applyFilters = () => {
+      const selected = {};
+      Object.keys(filters).forEach((category) => {
+        if (filters[category]) {
+          selected[category] = true;
+        }
+      });
       const filtered = complexs.filter((complex) => {
         if (filters.searchTerm && !complex.name.includes(filters.searchTerm)) {
           return false;
@@ -46,7 +55,10 @@ const SportCenterCards = () => {
         if (filters.Bar && !complex.services.bar) {
           return false;
         }
-        if (filters.Parrillas && !complex.services.Grill) {
+        if (filters.Vestuario && !complex.services.dressingRoom) {
+          return false;
+        }
+        if (filters.Parrillas && !complex.services.grill) {
           return false;
         }
         return true;
@@ -63,7 +75,8 @@ const SportCenterCards = () => {
       <Row>
         <Col md={4}>
           <div className="filters-sportcenter">
-            <h4>Filtros</h4>
+            <h2 className="text-center">Filtrar complejos</h2>
+            <hr className="m-3" />
             <Form.Group controlId="searchTerm">
               <Form.Control
                 type="text"
@@ -75,16 +88,20 @@ const SportCenterCards = () => {
               />
             </Form.Group>
             <div className="categories-filter">
+              <h2 className="m-2">Categorias</h2>
               {Object.keys(categoryIcons).map((category, index) => (
                 <Form.Check
                   key={index}
                   type="checkbox"
-                  className="d-flex "
+                  className={`category-filter-each ${
+                    selectedFilters[category] ? "selected" : ""
+                  }`}
                   id={`has${category}`}
                   label={
-                    <>
-                      {categoryIcons[category]} {category}
-                    </>
+                    <div className="d-flex align-items-center">
+                      <div>{categoryIcons[category]}</div>
+                      <div className="m-2">{category}</div>
+                    </div>
                   }
                   checked={filters[category]}
                   onChange={() =>
