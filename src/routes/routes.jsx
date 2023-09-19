@@ -23,49 +23,37 @@ const Routes = () => {
       <Route
         path="/admin"
         element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
+          <Dashboard />
         }
       />
       <Route
         path="/admin/SportCenter"
         element={
-          <PrivateRoute>
-            <SportCenter />
-          </PrivateRoute>
+          <SportCenter />
         }
       />
       <Route
         path="/admin/Field"
         element={
-          <PrivateRoute>
-            <Fields />
-          </PrivateRoute>
+          <Fields />
         }
       />
       <Route
         path="/admin/Reservation"
         element={
-          <PrivateRoute>
-            <Reservation />
-          </PrivateRoute>
+          <Reservation />
         }
       />
       <Route
         path="/admin/Users"
         element={
-          <PrivateRoute>
-            <Users />
-          </PrivateRoute>
+          <Users />
         }
       />
       <Route
         path="/admin/products"
         element={
-          <PrivateRoute>
-            <Products />
-          </PrivateRoute>
+          <Products />
         }
       />
 
@@ -73,9 +61,7 @@ const Routes = () => {
       <Route
         path="/store/product/:productId"
         element={
-          <PrivateRoute>
-            <ProductDetails />
-          </PrivateRoute>
+          <ProductDetails />
         }
       />
       <Route path="/login" element={<Login />} />

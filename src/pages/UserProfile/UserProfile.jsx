@@ -13,7 +13,12 @@ const UserProfile = () => {
 	const { authenticated, user, logout } = useContext(AuthContext);
 	const [showModal, setShowModal] = useState(false);
 
-	const userRole = user.isAdmin ? "Admin" : user.isOwner ? "Owner" : "Cliente";
+	
+	console.log(authenticated)
+	
+	console.log(user)
+
+	const userRole = user ? (user.isAdmin ? "Admin" : user.isOwner ? "Owner" : "Cliente") : "";
 
 	const handleModal = () => {
 		setShowModal(!showModal);
@@ -83,7 +88,7 @@ const UserProfile = () => {
 			<div className="cardProfile">
 				<div className="linesProfle"></div>
 				<div className="imgBx">
-					<img src="Garen_14.jpg" alt="" />
+					<img src={user.photo.url} alt="Foto de Perfil" />
 				</div>
 				<div className="profileContent">
 					<div className="detailsProfile">

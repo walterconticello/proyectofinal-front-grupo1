@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
-  const { getAuth, authenticated, loading } = useContext(AuthContext);
+  const { authenticated, loading, getAuth } = useContext(AuthContext);
 
 
 

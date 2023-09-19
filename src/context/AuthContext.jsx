@@ -1,4 +1,3 @@
-import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 import axios from "../config/axios";
 import { createContext, useEffect, useState } from "react";
@@ -13,16 +12,15 @@ export const AuthProvider = ({ children }) => {
   const login = async (values) => {
     try {
       const response = await axios.post(`/api/auth/login`, values);
-      const token = response.data.data.token;
-      const decodedToken = jwtDecode(token); // Decodifica el token
-      console.log("Token:", token);
-      console.log("Decoded Token:", decodedToken);
-      setUser(decodedToken);
+      const token = response.data.token;
+      console.log(response)
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`; // Update to use Bearer token
+      localStorage.setItem("token", token);
       setAuthenticated(true);
-      axios.defaults.headers.common["access_token"] = token;
-      localStorage.setItem("access_token", token);
+      setUser(response.data.user);
     } catch (error) {
       console.error("Login error:", error);
+      // Manejar errores de inicio de sesión aquí
     }
   };
 
@@ -30,42 +28,45 @@ export const AuthProvider = ({ children }) => {
     try {
       const { data } = await axios.post(`/api/auth/register`, values);
       console.log("Registered user:", data);
+      // Manejar respuesta exitosa de registro aquí
     } catch (error) {
       console.error("Register error:", error);
+      // Manejar errores de registro aquí
     }
   };
 
   const logout = () => {
     setUser(null);
     setAuthenticated(false);
-    axios.defaults.headers.common["Authorization"] = "";
-    localStorage.removeItem("access_token");
+    axios.defaults.headers.common["Authorization"] = ""; // Limpiar el token de autorización
+    localStorage.removeItem("token");
+    // Restablecer el estado de autenticación y usuario aquí si es necesario
   };
 
-  useEffect(() => {
-    async function checkAuth() {
-      try {
-        const token = localStorage.getItem("access_token");
-        if (!token) {
-          setLoading(false);
-          return;
-        }
-        axios.defaults.headers.common["access_token"] = token;
-        setAuthenticated(true);
-      } catch (error) {
+  const getAuth = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
         setLoading(false);
-        setUser(null);
-        setAuthenticated(false);
-        axios.defaults.headers.common["access_token"] = "";
-        localStorage.removeItem("access_token");
+        return setAuthenticated(false);
       }
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      const { data } = await axios.get("/api/auth/check");
+      console.log(data)
+      setUser(data.user);
+      setAuthenticated(true);
+    } catch (error) {
+      console.error("Error en getAuth:", error); // Agrega esta línea para registrar el error
+      setAuthenticated(false);
+      toast.error("Error de autenticación. Ingrese nuevamente");
     }
-    checkAuth();
-  }, []);
+    setLoading(false);
+  };
+
 
   return (
     <AuthContext.Provider
-      value={{ user, authenticated, loading, login, register, logout }}
+      value={{ user, authenticated, loading, login, register, logout, getAuth }}
     >
       {children}
     </AuthContext.Provider>

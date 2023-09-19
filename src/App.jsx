@@ -4,7 +4,7 @@ import { ProductProvider } from "./context/ProductContext";
 import Routes from "./routes/routes";
 import Layout from "./components/common/Layout";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
-import AuthProvider from "./context/AuthContext";
+import AuthProvider, { AuthContext } from "./context/AuthContext";
 
 import FieldContext from './context/FieldContext.jsx';
 import CenterContext from './context/CenterContext';
@@ -14,24 +14,12 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <AuthProvider>    
-    <SalesProvider>
-      <ProductProvider>
-      <ReserveContext>
-    <CenterContext>
-      <ProductProvider>
-      <FieldContext>  
-          <ScrollToTop />
-          <Layout>
-            <Routes />
-            <ToastContainer />
-          </Layout>
-        </FieldContext>
-        </ProductProvider>
-      </CenterContext>
-      </ReserveContext>
-      </ProductProvider>
-    </SalesProvider>
+    <AuthProvider>
+      <ScrollToTop />
+      <Layout>
+        <Routes />
+        <ToastContainer />
+      </Layout>
     </AuthProvider>
 
   );
