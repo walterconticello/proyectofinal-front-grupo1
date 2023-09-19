@@ -1,4 +1,4 @@
-import Slider from "../../components/Slider/Slider.jsx";
+import Slider from "../../components/sliderSportCenters/SliderSportCenters";
 import SportCenterCards from "../../components/SportCenterCards/SportCenterCards.jsx";
 
 const SportCenter = () => {

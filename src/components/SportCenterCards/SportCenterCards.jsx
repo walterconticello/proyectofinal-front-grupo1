@@ -8,6 +8,7 @@ import {
   FaGlassCheers,
   FaHouzz,
   FaRestroom,
+  FaSistrix,
 } from "react-icons/fa";
 import { SportCenterContext } from "../../context/CenterContext";
 import { Card, Col, Row, Form, Button } from "react-bootstrap";
@@ -73,7 +74,7 @@ const SportCenterCards = () => {
   return (
     <div className="sport-center-cards p-5">
       <Row>
-        <Col md={4}>
+        <Col md={12} lg={4}>
           <div className="filters-sportcenter">
             <h2 className="text-center">Filtrar complejos</h2>
             <hr className="m-3" />
@@ -94,13 +95,13 @@ const SportCenterCards = () => {
                   key={index}
                   type="checkbox"
                   className={`category-filter-each ${
-                    selectedFilters[category] ? "selected" : ""
+                    filters[category] ? "category-filter-each-selected" : ""
                   }`}
                   id={`has${category}`}
                   label={
-                    <div className="d-flex align-items-center">
-                      <div>{categoryIcons[category]}</div>
-                      <div className="m-2">{category}</div>
+                    <div className={"d-flex align-items-center m-2"}>
+                      <div className="mx-2">{categoryIcons[category]}</div>
+                      <p>{category}</p>
                     </div>
                   }
                   checked={filters[category]}
@@ -118,38 +119,45 @@ const SportCenterCards = () => {
           </div>
         </Col>
 
-        <Col md={8}>
-          {filteredComplexs.map((center, index) => (
-            <Card key={index} className="sportcenter-card border m-2">
-              <Row>
-                <Col md={4}>
-                  <img
-                    src={center.photo.url}
-                    className="img-fluid"
-                    alt={center.name}
-                  />
-                </Col>
-                <Col md={8}>
-                  <div className="icon-futbol d-flex align-items-center">
-                    <FaFutbol size={25} className="mx-2" />
-                    <p className="icon-text">Futbol 5</p>
-                  </div>
-                  <Card.Body>
-                    <Card.Title className="card-cTitle">
-                      {center.name}
-                    </Card.Title>
-                    <Card.Text className="card-cText d-flex align-items-center g-2">
-                      <FaMapMarkerAlt size={20} />
-                      {center.address}
-                    </Card.Text>
-                    <div className="btn-container justify-content-end">
-                      <Link className="btn-reserve">Reserva aquí</Link>
+        <Col md={12} lg={8}>
+          {complexs.length > 0 ? (
+            filteredComplexs.map((center, index) => (
+              <Card key={index} className="sportcenter-card border m-2">
+                <Row>
+                  <Col md={4}>
+                    <img
+                      src={center.photo.url}
+                      className="img-fluid"
+                      alt={center.name}
+                    />
+                  </Col>
+                  <Col md={8}>
+                    <div className="icon-futbol d-flex align-items-center">
+                      <FaFutbol size={25} className="mx-2" />
+                      <p className="icon-text">Futbol 5</p>
                     </div>
-                  </Card.Body>
-                </Col>
-              </Row>
-            </Card>
-          ))}
+                    <Card.Body>
+                      <Card.Title className="card-cTitle">
+                        {center.name}
+                      </Card.Title>
+                      <Card.Text className="card-cText d-flex align-items-center g-2">
+                        <FaMapMarkerAlt size={20} />
+                        {center.address}
+                      </Card.Text>
+                      <div className="btn-container justify-content-end">
+                        <Link className="btn-reserve">Reserva aquí</Link>
+                      </div>
+                    </Card.Body>
+                  </Col>
+                </Row>
+              </Card>
+            ))
+          ) : (
+            <div className="d-flex flex-column align-items-center justify-content-center">
+              <h2>No hay complejos disponibles en este momento.</h2>
+              <FaSistrix className="my-3 icon-error" size={50} />
+            </div>
+          )}
         </Col>
       </Row>
     </div>

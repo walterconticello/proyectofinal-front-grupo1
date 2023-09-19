@@ -50,7 +50,16 @@ padding-top: 1rem;
     padding: 2rem;
 }
 
-.category-filter-each.selected{
-    background-color: #71B641;
-    color: #fff;
+
+.category-filter-each {
+    transition: all 200ms ease;
+}
+.category-filter-each-selected{
+    background-color: #71B641 !important;
+    color: #fff !important;
+    border-radius:10px ;
+}
+
+.icon-error{
+    color: #909090;
 }
