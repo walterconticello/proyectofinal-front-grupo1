@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data.user);
     } catch (error) {
       console.error("Login error:", error);
-      // Manejar errores de inicio de sesión aquí
+      throw error;
     }
   };
 
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
       // Manejar respuesta exitosa de registro aquí
     } catch (error) {
       console.error("Register error:", error);
-      // Manejar errores de registro aquí
+      throw error;
     }
   };
 
@@ -40,7 +40,15 @@ export const AuthProvider = ({ children }) => {
     setAuthenticated(false);
     axios.defaults.headers.common["Authorization"] = ""; // Limpiar el token de autorización
     localStorage.removeItem("token");
-    // Restablecer el estado de autenticación y usuario aquí si es necesario
+    toast.success('Cerraste tu sesion de manera exitosa, vuelve pronto!', {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const getAuth = async () => {
@@ -52,7 +60,6 @@ export const AuthProvider = ({ children }) => {
       }
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       const { data } = await axios.get("/api/auth/check");
-      console.log(data)
       setUser(data.user);
       setAuthenticated(true);
     } catch (error) {

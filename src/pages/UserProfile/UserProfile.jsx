@@ -13,11 +13,6 @@ const UserProfile = () => {
 	const { authenticated, user, logout } = useContext(AuthContext);
 	const [showModal, setShowModal] = useState(false);
 
-	
-	console.log(authenticated)
-	
-	console.log(user)
-
 	const userRole = user ? (user.isAdmin ? "Admin" : user.isOwner ? "Owner" : "Cliente") : "";
 
 	const handleModal = () => {
