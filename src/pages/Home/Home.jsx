@@ -25,54 +25,7 @@ const Home = () => {
 				<SearchBar />
 				<div className="complexCards container mx-auto p-5">
 					<div className="grid gap-4 justify-center md:grid-cols-3">
-						<div className="card p-3">
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzFBC4q818qo2kVFF6rLvHcjn-HE75CZ42qQ&usqp=CAU"
-								className="card-img-top"
-								alt="..."
-							/>
-							<div className="card-body">
-								<h5 className="card-title">Ojo de agua</h5>
-								<p className="card-text">
-									La mas grande del norte Argentino.
-								</p>
-								<Link to={"/complejos"} className="btn btn-primary">
-									Alquilar!
-								</Link>
-							</div>
-						</div>
-						<div className="card p-3">
-							<img
-								src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/84/2023/08/08/persis-solo-vs-persib-bandung-796388239.jpg"
-								className="card-img-top"
-								alt="..."
-							/>
-							<div className="card-body">
-								<h5 className="card-title">San Martin de Tucumán</h5>
-								<p className="card-text">
-									La mas picante del pais.
-								</p>
-								<Link to={"/complejos"} className="btn btn-primary">
-									Alquilar!
-								</Link>
-							</div>
-						</div>
-						<div className="card p-3">
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF2C8G8M2fKwh_5LaZ4_SzIfZZXplRWG1hfnRagPtYMqoJkfPwf0SiQC89ngm3SJlOVEc&usqp=CAU"
-								className="card-img-top"
-								alt="..."
-							/>
-							<div className="card-body">
-								<h5 className="card-title">Central Cordoba</h5>
-								<p className="card-text">
-									Juega sin limites!.
-								</p>
-								<Link to={"/complejos"} className="btn btn-primary">
-									Alquilar!
-								</Link>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
