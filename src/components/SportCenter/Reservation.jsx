@@ -5,7 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import clsx from "clsx";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import moment from "moment-timezone";
 
 const Reservation = ({show, onHide, field, loggedUser}) => {
     
@@ -196,7 +197,7 @@ const Reservation = ({show, onHide, field, loggedUser}) => {
                 IdUser: loggedUser._id,
                 IdSportCenter: field.IdSportCenter,
                 IdField: field._id,
-                ReservationTime: startDate,
+                ReservationTime: moment(startDate).tz("America/Argentina/Buenos_Aires").format(),
             });
             onHide();
             setStartDate(null);
@@ -222,7 +223,7 @@ const Reservation = ({show, onHide, field, loggedUser}) => {
                         <div className="d-flex flex-column flex-md-row my-3">
                             <Form.Group className="d-flex flex-column w-100">
                                 <Form.Label className="fw-medium">Seleccione una fecha: </Form.Label>  {/*FALTA EL LIMITE INFERIOR DE HS Y FALTA EL EXCLUDE POR RESERVAS HECHAS*/}
-                                <DatePicker showIcon showTimeSelect minDate={(new Date()).setDate(addDay((new Date()).getDate(),(new Date()).getMonth(),1))} maxDate={endDate} excludeTimes={filterReservedHours()} timeCaption="Hora" minTime={startTime} maxTime={endTime} placeholderText="Click aquí" timeFormat="HH:mm" timeIntervals={60} dateFormat="dd/MM/yyyy h aa" selected={startDate} onChange={(date) => {setStartDate(date); setClicked(true)}} required className={`comment-border ${clsx(
+                                <DatePicker showIcon showTimeSelect minDate={(new Date()).setDate(addDay((new Date()).getDate(),(new Date()).getMonth(),1))} maxDate={endDate} excludeTimes={(startDate)?filterReservedHours() : [startTime]} timeCaption="Hora" minTime={startTime} maxTime={(startDate)? endTime : startTime} placeholderText="Click aquí" timeFormat="HH:mm" timeIntervals={60} dateFormat="dd/MM/yyyy h aa" selected={startDate} onChange={(date) => {setStartDate(date); setClicked(true)}} required className={`comment-border ${clsx(
                                     "form-control", 
                                     {
                                         "is-invalid": errorFecha.error && clicked,
