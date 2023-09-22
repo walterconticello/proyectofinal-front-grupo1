@@ -6,11 +6,9 @@ import UserPhoto from "../../assets/avatar-default.jpg";
 import Delete from "../../assets/trash3-fill.svg";
 import Swal from 'sweetalert2';
 
-const Comment = ({comment, page, setComments}) => {
+const Comment = ({comment, page, setComments, loggedUser, idSportCenter, setLastPage}) => {
     const stars = [];
     const URL = import.meta.env.VITE_DB;
-    const loggedUser = "AJSndfjkasndkjasn"; //Traer desde el context
-
     const starsFactory = () => {
         for(let i = 1; i <= comment.rating/2 ; i++) { //1
             stars.push("fill");
@@ -24,17 +22,20 @@ const Comment = ({comment, page, setComments}) => {
     }
     starsFactory();
 
-    const fetchDeleteComment = async ()=> { //Debo tener la parte de walter para probar esto
+    const fetchDeleteComment = async ()=> {
         try {
-            const response = await fetch(`${URL}comments2/${comment.id}`,{ //Luego aca va el _id en el fetch
+            const token = localStorage.getItem("token");
+            const response = await fetch(`${URL}api/comments/${comment._id}`,{
                 method: "DELETE",
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 }
             });
-            const updateResponse = await  fetch(`${URL}comments${page}`);
+            const updateResponse = await fetch(`${URL}api/comments/sportcenter/${idSportCenter}/${page}`);
             const data = await updateResponse.json();
-            setComments([...data]);
+            setComments(data.comments);
+            setLastPage(data.pages);
             Swal.fire({
                 icon: 'success',
                 title: 'Genial!',
@@ -47,7 +48,7 @@ const Comment = ({comment, page, setComments}) => {
                 icon: 'error',
                 title: 'Oops...',
                 confirmButtonColor: '#71B641',
-                text: 'Algo salió mal', //Poner el mensaje del backend
+                text: error.message, //Poner el mensaje del backend
             });
         }
     }
@@ -90,7 +91,7 @@ const Comment = ({comment, page, setComments}) => {
                 </div>
                 <div className="delete-comment-button">
                     {
-                        (comment.userId.email === loggedUser)&&<img src={Delete} alt="delete comment" onClick={handleDelete} className="trash"></img>
+                        (loggedUser && (comment.userId.email === loggedUser.email))&&<img src={Delete} alt="delete comment" onClick={handleDelete} className="trash"></img>
                     }
                 </div>
             </div>

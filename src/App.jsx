@@ -14,11 +14,6 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    // <>
-    //   <Navbar />
-    //   <SportCenterDetail idSportCenter={"6506441ce5b61592c0a44bef"}></SportCenterDetail>
-    //   <Footer />
-    // </>
     <AuthProvider>
       <ScrollToTop />
       <Layout>

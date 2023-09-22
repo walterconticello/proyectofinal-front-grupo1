@@ -18,12 +18,13 @@ import StarEmpty from "../../assets/star.svg";
 import Star from "../../assets/star-fill.svg";
 import HalfStar from "../../assets/star-half.svg";
 import NoPhoto from "../../assets/no-photo.jpg";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import Comment from "./Comment";
 import Field from "./Field";
 import NewComment from "./NewComment";
 import Swal from 'sweetalert2'
+import { AuthContext } from "../../context/AuthContext";
 
 
 /*
@@ -51,6 +52,8 @@ const SportCenterDetail = ({idSportCenter}) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
     
+    const {user} = useContext(AuthContext);
+
     const starsFactory = (s) => {
         let auxStars = []
         for(let i = 1; i <= rating/2 ; i++) { //1
@@ -212,7 +215,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                                 (comments.length > 0)?
                                 comments.map(comment => {
                                     return (
-                                        <Comment key={comment._id} comment={comment} page={page} setComments={setComments}></Comment> //PONER COMO KEY el _id
+                                        <Comment key={comment._id} loggedUser={user} setLastPage={setLastPage} idSportCenter={idSportCenter} comment={comment} page={page} setComments={setComments}></Comment> //PONER COMO KEY el _id
                                     );
                                 }) :
                                 <h2 className="text-center text-green fs-6 my-5">No hay comentarios</h2>
