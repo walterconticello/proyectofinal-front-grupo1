@@ -5,26 +5,27 @@ import clsx from "clsx";
 import { useFormik } from "formik";
 import Swal from 'sweetalert2'
 
-const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
+const NewComment = ({show, onHide, idSportCenter, page, setComments, setLastPage, loggedUser}) => {
     
     const URL = import.meta.env.VITE_DB;
-    
-    const postComment = async (comment) => { //Necesito estar logueado para poder hacer comments desde aca
-        try{                                    //Por ello necesito traer los cambios de walter para comprobarlo
+    const userId = (loggedUser)? loggedUser._id : "";
+    const postComment = async (comment) => {
+        try{
+            const token = localStorage.getItem("token");
             comment.rating = parseInt(comment.rating);
-            console.log(comment.rating);
             const response = await fetch(`${URL}api/comments`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(comment),
             });
 
-            const updateResponse = await  fetch(`${URL}comments${page}`);
+            const updateResponse = await fetch(`${URL}api/comments/sportcenter/${idSportCenter}/${page}`);
             const data = await updateResponse.json();
-            setComments([...data]);
-
+            setComments(data.comments);
+            setLastPage(data.pages);
             Swal.fire({
                 icon: 'success',
                 title: 'Genial!',
@@ -54,7 +55,7 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
         text: "",
         rating: 0,
         sportCenterId: idSportCenter,
-        userId: "64f37eef57221188560d9b9e", //Sacar el Id desde el context
+        userId: userId,
     }
 
     const formik = useFormik({

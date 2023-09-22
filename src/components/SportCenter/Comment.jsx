@@ -48,7 +48,7 @@ const Comment = ({comment, page, setComments, loggedUser, idSportCenter, setLast
                 icon: 'error',
                 title: 'Oops...',
                 confirmButtonColor: '#71B641',
-                text: error.message, //Poner el mensaje del backend
+                text: "Algo salió mal", //Poner el mensaje del backend
             });
         }
     }

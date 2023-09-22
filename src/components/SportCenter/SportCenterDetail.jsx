@@ -210,7 +210,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                 <h2 className="text-center text-green fs-2 my-5">Comentarios:</h2>
                 <article>
                     <Container>
-                        <Button variant="outline-success" onClick={handleShow}>Comentar</Button>
+                        <Button variant="outline-success" disabled={!user} onClick={handleShow}>Comentar</Button>
                             {   
                                 (comments.length > 0)?
                                 comments.map(comment => {
@@ -242,7 +242,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                     }                
                 </article>
             </section>
-            <NewComment page={page} setComments={setComments} show={show} onHide={handleClose} idSportCenter={sportCenter._id}></NewComment>
+            <NewComment page={page} loggedUser={user} setLastPage={setLastPage} setComments={setComments} show={show} onHide={handleClose} idSportCenter={sportCenter._id}></NewComment>
         </main>
     );
 }
