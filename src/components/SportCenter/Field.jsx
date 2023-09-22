@@ -3,7 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import Reservation from "./Reservation";
 import NoPhoto from "../../assets/no-photo.jpg";
 
-const Field = ({field}) => {
+const Field = ({field, loggedUser}) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -25,10 +25,12 @@ const Field = ({field}) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Button variant="outline-success" className="btn-card" onClick={handleShow}>Reservar</Button>
+                    <Button variant="outline-success" className="btn-card" disabled={!loggedUser} onClick={handleShow}>Reservar</Button>
                 </Card.Footer>
             </Card>
-            <Reservation field={field} show={show} onHide={handleClose}></Reservation>
+            {
+                (loggedUser && show) && <Reservation field={field} show={show} loggedUser={loggedUser} onHide={handleClose}></Reservation>
+            }
         </>
     );
 }

@@ -197,7 +197,7 @@ const SportCenterDetail = ({idSportCenter}) => {
                                 sportCenter.fields.map(field => {
                                     return (
                                         <Col className="d-flex justify-content-center align-items-center" xs={12} md={6} lg= {4} key={field._id}>
-                                            <Field field={field}></Field>          
+                                            <Field field={field} loggedUser={user}></Field>          
                                         </Col>
                                     );
                                 })
