@@ -1,4 +1,4 @@
-import CardUsers from "../components/Cards/CardUsers.jsx";
+import CardUsers from "../../components/Cards/CardUsers.jsx";
 
 const Users = () => {
   return (

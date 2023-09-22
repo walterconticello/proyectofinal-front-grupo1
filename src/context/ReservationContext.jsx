@@ -15,7 +15,7 @@ const ReserveContext = ({ children }) => {
     }
   };
 
-  const postReseration = async (bookings) => {
+  const postReservation = async (bookings) => {
     try {
       const response = axios.post("/api/reservation/", bookings);
       console.log(response);
@@ -56,7 +56,7 @@ const ReserveContext = ({ children }) => {
         bookings,
         setBookings,
         getReservations,
-        postReseration,
+        postReservation,
         deleteResevation,
         viewBooking,
       }}

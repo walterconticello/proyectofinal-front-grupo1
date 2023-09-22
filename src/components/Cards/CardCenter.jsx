@@ -1,7 +1,7 @@
-import  React , {useContext, useState } from 'react';
+import  {useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Image } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import ModalEditSportCenter from '../Modals/ModalEditSportCenter';
 import { SportCenterContext } from '../../context/CenterContext';
 import Swal from 'sweetalert2';
@@ -51,7 +51,7 @@ const CardCenter = () => {
       {complexs === undefined
         ? "No Hay Complejos"
         : complexs.map((complex) => (
-          <React.Fragment key={complex._id}>
+          <Container key={complex._id}>
             <Card style={{ width: '16rem' }}>
               <Card.Img variant="top" src="src\img\Ejemplos\1.jpg" />
               <Card.Body>
@@ -72,7 +72,7 @@ const CardCenter = () => {
                     </div>
               </Card.Body>
             </Card>
-            </React.Fragment>
+            </Container>
           ))}
       {show && <ModalEditSportCenter show={show}  handleClose={handleClose} editComplex={editComplex} />};
       </div>
@@ -80,7 +80,7 @@ const CardCenter = () => {
     
   );
   
-}
+};
 
 export default CardCenter;
 

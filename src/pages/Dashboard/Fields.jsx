@@ -1,4 +1,4 @@
-import CardField from '../components/Cards/CardFields'
+import CardField from '../../components/Cards/CardFields'
 import { Button } from 'react-bootstrap';
 
 const Fields= () => {

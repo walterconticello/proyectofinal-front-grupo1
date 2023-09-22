@@ -1,0 +1,41 @@
+*{
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.imgHeader{
+  width: 75%;
+}
+
+.cardContain{
+  width: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cardDash{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    width: 7rem;
+    height: 7rem;
+    position: relative;
+    text-align: center;
+    border: 0.5px solid;
+    border-radius: 12px;
+    background-color: none !important;
+    padding: 15px;
+    transition: box-shadow 0.4s, transform 0.4s;
+    background-color: none !important;
+  }
+  .cardDash:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+  .cardImg{
+    width: 3.8rem;
+    height: 3.8rem;
+    position: relative;
+  }
+  

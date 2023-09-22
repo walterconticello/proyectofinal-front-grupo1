@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import CardCenter from "../components/Cards/CardCenter"
-import ModalNewSportCenter from '../components/Modals/ModalNewSportCenter';
+import CardCenter from "../../components/Cards/CardCenter"
+import ModalNewSportCenter from '../../components/Modals/ModalNewSportCenter';
 
 const SportCenter = () => {
   const [show, setShow] = useState(false);
