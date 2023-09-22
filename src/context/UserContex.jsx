@@ -1,13 +1,12 @@
 import axios from "../config/axios";
 import { createContext, useEffect, useState } from "react";
 
-export const UsersContext = createContext(); //universo. Todo lo que este aqui adentro va a tener acceso a los usuarios
+export const UserContext = createContext(); //universo. Todo lo que este aqui adentro va a tener acceso a los usuarios
 
 // eslint-disable-next-line react/prop-types
-const UserContext = ({ children }) => {
+const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const API = import.meta.env.VITE_DB;
 
   useEffect(() => {
     getUsers();
@@ -69,7 +68,7 @@ const UserContext = ({ children }) => {
   };
 
   return (
-    <UsersContext.Provider
+    <UserContext.Provider
       value={{
         users,
         setUsers,
@@ -82,8 +81,8 @@ const UserContext = ({ children }) => {
       }}
     >
       {children}
-    </UsersContext.Provider>
+    </UserContext.Provider>
   );
 };
 
-export default UserContext;
+export default UserProvider;

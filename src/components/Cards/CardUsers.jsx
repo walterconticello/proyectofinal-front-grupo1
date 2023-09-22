@@ -1,7 +1,7 @@
 import { Button, Card } from "react-bootstrap";
 import { useState , useEffect, useContext } from 'react';
 import Form from 'react-bootstrap/Form';
-import {UsersContext} from "../../context/UserContex.jsx"
+import {UserContext} from "../../context/UserContex.jsx"
 import Swal from 'sweetalert2';
 import "./Card.css";
 
@@ -9,7 +9,7 @@ import "./Card.css";
 const CardUsers = () => {
   const [user, setUser] = useState(false);
   const [dataLoaded, setDataLoaded] = useState(false);
-  const {users ,userDelete , updateUser , loading } = useContext(UsersContext)
+  const {users ,userDelete , updateUser , loading } = useContext(UserContext)
 
   const handleSwitchChange = (statusText) => {
     Swal.fire({

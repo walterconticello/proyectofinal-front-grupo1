@@ -11,6 +11,7 @@ import CenterContext from './context/CenterContext';
 import ReserveContext from './context/ReservationContext';
 import { SalesProvider } from "./context/SalesContext";
 import { ToastContainer } from "react-toastify";
+import { UserContext } from "./context/UserContex";
 
 function App() {
   return (
