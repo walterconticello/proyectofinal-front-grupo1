@@ -2,7 +2,6 @@ import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { Button, Collapse } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './DashboardAdmin.css';
-import { useState } from 'react';
 
 const SidebarDashboard = ({collapsed}) => {
 
@@ -13,7 +12,7 @@ const SidebarDashboard = ({collapsed}) => {
     <SubMenu label="Owner">
       <MenuItem> 
       <Link to={"/admin/SportCenter"}>
-      Complejos   </Link></MenuItem>
+      Complejos </Link></MenuItem>
       <MenuItem> <Link to={"/admin/Field"}>
         Canchas</Link> </MenuItem>
     </SubMenu>

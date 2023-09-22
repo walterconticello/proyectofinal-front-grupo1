@@ -2,7 +2,7 @@ import { useContext} from 'react'
 import { Button , Modal } from 'react-bootstrap'
 import { Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
-import { SportCenterContext } from '../../context/CenterContext';
+import {CenterContext} from '../../context/CenterContext';
 import "./Modal.css";
 
 const validationSchema = Yup.object().shape({
@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
 
 const ModalNewSportCenter = ({ show, handleClose }) => {
 
-    const {postSportCenter} = useContext(SportCenterContext);
+    const {postSportCenter} = useContext(CenterContext);
   
 
   const initialValues = {

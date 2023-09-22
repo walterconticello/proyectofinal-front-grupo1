@@ -3,12 +3,28 @@ import { createContext, useEffect, useState } from "react";
 
 export const ReservationContext = createContext();
 
-const ReserveContext = ({ children }) => {
+const ReservationProvider= ({ children }) => {
   const [bookings, setBookings] = useState([]);
 
   const getReservations = async () => {
     try {
       const response = await axios.get(`/api/reservation/`);
+      setBookings(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getReservationOwner = async () => {
+    try {
+      const response = await axios.get(`/api/reservation/owner`);
+      setBookings(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getReservationUser = async () => {
+    try {
+      const response = await axios.get(`/api/reservation/user`);
       setBookings(response.data);
     } catch (error) {
       console.log(error);
@@ -24,14 +40,14 @@ const ReserveContext = ({ children }) => {
     }
   };
 
-  const deleteResevation = async (id) => {
+  const canceledReservation = async (id) => {
     console.log(id, "id de context");
     try {
       await axios.delete(`/api/reservation/${id}`);
-      const deleteResevation = bookings.filter((booking) => booking.id !== id);
-      setBookings(deleteResevation);
+      const canceled = bookings.filter((booking) => booking.id !== id);
+      setBookings(canceled);
     } catch (error) {
-      console.log(error, "error al borrar cancha");
+      console.log(error, "error al cancelar la reserva");
     }
   };
 
@@ -57,8 +73,10 @@ const ReserveContext = ({ children }) => {
         setBookings,
         getReservations,
         postReservation,
-        deleteResevation,
+        canceledReservation,
         viewBooking,
+        getReservationOwner,
+        getReservationUser 
       }}
     >
       {children}
@@ -66,4 +84,4 @@ const ReserveContext = ({ children }) => {
   );
 };
 
-export default ReserveContext;
+export default ReservationProvider;

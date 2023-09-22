@@ -1,10 +1,10 @@
 import axios from "../config/axios";
 import { createContext, useEffect, useState } from "react";
 
-export const SportCenterContext = createContext();
+export const CenterContext = createContext();
 
 // eslint-disable-next-line react/prop-types
-const CenterContext = ({ children }) => {
+const CenterProvider = ({ children }) => {
   const [complexs, setComplexs] = useState([]);
 
   const getSportCenter = async () => {
@@ -15,6 +15,7 @@ const CenterContext = ({ children }) => {
       console.log(error);
     }
   };
+  console.log(getSportCenter);
 
   const postSportCenter = async (complexs) => {
     console.log("data" + complexs);
@@ -49,20 +50,20 @@ const CenterContext = ({ children }) => {
     getSportCenter();
   }, []);
 
+
   return (
-    <SportCenterContext.Provider
+    <CenterContext.Provider
       value={{
         complexs,
         getSportCenter,
-        setComplexs,
         postSportCenter,
         deleteSportCenter,
         updateSportCenter,
       }}
     >
       {children}
-    </SportCenterContext.Provider>
+    </CenterContext.Provider>
   );
 };
 
-export default CenterContext;
+export default CenterProvider;

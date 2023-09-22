@@ -2,15 +2,17 @@ import  {useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Container, Image } from "react-bootstrap";
-import ModalEditSportCenter from '../Modals/ModalEditSportCenter';
-import { SportCenterContext } from '../../context/CenterContext';
+// import ModalEditSportCenter from '../Modals/ModalEditSportCenter';
+import {CenterContext} from '../../context/CenterContext';
 import Swal from 'sweetalert2';
 import "./Card.css";
 
 
 const CardCenter = () => {
 
-  const {complexs, deleteSportCenter} = useContext(SportCenterContext);
+  const {getSportCenter ,complexs} = useContext(CenterContext);
+
+  console.log(getSportCenter);
   
   const [show, setShow] = useState(false);
 
@@ -47,6 +49,7 @@ const CardCenter = () => {
 
   return (
     <>
+    <div>Hola mundo</div>
     <div  className="d-flex flex-wrap justify-content-between gap-3 m-3 container-fluid">
       {complexs === undefined
         ? "No Hay Complejos"

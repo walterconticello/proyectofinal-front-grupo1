@@ -17,7 +17,7 @@ const SportCenter = () => {
   Nuevo complejo
 </Button>
       <CardCenter />
-      <ModalNewSportCenter show={show} handleClose={handleClose} />
+      {/* <ModalNewSportCenter show={show} handleClose={handleClose} /> */}
     </div>
   );
 };
