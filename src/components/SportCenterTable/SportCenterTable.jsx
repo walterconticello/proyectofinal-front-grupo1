@@ -5,7 +5,10 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import ModalEditSportCenter from "../Modals/ModalEditSportCenter";
+import SportCenterForm from "./SportCenterForm";
 const SportCenterTable = () => {
+  const MySwal = withReactContent(Swal);
+
   const {
     complexs,
     getSportCenter,
@@ -28,6 +31,7 @@ const SportCenterTable = () => {
   }, []);
   return (
     <div className="table-container">
+      <SportCenterForm />
       <div className="table-responsive mx-auto text-center">
         <table>
           <thead>
@@ -51,6 +55,34 @@ const SportCenterTable = () => {
                     onClick={() => handleEdit(complex)}
                   >
                     <MdEdit />
+                  </button>
+                  <button
+                    onClick={async () => {
+                      const result = await MySwal.fire({
+                        title: "¿Estás seguro?",
+                        text: "Esta acción eliminará el producto de forma permanente.",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Sí, eliminar",
+                        cancelButtonText: "Cancelar",
+                      });
+
+                      if (result.isConfirmed) {
+                        await deleteSportCenter(complex._id);
+                        console.log("sportcenter deleted");
+                        getSportCenter();
+                        MySwal.fire(
+                          "Eliminado",
+                          "El Complejo ha sido eliminado.",
+                          "success"
+                        );
+                      }
+                    }}
+                    className=""
+                  >
+                    <MdDelete />
                   </button>
                 </td>
               </tr>
