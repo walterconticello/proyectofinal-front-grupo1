@@ -15,12 +15,18 @@ const CenterProvider = ({ children }) => {
       console.log(error);
     }
   };
-  console.log(getSportCenter);
+  // console.log(getSportCenter);
 
   const postSportCenter = async (complexs) => {
-    console.log("data" + complexs);
+    // console.log("data" + complexs);
     try {
-      const response = axios.post(`/api/sportCenter/`, complexs);
+      const form = new FormData();
+      for (let key in complexs) {
+        form.append(key, complexs[key]);
+      }
+      const response = axios.post(`/api/sportCenter/`, form, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -37,10 +43,16 @@ const CenterProvider = ({ children }) => {
     }
   };
 
-  const updateSportCenter = async (complexs) => {
-    console.log(complexs);
+  const updateSportCenter = async (id, complexs) => {
     try {
-      await axios.put(`/api/sportCenter/${complexs.id}`);
+      const form = new FormData();
+      for (let key in complexs) {
+        form.append(key, complexs[key]);
+      }
+      const res = await axios.put(`/api/sportCenter/${id}`, form, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      return res.data;
     } catch (error) {
       console.log(error, "error al editar");
     }
@@ -49,7 +61,6 @@ const CenterProvider = ({ children }) => {
   useEffect(() => {
     getSportCenter();
   }, []);
-
 
   return (
     <CenterContext.Provider

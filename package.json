@@ -33,7 +33,8 @@
     "react-router-dom": "^6.14.1",
     "react-time-picker": "^6.5.0",
     "react-toastify": "^9.1.3",
-    "sweetalert2": "^11.7.27",
+    "sweetalert2": "^11.7.28",
+    "sweetalert2-react-content": "^5.0.7",
     "yup": "^1.2.0"
   },
   "devDependencies": {

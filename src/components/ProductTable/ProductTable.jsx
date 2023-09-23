@@ -1,10 +1,11 @@
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import "./ProductTable.css";
 import { MdDelete, MdEdit } from "react-icons/md";
 import ProductForm from "../ProductForm/ProductForm";
 import EditProductForm from "../ProductForm/EditProductForm";
 import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const ProductTable = () => {
   const { products, getProducts, deleteProduct, updateProducts } =
@@ -27,7 +28,7 @@ const ProductTable = () => {
   };
 
   return (
-    <div className="table-container mx-auto ">
+    <div className="table-container">
       <div className="switch-container align-items-center">
         <ProductForm />
       </div>
@@ -48,7 +49,7 @@ const ProductTable = () => {
               <tr key={product._id}>
                 <td>
                   <img
-                    className="w-50"
+                    className="w-25"
                     src={product.image.url}
                     alt={product.name}
                   />
@@ -88,7 +89,7 @@ const ProductTable = () => {
                         );
                       }
                     }}
-                    className="m-2"
+                    className=""
                   >
                     <MdDelete />
                   </button>
