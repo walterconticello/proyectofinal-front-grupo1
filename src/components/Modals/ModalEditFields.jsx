@@ -12,11 +12,11 @@ const validationSchema = Yup.object().shape({
     .min(3, "El nombre debe tener al menos 3 caracteres")
     .max(50, "El nombre no debe exceder los 50 caracteres"),
   openHour: Yup.string().matches(
-    /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,
+    /^([01]?[0-9]|2[0-3])$/,
     'Formato de hora inválido'
   ).required("La hora de apertura es requerida"),
   closeHour: Yup.string().matches(
-    /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,
+    /^([01]?[0-9]|2[0-3])$/,
     'Formato de hora inválido'
   ).required("La hora de cierre es requerida"),
   pricePerHour: Yup.number()
@@ -73,7 +73,7 @@ const ModalEditField = ({ show, handleClose, editField }) => {
             <Form>
               <div className="mb-3">
                 <label className="form-label">Nombre</label>
-                <Field type="text" name="name" disabled={true} />
+                <Field type="text" name="name" />
                 <ErrorMessage name="name" component="div" />
               </div>
               <div className="mb-3">
@@ -94,13 +94,7 @@ const ModalEditField = ({ show, handleClose, editField }) => {
               <div className="mb-3">
                 <label className="form-label">Cantidad de jugadores maximo:</label>
                 <Field type="text" name="size" />
-                <ErrorMessage name="si" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">IdSportCenter</label>
-                <Field type="text" name="IdSportCenter" />
-                <ErrorMessage name="IdSportCenter" component="div" />
-
+                <ErrorMessage name="size" component="div" />
               </div>
               <Button variant="primary" type="submit" >
                 Guardar

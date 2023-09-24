@@ -1,16 +1,26 @@
-import CardField from '../../components/Cards/CardFields'
 import { Button } from 'react-bootstrap';
+import { useState } from 'react';
+import FieldsTable from '../../components/FieldsTable/FieldsTable';
+import ModalNewField from '../../components/Modals/ModalNewField';
 
 const Fields= () => {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
     <div className='ContainerCard container-fluid'>
-     <Button variant="primary">
-        Nuevo complejo
+     <Button variant="primary" onClick={() => handleShow(show)}>
+        Nuevo field
       </Button>
-        <CardField/>
+        <FieldsTable/>
         </div>
-    </>
+        <ModalNewField show={show}
+              handleClose={handleClose} />
+        </>
   )
 }
 export default Fields;
