@@ -1,24 +1,21 @@
-import { useContext } from "react";
-import { Modal, Button} from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Modal , Form as BootstrapForm, Row, Col } from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { FieldsContext } from "../../context/FieldContext"
+import { FieldsContext } from "../../context/FieldContext";
 import "./Modal.css";
-
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .required("El nombre es requerido")
     .min(3, "El nombre debe tener al menos 3 caracteres")
     .max(50, "El nombre no debe exceder los 50 caracteres"),
-    openHour: Yup.string().matches(
-      /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,
-      'Formato de hora inválido'
-    ).required("La hora de apertura es requerida"),
-    closeHour: Yup.string().matches(
-      /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,
-      'Formato de hora inválido'
-    ).required("La hora de cierre es requerida"),
+  openHour: Yup.string()
+    .matches(/^([01]?[0-9]|2[0-3])$/, "Formato de hora inválido")
+    .required("La hora de apertura es requerida"),
+  closeHour: Yup.string()
+    .matches(/^([01]?[0-9]|2[0-3])$/, "Formato de hora inválido")
+    .required("La hora de cierre es requerida"),
   pricePerHour: Yup.number()
     .required("El precio por hora es requerido")
     .min(0, "El precio por hora no puede ser menor que 0")
@@ -27,24 +24,23 @@ const validationSchema = Yup.object().shape({
     .required("El tamaño es requerido")
     .min(5, "El tamaño no puede ser menor que 5")
     .max(22, "El tamaño no puede ser mayor que 11"),
+    image: Yup.mixed().required("Seleccione una imagen"),
 });
 
-const ModalCancha = ({show , handleClose}) => {
+const ModalNewField = ({ show, handleClose }) => {
+  const { postField, getField } = useContext(FieldsContext);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const {addField} = useContext(FieldsContext);
-
-
-  const handleSubmit = async (values) => {
-    console.log("enviado");
-    try {
-      await addField(values);
-      handleClose(); // Close the modal on successful submission
-    } catch (error) {
-      console.log(error);
-    }
+  const initialValues = {
+    name: "",
+    openHour: "",
+    closeHour: "",
+    pricePerHour: "",
+    size: "",
+    image: null ,
+    isActive : true,
   };
-
-
+  
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -52,101 +48,129 @@ const ModalCancha = ({show , handleClose}) => {
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Formik
-            initialValues={""}
+        <Formik initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={handleSubmit
-            }
-          >
-            <Form>
-              <div className="mb-3">
-                <label className="form-label">Owner ID</label>
-                <Field type="text" name="ownerId"  disabled={true} />
-                <ErrorMessage name="ownerId" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <Field type="text" name="name" />
-                <ErrorMessage name="name" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Address</label>
-                <Field type="text" name="address" />
-                <ErrorMessage name="address" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Phone</label>
-                <Field type="text" name="phone" />
-                <ErrorMessage name="phone" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Services:</label>
-                <div className="mb-3">
-                  <label className="form-check">
-                    <Field type="checkbox" name="services.bar" />
-                    Bar
-                  </label>
-                  <label className="form-check">
-                    <Field type="checkbox" name="services.showers" />
-                    Showers
-                  </label>
-                  <label className="form-check ">
-                    <Field type="checkbox" name="services.Grill" />
-                    Grill
-                  </label>
-                  <label className="form-check">
-                    <Field type="checkbox" name="services.parking" />
-                    Parking
-                  </label>
+            onSubmit={async (values) => {
+              setIsLoading(true);
+              try {
+                await postField(values);
+                setIsLoading(false);
+                handleClose();
+                getField();
+              } catch (error) {
+                setIsLoading(false);
+              }
+            }}>
+              {({ handleSubmit, setFieldValue }) => (
+                <Form onSubmit={handleSubmit}>
+                  <Row>
+                  <Col md={6}>
+                    <BootstrapForm.Group>
+                      <label htmlFor="name">Nombre</label>
+                      <Field
+                        name="name"
+                        className="form-control m-2 m-2"
+                        placeholder="Nombre"
+                      />
+                      <ErrorMessage
+                        name="name"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+
+                    <BootstrapForm.Group>
+                      <label htmlFor="openHour">Hora de apertura</label>
+                      <Field
+                        name="openHour"
+                        type='number'
+                        className="form-control m-2"
+                        placeholder="Hora de apertura"
+                      />
+                      <ErrorMessage
+                        name="openHour"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+
+                    <BootstrapForm.Group>
+                      <label htmlFor="closeHour">Hora de cierre</label>
+                      <Field
+                        name="closeHour"
+                        type="number"
+                        className="form-control m-2"
+                        placeholder="closeHour"
+                      />
+                      <ErrorMessage
+                        name="closeHour"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+
+                    <BootstrapForm.Group>
+                      <label htmlFor="pricePerHour">Precio por hora</label>
+                      <Field
+                        name="pricePerHour"
+                        type="number"
+                        className="form-control m-2"
+                        placeholder="Precio por hora"
+                      />
+                      <ErrorMessage
+                        name="pricePerHour"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+                    <BootstrapForm.Group>
+                      <label htmlFor="size">Cantidad de jugadores</label>
+                      <Field
+                        name="size"
+                        type="number"
+                        className="form-control m-2"
+                        placeholder="Futbol 11 , 5 , 7"
+                      />
+                      <ErrorMessage
+                        name="size"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+
+                  <BootstrapForm.Group>
+                      <label htmlFor="image">Imagen</label>
+
+                      <input
+                        type="file"
+                        className="m-2"
+                        name="image"
+                        onChange={(e) =>
+                          setFieldValue("image", e.target.files[0])
+                        }
+                      />
+
+                      <ErrorMessage
+                        name="image"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+                  </Col>
+                </Row>
+                <div className="text-center mt-4">
+                  <button type="submit" className="btn add-button px-5">
+                    Guardar
+                  </button>
                 </div>
-                <ErrorMessage name="services" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Imagen</label>
-                <Field type="text" name="photo" />
-                <ErrorMessage name="photo" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Social:</label>
-                <div>
-                  <label className="form-label">Facebook:</label>
-                  <Field type="text" name="social.facebook" />
-                  <ErrorMessage name="social.facebook" component="div" />
-                </div>
-                <div>
-                  <label className="form-label">Instagram:</label>
-                  <Field type="text" name="social.instagram" />
-                  <ErrorMessage name="social.instagram" component="div" />
-                </div>
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Latitude</label>
-                <Field type="number" name="latitude" />
-                <ErrorMessage name="latitude" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Location</label>
-                <Field type="text" name="location" />
-                <ErrorMessage name="location" component="div" />
-              </div>
-              <Button variant="primary" type="submit" >
-            Guardar
-          </Button>
-          <Button variant="danger" onClick={handleClose}>
-            Cancel
-          </Button>
-            </Form>
-          </Formik>
+                </Form>
+              )}
+              </Formik>
         </Modal.Body>
-        <Modal.Footer>
-          <Button type="submit"  onClick={handleClose} >Save Changes</Button>
-          <Button variant="danger" onClick={handleClose}>
-            Eliminar Cancha
-          </Button>
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     </>
   );
 };
 
-export default ModalCancha;
+export default ModalNewField;

@@ -5,7 +5,6 @@ export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
   const [fields, setFields] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const getFields = async () => {
     try {
@@ -16,7 +15,7 @@ const FieldProvider = ({ children }) => {
     }
   };
 
-  const addField = async (fields) => {
+  const postField = async (fields) => {
     try {
       const response = axios.post(`/api/fields/`, fields);
       console.log(response);
@@ -58,7 +57,7 @@ const FieldProvider = ({ children }) => {
 
   useEffect(() => {
     getFields();
-  }, [setLoading]);
+  }, []);
 
   return (
     <FieldsContext.Provider
@@ -66,7 +65,7 @@ const FieldProvider = ({ children }) => {
         fields,
         getFields,
         setFields,
-        addField,
+        postField,
         deleteField,
         getFieldById,
         updateField,
