@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (values) => {
     try {
-      const response = await axios.post(`/api/auth/login`, values);
+      const response = await axios.post(`api/auth/login`, values);
       const token = response.data.token;
       console.log(response)
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`; // Update to use Bearer token
@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (values) => {
     try {
-      const { data } = await axios.post(`/api/auth/register`, values);
+      const { data } = await axios.post(`api/auth/register`, values);
       console.log("Registered user:", data);
       // Manejar respuesta exitosa de registro aquí
     } catch (error) {
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
         return setAuthenticated(false);
       }
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      const { data } = await axios.get("/api/auth/check");
+      const { data } = await axios.get("api/auth/check");
       setUser(data.user);
       setAuthenticated(true);
     } catch (error) {

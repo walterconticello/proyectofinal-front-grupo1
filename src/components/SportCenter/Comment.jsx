@@ -6,11 +6,9 @@ import UserPhoto from "../../assets/avatar-default.jpg";
 import Delete from "../../assets/trash3-fill.svg";
 import Swal from 'sweetalert2';
 
-const Comment = ({comment, page, setComments}) => {
+const Comment = ({comment, page, setComments, loggedUser, idSportCenter, setLastPage}) => {
     const stars = [];
     const URL = import.meta.env.VITE_DB;
-    const loggedUser = "AJSndfjkasndkjasn"; //Traer desde el context
-
     const starsFactory = () => {
         for(let i = 1; i <= comment.rating/2 ; i++) { //1
             stars.push("fill");
@@ -26,15 +24,18 @@ const Comment = ({comment, page, setComments}) => {
 
     const fetchDeleteComment = async ()=> {
         try {
-            const response = await fetch(`${URL}comments2/${comment.id}`,{ //Luego aca va el _id en el fetch
+            const token = localStorage.getItem("token");
+            const response = await fetch(`${URL}api/comments/${comment._id}`,{
                 method: "DELETE",
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 }
             });
-            const updateResponse = await  fetch(`${URL}comments${page}`);
+            const updateResponse = await fetch(`${URL}api/comments/sportcenter/${idSportCenter}/${page}`);
             const data = await updateResponse.json();
-            setComments([...data]);
+            setComments(data.comments);
+            setLastPage(data.pages);
             Swal.fire({
                 icon: 'success',
                 title: 'Genial!',
@@ -47,7 +48,7 @@ const Comment = ({comment, page, setComments}) => {
                 icon: 'error',
                 title: 'Oops...',
                 confirmButtonColor: '#71B641',
-                text: 'Algo salió mal', //Poner el mensaje del backend
+                text: "Algo salió mal", //Poner el mensaje del backend
             });
         }
     }
@@ -74,9 +75,9 @@ const Comment = ({comment, page, setComments}) => {
                 <div className="d-flex gap-3 flex-column flex-md-row align-items-md-center justify-content-md-between">
                     <div className="d-flex comment-header justify-content-start align-items-center gap-1 gap-md-3">
                         <div className="comment-header-portrait">
-                            <img src={comment.user.photo || UserPhoto} alt="profile img" className="comment-header-img"/>
+                            <img src={comment.userId.photo.url || UserPhoto} alt="profile img" className="comment-header-img"/>
                         </div>
-                        <h3 className="comment-username">{comment.user.username}</h3>
+                        <h3 className="comment-username">{comment.userId.username}</h3>
                     </div>
                     <div className="d-flex align-items-center">
                         {
@@ -90,7 +91,7 @@ const Comment = ({comment, page, setComments}) => {
                 </div>
                 <div className="delete-comment-button">
                     {
-                        (comment.userId === loggedUser)&&<img src={Delete} alt="delete comment" onClick={handleDelete} className="trash"></img>
+                        (loggedUser && (comment.userId.email === loggedUser.email))&&<img src={Delete} alt="delete comment" onClick={handleDelete} className="trash"></img>
                     }
                 </div>
             </div>

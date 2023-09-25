@@ -21,7 +21,6 @@ function App() {
         <ToastContainer />
       </Layout>
     </AuthProvider>
-
   );
 
 }

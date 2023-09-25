@@ -5,20 +5,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import clsx from "clsx";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import moment from "moment-timezone";
 
-const Reservation = ({show, onHide, field}) => {
+const Reservation = ({show, onHide, field, loggedUser}) => {
     
     const [startDate, setStartDate] = useState(null);
     const [reservations, setReservations] = useState([]);
     const [errorFecha, setErrorFecha] = useState({error: false,message: ""});
     const [clicked, setClicked] = useState(false);
 
-    const user = {
-        username: "diego_vacapaz",
-        userId: "unadcfgaigbfgasd"
-    }
-    
     const addMonth = (month, offset) => {
         if(month + offset <= 11){
             return month + offset;
@@ -70,12 +66,17 @@ const Reservation = ({show, onHide, field}) => {
     const startTime = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(),field.openHour);
     const endTime = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(),field.closeHour - 1);
 
-    const fetchReservation = async () => { //Esto deberia filtrar por id de field, pero el dbjson no puedo por eso lo filtro en el try-catch
+    const fetchReservation = async () => {
         try {
-            const response = await fetch(`${URL}reservations`);
+            const token = localStorage.getItem("token");
+            const response = await fetch(`${URL}api/reservation/field/${field._id}`, {
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const data = await response.json();
-            const fieldReservations = data.filter((reservation) => reservation.IdField === field._id);
-            setReservations(fieldReservations);
+            setReservations(data);
         }
         catch (error) {
             Swal.fire({
@@ -89,17 +90,24 @@ const Reservation = ({show, onHide, field}) => {
 
     const fetchPostReservation = async (reservation) => {
         try{
-            const response = await fetch(`${URL}reservations`, {
+            const token = localStorage.getItem("token");
+            const response = await fetch(`${URL}api/reservation`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(reservation),
             });
 
-            const updateResponse = await  fetch(`${URL}reservations`);
+            const updateResponse = await fetch(`${URL}api/reservation/field/${field._id}`, {
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const data = await updateResponse.json();
-            setReservations([...data]);
+            setReservations(data);
             Swal.fire({
                 icon: 'success',
                 title: 'Genial!',
@@ -186,10 +194,10 @@ const Reservation = ({show, onHide, field}) => {
         e.preventDefault();
         if(!errorFecha.error){
             fetchPostReservation({
-                IdUser: user.userId,
+                IdUser: loggedUser._id,
                 IdSportCenter: field.IdSportCenter,
                 IdField: field._id,
-                ReservationTime: startDate,
+                ReservationTime: moment(startDate).tz("America/Argentina/Buenos_Aires").format(),
             });
             onHide();
             setStartDate(null);
@@ -211,11 +219,11 @@ const Reservation = ({show, onHide, field}) => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
-                        <h3 className="text-muted mb-3">Usuario: {user.username}</h3>
+                        <h3 className="text-muted mb-3">Usuario: {loggedUser.username}</h3>
                         <div className="d-flex flex-column flex-md-row my-3">
                             <Form.Group className="d-flex flex-column w-100">
                                 <Form.Label className="fw-medium">Seleccione una fecha: </Form.Label>  {/*FALTA EL LIMITE INFERIOR DE HS Y FALTA EL EXCLUDE POR RESERVAS HECHAS*/}
-                                <DatePicker showIcon showTimeSelect minDate={(new Date()).setDate(addDay((new Date()).getDate(),(new Date()).getMonth(),1))} maxDate={endDate} excludeTimes={filterReservedHours()} timeCaption="Hora" minTime={startTime} maxTime={endTime} placeholderText="Click aquí" timeFormat="HH:mm" timeIntervals={60} dateFormat="dd/MM/yyyy h aa" selected={startDate} onChange={(date) => {setStartDate(date); setClicked(true)}} required className={`comment-border ${clsx(
+                                <DatePicker showIcon showTimeSelect minDate={(new Date()).setDate(addDay((new Date()).getDate(),(new Date()).getMonth(),1))} maxDate={endDate} excludeTimes={(startDate)?filterReservedHours() : [startTime]} timeCaption="Hora" minTime={startTime} maxTime={(startDate)? endTime : startTime} placeholderText="Click aquí" timeFormat="HH:mm" timeIntervals={60} dateFormat="dd/MM/yyyy h aa" selected={startDate} onChange={(date) => {setStartDate(date); setClicked(true)}} required className={`comment-border ${clsx(
                                     "form-control", 
                                     {
                                         "is-invalid": errorFecha.error && clicked,

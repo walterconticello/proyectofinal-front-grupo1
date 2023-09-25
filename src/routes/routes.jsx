@@ -13,6 +13,7 @@ import Reservation from "../components/Cards/Reservations";
 import Users from "../pages/Users";
 import Products from "../pages/Products";
 import Contact from "../pages/Contact/Contact";
+import SportCenterDetail from "../components/SportCenter/SportCenterDetail";
 
 const Routes = () => {
   return (
@@ -73,6 +74,7 @@ const Routes = () => {
           </PrivateRoute>
         }
       />
+      <Route path="/detail" element={<SportCenterDetail idSportCenter={"6506441ce5b61592c0a44bef"}></SportCenterDetail>}></Route>
     </Rutas>
   );
 };
