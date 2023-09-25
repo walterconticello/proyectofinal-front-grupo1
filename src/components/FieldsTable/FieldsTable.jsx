@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import { Table ,Form } from "react-bootstrap";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { FieldsContext } from "../../context/FieldContext";
 import { useContext , useEffect,useState } from "react";
@@ -50,6 +50,7 @@ const FieldsTable = () => {
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
+          <th>Cancha</th>
           <th>Name</th>
           <th>Precio</th>
           <th>Tamaño</th>
@@ -60,10 +61,21 @@ const FieldsTable = () => {
       <tbody>
         {fields.map((field) =>(
             <tr key={field._id}>
+              <td><img
+                    className="w-25"
+                    src={field.photo.url}
+                    alt={field.name}
+                  /></td>
             <td>{field.name}</td>
             <td>${field.pricePerHour}</td>
             <td>{field.size}</td>
-            <td>{field.isActive}</td>
+            <td><Form>
+      <Form.Check // prettier-ignore
+        type="switch"
+        id="custom-switch"
+        label={field.isActive}
+      />
+    </Form></td>
             <td><button onClick={() => handleEdit(field)}><MdEdit /></button><button onClick={() => handleDelete(field._id)}><MdDelete /></button></td>
           </tr>
         ))}
