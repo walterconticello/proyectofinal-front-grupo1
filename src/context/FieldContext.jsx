@@ -17,13 +17,26 @@ const FieldProvider = ({ children }) => {
 
   const postField = async (fields) => {
     try {
-      const response = axios.post(`/api/fields/`, fields);
-      console.log(response);
+      const form = new FormData();
+      for (let key in fields) {
+        if (key === 'image') {
+          form.append('image', fields[key]);
+        } else {
+          form.append(key, fields[key]);
+        }
+      }
+      
+      const response = await axios.post(`/api/fields`, form, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      
+      console.log('Respuesta del servidor:', response.data);
     } catch (error) {
-      console.log(error);
+      console.error('Error al enviar los datos:', error);
     }
   };
-
   const deleteField = async (id) => {
     console.log(id, "id de context");
     try {

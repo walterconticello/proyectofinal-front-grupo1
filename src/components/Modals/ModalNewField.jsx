@@ -1,9 +1,11 @@
-import { useContext, useState } from "react";
-import { Modal , Form as BootstrapForm, Row, Col } from "react-bootstrap";
+import { useContext, useEffect, useState } from "react";
+import { Modal, Form as BootstrapForm, Row, Col } from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FieldsContext } from "../../context/FieldContext";
 import "./Modal.css";
+import { AuthContext } from "../../context/AuthContext";
+import { CenterContext } from "../../context/CenterContext";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -24,12 +26,20 @@ const validationSchema = Yup.object().shape({
     .required("El tamaño es requerido")
     .min(5, "El tamaño no puede ser menor que 5")
     .max(22, "El tamaño no puede ser mayor que 11"),
-    image: Yup.mixed().required("Seleccione una imagen"),
+  image: Yup.mixed().required("Seleccione una imagen"),
 });
 
 const ModalNewField = ({ show, handleClose }) => {
   const { postField, getField } = useContext(FieldsContext);
+  const { getSportCenterOwner, owner } = useContext(CenterContext);
+  const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
+
+  const OwnerId = user._id;
+
+  useEffect(() => {
+    getSportCenterOwner(OwnerId);
+  }, []);
 
   const initialValues = {
     name: "",
@@ -37,10 +47,11 @@ const ModalNewField = ({ show, handleClose }) => {
     closeHour: "",
     pricePerHour: "",
     size: "",
-    image: null ,
-    isActive : true,
+    image: null,
+    isActive: true,
+    idSportCenter: "",
   };
-  
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -48,9 +59,11 @@ const ModalNewField = ({ show, handleClose }) => {
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Formik initialValues={initialValues}
+          <Formik
+            initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={async (values) => {
+            onSubmit={async (values, actions) => {
+              console.log(values.idSportCenter);
               setIsLoading(true);
               try {
                 await postField(values);
@@ -60,10 +73,11 @@ const ModalNewField = ({ show, handleClose }) => {
               } catch (error) {
                 setIsLoading(false);
               }
-            }}>
-              {({ handleSubmit, setFieldValue }) => (
-                <Form onSubmit={handleSubmit}>
-                  <Row>
+            }}
+          >
+            {({ handleSubmit, setFieldValue }) => (
+              <Form onSubmit={handleSubmit}>
+                <Row>
                   <Col md={6}>
                     <BootstrapForm.Group>
                       <label htmlFor="name">Nombre</label>
@@ -83,7 +97,7 @@ const ModalNewField = ({ show, handleClose }) => {
                       <label htmlFor="openHour">Hora de apertura</label>
                       <Field
                         name="openHour"
-                        type='number'
+                        type="number"
                         className="form-control m-2"
                         placeholder="Hora de apertura"
                       />
@@ -138,7 +152,7 @@ const ModalNewField = ({ show, handleClose }) => {
                       />
                     </BootstrapForm.Group>
 
-                  <BootstrapForm.Group>
+                    <BootstrapForm.Group>
                       <label htmlFor="image">Imagen</label>
 
                       <input
@@ -156,6 +170,28 @@ const ModalNewField = ({ show, handleClose }) => {
                         className="error-message"
                       />
                     </BootstrapForm.Group>
+
+                    <BootstrapForm>
+                      <label>Cancha:</label>
+                      <Field
+                        as="select"
+                        name="idSportCenter"
+                        className="form-control m-2"
+                        aria-label="Select an option"
+                      >
+                        <option value="">Selecciona una opción</option>
+                        {owner.map((sportCenter) => (
+                          <option key={sportCenter._id} value={sportCenter._id}>
+                            {sportCenter.name}
+                          </option>
+                        ))}
+                      </Field>
+                      <ErrorMessage
+                        name="idSportCenter"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm>
                   </Col>
                 </Row>
                 <div className="text-center mt-4">
@@ -163,9 +199,9 @@ const ModalNewField = ({ show, handleClose }) => {
                     Guardar
                   </button>
                 </div>
-                </Form>
-              )}
-              </Formik>
+              </Form>
+            )}
+          </Formik>
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>

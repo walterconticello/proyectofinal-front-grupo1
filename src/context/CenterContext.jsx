@@ -1,11 +1,15 @@
 import axios from "../config/axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { AuthContext } from "./AuthContext";
 
 export const CenterContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 const CenterProvider = ({ children }) => {
   const [complexs, setComplexs] = useState([]);
+  
+  const [owner , setOwner] = useState([])
+
 
   const getSportCenter = async () => {
     try {
@@ -15,41 +19,29 @@ const CenterProvider = ({ children }) => {
       console.log(error);
     }
   };
-  // console.log(getSportCenter);
+
+  const getSportCenterOwner = async (id) => {
+    try {
+      const response = await axios.get(`/api/sportCenter/owner/${id}`);
+      setOwner(response.data);
+    } catch (error) {
+      console.log('Error fetching data:', error);
+    }
+  }
 
   const postSportCenter = async (complexs) => {
-    // console.log(complexs[services]);
+    // console.log("data" + complexs);
     try {
-      let form = new FormData();
-      let subObject = {};
+      const form = new FormData();
       for (let key in complexs) {
-        if (key == "photo") {
-          form.append(key, complexs[key]);
-        } else {
-          subObject[key] = complexs[key];
-        }
+        form.append(key, complexs[key]);
       }
-      form.append("data", JSON.stringify(subObject));
-
-      // for (let key in complexs) {
-      //   if (typeof complexs[key] === "object") {
-      //     // for (let clave in complexs[key]) {
-      //     //   console.log(typeof key);
-
-      //     //   form[key] = {...form[key], }(clave, complexs[key][clave]);
-      //     // }
-      //     form[key] = {...complexs[key], }
-      //   } else {
-      //     form.append(key, complexs[key]);
-      //   }
-      // }
-      console.log(form);
-      const response = await axios.post(`/api/sportCenter`, form, {
+      const response = axios.post(`/api/sportCenter/`, form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      return response, console.log(response);
+      console.log(response);
     } catch (error) {
-      console.log(error, "error posting sportCenter");
+      console.log(error);
     }
   };
 
@@ -86,10 +78,12 @@ const CenterProvider = ({ children }) => {
     <CenterContext.Provider
       value={{
         complexs,
+        owner,
         getSportCenter,
         postSportCenter,
         deleteSportCenter,
         updateSportCenter,
+        getSportCenterOwner
       }}
     >
       {children}
