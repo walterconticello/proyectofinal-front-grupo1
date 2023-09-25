@@ -20,7 +20,7 @@ const SidebarDashboard = ({collapsed}) => {
     Reservaciones
     </Link>
     </MenuItem>
-    <MenuItem> <Link to={"/admin/Users"} >Productos</Link> </MenuItem>
+    <MenuItem> <Link to={"/admin/products"} >Productos</Link> </MenuItem>
     <MenuItem><Link to={"/admin/Users"} > Usuarios</Link></MenuItem>
   </Menu>
 </Sidebar>

@@ -1,9 +1,10 @@
 import { Container, Figure, Button, Image } from "react-bootstrap";
 import RecentTable from "../../components/Reservation/Recent";
+import ProductTable from "../../components/ProductTable/ProductTable"
 import Active from "../../components/Reservation/Active.jsx";
 import { Pending } from "../../components/Reservation/Pending";
 import { useState } from "react";
-import SidebarDashboard from "../../components/Sidebar/DashboardAdmin";
+import SidebarDashboard from "../../components/Sidebar/SideBar";
 import "./Dashboard.css";
 import { Canceled } from "../../components/Reservation/Canceled";
 import { ReservationContext } from "../../context/ReservationContext";
@@ -36,20 +37,24 @@ export const Dashboard = () => {
   Reservation();
   return (
     <>
-      <Container fluid className="p-0 col-10 justify-content-center">
-        <Figure className="imgHeader">
-          <Figure.Image src="src/assets/Admin.jpeg" />
+  <Container fluid className='d-flex flex-row p-0'>
+      <Container className={`d-flex flex-row p-0 ${collapsed ? 'collapsed-sidebar' : ''}`}>
+        <SidebarDashboard collapsed={collapsed} className="sideBar" />
+        <Button variant="primary" className='h-10' onClick={() => setCollapsed(!collapsed)}>
+         <Image className='h-7' src='src\assets\Menu_icon.png'/>
+        </Button>
+      </Container>
+      <Container fluid className='p-0 col-10 justify-content-center'>
+        <Figure className='imgHeader'>
+          <Figure.Image src='src/assets/Admin.jpeg' />
         </Figure>
-        <Container className="d-flex flex-row justify-content-center p-3">
+        <Container className='d-flex flex-row justify-content-center p-3'>
           <Active active={active} />
-          <Pending pending={pending} />
-          <Canceled canceled={canceled} />
-          <Container fluid className="p-0 col-10 justify-content-center">
-            <ProductTable />
-            <hr />
-            <SportCenterTable />
-          </Container>
+          <Pending pending={pending}/>
+          <Canceled canceled={canceled}/>
         </Container>
+        <RecentTable />
+      </Container>
       </Container>
     </>
   );
