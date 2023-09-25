@@ -55,7 +55,9 @@ const SportCenterForm = () => {
       showers: false,
       grill: false,
       parking: false,
+      dressingRoom: false,
     },
+    photo: null,
     social: {
       facebook: "",
       instagram: "",
@@ -87,12 +89,14 @@ const SportCenterForm = () => {
             onSubmit={async (values, actions) => {
               setIsLoading(true);
               try {
+                console.log(values);
                 await postSportCenter(values);
                 setIsLoading(false);
                 handleCloseModal();
                 getSportCenter();
               } catch (e) {
                 setIsLoading(false);
+                console.log("error" + e);
               }
             }}
           >
@@ -178,10 +182,18 @@ const SportCenterForm = () => {
                           <label className="form-check d-flex ">
                             <Field
                               type="checkbox"
-                              name="services.Grill"
+                              name="services.grill"
                               className="form-label"
                             />
                             <FaHouzz size={23} /> Parrillas
+                          </label>
+                          <label className="form-check d-flex ">
+                            <Field
+                              type="checkbox"
+                              name="services.parking"
+                              className="form-label"
+                            />
+                            <FaHouzz size={23} /> Estacionamiento
                           </label>
                         </Col>
                         <Col md={6}>
@@ -209,7 +221,22 @@ const SportCenterForm = () => {
                         className="text-danger"
                       />
                     </BootstrapForm.Group>
-
+                    <BootstrapForm.Group>
+                      <label className="form-label">Imagen</label>
+                      <input
+                        type="file"
+                        name="photo"
+                        className="form-control mb-3"
+                        onChange={(e) =>
+                          setFieldValue("photo", e.target.files[0])
+                        }
+                      />
+                      <ErrorMessage
+                        name="photo"
+                        component="div"
+                        className="text-danger"
+                      />
+                    </BootstrapForm.Group>
                     <BootstrapForm.Group>
                       <label className="form-label">Latitud</label>
                       <Field
