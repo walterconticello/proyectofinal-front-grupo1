@@ -95,7 +95,7 @@ const Comment = ({comment, page, setComments, loggedUser, idSportCenter, setLast
                     }
                 </div>
             </div>
-            <div className="my-3">
+            <div className="my-3 text-comment-container">
                 <p>{comment.text}</p>
             </div>
         </article>

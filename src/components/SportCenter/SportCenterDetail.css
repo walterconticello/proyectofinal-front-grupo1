@@ -106,6 +106,10 @@
     padding: 0;
 }
 
+.text-comment-container{
+    overflow-x: auto;
+}
+
 @media all and (min-width:768px){
     .main-picture {
         width: 25vw;
