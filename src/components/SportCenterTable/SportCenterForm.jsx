@@ -2,6 +2,9 @@ import React, { useState, useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { CenterContext } from "../../context/CenterContext";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import * as Yup from "yup";
 import {
   Container,
@@ -77,7 +80,6 @@ const SportCenterForm = () => {
         <MdAddCircle className="m-2" />
         Agregar Complejo
       </Button>
-
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Agregar Complejo</Modal.Title>
@@ -94,6 +96,15 @@ const SportCenterForm = () => {
                 setIsLoading(false);
                 handleCloseModal();
                 getSportCenter();
+                toast.success("👌 Complejo creado exitosamente!", {
+                  position: toast.POSITION.TOP_CENTER,
+                  autoClose: 2000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });
               } catch (e) {
                 setIsLoading(false);
                 console.log("error" + e);
