@@ -1,5 +1,12 @@
 import { useContext, useState } from "react";
-import { Modal, Button, Row, Col } from "react-bootstrap";
+import {
+  Modal,
+  Button,
+  Row,
+  Col,
+  Container,
+  Form as BootstrapForm,
+} from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { CenterContext } from "../../context/CenterContext";
@@ -22,27 +29,31 @@ const validationSchema = Yup.object().shape({
     .required("Required")
     .min(3, "La dirección debe tener al menos 3 caracteres")
     .max(30, "La dirección debe tener como máximo 30 caracteres"),
-  phone: Yup.number().required("Required"),
+  phone: Yup.string().required("Required"),
   services: Yup.object().shape({
     bar: Yup.boolean(),
     showers: Yup.boolean(),
-    Grill: Yup.boolean(),
+    grill: Yup.boolean(),
     parking: Yup.boolean(),
   }),
   social: Yup.object().shape({
     facebook: Yup.string().min(3, "Debe tener al menos 3 caracteres"),
     instagram: Yup.string().min(3, "Debe tener al menos 3 caracteres"),
   }),
-  latitude: Yup.number(),
-  location: Yup.string()
-    .min(3, "Debe tener al menos 3 caracteres")
-    .max(30, "Debe tener como máximo 30 caracteres"),
+  location: Yup.object().shape({
+    latitude: Yup.number(),
+    longitude: Yup.number(),
+  }),
 });
 
 const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
   const { complexs, getSportCenter, updateSportCenter } =
     useContext(CenterContext);
   const [complex, setComplex] = useState(editComplex);
+  const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
 
   const initialValues = {
     ownerId: complex.ownerId,
@@ -54,14 +65,17 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
       showers: complex.services.showers,
       grill: complex.services.grill,
       parking: complex.services.parking,
+      dressingRoom: complex.services.dressingRoom,
     },
-    fields: complex.fields,
     photo: complex.photo,
     social: {
       facebook: complex.social.facebook,
       instagram: complex.social.instagram,
     },
-    location: complex.location,
+    location: {
+      latitude: complex.location.latitude,
+      longitude: complex.location.longitude,
+    },
   };
 
   return (
@@ -74,28 +88,45 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={async (values, actions) => {
-            await updateSportCenter(complex._id, values);
-            getSportCenter();
+            setIsLoading(true);
+            try {
+              console.log("values ", values);
+              console.log("sportCenter id ", complex._id);
+              await updateSportCenter(complex._id, values);
+              setIsLoading(false);
+              handleClose();
+              getSportCenter();
+            } catch (e) {
+              setIsLoading(false);
+              console.log("error" + e);
+            }
           }}
         >
           {({ handleSubmit, setFieldValue }) => (
             <Form onSubmit={handleSubmit}>
               <Row>
-                <Col lg={6} md={12}>
-                  <div className="mb-3">
+                <Col md={12} lg={6}>
+                  <BootstrapForm.Group>
                     <label className="form-label">Nombre</label>
-                    <Field type="text" name="name" className="form-control" />
+                    <Field
+                      type="text"
+                      name="name"
+                      placeholder="Mi complejo"
+                      className="form-control"
+                    />
                     <ErrorMessage
                       name="name"
                       component="div"
                       className="text-danger"
                     />
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Direccion</label>
+                  </BootstrapForm.Group>
+
+                  <BootstrapForm.Group>
+                    <label className="form-label">Dirección</label>
                     <Field
                       type="text"
                       name="address"
+                      placeholder="Av. Siempre Viva 123"
                       className="form-control"
                     />
                     <ErrorMessage
@@ -103,68 +134,103 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
                       component="div"
                       className="text-danger"
                     />
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Telefono</label>
-                    <Field type="text" name="phone" className="form-control" />
+                  </BootstrapForm.Group>
+
+                  <BootstrapForm.Group>
+                    <label className="form-label">Teléfono</label>
+                    <Field
+                      type="text"
+                      name="phone"
+                      placeholder="+54 9 381 000 1110"
+                      className="form-control"
+                    />
                     <ErrorMessage
                       name="phone"
                       component="div"
                       className="text-danger"
                     />
-                  </div>
+                  </BootstrapForm.Group>
+
+                  <BootstrapForm.Group>
+                    <label className="form-label">Facebook</label>
+                    <Field
+                      type="text"
+                      name="social.facebook"
+                      placeholder="https://www.facebook.com/"
+                      className="form-control"
+                    />
+                    <label className="form-label">Instagram</label>
+                    <Field
+                      type="text"
+                      name="social.instagram"
+                      placeholder="https://www.instagram.com/"
+                      className="form-control"
+                    />
+                  </BootstrapForm.Group>
                 </Col>
-                <Col lg={6} md={12}>
-                  <div className="mb-3">
-                    <label className="form-label">Services:</label>
-                    <div className="d-flex flex-wrap align-items-center justify-content-start">
-                      <label className="form-check d-flex">
-                        <Field
-                          type="checkbox"
-                          name="services.showers"
-                          className="form-label"
-                        />
-                        <FaShower size={23} /> Duchas
-                      </label>
-                      <label className="form-check d-flex ">
-                        <Field
-                          type="checkbox"
-                          name="services.Grill"
-                          className="form-label"
-                        />
-                        <FaHouzz size={23} /> Parrillas
-                      </label>
-                      <label className="form-check d-flex">
-                        <Field
-                          type="checkbox"
-                          name="services.dressingRoom"
-                          className="form-label"
-                        />
-                        <FaRestroom size={23} /> Vestuario
-                      </label>
-                      <label className="form-check d-flex">
-                        <Field
-                          type="checkbox"
-                          name="services.bar"
-                          className="form-label"
-                        />
-                        <FaGlassCheers size={23} /> Bar
-                      </label>
-                    </div>
+                <Col md={12} lg={6}>
+                  <BootstrapForm.Group>
+                    <label className="form-label">Servicios</label>
+                    <Row className="mb-3 d-flex ">
+                      <Col md={6}>
+                        <label className="form-check d-flex">
+                          <Field
+                            type="checkbox"
+                            name="services.showers"
+                            className="form-label"
+                          />
+                          <FaShower size={23} /> Duchas
+                        </label>
+                        <label className="form-check d-flex ">
+                          <Field
+                            type="checkbox"
+                            name="services.grill"
+                            className="form-label"
+                          />
+                          <FaHouzz size={23} /> Parrillas
+                        </label>
+                        <label className="form-check d-flex ">
+                          <Field
+                            type="checkbox"
+                            name="services.parking"
+                            className="form-label"
+                          />
+                          <FaHouzz size={23} /> Estacionamiento
+                        </label>
+                      </Col>
+                      <Col md={6}>
+                        <label className="form-check d-flex">
+                          <Field
+                            type="checkbox"
+                            name="services.dressingRoom"
+                            className="form-label"
+                          />
+                          <FaRestroom size={23} /> Vestuario
+                        </label>
+                        <label className="form-check d-flex">
+                          <Field
+                            type="checkbox"
+                            name="services.bar"
+                            className="form-label"
+                          />
+                          <FaGlassCheers size={23} /> Bar
+                        </label>
+                      </Col>
+                    </Row>
                     <ErrorMessage
                       name="services"
                       component="div"
                       className="text-danger"
                     />
-                  </div>
-                  <div className="mb-3">
+                  </BootstrapForm.Group>
+                  <BootstrapForm.Group>
                     <label className="form-label">Imagen</label>
                     <input
                       type="file"
                       name="photo"
-                      className="form-control"
+                      className="form-control mb-3"
                       onChange={(e) =>
-                        setFieldValue("image", e.target.files[0])
+                        setFieldValue("photo", e.target.files[0])
                       }
                     />
                     <ErrorMessage
@@ -172,47 +238,37 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
                       component="div"
                       className="text-danger"
                     />
-                  </div>
-                  {/* Agregar campos de redes sociales aquí */}
-                  <div className="mb-3">
-                    <label className="form-label">Latitude</label>
-                    <Field
-                      type="number"
-                      name="latitude"
-                      className="form-control"
-                    />
-                    <ErrorMessage
-                      name="latitude"
-                      component="div"
-                      className="text-danger"
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Location</label>
+                  </BootstrapForm.Group>
+                  <BootstrapForm.Group>
+                    <label className="form-label">Latitud</label>
                     <Field
                       type="text"
-                      name="location"
+                      name="location.latitude"
                       className="form-control"
+                      placeholder="Latitud"
                     />
-                    <ErrorMessage
-                      name="location"
-                      component="div"
-                      className="text-danger"
+                  </BootstrapForm.Group>
+
+                  <BootstrapForm.Group>
+                    <label className="form-label">Longitud</label>
+                    <Field
+                      type="text"
+                      name="location.longitude"
+                      className="form-control"
+                      placeholder="Longitud"
                     />
-                  </div>
+                  </BootstrapForm.Group>
                 </Col>
-                <Button variant="primary" type="submit">
+              </Row>
+              <div className="btn-container d-flex justify-content-end">
+                <Button type="submit" className="btn add-button px-5 my-3">
                   Guardar
                 </Button>
-                <Button variant="danger" onClick={handleClose}>
-                  Cancel
-                </Button>
-              </Row>
+              </div>
             </Form>
           )}
         </Formik>
       </Modal.Body>
-      <Modal.Footer></Modal.Footer>
     </Modal>
   );
 };

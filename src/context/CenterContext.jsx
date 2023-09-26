@@ -7,9 +7,8 @@ export const CenterContext = createContext();
 // eslint-disable-next-line react/prop-types
 const CenterProvider = ({ children }) => {
   const [complexs, setComplexs] = useState([]);
-  
-  const [owner , setOwner] = useState([])
 
+  const [owner, setOwner] = useState([]);
 
   const getSportCenter = async () => {
     try {
@@ -25,9 +24,9 @@ const CenterProvider = ({ children }) => {
       const response = await axios.get(`/api/sportCenter/owner/${id}`);
       setOwner(response.data);
     } catch (error) {
-      console.log('Error fetching data:', error);
+      console.log("Error fetching data:", error);
     }
-  }
+  };
 
   const postSportCenter = async (complexs) => {
     try {
@@ -41,11 +40,10 @@ const CenterProvider = ({ children }) => {
         }
       }
       form.append("data", JSON.stringify(subObject));
-      console.log(form);
       const response = await axios.post(`/api/sportCenter`, form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      return response, console.log(response);
+      return response;
     } catch (error) {
       console.log(error, "error posting sportCenter");
     }
@@ -63,16 +61,26 @@ const CenterProvider = ({ children }) => {
 
   const updateSportCenter = async (id, complexs) => {
     try {
-      const form = new FormData();
+      let form = new FormData();
+      let subObject = {};
+
       for (let key in complexs) {
-        form.append(key, complexs[key]);
+        if (key === "photo") {
+          form.append(key, complexs[key]);
+        } else {
+          subObject[key] = complexs[key];
+        }
       }
-      const res = await axios.put(`/api/sportCenter/${id}`, form, {
+
+      form.append("data", JSON.stringify(subObject));
+
+      const response = await axios.put(`/api/sportCenter/${id}`, form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      return res.data;
+
+      return response;
     } catch (error) {
-      console.log(error, "error al editar");
+      console.error("Error updating sport complex:", error);
     }
   };
 
@@ -89,7 +97,7 @@ const CenterProvider = ({ children }) => {
         postSportCenter,
         deleteSportCenter,
         updateSportCenter,
-        getSportCenterOwner
+        getSportCenterOwner,
       }}
     >
       {children}
