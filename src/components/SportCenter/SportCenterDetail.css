@@ -59,6 +59,7 @@
 
 .card-field {
     max-height: auto !important;
+    height: auto !important;
 }
 
 .card-photo {
@@ -97,6 +98,13 @@
     font-size: small;
 }
 
+.reservation-form{
+    padding: 0;
+}
+
+.form-comment{
+    padding: 0;
+}
 
 @media all and (min-width:768px){
     .main-picture {

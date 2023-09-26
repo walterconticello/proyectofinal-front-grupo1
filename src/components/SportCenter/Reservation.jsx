@@ -75,7 +75,8 @@ const Reservation = ({show, onHide, field, loggedUser}) => {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            const data = await response.json();
+            let data = await response.json();
+            data = data.filter(reservation => reservation.Status != "cancelada");
             setReservations(data);
         }
         catch (error) {
@@ -218,7 +219,7 @@ const Reservation = ({show, onHide, field, loggedUser}) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={handleSubmit}>
+                    <Form className="reservation-form" onSubmit={handleSubmit}>
                         <h3 className="text-muted mb-3">Usuario: {loggedUser.username}</h3>
                         <div className="d-flex flex-column flex-md-row my-3">
                             <Form.Group className="d-flex flex-column w-100">

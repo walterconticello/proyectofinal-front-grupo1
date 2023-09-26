@@ -56,16 +56,13 @@ const SportCenterDetail = ({idSportCenter}) => {
 
     const starsFactory = (s) => {
         let auxStars = []
-        for(let i = 1; i <= rating/2 ; i++) { //1
-            //setStars([...stars, "fill"]);
+        for(let i = 1; i <= rating/2 ; i++) {
             auxStars.push("fill");
         }
         for(let j = 0; j < rating%2 ; j++) {
-            //setStars([...stars, "half"]);
             auxStars.push("half");
         }
         for(let k = auxStars.length; k < 5; k++) {
-            //setStars([...stars, "empty"]);
             auxStars.push("empty");
         }
         setStars(auxStars);
@@ -88,12 +85,12 @@ const SportCenterDetail = ({idSportCenter}) => {
         }
     }
 
-    const fetchingComments = async () => { //El fetch debe hacerse solo de comentarios activos
+    const fetchingComments = async () => {
         if(page <= lastPage){
             try{
                 const response = await fetch(`${URL}api/comments/sportcenter/${idSportCenter}/${page}`);
                 const data = await response.json();
-                //setComments([...data]);
+                //Cuando el comentario es una palabra muy larga con muchas letras, hace scroll horizontal
                 setComments(data.comments);
                 setLastPage(data.pages);
             }
