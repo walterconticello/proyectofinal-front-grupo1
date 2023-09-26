@@ -16,7 +16,6 @@ const SportCenterTable = () => {
     deleteSportCenter,
     updateSportCenter,
   } = useContext(CenterContext);
-  //   console.log(complexs);
   const [editComplex, setEditComplex] = useState(null);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -49,14 +48,15 @@ const SportCenterTable = () => {
                 <td>{complex.name}</td>
                 <td>{complex.address}</td>
                 <td>{complex.phone}</td>
-                <td>
+                <td className="">
                   <button
-                    className="btnEdit"
+                    className="btnEdit p-2 mx-2"
                     onClick={() => handleEdit(complex)}
                   >
                     <MdEdit />
                   </button>
                   <button
+                    className="p-2 mx-2"
                     onClick={async () => {
                       const result = await MySwal.fire({
                         title: "¿Estás seguro?",
@@ -80,7 +80,6 @@ const SportCenterTable = () => {
                         );
                       }
                     }}
-                    className=""
                   >
                     <MdDelete />
                   </button>
