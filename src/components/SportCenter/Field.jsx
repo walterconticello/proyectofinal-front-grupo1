@@ -13,7 +13,7 @@ const Field = ({field, loggedUser}) => {
 
     return (
         <>
-            <Card style={{ width: '26rem'}} className="m-3 card">
+            <Card style={{ width: '26rem'}} className="m-3 card-field">
                 <Card.Img variant="top" src={field.photo.url || NoPhoto} className="card-photo"/>
                 <Card.Header>{field.name}</Card.Header>
                 <Card.Body>

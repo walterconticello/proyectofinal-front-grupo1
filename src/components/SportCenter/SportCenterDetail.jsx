@@ -75,6 +75,7 @@ const SportCenterDetail = ({idSportCenter}) => {
         try {
             const response = await fetch(`${URL}api/sportCenter/${idSportCenter}`);
             const data = await response.json();
+            data.fields = data.fields.filter((field)=> field.isActive === true);
             setSportCenter(data);
         }
         catch (error){
