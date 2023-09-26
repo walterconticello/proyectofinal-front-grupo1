@@ -1,6 +1,5 @@
 import { useState , useContext , useEffect } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import { Modal, Form as BootstrapForm, Row, Col } from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FieldsContext } from "../../context/FieldContext"
@@ -32,22 +31,30 @@ const validationSchema = Yup.object().shape({
 
 const ModalEditField = ({ show, handleClose, editField }) => {
 
-  const { updateField, } = useContext(FieldsContext);
+  const { updateField , getFields } = useContext(FieldsContext);
 
   const [field, setField] = useState(editField);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() =>{
+    getFields();
+  },[]);
+
+  console.log(field);
 
   const initialValues = {
-    name: field?.name || '',
-    openHour: field?.openHour || '',
-    closeHour: field?.closeHour || '',
-    pricePerHour: field?.pricePerHour || '',
-    size: field?.size || '',
+    name: "",
+    openHour: "",
+    closeHour: "",
+    pricePerHour: "",
+    size: "",
+    image: null,
   };
 
   const handleChange = async (values) => {
     console.log("enviado");
     try {
-      await updateField(values);
+      await updateField(field._id , values);
       handleClose();
     } catch (error) {
       console.log(error);
@@ -65,44 +72,125 @@ const ModalEditField = ({ show, handleClose, editField }) => {
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Formik
+        <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={handleChange}
+            onSubmit={async (values, actions) => {
+              setIsLoading(true);
+              try {
+                await handleChange(values);
+                setIsLoading(false);
+                handleClose();
+                getFields();
+              } catch (error) {
+                setIsLoading(false);
+              }
+            }}
           >
-            <Form>
-              <div className="mb-3">
-                <label className="form-label">Nombre</label>
-                <Field type="text" name="name" />
-                <ErrorMessage name="name" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Hora de apertura</label>
-                <Field type="text" name="openHour" />
-                <ErrorMessage name="openHour" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Horario de Cierre</label>
-                <Field type="text" name="closeHour" />
-                <ErrorMessage name="closeHour" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">pricePerHour</label>
-                <Field type="text" name="pricePerHour" />
-                <ErrorMessage name="pricePerHour" component="div" />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Cantidad de jugadores maximo:</label>
-                <Field type="text" name="size" />
-                <ErrorMessage name="size" component="div" />
-              </div>
-              <Button variant="primary" type="submit" >
-                Guardar
-              </Button>
-              <Button variant="danger" onClick={handleClose}>
-                Cancel
-              </Button>
-            </Form>
+            {({ handleSubmit, setFieldValue }) => (
+              <Form onSubmit={handleSubmit}>
+                <Row>
+                  <Col md={6}>
+                    <BootstrapForm.Group>
+                      <label htmlFor="name">Nombre</label>
+                      <Field
+                        name="name"
+                        className="form-control m-2 m-2"
+                        placeholder="Nombre"
+                      />
+                      <ErrorMessage
+                        name="name"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+
+                    <BootstrapForm.Group>
+                      <label htmlFor="openHour">Hora de apertura</label>
+                      <Field
+                        name="openHour"
+                        type="number"
+                        className="form-control m-2"
+                        placeholder="Hora de apertura"
+                      />
+                      <ErrorMessage
+                        name="openHour"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+
+                    <BootstrapForm.Group>
+                      <label htmlFor="closeHour">Hora de cierre</label>
+                      <Field
+                        name="closeHour"
+                        type="number"
+                        className="form-control m-2"
+                        placeholder="closeHour"
+                      />
+                      <ErrorMessage
+                        name="closeHour"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+
+                    <BootstrapForm.Group>
+                      <label htmlFor="pricePerHour">Precio por hora</label>
+                      <Field
+                        name="pricePerHour"
+                        type="number"
+                        className="form-control m-2"
+                        placeholder="Precio por hora"
+                      />
+                      <ErrorMessage
+                        name="pricePerHour"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+                    <BootstrapForm.Group>
+                      <label htmlFor="size">Cantidad de jugadores</label>
+                      <Field
+                        name="size"
+                        type="number"
+                        className="form-control m-2"
+                        placeholder="Futbol 11 , 5 , 7"
+                      />
+                      <ErrorMessage
+                        name="size"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+
+                    <BootstrapForm.Group>
+                      <label htmlFor="image">Imagen</label>
+
+                      <input
+                        type="file"
+                        className="m-2"
+                        name="image"
+                        onChange={(e) =>
+                          setFieldValue("image", e.target.files[0])
+                        }
+                      />
+
+                      <ErrorMessage
+                        name="image"
+                        component="div"
+                        className="error-message"
+                      />
+                    </BootstrapForm.Group>
+                  </Col>
+                </Row>
+                <div className="text-center mt-4">
+                  <button type="submit" className="btn add-button px-5">
+                    Guardar
+                  </button>
+                </div>
+              </Form>
+            )}
           </Formik>
         </Modal.Body>
         <Modal.Footer>

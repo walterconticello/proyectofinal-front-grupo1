@@ -5,6 +5,11 @@ export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
   const [fields, setFields] = useState([]);
+  const [loading , setIsLoading] = useState(true)
+
+  useEffect(() => {
+    getFields();
+  }, []);
 
   const getFields = async () => {
     try {
@@ -43,39 +48,52 @@ const FieldProvider = ({ children }) => {
       await axios.delete(`/api/fields/${id}`);
       const deleteField = fields.filter((field) => field.id !== id);
       setFields(deleteField);
+      getFields();
     } catch (error) {
       console.log(error, "error al borrar cancha");
     }
   };
 
   const getFieldById = async (id) => {
-    console.log(id);
     try {
       await axios.get(`/api/fields/${id}`);
       const viewField = fields.filter((field) => field.id !== id);
-      console.log(viewField);
+      setFields(viewField);
     } catch (error) {
-      console.log(error, "error de productos");
+      console.log(error, "error de fields");
     }
   };
 
-  const updateField = async (field) => {
-    console.log(field);
+  const updateField = async (id , field) => {
+
     try {
-      await axios.put(`/api/fields/${field.id}`);
-    } catch (error) {
-      console.log(error, "error al editar");
-    }
-  };
+      const form = new FormData();
+      for (let key in field) {
+        form.append(key, field[key]);
+      }
 
-  useEffect(() => {
-    getFields();
-  }, []);
+      const res = await axios.put(`/api/fields/${id}`, form, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      return res.data;
+    } catch (err) {
+      console.log(err, "error updating product");
+      throw err;
+    }
+    // try {
+    //   await axios.put(`/api/fields/${field.id}`);
+    // } catch (error) {
+    //   console.log(error, "error al editar");
+    // }
+  };
+  
 
   return (
     <FieldsContext.Provider
       value={{
         fields,
+        loading,
         getFields,
         setFields,
         postField,

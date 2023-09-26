@@ -1,14 +1,18 @@
 import { Button } from 'react-bootstrap';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import FieldsTable from '../../components/FieldsTable/FieldsTable';
 import ModalNewField from '../../components/Modals/ModalNewField';
+import { FieldsContext } from '../../context/FieldContext';
 
 const Fields= () => {
-
+  const {getFields} = useContext(FieldsContext);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+ 
+  
 
   return (
     <>

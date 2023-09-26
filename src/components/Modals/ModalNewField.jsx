@@ -30,7 +30,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const ModalNewField = ({ show, handleClose }) => {
-  const { postField, getField } = useContext(FieldsContext);
+  const { postField, getFields } = useContext(FieldsContext);
   const { getSportCenterOwner, owner } = useContext(CenterContext);
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
@@ -40,6 +40,7 @@ const ModalNewField = ({ show, handleClose }) => {
   useEffect(() => {
     getSportCenterOwner(OwnerId);
   }, []);
+
 
   const initialValues = {
     name: "",
@@ -69,7 +70,7 @@ const ModalNewField = ({ show, handleClose }) => {
                 await postField(values);
                 setIsLoading(false);
                 handleClose();
-                getField();
+                getFields();
               } catch (error) {
                 setIsLoading(false);
               }

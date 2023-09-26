@@ -35,7 +35,9 @@ const Routes = () => {
       <Route
         path="/admin/Field"
         element={
+          <PrivateRoute>
           <Fields />
+          </PrivateRoute>
         }
       />
       <Route

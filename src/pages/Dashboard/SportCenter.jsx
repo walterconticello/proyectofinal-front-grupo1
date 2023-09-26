@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import CardCenter from "../../components/Cards/CardCenter"
-import ModalNewSportCenter from '../../components/Modals/ModalNewSportCenter';
+import SportCenterForm from '../../components/SportCenterTable/SportCenterForm';
+import SportCenterTable from '../../components/SportCenterTable/SportCenterTable';
 
 const SportCenter = () => {
   const [show, setShow] = useState(false);
@@ -13,11 +14,7 @@ const SportCenter = () => {
 
   return (
     <div className='ContainerCard container-fluid'>
-      <Button variant="primary" onClick={OpenModal}>
-  Nuevo complejo
-</Button>
-      <CardCenter />
-      {/* <ModalNewSportCenter show={show} handleClose={handleClose} /> */}
+     <SportCenterTable/>
     </div>
   );
 };

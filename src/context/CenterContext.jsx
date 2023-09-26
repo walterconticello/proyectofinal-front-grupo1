@@ -30,18 +30,24 @@ const CenterProvider = ({ children }) => {
   }
 
   const postSportCenter = async (complexs) => {
-    // console.log("data" + complexs);
     try {
-      const form = new FormData();
+      let form = new FormData();
+      let subObject = {};
       for (let key in complexs) {
-        form.append(key, complexs[key]);
+        if (key == "photo") {
+          form.append(key, complexs[key]);
+        } else {
+          subObject[key] = complexs[key];
+        }
       }
-      const response = axios.post(`/api/sportCenter/`, form, {
+      form.append("data", JSON.stringify(subObject));
+      console.log(form);
+      const response = await axios.post(`/api/sportCenter`, form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log(response);
+      return response, console.log(response);
     } catch (error) {
-      console.log(error);
+      console.log(error, "error posting sportCenter");
     }
   };
 

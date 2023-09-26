@@ -6,8 +6,7 @@ import Swal from 'sweetalert2';
 import ModalEditField from "../Modals/ModalEditFields";
 
 const FieldsTable = () => {
-  const { fields, getFields,  deleteField } = useContext(FieldsContext);
-
+  const { fields, getFields,  deleteField  } = useContext(FieldsContext);
   const [editField , setEditField] = useState();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -16,6 +15,10 @@ const FieldsTable = () => {
     setEditField(field)
     handleShow(true)
   }; 
+
+  useEffect(() =>{
+    getFields();
+  },[])
   
 
   const handleDelete = (_id) => {
@@ -32,6 +35,7 @@ const FieldsTable = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteField(_id);
+        getFields();
         Swal.fire(
           'Eliminado',
           'El elemento ha sido eliminado correctamente',
@@ -40,10 +44,6 @@ const FieldsTable = () => {
       }
     });
   };
-
-  useEffect(() => {
-    getFields();
-  }, []);
 
   return (
     <>
