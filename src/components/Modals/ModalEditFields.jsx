@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FieldsContext } from "../../context/FieldContext"
 import "./Modal.css";
+import { compileString } from "sass";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -32,27 +33,10 @@ const validationSchema = Yup.object().shape({
 const ModalEditField = ({ show, handleClose, editField }) => {
 
   const { updateField , getFields } = useContext(FieldsContext);
-
   const [field, setField] = useState(editField);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() =>{
-    getFields();
-  },[]);
-
-  console.log(field);
-
-  const initialValues = {
-    name: "",
-    openHour: "",
-    closeHour: "",
-    pricePerHour: "",
-    size: "",
-    image: null,
-  };
-
   const handleChange = async (values) => {
-    console.log("enviado");
     try {
       await updateField(field._id , values);
       handleClose();
@@ -73,7 +57,14 @@ const ModalEditField = ({ show, handleClose, editField }) => {
         </Modal.Header>
         <Modal.Body>
         <Formik
-            initialValues={initialValues}
+            initialValues={{
+              name: field.name,
+              openHour: field.openHour,
+              closeHour: field.closeHour,
+              pricePerHour: field.pricePerHour,
+              size: field.size,
+              image: field.image,
+            }}
             validationSchema={validationSchema}
             onSubmit={async (values, actions) => {
               setIsLoading(true);

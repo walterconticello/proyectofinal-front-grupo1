@@ -43,7 +43,6 @@ const FieldProvider = ({ children }) => {
     }
   };
   const deleteField = async (id) => {
-    console.log(id, "id de context");
     try {
       await axios.delete(`/api/fields/${id}`);
       const deleteField = fields.filter((field) => field.id !== id);
@@ -78,7 +77,7 @@ const FieldProvider = ({ children }) => {
 
       return res.data;
     } catch (err) {
-      console.log(err, "error updating product");
+      console.log(err, "error updating field");
       throw err;
     }
     // try {
@@ -87,6 +86,14 @@ const FieldProvider = ({ children }) => {
     //   console.log(error, "error al editar");
     // }
   };
+  const updateFieldState = (id) =>{
+    try {
+      const res = axios.put(`/api/fields/state/${id}`);
+      return res.data;
+    } catch (error) {
+      console.log(error, "error de fields");
+    }
+  }
   
 
   return (
@@ -96,6 +103,7 @@ const FieldProvider = ({ children }) => {
         loading,
         getFields,
         setFields,
+        updateFieldState,
         postField,
         deleteField,
         getFieldById,
