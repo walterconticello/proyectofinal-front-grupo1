@@ -1,9 +1,8 @@
-import CardUsers from "../../components/Cards/CardUsers.jsx";
+
 
 const Users = () => {
   return (
     <>
-    <CardUsers/>
     </>
   )
 }

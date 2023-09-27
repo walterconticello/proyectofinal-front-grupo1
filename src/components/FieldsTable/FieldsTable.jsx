@@ -4,9 +4,10 @@ import { FieldsContext } from "../../context/FieldContext";
 import { useContext , useEffect,useState } from "react";
 import Swal from 'sweetalert2';
 import ModalEditField from "../Modals/ModalEditFields";
+import { AuthContext } from "../../context/AuthContext";
 
 const FieldsTable = () => {
-  const { fields, getFields,  deleteField ,updateFieldState  } = useContext(FieldsContext);
+  const { fields, getFields,  deleteField ,updateFieldState , getOwnerFields} = useContext(FieldsContext);
   const [editField , setEditField] = useState('');
   const [showEditModal, setShowEditModal] = useState(false);
   const handleEdit = (field) => {
@@ -20,6 +21,7 @@ const FieldsTable = () => {
 
   useEffect(() =>{
     getFields();
+    getOwnerFields();
   },[])
   
 

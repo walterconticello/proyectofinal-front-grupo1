@@ -1,11 +1,15 @@
 import axios from "../config/axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { AuthContext } from "./AuthContext";
 
 export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
   const [fields, setFields] = useState([]);
+  const [fieldsOwner , setFieldsOwner] = useState([]);
   const [loading , setIsLoading] = useState(true)
+  
+
 
   useEffect(() => {
     getFields();
@@ -19,6 +23,16 @@ const FieldProvider = ({ children }) => {
       console.log(error);
     }
   };
+
+  const getOwnerFields = async () =>{
+    try {
+      const response = await axios.get(`/fields/owner/`)
+      setFieldsOwner(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const postField = async (fields) => {
     try {
@@ -80,12 +94,8 @@ const FieldProvider = ({ children }) => {
       console.log(err, "error updating field");
       throw err;
     }
-    // try {
-    //   await axios.put(`/api/fields/${field.id}`);
-    // } catch (error) {
-    //   console.log(error, "error al editar");
-    // }
   };
+
   const updateFieldState = (id) =>{
     try {
       const res = axios.put(`/api/fields/state/${id}`);
@@ -100,6 +110,7 @@ const FieldProvider = ({ children }) => {
     <FieldsContext.Provider
       value={{
         fields,
+        fieldsOwner,
         loading,
         getFields,
         setFields,
@@ -108,6 +119,7 @@ const FieldProvider = ({ children }) => {
         deleteField,
         getFieldById,
         updateField,
+        getOwnerFields,
       }}
     >
       {children}
