@@ -71,31 +71,16 @@ const CardUsers = () => {
     }
   }, [loading]);
 
+  // <Form.Check
+  //         type="switch"
+  //         id="custom-switch"
+  //         label={`Estado: ${user.status ? "Suspendido" : "Activo"}`} // Mostrar el estado actual
+  //           checked={status} // Establecer el estado del switch
+  //           onChange={() => handleSwitchChange(user.status)} // Manejar cambios en el switch
+  //       />
+
 return (
-  <div className="d-flex gap-3" >
-    {users === undefined ? "No Existen Usuarios" : users.map((user) =>(
-      <>
-    <Card style={{ width: '18rem' }} key={user._id}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>{user.username}</Card.Title>
-        <Form.Check
-          type="switch"
-          id="custom-switch"
-          label={`Estado: ${user.status ? "Suspendido" : "Activo"}`} // Mostrar el estado actual
-            checked={status} // Establecer el estado del switch
-            onChange={() => handleSwitchChange(user.status)} // Manejar cambios en el switch
-        />
-        <div className="d-flex justify-content-between">
-        <Button variant="" id="edit" onClick={() => handleDelete(user._id)}><img src="src/assets/Delete.png"/></Button>
-        <Button variant="primary">Go somewhere</Button>
-        </div>
-      </Card.Body>
-    </Card>
-    </>
-    )) }; 
-    
-  </div>
+ 
 );
 };
 
