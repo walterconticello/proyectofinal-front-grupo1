@@ -13,6 +13,7 @@ import Reservation from "../components/Cards/Reservations";
 import Users from "../pages/Dashboard/Users";
 import Products from "../pages/Dashboard/Products";
 import Contact from "../pages/Contact/Contact";
+import OwnerDashboard from "../pages/Dashboard/OwnerDashboard";
 
 const Routes = () => {
   return (
@@ -20,52 +21,31 @@ const Routes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/store" element={<Store />} />
       <Route exact path="/contact" element={<Contact />} />
-      <Route
-        path="/admin"
-        element={
-          <Dashboard />
-        }
-      />
-      <Route
-        path="/admin/SportCenter"
-        element={
-          <SportCenter />
-        }
-      />
+      <Route path="/admin" element={<Dashboard />} />
+      <Route path="/admin/SportCenter" element={<SportCenter />} />
       <Route
         path="/admin/Field"
         element={
           <PrivateRoute>
-          <Fields />
+            <Fields />
           </PrivateRoute>
         }
       />
+      <Route path="/admin/Reservation" element={<Reservation />} />
+      <Route path="/admin/Users" element={<Users />} />
+      <Route path="/admin/products" element={<Products />} />
+
       <Route
-        path="/admin/Reservation"
+        path="/owner/dashboard"
         element={
-          <Reservation />
-        }
-      />
-      <Route
-        path="/admin/Users"
-        element={
-          <Users />
-        }
-      />
-      <Route
-        path="/admin/products"
-        element={
-          <Products />
+          <PrivateRoute>
+            <OwnerDashboard />
+          </PrivateRoute>
         }
       />
 
       <Route path="/complejos" element={<List />} />
-      <Route
-        path="/store/product/:productId"
-        element={
-          <ProductDetails />
-        }
-      />
+      <Route path="/store/product/:productId" element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
       <Route
         path="/perfil"

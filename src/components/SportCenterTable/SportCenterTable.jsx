@@ -30,6 +30,7 @@ const SportCenterTable = () => {
   }, []);
   return (
     <div className="table-container">
+      <h2>Complejos deportivos</h2>
       <SportCenterForm />
       <div className="table-responsive mx-auto text-center">
         <table>
