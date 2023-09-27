@@ -22,6 +22,7 @@ import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import { CenterContext } from "../../context/CenterContext";
 import { AuthContext } from "../../context/AuthContext";
+import FieldsTable from "../../components/FieldsTable/FieldsTable";
 const OwnerDashboard = () => {
   const { user } = useContext(AuthContext);
   const userId = user._id;
@@ -32,7 +33,7 @@ const OwnerDashboard = () => {
     getSportCenterOwner(userId);
   }, []);
   const center = owner[0];
-  console.log(center);
+  // console.log(center);
 
   const categoryIcons = {
     parking: <FaCarAlt size={28} />,
@@ -53,10 +54,10 @@ const OwnerDashboard = () => {
         <Col md={3} sm={12} className="">
           <Menu className="sideBarDashboard my-3">
             <MenuItem>
-              <Link>Añadir cancha</Link>
+              <span>Añadir cancha</span>
             </MenuItem>
             <MenuItem>
-              <Link>Editar complejo</Link>
+              <span>Editar complejo</span>
             </MenuItem>
           </Menu>
         </Col>
@@ -81,7 +82,7 @@ const OwnerDashboard = () => {
                       {center.name}
                     </Card.Title>
                     <Card.Text className="card-cText d-flex align-items-center g-2">
-                      <FaMapMarkerAlt size={20} />
+                      <FaMapMarkerAlt className="mx-2" size={20} />
                       {center.address}
                     </Card.Text>
                     <div className="services d-flex">
@@ -106,6 +107,7 @@ const OwnerDashboard = () => {
             )}
           </Card>
           <hr />
+          <FieldsTable />
         </Col>
       </Row>
     </div>
