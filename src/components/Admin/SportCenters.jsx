@@ -1,12 +1,8 @@
-import { useContext } from 'react'
-import CenterContext from '../../context/CenterContext'
 import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 
-const SportCenters = () => {
-
-    const { getSportCenter } = useContext(CenterContext)
-    const [complejos , setComplejos] = useState([getSportCenter]);
+const SportCenters = () => { 
+    const [complejos , setComplejos] = useState();
     console.log(complejos);
 
   return (

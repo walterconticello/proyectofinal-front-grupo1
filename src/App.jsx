@@ -8,7 +8,7 @@ import AuthProvider, { AuthContext } from "./context/AuthContext";
 import FieldContext from "./context/FieldContext.jsx";
 import CenterContext from "./context/CenterContext";
 import ReserveContext from "./context/ReservationContext";
-import { SalesProvider } from "./context/SalesContext";
+import SalesProvider from "./context/SalesContext";
 import { ToastContainer } from "react-toastify";
 import { UserContext } from "./context/UserContex";
 
@@ -18,6 +18,7 @@ function App() {
       <CenterContext>
         <ReserveContext>
           <FieldContext>
+            <SalesProvider>
             <ProductProvider>
               <ScrollToTop />
               <Layout>
@@ -25,6 +26,7 @@ function App() {
                 <ToastContainer />
               </Layout>
             </ProductProvider>
+            </SalesProvider>
           </FieldContext>
         </ReserveContext>
       </CenterContext>

@@ -32,9 +32,9 @@ const Routes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/admin/Reservation" element={<Reservation />} />
+      {/* <Route path="/admin/Reservation" element={<Reservation />} />
       <Route path="/admin/Users" element={<Users />} />
-      <Route path="/admin/products" element={<Products />} />
+      <Route path="/admin/products" element={<Products />} /> */}
 
       <Route path="/admin/dashboard" element={<PrivateRoute><DashboardAdmin /></PrivateRoute>} />
 

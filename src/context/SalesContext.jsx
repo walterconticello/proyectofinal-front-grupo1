@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext,  useState } from "react";
 import axios from "../config/axios";
 
-const SalesContext = createContext();
+export const SalesContext = createContext();
 
 const SalesProvider = ({ children }) => {
   const [sales, setSales] = useState([]);
@@ -41,8 +41,5 @@ const SalesProvider = ({ children }) => {
   );
 };
 
-const useSalesContext = () => {
-  return useContext(SalesContext);
-};
 
-export { SalesProvider, useSalesContext };
+export default SalesProvider;
