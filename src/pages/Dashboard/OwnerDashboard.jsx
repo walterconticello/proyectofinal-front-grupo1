@@ -22,17 +22,43 @@ import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import { CenterContext } from "../../context/CenterContext";
 import { AuthContext } from "../../context/AuthContext";
+import { FieldsContext } from "../../context/FieldContext";
+
 import FieldsTable from "../../components/FieldsTable/FieldsTable";
 const OwnerDashboard = () => {
+  const [loadingCenter, setLoadingCenter] = useState(true);
+  const [loadingCenterFields, setLoadingCenterFields] = useState(true);
   const { user } = useContext(AuthContext);
+  const { getFieldsBySportCenterId } = useContext(FieldsContext);
   const userId = user._id;
   const { getSportCenterOwner, owner } = useContext(CenterContext);
   //   console.log(userId);
+  const center = owner[0];
 
   useEffect(() => {
-    getSportCenterOwner(userId);
-  }, []);
-  const center = owner[0];
+    getSportCenterOwner(userId)
+      .then(() => setLoadingCenter(false))
+      .catch((error) => {
+        console.error(
+          "Error al obtener el centro deportivo del propietario:",
+          error
+        );
+        setLoadingCenter(false);
+      });
+  }, [userId]);
+  useEffect(() => {
+    if (center && center._id) {
+      getFieldsBySportCenterId(center._id)
+        .then(() => setLoadingCenterFields(false))
+        .catch((error) => {
+          console.error(
+            "Error al obtener las canchas del centro deportivo:",
+            error
+          );
+          setLoadingCenterFields(false);
+        });
+    }
+  }, [center]);
   // console.log(center);
 
   const categoryIcons = {
@@ -63,7 +89,9 @@ const OwnerDashboard = () => {
         </Col>
         <Col md={9} sm={12}>
           <Card className="sportcenter-card border my-2 ">
-            {center ? (
+            {loadingCenter ? (
+              <p>Cargando centro deportivo...</p>
+            ) : center ? (
               <Row className="">
                 <Col md={4} className="">
                   <img
@@ -103,11 +131,15 @@ const OwnerDashboard = () => {
                 </Col>
               </Row>
             ) : (
-              "no se encontro"
+              "no se encontró el centro deportivo"
             )}
           </Card>
           <hr />
-          <FieldsTable />
+          {loadingCenterFields ? (
+            <p>Cargando canchas...</p>
+          ) : (
+            <FieldsTable center={center} />
+          )}
         </Col>
       </Row>
     </div>

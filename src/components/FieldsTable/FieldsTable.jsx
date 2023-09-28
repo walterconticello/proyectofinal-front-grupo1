@@ -4,29 +4,33 @@ import { FieldsContext } from "../../context/FieldContext";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import ModalEditField from "../Modals/ModalEditFields";
-import { AuthContext } from "../../context/AuthContext";
 
-const FieldsTable = () => {
-  const { user } = useContext(AuthContext);
-  // console.log(user);
-  const { getFields, deleteField, updateFieldState, fieldsOwner } =
-    useContext(FieldsContext);
-  const [editField, setEditField] = useState("");
-  const fields = fieldsOwner;
-  // console.log(fields);
+const FieldsTable = ({ center }) => {
+  const {
+    centerFields,
+    getFieldsBySportCenterId,
+    deleteField,
+    updateFieldState,
+  } = useContext(FieldsContext);
+  const [editField, setEditField] = useState(null);
+
   const [showEditModal, setShowEditModal] = useState(false);
+
+  useEffect(() => {
+    if (center) {
+      getFieldsBySportCenterId(center._id);
+    }
+  }, [center.id]);
+
   const handleEdit = (field) => {
     setEditField(field);
     setShowEditModal(true);
   };
+
   const handleEditModalClose = () => {
     setEditField(null);
     setShowEditModal(false);
   };
-
-  useEffect(() => {
-    getFields();
-  }, []);
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -41,7 +45,6 @@ const FieldsTable = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteField(_id);
-        getFields();
         Swal.fire(
           "Eliminado",
           "El elemento ha sido eliminado correctamente",
@@ -50,6 +53,7 @@ const FieldsTable = () => {
       }
     });
   };
+
   const handleState = (_id, isActive) => {
     const stateText = isActive ? "desactivar" : "activar";
 
@@ -64,8 +68,7 @@ const FieldsTable = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        updateFieldState(_id); //cambio de estado
-        getFields();
+        updateFieldState(_id);
         Swal.fire(
           `${stateText}`,
           ` El elemento ha sido ${stateText} correctamente`,
@@ -91,7 +94,7 @@ const FieldsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {fields.map((field) => (
+          {centerFields.map((field) => (
             <tr key={field._id}>
               <td className="w-0">
                 <img className="w-100" src={field.photo.url} alt={field.name} />
@@ -102,12 +105,11 @@ const FieldsTable = () => {
               <td>${field.pricePerHour}</td>
               <td>{field.size}</td>
               <td>
-                <Form>
-                  <Form.Check // prettier-ignore
+                <Form onClick={() => handleState(field._id, field.isActive)}>
+                  <Form.Check
                     type="switch"
                     id="custom-switch"
                     label={field.isActive ? "Activo" : "Inactivo"}
-                    onClick={() => handleState(field._id, field.isActive)}
                   />
                 </Form>
               </td>

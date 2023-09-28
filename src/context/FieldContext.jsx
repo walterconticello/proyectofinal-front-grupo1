@@ -6,6 +6,7 @@ export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
   const [fields, setFields] = useState([]);
+  const [centerFields, setCenterFields] = useState([]);
   const [fieldsOwner, setFieldsOwner] = useState([]);
   const [loading, setIsLoading] = useState(true);
 
@@ -17,6 +18,17 @@ const FieldProvider = ({ children }) => {
     try {
       const response = await axios.get(`/api/fields/`);
       setFields(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getFieldsBySportCenterId = async (sportCenterId) => {
+    try {
+      const response = await axios.get(
+        `/api/sportcenter/fields/${sportCenterId}`
+      );
+      setCenterFields(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -110,11 +122,13 @@ const FieldProvider = ({ children }) => {
         loading,
         getFields,
         setFields,
+        centerFields,
         updateFieldState,
         postField,
         deleteField,
         getFieldById,
         updateField,
+        getFieldsBySportCenterId,
         getOwnerFields,
       }}
     >
