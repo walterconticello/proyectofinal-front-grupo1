@@ -36,7 +36,14 @@ const Routes = () => {
       <Route path="/admin/Users" element={<Users />} />
       <Route path="/admin/products" element={<Products />} /> */}
 
-      <Route path="/admin/dashboard" element={<PrivateRoute><DashboardAdmin /></PrivateRoute>} />
+      <Route
+        path="/admin/dashboard"
+        element={
+          <PrivateRoute>
+            <DashboardAdmin />
+          </PrivateRoute>
+        }
+      />
 
       <Route
         path="/owner/dashboard"

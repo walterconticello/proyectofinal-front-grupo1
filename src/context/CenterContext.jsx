@@ -92,6 +92,7 @@ const CenterProvider = ({ children }) => {
     <CenterContext.Provider
       value={{
         complexs,
+        setComplexs,
         owner,
         getSportCenter,
         postSportCenter,
