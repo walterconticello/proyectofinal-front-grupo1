@@ -46,8 +46,8 @@ const validationSchema = Yup.object().shape({
   }),
 });
 
-const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
-  const { complexs, getSportCenter, updateSportCenter } =
+const ModalEditSportCenter = ({ show, handleClose, editComplex, userId }) => {
+  const { complexs, getSportCenter, updateSportCenter, getSportCenterOwner } =
     useContext(CenterContext);
   const [complex, setComplex] = useState(editComplex);
   const [showModal, setShowModal] = useState(false);
@@ -96,6 +96,7 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex }) => {
               setIsLoading(false);
               handleClose();
               getSportCenter();
+              await getSportCenterOwner(userId);
             } catch (e) {
               setIsLoading(false);
               console.log("error" + e);

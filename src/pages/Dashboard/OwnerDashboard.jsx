@@ -9,6 +9,7 @@ import {
   FaRestroom,
   FaSistrix,
 } from "react-icons/fa";
+import { MdAddCircle, MdEditSquare } from "react-icons/md";
 import {
   Container,
   Figure,
@@ -23,7 +24,7 @@ import { Link } from "react-router-dom";
 import { CenterContext } from "../../context/CenterContext";
 import { AuthContext } from "../../context/AuthContext";
 import { FieldsContext } from "../../context/FieldContext";
-
+import ModalEditSportCenter from "../../components/Modals/ModalEditSportCenter";
 import FieldsTable from "../../components/FieldsTable/FieldsTable";
 import ModalNewField from "../../components/Modals/ModalNewField";
 const OwnerDashboard = () => {
@@ -36,6 +37,7 @@ const OwnerDashboard = () => {
   //   console.log(userId);
   const center = owner[0];
   const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   useEffect(() => {
     getSportCenterOwner(userId)
       .then(() => setLoadingCenter(false))
@@ -77,14 +79,26 @@ const OwnerDashboard = () => {
         src="https://res.cloudinary.com/dmmviigbv/image/upload/v1695773625/g7injeyk9dzflrszxptr.png"
       />
       <Row>
-        <h1 className="h3 m-3 text-center">Administracion - Owner</h1>
+        <h1 className="h3 my-3 text-center">Administracion - Owner</h1>
         <Col md={3} sm={12} className="">
           <Menu className="sideBarDashboard my-3">
-            <MenuItem>
-              <button onClick={() => setShowModal(true)}>Añadir cancha</button>
+            <MenuItem className="sidebar-dashboard-button m-2 d-flex justify-content-center">
+              <button
+                className="d-flex align-items-center p-2 "
+                onClick={() => setShowModal(true)}
+              >
+                <span>Añadir cancha</span>
+                <MdAddCircle size={23} className="mx-3" />
+              </button>
             </MenuItem>
-            <MenuItem>
-              <span>Editar complejo</span>
+            <MenuItem className="sidebar-dashboard-button m-2 d-flex justify-content-center">
+              <button
+                className="d-flex align-items-center p-2 "
+                onClick={() => setShowEditModal(true)}
+              >
+                <span>Editar complejo</span>
+                <MdEditSquare size={23} className="mx-3" />
+              </button>
             </MenuItem>
           </Menu>
         </Col>
@@ -148,6 +162,14 @@ const OwnerDashboard = () => {
           show={showModal}
           handleClose={() => setShowModal(false)}
           owner={owner}
+        />
+      )}
+      {showEditModal && (
+        <ModalEditSportCenter
+          show={showEditModal}
+          handleClose={() => setShowEditModal(false)}
+          editComplex={center}
+          userId={userId}
         />
       )}
     </div>
