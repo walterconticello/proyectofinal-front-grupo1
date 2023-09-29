@@ -1,8 +1,8 @@
-import { useState , useContext , useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Modal, Form as BootstrapForm, Row, Col } from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { FieldsContext } from "../../context/FieldContext"
+import { FieldsContext } from "../../context/FieldContext";
 import "./Modal.css";
 import { compileString } from "sass";
 
@@ -11,14 +11,12 @@ const validationSchema = Yup.object().shape({
     .required("El nombre es requerido")
     .min(3, "El nombre debe tener al menos 3 caracteres")
     .max(50, "El nombre no debe exceder los 50 caracteres"),
-  openHour: Yup.string().matches(
-    /^([01]?[0-9]|2[0-3])$/,
-    'Formato de hora inválido'
-  ).required("La hora de apertura es requerida"),
-  closeHour: Yup.string().matches(
-    /^([01]?[0-9]|2[0-3])$/,
-    'Formato de hora inválido'
-  ).required("La hora de cierre es requerida"),
+  openHour: Yup.string()
+    .matches(/^([01]?[0-9]|2[0-3])$/, "Formato de hora inválido")
+    .required("La hora de apertura es requerida"),
+  closeHour: Yup.string()
+    .matches(/^([01]?[0-9]|2[0-3])$/, "Formato de hora inválido")
+    .required("La hora de cierre es requerida"),
   pricePerHour: Yup.number()
     .required("El precio por hora es requerido")
     .min(0, "El precio por hora no puede ser menor que 0")
@@ -29,22 +27,21 @@ const validationSchema = Yup.object().shape({
     .max(22, "El tamaño no puede ser mayor que 11"),
 });
 
-
-const ModalEditField = ({ show, handleClose, editField }) => {
-
-  const { updateField , getFields } = useContext(FieldsContext);
+const ModalEditField = ({ show, handleClose, editField, refreshTable }) => {
+  const { updateField, getFields } = useContext(FieldsContext);
   const [field, setField] = useState(editField);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = async (values) => {
     try {
-      await updateField(field._id , values);
+      await updateField(field._id, values);
       handleClose();
+      refreshTable();
     } catch (error) {
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     setField(editField);
   }, [editField]);
@@ -56,7 +53,7 @@ const ModalEditField = ({ show, handleClose, editField }) => {
           <Modal.Title>Cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Formik
+          <Formik
             initialValues={{
               name: field.name,
               openHour: field.openHour,
@@ -184,8 +181,7 @@ const ModalEditField = ({ show, handleClose, editField }) => {
             )}
           </Formik>
         </Modal.Body>
-        <Modal.Footer>
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     </>
   );

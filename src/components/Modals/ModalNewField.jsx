@@ -29,19 +29,13 @@ const validationSchema = Yup.object().shape({
   image: Yup.mixed().required("Seleccione una imagen"),
 });
 
-const ModalNewField = ({ show, handleClose }) => {
-  const { postField, getFields } = useContext(FieldsContext);
-  const { getSportCenterOwner, owner } = useContext(CenterContext);
+const ModalNewField = ({ show, handleClose, owner }) => {
+  const { postField, getFields, getFieldsBySportCenterId } =
+    useContext(FieldsContext);
+  const { getSportCenterOwner } = useContext(CenterContext);
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
-
-  const OwnerId = user._id;
-
-  useEffect(() => {
-    getSportCenterOwner(OwnerId);
-  }, []);
-
-
+  let idSportCenter = owner[0]._id;
   const initialValues = {
     name: "",
     openHour: "",
@@ -50,7 +44,7 @@ const ModalNewField = ({ show, handleClose }) => {
     size: "",
     image: null,
     isActive: true,
-    idSportCenter: "",
+    idSportCenter: idSportCenter,
   };
 
   return (
@@ -64,13 +58,13 @@ const ModalNewField = ({ show, handleClose }) => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={async (values, actions) => {
-              console.log(values.idSportCenter);
               setIsLoading(true);
               try {
-                await postField(values);
+                await postField(values).then(() => {
+                  getFieldsBySportCenterId(idSportCenter);
+                });
                 setIsLoading(false);
                 handleClose();
-                getFields();
               } catch (error) {
                 setIsLoading(false);
               }
@@ -172,7 +166,7 @@ const ModalNewField = ({ show, handleClose }) => {
                       />
                     </BootstrapForm.Group>
 
-                    <BootstrapForm>
+                    {/* <BootstrapForm>
                       <label>Cancha:</label>
                       <Field
                         as="select"
@@ -192,7 +186,7 @@ const ModalNewField = ({ show, handleClose }) => {
                         component="div"
                         className="error-message"
                       />
-                    </BootstrapForm>
+                    </BootstrapForm> */}
                   </Col>
                 </Row>
                 <div className="text-center mt-4">
