@@ -25,6 +25,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { FieldsContext } from "../../context/FieldContext";
 
 import FieldsTable from "../../components/FieldsTable/FieldsTable";
+import ModalNewField from "../../components/Modals/ModalNewField";
 const OwnerDashboard = () => {
   const [loadingCenter, setLoadingCenter] = useState(true);
   const [loadingCenterFields, setLoadingCenterFields] = useState(true);
@@ -34,7 +35,7 @@ const OwnerDashboard = () => {
   const { getSportCenterOwner, owner } = useContext(CenterContext);
   //   console.log(userId);
   const center = owner[0];
-
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     getSportCenterOwner(userId)
       .then(() => setLoadingCenter(false))
@@ -80,7 +81,7 @@ const OwnerDashboard = () => {
         <Col md={3} sm={12} className="">
           <Menu className="sideBarDashboard my-3">
             <MenuItem>
-              <span>Añadir cancha</span>
+              <button onClick={() => setShowModal(true)}>Añadir cancha</button>
             </MenuItem>
             <MenuItem>
               <span>Editar complejo</span>
@@ -142,6 +143,13 @@ const OwnerDashboard = () => {
           )}
         </Col>
       </Row>
+      {showModal && (
+        <ModalNewField
+          show={showModal}
+          handleClose={() => setShowModal(false)}
+          owner={owner}
+        />
+      )}
     </div>
   );
 };

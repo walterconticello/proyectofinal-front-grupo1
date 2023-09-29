@@ -1,7 +1,7 @@
 import { Table, Form } from "react-bootstrap";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { FieldsContext } from "../../context/FieldContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import Swal from "sweetalert2";
 import ModalEditField from "../Modals/ModalEditFields";
 
@@ -44,7 +44,9 @@ const FieldsTable = ({ center }) => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteField(_id);
+        deleteField(_id).then(() => {
+          getFieldsBySportCenterId(center._id);
+        });
         Swal.fire(
           "Eliminado",
           "El elemento ha sido eliminado correctamente",
@@ -68,15 +70,23 @@ const FieldsTable = ({ center }) => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        updateFieldState(_id);
-        Swal.fire(
-          `${stateText}`,
-          ` El elemento ha sido ${stateText} correctamente`,
-          "success"
-        );
+        updateFieldState(_id).then(() => {
+          getFieldsBySportCenterId(center._id);
+          Swal.fire(
+            `${stateText}`,
+            ` El elemento ha sido ${stateText} correctamente`,
+            "success"
+          );
+        });
       }
     });
   };
+
+  const refreshTable = useCallback(() => {
+    if (center) {
+      getFieldsBySportCenterId(center._id);
+    }
+  }, [center, getFieldsBySportCenterId]);
 
   return (
     <>
@@ -130,6 +140,7 @@ const FieldsTable = ({ center }) => {
           show={showEditModal}
           handleClose={handleEditModalClose}
           editField={editField}
+          refreshTable={refreshTable}
         />
       )}
     </>
