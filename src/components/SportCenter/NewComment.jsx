@@ -3,7 +3,7 @@ import "./stars.css";
 import * as Yup from "yup";
 import clsx from "clsx";
 import { useFormik } from "formik";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const NewComment = ({show, onHide, idSportCenter, page, setComments, setLastPage, loggedUser}) => {
     
@@ -98,7 +98,7 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments, setLastPage
                             )}
                         </Form.Group>
 
-                        <Form.Group className="mb-3 d-flex flex-row align-items-center flex-nowrap">
+                        <Form.Group className="mb-3 calificanos">
                             <Form.Label>Califícanos:</Form.Label>
                             <fieldset {...formik.getFieldProps("rating")} className={`rating ${clsx(
                                 "form-control",
