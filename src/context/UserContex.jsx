@@ -6,11 +6,14 @@ export const UserContext = createContext(); //universo. Todo lo que este aqui ad
 // eslint-disable-next-line react/prop-types
 const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
+  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getUsers();
   }, [setLoading]);
+
+  console.log(getUsers() + "desde el contex");
 
   const getUsers = async () => {
     try {

@@ -14,6 +14,7 @@ import Users from "../pages/Dashboard/Users";
 import Products from "../pages/Dashboard/Products";
 import Contact from "../pages/Contact/Contact";
 import OwnerDashboard from "../pages/Dashboard/OwnerDashboard";
+import DashboardAdmin from "../pages/Admin/DashboardAdmin";
 
 const Routes = () => {
   return (
@@ -31,9 +32,18 @@ const Routes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/admin/Reservation" element={<Reservation />} />
+      {/* <Route path="/admin/Reservation" element={<Reservation />} />
       <Route path="/admin/Users" element={<Users />} />
-      <Route path="/admin/products" element={<Products />} />
+      <Route path="/admin/products" element={<Products />} /> */}
+
+      <Route
+        path="/admin/dashboard"
+        element={
+          <PrivateRoute>
+            <DashboardAdmin />
+          </PrivateRoute>
+        }
+      />
 
       <Route
         path="/owner/dashboard"
