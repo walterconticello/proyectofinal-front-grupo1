@@ -1,36 +1,32 @@
-import {useContext, useEffect, useState} from "react";
 import { Table } from "react-bootstrap";
-import { CenterContext } from "../../context/CenterContext";
 
-const SportCenterTable = () => {
-  const { complexs } = useContext(CenterContext);
- //complex is not defined.
-  const numRowsToShow = 3;
-  const getRandomContent = () => {
-    const randomIndex = Math.floor(Math.random() * complexs.length);
-    return complexs[randomIndex].content; // Suponiendo que cada objeto tiene una propiedad 'content'
-  };
-  const [tableData, setTableData] = useState(Array(numRowsToShow).fill(null).map(() => getRandomContent()));
+const SportCenterTable = ({complexs}) => {
 
-  useEffect(() => {
-    setTableData(Array(numRowsToShow).fill(null).map(() => getRandomContent()));
-  }, []);
+  const limitedComplexs = complexs.slice(0, 3);
 
   return (
+    <>
     <Table striped="columns">
       <thead>
-        <tr>
-          <th>Contenido</th>
-        </tr>
+      <tr>
+              <th>Nombre</th>
+              <th>Direccion</th>
+              <th>Telefono</th>
+              <th>Acciones</th>
+            </tr>
       </thead>
       <tbody>
-        {tableData.map((content, index) => (
-          <tr key={index}>
-            <td>{content}</td>
-          </tr>
-        ))};
-        </tbody>
+        {limitedComplexs.map((complex, index) => (
+          <tr key={complex._id}>
+          <td>{complex.name}</td>
+          <td>{complex.address}</td>
+          <td>{complex.phone}</td>
+        </tr>
+        ))}
+      </tbody>
+
     </Table>
+    </>
   );
 };
 

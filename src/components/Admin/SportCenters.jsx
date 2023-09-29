@@ -1,16 +1,19 @@
 import Card from 'react-bootstrap/Card';
-import { useState } from 'react';
 
-const SportCenters = () => { 
+const SportCenters = ({complexs}) => { 
 
+  let complejos = 0;
+
+  if (complexs && Array.isArray(complexs) && complexs.length > 0) {
+    complexs = complexs.length;
+  }
 
   return (
-    <Card style={{ width: '18rem' }} bg="dark" text="white">
+    <Card  bg="dark" text="white">
       <Card.Body>
         <Card.Title>Complejos </Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          Cantidad de complejos :{complejos}
         </Card.Text>
       </Card.Body>
     </Card>

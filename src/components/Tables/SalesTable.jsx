@@ -1,35 +1,32 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 
-const SalesTable = () => {
+const SalesTable = ({sales}) => {
+
+  const limitedSales = sales.slice(0, 3);
+
   return (
     <Table striped="columns">
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Id del producto</th>
+          <th>User</th>
+          <th>Cantidad</th>
+          <th>Total</th>
+          <th>Fecha</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+    {limitedSales.map((sale , index) => (
+      <tr key={sale._id}>
+      <td>{sale.productId}</td>
+      <td>{sale.userId}</td>
+      <td>{sale.quantity}</td>
+      <td>{sale.totalPrice}</td>
+      <td>{sale.date}</td>
+    </tr>
+    ))}
+        
       </tbody>
     </Table>
   )

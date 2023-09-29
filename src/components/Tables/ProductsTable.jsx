@@ -1,37 +1,40 @@
-import React from 'react'
 import { Table } from 'react-bootstrap'
 
-const ProductsTable = () => {
+const ProductsTable = ({products}) => {
+
+  const limitedProducts = products.slice(0, 3);
+
   return (
     <Table striped="columns">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
+    <thead>
+    <tr>
+              <th>Imagen</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Description</th>
+              <th>Stock</th>
+              <th>Actions</th>
+          </tr>
+    </thead>
+    <tbody>
+      {limitedProducts.map((product, index) => (
+        <tr key={product._id}>
+        <td>
+          <img
+            className="w-25"
+            src={product.image.url}
+            alt={product.name}
+          />
+        </td>
+        <td>{product.name}</td>
+        <td>${product.price}</td>
+        <td >{product.description}</td>
+        <td>{product.stock}</td>
+      </tr>
+      ))}
+    </tbody>
+
+  </Table>
   )
 }
 

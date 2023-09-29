@@ -1,22 +1,24 @@
-import React from 'react'
 import { Card } from 'react-bootstrap'
 
-const Sales = () => {
-  
+const Sales = ({ sales }) => {
+  let ventas = 0;
+
+  if (sales && Array.isArray(sales) && sales.length > 0) {
+    ventas = sales.length;
+  }
 
   return (
     <>
-    <Card style={{ width: '18rem' }} bg="primary" text="white">
-      <Card.Body>
-        <Card.Title>Ventas </Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-      </Card.Body>
-    </Card>
+      <Card  bg="primary" text="white">
+        <Card.Body>
+          <Card.Title>Ventas </Card.Title>
+          <Card.Text>
+            Total de ventas :  {ventas}
+          </Card.Text>
+        </Card.Body>
+      </Card>
     </>
   )
 }
 
-export default Sales
+export default Sales;

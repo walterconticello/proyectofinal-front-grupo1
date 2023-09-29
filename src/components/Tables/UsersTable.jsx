@@ -1,37 +1,32 @@
-import React from 'react'
 import { Table } from 'react-bootstrap'
 
-const UsersTable = () => {
+const UsersTable = ({users}) => {
+
+  const limitedUsers = users.slice(0, 3);
+
   return (
+    <>
     <Table striped="columns">
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
           <th>Username</th>
+          <th>Correo Electronico</th>
+          <th>Estado</th>
+          <th>Es Owner</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+        {limitedUsers.map((user, index) => (
+          <tr key={user._id}>
+          <td>{user.username}</td>
+          <td>{user.email}</td>
+          <td>{user.state ? "Activo" : "Inactivo"}</td>
+          <td>{user.isOwner ? "Es Owner" : "No es Owner"}</td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        ))}
       </tbody>
     </Table>
+    </>
   )
 }
 

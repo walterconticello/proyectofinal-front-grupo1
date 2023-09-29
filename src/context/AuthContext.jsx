@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [users, setUsers] = useState();
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -70,10 +71,46 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const getUsers = async () => {
+    try {
+      const response = await axios.get(`/api/users/`);
+      setUsers(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  const deleteUser = async (id) => {
+    console.log(id, "id de context");
+    try {
+      await axios.delete(`api/users/${id}`);
+      const deleteUsuario = users.filter((usuario) => usuario.id !== id);
+      setUsers(deleteUsuario);
+    } catch (error) {
+      console.log(error, "error de productos");
+    }
+  };
+
+  const getUserId = async (id) => {
+    console.log(id);
+    try {
+      await axios.get(`api/users/${id}`);
+      const response = users.filter((usuario) => usuario.id !== id);
+      setUser(response.data)
+    } catch (error) {
+      console.log(error, "error de productos");
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
 
   return (
     <AuthContext.Provider
-      value={{ user, authenticated, loading, login, register, logout, getAuth }}
+      value={{ user, users , getUsers, getUserId , deleteUser  ,authenticated, loading,  login, register, logout, getAuth }}
     >
       {children}
     </AuthContext.Provider>
