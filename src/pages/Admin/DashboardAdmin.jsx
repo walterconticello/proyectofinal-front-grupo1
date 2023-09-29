@@ -2,10 +2,10 @@ import SportCenters from '../../components/Admin/SportCenters';
 import Sales from '../../components/Admin/Sales';
 import User from '../../components/Admin/User';
 import { Col, Container, Row } from 'react-bootstrap';
-import SportCenterTable from '../../components/Tables/SportCenterTable';
-import ProductsTable from '../../components/Tables/ProductsTable';
-import SalesTable from '../../components/Tables/SalesTable';
-import UsersTable from '../../components/Tables/UsersTable';
+import SportCenterTable from '../../components/TablesDashobard/SportCenterTable';
+import ProductsTable from '../../components/TablesDashobard/ProductsTable';
+import SalesTable from '../../components/TablesDashobard/SalesTable';
+import UsersTable from '../../components/TablesDashobard/UsersTable';
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { CenterContext } from '../../context/CenterContext';
@@ -14,7 +14,7 @@ import { SalesContext } from '../../context/SalesContext';
 
 const DashboardAdmin = () => {
   const { users, getUsers } = useContext(AuthContext);
-  const { complexs, getSportCenter } = useContext(CenterContext);
+  const { complexs, getSportCenter ,deleteSportCenter } = useContext(CenterContext);
   const { products, getProducts } = useContext(ProductContext);
   const { sales, getSales } = useContext(SalesContext);
 
