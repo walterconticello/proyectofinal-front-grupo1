@@ -1,23 +1,22 @@
-import { Table } from 'react-bootstrap'
+import { Table, Button, Image } from "react-bootstrap";
 import { MdDelete, MdEdit } from "react-icons/md";
 import "../ProductTable/ProductTable.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { useContext } from 'react';
-import { ProductContext } from '../../context/ProductContext';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import EditProductForm from '../ProductForm/EditProductForm';
+import { useContext } from "react";
+import { ProductContext } from "../../context/ProductContext";
+import { useState } from "react";
+import { useEffect } from "react";
+import EditProductForm from "../ProductForm/EditProductForm";
 
-const ProductsTable = ({products}) => {
-
+const ProductsTable = ({ products }) => {
   const { getProducts, deleteProduct, updateProducts } =
     useContext(ProductContext);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editProduct, setEditProduct] = useState(null);
 
-  const limitedProducts = products.slice(0, 3);
   const MySwal = withReactContent(Swal);
+
   const handleEditModalShow = (product) => {
     setEditProduct(product);
     setShowEditModal(true);
@@ -27,47 +26,48 @@ const ProductsTable = ({products}) => {
     setEditProduct(null);
     setShowEditModal(false);
   };
-  
+
   useEffect(() => {
     getProducts();
   }, []);
 
   return (
     <>
-    <div className="table-responsive mx-auto text-center">
-        <table>
+      <div className="table-responsive ">
+        <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Imagen</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Description</th>
+              <th className="w-25">Imagen</th>
+              <th>Nombre</th>
+              <th>Precio</th>
               <th>Stock</th>
-              <th>Actions</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
-              <tr key={product._id}>
-                <td>
-                  <img
-                    className="w-25"
+              <tr key={product._id} className="">
+                <td className=" d-flex  justify-content-center">
+                  <Image
                     src={product.image.url}
                     alt={product.name}
+                    thumbnail
+                    className="img-thumbnail w-50"
                   />
                 </td>
-                <td className="w-25">{product.name}</td>
-                <td>${product.price}</td>
-                <td className="w-25">{product.description}</td>
-                <td>{product.stock}</td>
-                <td>
-                  <button
-                    className="btnEdit m-2"
+                <td className="align-middle">{product.name}</td>
+                <td className="align-middle">${product.price}</td>
+                <td className="align-middle">{product.stock}</td>
+                <td className="align-middle">
+                  <Button
+                    variant="primary"
+                    className="m-2"
                     onClick={() => handleEditModalShow(product)}
                   >
                     <MdEdit />
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                    variant="danger"
                     onClick={async () => {
                       const result = await MySwal.fire({
                         title: "¿Estás seguro?",
@@ -91,15 +91,14 @@ const ProductsTable = ({products}) => {
                         );
                       }
                     }}
-                    className=""
                   >
                     <MdDelete />
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       </div>
       {editProduct && (
         <EditProductForm
@@ -110,7 +109,7 @@ const ProductsTable = ({products}) => {
         />
       )}
     </>
-  )
-}
+  );
+};
 
-export default ProductsTable
+export default ProductsTable;

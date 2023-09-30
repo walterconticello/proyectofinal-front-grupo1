@@ -1,23 +1,18 @@
-import Card from 'react-bootstrap/Card';
+import Card from "react-bootstrap/Card";
 
-const SportCenters = ({complexs}) => { 
-
+const SportCenters = ({ complexs }) => {
   let complejos = 0;
 
-  if (complexs && Array.isArray(complexs) && complexs.length > 0) {
-    complexs = complexs.length;
+  if (complexs && complexs.length > 0) {
+    complejos = complexs.length;
   }
 
   return (
-    <Card  bg="dark" text="white">
-      <Card.Body>
-        <Card.Title>Complejos </Card.Title>
-        <Card.Text>
-          Cantidad de complejos :{complejos}
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  )
-}
+    <div className="dashboard-stats sportcenter-stats d-flex flex-column">
+      <h5>Complejos</h5>
+      <h2>{complejos}</h2>
+    </div>
+  );
+};
 
-export default SportCenters
+export default SportCenters;

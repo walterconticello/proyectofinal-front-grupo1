@@ -6,9 +6,10 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+  // console.log(users, "from auth context");
 
   const login = async (values) => {
     try {
@@ -72,10 +73,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getUsers = async () => {
+    const token = localStorage.getItem("token");
     try {
       const response = await axios.get(`/api/users/`);
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
       setUsers(response.data);
     } catch (error) {
       console.log(error);
