@@ -30,7 +30,8 @@ import ModalNewField from "../../components/Modals/ModalNewField";
 const OwnerDashboard = () => {
   const [loadingCenter, setLoadingCenter] = useState(true);
   const [loadingCenterFields, setLoadingCenterFields] = useState(true);
-  const { user } = useContext(AuthContext);
+  const { user, getAuth } = useContext(AuthContext);
+
   const { getFieldsBySportCenterId } = useContext(FieldsContext);
   const userId = user._id;
   const { getSportCenterOwner, owner } = useContext(CenterContext);
@@ -49,6 +50,10 @@ const OwnerDashboard = () => {
         setLoadingCenter(false);
       });
   }, [userId]);
+
+  useEffect(() => {
+    getAuth();
+  }, []);
   useEffect(() => {
     if (center && center._id) {
       getFieldsBySportCenterId(center._id)

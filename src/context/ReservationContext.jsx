@@ -3,17 +3,9 @@ import { createContext, useEffect, useState } from "react";
 
 export const ReservationContext = createContext();
 
-const ReservationProvider= ({ children }) => {
+const ReservationProvider = ({ children }) => {
   const [bookings, setBookings] = useState([]);
 
-  const getReservations = async () => {
-    try {
-      const response = await axios.get(`/api/reservation/`);
-      setBookings(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const getReservationOwner = async () => {
     try {
       const response = await axios.get(`/api/reservation/owner`);
@@ -61,6 +53,14 @@ const ReservationProvider= ({ children }) => {
       console.log(error, "error de productos");
     }
   };
+  const getReservations = async () => {
+    try {
+      const response = await axios.get(`/api/reservation/`);
+      setBookings(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     getReservations();
@@ -76,7 +76,7 @@ const ReservationProvider= ({ children }) => {
         canceledReservation,
         viewBooking,
         getReservationOwner,
-        getReservationUser 
+        getReservationUser,
       }}
     >
       {children}

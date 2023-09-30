@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await axios.post(`/api/auth/login`, values);
       const token = response.data.token;
-      console.log(response)
+      console.log(response);
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`; // Update to use Bearer token
       localStorage.setItem("token", token);
       setAuthenticated(true);
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     setAuthenticated(false);
     axios.defaults.headers.common["Authorization"] = ""; // Limpiar el token de autorización
     localStorage.removeItem("token");
-    toast.success('Cerraste tu sesion de manera exitosa, vuelve pronto!', {
+    toast.success("Cerraste tu sesion de manera exitosa, vuelve pronto!", {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 2000,
       hideProgressBar: false,
@@ -74,12 +74,13 @@ export const AuthProvider = ({ children }) => {
   const getUsers = async () => {
     try {
       const response = await axios.get(`/api/users/`);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
       setUsers(response.data);
     } catch (error) {
       console.log(error);
     }
   };
-
 
   const deleteUser = async (id) => {
     console.log(id, "id de context");
@@ -97,7 +98,7 @@ export const AuthProvider = ({ children }) => {
     try {
       await axios.get(`api/users/${id}`);
       const response = users.filter((usuario) => usuario.id !== id);
-      setUser(response.data)
+      setUser(response.data);
     } catch (error) {
       console.log(error, "error de productos");
     }
@@ -107,10 +108,21 @@ export const AuthProvider = ({ children }) => {
     getUsers();
   }, []);
 
-
   return (
     <AuthContext.Provider
-      value={{ user, users , getUsers, getUserId , deleteUser  ,authenticated, loading,  login, register, logout, getAuth }}
+      value={{
+        user,
+        users,
+        getUsers,
+        getUserId,
+        deleteUser,
+        authenticated,
+        loading,
+        login,
+        register,
+        logout,
+        getAuth,
+      }}
     >
       {children}
     </AuthContext.Provider>

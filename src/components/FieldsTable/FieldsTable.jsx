@@ -99,7 +99,7 @@ const FieldsTable = ({ center }) => {
             <th>Horario de cierre</th>
             <th>Precio por hora</th>
             <th>Tamaño</th>
-            <th>Activo</th>
+            {/* <th>Activo</th> */}
             <th>Actions</th>
           </tr>
         </thead>
@@ -114,7 +114,7 @@ const FieldsTable = ({ center }) => {
               <td>{field.closeHour} hs</td>
               <td>${field.pricePerHour}</td>
               <td>{field.size}</td>
-              <td>
+              {/* <td>
                 <Form onClick={() => handleState(field._id, field.isActive)}>
                   <Form.Check
                     type="switch"
@@ -122,7 +122,7 @@ const FieldsTable = ({ center }) => {
                     label={field.isActive ? "Activo" : "Inactivo"}
                   />
                 </Form>
-              </td>
+              </td> */}
               <td>
                 <button onClick={() => handleEdit(field)}>
                   <MdEdit />

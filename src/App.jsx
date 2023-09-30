@@ -7,28 +7,28 @@ import AuthProvider, { AuthContext } from "./context/AuthContext";
 
 import FieldContext from "./context/FieldContext.jsx";
 import CenterContext from "./context/CenterContext";
-import ReserveContext from "./context/ReservationContext";
+import ReservationProvider from "./context/ReservationContext";
 import SalesProvider from "./context/SalesContext";
 import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <AuthProvider>
-      <CenterContext>
-        <ReserveContext>
-          <FieldContext>
-            <SalesProvider>
-            <ProductProvider>
-              <ScrollToTop />
-              <Layout>
-                <Routes />
-                <ToastContainer />
-              </Layout>
-            </ProductProvider>
+      <CenterContext />
+      <ReservationProvider />
+      <FieldContext />
+      <SalesProvider />
+      <ProductProvider />
+      <ScrollToTop />
+      <Layout>
+        <Routes />
+        <ToastContainer />
+      </Layout>
+      {/* </ProductProvider>
             </SalesProvider>
           </FieldContext>
-        </ReserveContext>
-      </CenterContext>
+        </ReservationProvider>
+  </CenterContext>*/}
     </AuthProvider>
   );
 }
