@@ -87,7 +87,7 @@ const OwnerDashboard = () => {
         <h1 className="h3 my-3 text-center">Administracion - Owner</h1>
         <Col md={3} sm={12} className="">
           <Menu className="sideBarDashboard my-3">
-            <MenuItem className="sidebar-dashboard-button m-2 d-flex justify-content-center">
+            <div className="sidebar-dashboard-button m-2 d-flex justify-content-center">
               <button
                 className="d-flex align-items-center p-2 "
                 onClick={() => setShowModal(true)}
@@ -95,8 +95,8 @@ const OwnerDashboard = () => {
                 <span>Añadir cancha</span>
                 <MdAddCircle size={23} className="mx-3" />
               </button>
-            </MenuItem>
-            <MenuItem className="sidebar-dashboard-button m-2 d-flex justify-content-center">
+            </div>
+            <div className="sidebar-dashboard-button m-2 d-flex justify-content-center">
               <button
                 className="d-flex align-items-center p-2 "
                 onClick={() => setShowEditModal(true)}
@@ -104,7 +104,7 @@ const OwnerDashboard = () => {
                 <span>Editar complejo</span>
                 <MdEditSquare size={23} className="mx-3" />
               </button>
-            </MenuItem>
+            </div>
           </Menu>
         </Col>
         <Col md={9} sm={12}>

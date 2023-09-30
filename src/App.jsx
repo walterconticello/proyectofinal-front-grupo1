@@ -14,21 +14,21 @@ import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <AuthProvider>
-      <CenterContext />
-      <ReservationProvider />
-      <FieldContext />
-      <SalesProvider />
-      <ProductProvider />
-      <ScrollToTop />
-      <Layout>
-        <Routes />
-        <ToastContainer />
-      </Layout>
-      {/* </ProductProvider>
+      <CenterContext>
+        <ReservationProvider>
+          <FieldContext>
+            <SalesProvider>
+              <ProductProvider>
+                <ScrollToTop />
+                <Layout>
+                  <Routes />
+                  <ToastContainer />
+                </Layout>
+              </ProductProvider>
             </SalesProvider>
           </FieldContext>
         </ReservationProvider>
-  </CenterContext>*/}
+      </CenterContext>
     </AuthProvider>
   );
 }
