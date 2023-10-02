@@ -165,28 +165,6 @@ const ModalNewField = ({ show, handleClose, owner }) => {
                         className="error-message"
                       />
                     </BootstrapForm.Group>
-
-                    {/* <BootstrapForm>
-                      <label>Cancha:</label>
-                      <Field
-                        as="select"
-                        name="idSportCenter"
-                        className="form-control m-2"
-                        aria-label="Select an option"
-                      >
-                        <option value="">Selecciona una opción</option>
-                        {owner.map((sportCenter) => (
-                          <option key={sportCenter._id} value={sportCenter._id}>
-                            {sportCenter.name}
-                          </option>
-                        ))}
-                      </Field>
-                      <ErrorMessage
-                        name="idSportCenter"
-                        component="div"
-                        className="error-message"
-                      />
-                    </BootstrapForm> */}
                   </Col>
                 </Row>
                 <div className="text-center mt-4">

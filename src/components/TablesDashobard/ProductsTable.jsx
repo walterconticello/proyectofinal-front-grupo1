@@ -1,5 +1,5 @@
 import { Table, Button, Image } from "react-bootstrap";
-import { MdDelete, MdEdit } from "react-icons/md";
+import { MdDelete, MdEdit, MdAddCircle } from "react-icons/md";
 import "../ProductTable/ProductTable.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -8,12 +8,14 @@ import { ProductContext } from "../../context/ProductContext";
 import { useState } from "react";
 import { useEffect } from "react";
 import EditProductForm from "../ProductForm/EditProductForm";
+import ModalNewProduct from "../Modals/ModalNewProduct";
 
 const ProductsTable = ({ products }) => {
   const { getProducts, deleteProduct, updateProducts } =
     useContext(ProductContext);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editProduct, setEditProduct] = useState(null);
+  const [showNewProductModal, setShowNewProductModal] = useState(false);
 
   const MySwal = withReactContent(Swal);
 
@@ -27,12 +29,26 @@ const ProductsTable = ({ products }) => {
     setShowEditModal(false);
   };
 
+  const handleShowNewProductModal = () => {
+    setShowNewProductModal(true);
+  };
+
+  const handleCloseNewProductModal = () => {
+    setShowNewProductModal(false);
+  };
   useEffect(() => {
     getProducts();
   }, []);
 
   return (
     <>
+      <Button
+        className="d-flex align-items-center my-3 add-button"
+        onClick={handleShowNewProductModal}
+      >
+        <span>Agregar producto</span>
+        <MdAddCircle className="mx-2" />
+      </Button>
       <div className="table-responsive ">
         <Table striped bordered hover>
           <thead>
@@ -61,7 +77,7 @@ const ProductsTable = ({ products }) => {
                 <td className="align-middle">
                   <Button
                     variant="primary"
-                    className="m-2"
+                    className="m-2 add-button"
                     onClick={() => handleEditModalShow(product)}
                   >
                     <MdEdit />
@@ -106,6 +122,12 @@ const ProductsTable = ({ products }) => {
           onHide={handleEditModalClose}
           product={editProduct}
           updateProducts={updateProducts}
+        />
+      )}
+      {showNewProductModal && (
+        <ModalNewProduct
+          show={showNewProductModal}
+          handleClose={handleCloseNewProductModal}
         />
       )}
     </>

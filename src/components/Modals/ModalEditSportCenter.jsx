@@ -90,8 +90,6 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex, userId }) => {
           onSubmit={async (values, actions) => {
             setIsLoading(true);
             try {
-              console.log("values ", values);
-              console.log("sportCenter id ", complex._id);
               await updateSportCenter(complex._id, values);
               setIsLoading(false);
               handleClose();
