@@ -13,7 +13,7 @@
 	content: '\f005';
 	font-family: FontAwesome;
 	margin: 2px;
-	font-size: 1.2rem;
+	font-size: 1.15rem;
 	display: inline-block;
 	cursor: pointer;
 }
@@ -29,6 +29,7 @@
 	color: #acacac;
 	float: right; /*right*/
 	cursor: pointer;
+	font-weight: 300 !important;
 }
 
 .rating > input:checked ~ label,
@@ -44,9 +45,22 @@
 	color: #71B641;
 }
 
+.calificanos {
+	display: flex;
+	flex-direction: column;
+}
+
+@media all and (min-width:281px){
+	.calificanos {
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: nowrap;
+	}
+}
+
 @media all and (min-width:768px){
 	.rating > label:before{
-		margin: 5px;
+		margin: 2px;
 		font-size: 1.5rem;
 	}
 }

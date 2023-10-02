@@ -3,7 +3,7 @@ import "./stars.css";
 import * as Yup from "yup";
 import clsx from "clsx";
 import { useFormik } from "formik";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const NewComment = ({show, onHide, idSportCenter, page, setComments, setLastPage, loggedUser}) => {
     
@@ -79,7 +79,7 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments, setLastPage
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={formik.handleSubmit} noValidate>
+                    <Form className="form-comment" onSubmit={formik.handleSubmit} noValidate>
                         <Form.Group className="mb-3">
                             <Form.Label htmlFor="commentArea">Escribe tu reseña:</Form.Label>
                             <Form.Control as="textarea" id="commentArea" maxLength={500} minLength={5} required placeholder="Escribe un comentario aquí..." rows={5} {...formik.getFieldProps("text")} className={`newcomment-text ${clsx(
@@ -98,7 +98,7 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments, setLastPage
                             )}
                         </Form.Group>
 
-                        <Form.Group className="mb-3 d-flex flex-row align-items-center flex-nowrap">
+                        <Form.Group className="mb-3 calificanos">
                             <Form.Label>Califícanos:</Form.Label>
                             <fieldset {...formik.getFieldProps("rating")} className={`rating ${clsx(
                                 "form-control",
