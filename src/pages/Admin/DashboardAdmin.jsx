@@ -11,7 +11,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { CenterContext } from "../../context/CenterContext";
 import { ProductContext } from "../../context/ProductContext";
 import { SalesContext } from "../../context/SalesContext";
-
+import "../../components/ProductForm/productForm.css";
 const DashboardAdmin = () => {
   const { users, getUsers } = useContext(AuthContext);
   const { complexs, getSportCenter, deleteSportCenter } =
