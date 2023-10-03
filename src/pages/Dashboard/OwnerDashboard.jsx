@@ -88,16 +88,16 @@ const OwnerDashboard = () => {
         <h1 className="h3 my-3 text-center">Administracion - Owner</h1>
         <Col md={3} sm={12} className="">
           <Menu className="sideBarDashboard my-3">
-            <div className="sidebar-dashboard-button m-2 d-flex justify-content-center">
+            <div className="sidebar-dashboard-button m-2 d-flex bg-white justify-content-center">
               <button
-                className="d-flex align-items-center p-2 "
+                className="d-flex bg-white align-items-center p-2 "
                 onClick={() => setShowModal(true)}
               >
-                <span>Añadir cancha</span>
-                <MdAddCircle size={23} className="mx-3" />
+                <span className="bg-white">Añadir cancha</span>
+                <MdAddCircle size={23} className="mx-3 bg-white" />
               </button>
             </div>
-            <div className="sidebar-dashboard-button m-2 d-flex justify-content-center">
+            <div className="sidebar-dashboard-button bg-white m-2 d-flex justify-content-center">
               <button
                 className="d-flex align-items-center p-2 "
                 onClick={() => setShowEditModal(true)}
