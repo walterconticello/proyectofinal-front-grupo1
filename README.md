@@ -29,6 +29,34 @@
         <p>Puede dirigirse a nuestro repositorio de back-end y seguir las instrucciones <a href="https://github.com/walterconticello/proyectofinal-back-grupo1">aqui</a></p>
         <br>
         <h2>Estructura general del sitio</h2>
+        <ul>
+            <li>Pagina principal</li>
+            <li>Tienda</li>
+            <li>Pagina de informacion del complejo</li>
+            <li>Pagina de canchas</li>
+            <li>Dashboard de administracion</li>
+            <li>Dashboard de owner(dueño del complejo)</li>
+            <li>Pagina de informacion de usuario</li>
+            <li>Pagina de registro y login</li>
+            <li>Pagina sobre nosotros</li>
+            <li>404</li>
+        </ul>
+        <br>
+        <h2>Deploy</h2>
+        <h3>link del deploy</h3>
+        <h3>datos del admin harcodeado</h3>
+        <br>
+        <h2>Librerias utilizadas</h2>
+        <ul><li>liberias...</li><ul>
+        <br>
+            <h2>Grupo de desarrolladores</h2>
+            <ul>
+                <li><a href="https://github.com/marcosquinteros">Marcos Quinteros</a></li>
+                <li><a href="https://github.com/walterconticello">Walter Conticello</a></li>
+                <li><a href="https://github.com/diegovacapaz">Diego Vacapaz</a></li>
+                <li><a href="https://github.com/LautaroCruzSrur">Lautaro Cruz Srur</a></li>
+                <li><a href="https://github.com/PabloRodriguez95">Pablo Rodriguez</a></li>
+            </ul>
     <main/>        
 </body>
 </html>
