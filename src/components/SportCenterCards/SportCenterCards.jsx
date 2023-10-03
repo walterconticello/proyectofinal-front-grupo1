@@ -77,7 +77,7 @@ const SportCenterCards = () => {
       <Row>
         <Col md={12} lg={4}>
           <div className="filters-sportcenter">
-            <h2 className="text-center">Filtrar complejos</h2>
+            <h4 className="text-center">Filtrar complejos</h4>
             <hr className="m-3" />
             <Form.Group controlId="searchTerm">
               <Form.Control
@@ -90,19 +90,19 @@ const SportCenterCards = () => {
               />
             </Form.Group>
             <div className="categories-filter">
-              <h2 className="m-2">Categorias</h2>
+              <h5 className="m-2">Servicios</h5>
               {Object.keys(categoryIcons).map((category, index) => (
                 <Form.Check
                   key={index}
                   type="checkbox"
-                  className={`category-filter-each ${
+                  className={`category-filter-each d-flex align-items-center ${
                     filters[category] ? "category-filter-each-selected" : ""
                   }`}
                   id={`has${category}`}
                   label={
-                    <div className={"d-flex align-items-center m-2"}>
+                    <div className={"d-flex align-items-center"}>
                       <div className="mx-2">{categoryIcons[category]}</div>
-                      <p>{category}</p>
+                      <p className="m-1">{category}</p>
                     </div>
                   }
                   checked={filters[category]}

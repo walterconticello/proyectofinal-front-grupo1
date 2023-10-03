@@ -40,7 +40,7 @@ const Footer = () => {
             <div className="col-xs-1 col-lg-3 col-md-2 text-center">
               <h3 className="text-white footerText mb-3">Soporte Técnico</h3>
               <div className="text-gray-300 mb-2 itemFooter">
-                <Link className="text-white" to="/*">
+                <Link className="text-white" to="/contacto">
                   Contacto
                 </Link>
               </div>

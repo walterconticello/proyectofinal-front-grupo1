@@ -61,6 +61,7 @@ const Routes = () => {
         path="/complejos/:idSportCenter"
         element={<SportCenterDetail />}
       ></Route>
+      <Route path="/contacto" element={<Contact />} />
       <Route path="/*" element={<Error404 />} />
     </Rutas>
   );

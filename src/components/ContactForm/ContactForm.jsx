@@ -31,7 +31,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="container-form-contact h-100 ">
+    <div className="container-form-contact h-100 p-3">
       <div className="head d-flex flex-column align-items-center">
         <h1 className="title-contact m-3">Contactanos</h1>
         <p className="w-75 text-center">
