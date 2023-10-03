@@ -8,7 +8,7 @@ const ReservationProvider = ({ children }) => {
 
   const getReservationOwner = async () => {
     try {
-      const response = await axios.get(`/api/reservation/owner`);
+      const response = await axios.get(`/api/reservationOwner`);
       setBookings(response.data);
     } catch (error) {
       console.log(error);
@@ -16,7 +16,7 @@ const ReservationProvider = ({ children }) => {
   };
   const getReservationUser = async () => {
     try {
-      const response = await axios.get(`/api/reservation/user`);
+      const response = await axios.get(`/api/reservationUser`);
       setBookings(response.data);
     } catch (error) {
       console.log(error);
@@ -63,7 +63,7 @@ const ReservationProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getReservations();
+  getReservationOwner();
   }, []);
 
   return (
