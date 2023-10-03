@@ -34,15 +34,25 @@ const ProductProvider = ({ children }) => {
   const addProduct = async (products) => {
     try {
       const form = new FormData();
-      for (let key in products) {
-        form.append(key, products[key]);
+
+      form.append("name", products.name);
+      form.append("description", products.description);
+      form.append("price", products.price);
+      form.append("stock", products.stock);
+      form.append("categories", products.categories);
+
+      if (products.image) {
+        form.append("image", products.image);
       }
+
       const res = await axios.post("/api/products", form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      return res, console.log(form, "product posted successfully");
+
+      console.log("Product posted successfully");
+      return res;
     } catch (err) {
-      console.log(err, "error posting product");
+      console.error("Error posting product:", err);
     }
   };
 

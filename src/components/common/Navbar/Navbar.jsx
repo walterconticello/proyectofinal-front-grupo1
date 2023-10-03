@@ -12,6 +12,9 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 const navigation = [
   { name: "Inicio", href: "/", current: false },
   { name: "Store", href: "/store", current: false },
+  { name: "Owner Dashboard", href: "/owner/dashboard", current: false },
+  { name: "Admin Dashboard", href: "/admin/dashboard", current: false },
+
   // Agregar otras rutas aqui
 ];
 

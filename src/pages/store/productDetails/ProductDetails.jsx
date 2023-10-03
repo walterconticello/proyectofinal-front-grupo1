@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext";
-import { useSalesContext } from "../../../context/SalesContext";
+import { SalesContext } from "../../../context/SalesContext";
 import { AuthContext } from "../../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,7 +18,7 @@ const ProductDetails = () => {
   const { getProduct, selectedProduct } = useContext(ProductContext);
   const { productId } = useParams();
   const [cart, setCart] = useState([]);
-  const { addSale } = useSalesContext();
+  const { addSale } = useContext(SalesContext);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {

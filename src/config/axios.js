@@ -1,7 +1,7 @@
 import axiosOriginal from "axios";
 
 const axios = axiosOriginal.create({
-  baseURL: import.meta.env.VITE_DB,
+  baseURL: "http://localhost:8001",
 });
 
 export default axios;

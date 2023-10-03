@@ -1,19 +1,15 @@
 import { Route, Routes as Rutas } from "react-router-dom";
 import Store from "../pages/store/Store";
 import Home from "../pages/Home/Home";
-import { Dashboard } from "../pages/Dashboard";
 import List from "../pages/list/List";
 import ProductDetails from "../pages/store/productDetails/ProductDetails";
 import Login from "../pages/Login/Login";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
-import SportCenter from "../pages/SportCenter";
-import Fields from "../pages/Fields";
-import Reservation from "../components/Cards/Reservations";
-import Users from "../pages/Users";
-import Products from "../pages/Products";
 import Contact from "../pages/Contact/Contact";
 import SportCenterDetail from "../components/SportCenter/SportCenterDetail";
+import OwnerDashboard from "../pages/Dashboard/OwnerDashboard";
+import DashboardAdmin from "../pages/Admin/DashboardAdmin";
 
 const Routes = () => {
   return (
@@ -21,50 +17,30 @@ const Routes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/store" element={<Store />} />
       <Route exact path="/contact" element={<Contact />} />
+      {/* <Route path="/admin/Reservation" element={<Reservation />} />
+      <Route path="/admin/Users" element={<Users />} />
+      <Route path="/admin/products" element={<Products />} /> */}
+
       <Route
-        path="/admin"
+        path="/admin/dashboard"
         element={
-          <Dashboard />
+          <PrivateRoute>
+            <DashboardAdmin />
+          </PrivateRoute>
         }
       />
+
       <Route
-        path="/admin/SportCenter"
+        path="/owner/dashboard"
         element={
-          <SportCenter />
-        }
-      />
-      <Route
-        path="/admin/Field"
-        element={
-          <Fields />
-        }
-      />
-      <Route
-        path="/admin/Reservation"
-        element={
-          <Reservation />
-        }
-      />
-      <Route
-        path="/admin/Users"
-        element={
-          <Users />
-        }
-      />
-      <Route
-        path="/admin/products"
-        element={
-          <Products />
+          <PrivateRoute>
+            <OwnerDashboard />
+          </PrivateRoute>
         }
       />
 
       <Route path="/complejos" element={<List />} />
-      <Route
-        path="/store/product/:productId"
-        element={
-          <ProductDetails />
-        }
-      />
+      <Route path="/store/product/:productId" element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
       <Route
         path="/perfil"
@@ -74,7 +50,14 @@ const Routes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/detail" element={<SportCenterDetail idSportCenter={"6506441ce5b61592c0a44bef"}></SportCenterDetail>}></Route>
+      <Route
+        path="/detail"
+        element={
+          <SportCenterDetail
+            idSportCenter={"6506441ce5b61592c0a44bef"}
+          ></SportCenterDetail>
+        }
+      ></Route>
     </Rutas>
   );
 };
