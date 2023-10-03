@@ -20,17 +20,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* SearchSection */}
-      {/* <div className="searchContainer mt-1 mb-1 p-2">
-				<SearchBar />
-				<div className="complexCards container mx-auto p-5">
-					<div className="grid gap-4 justify-center md:grid-cols-3">
-						
-					</div>
-				</div>
-			</div> */}
-
-      {/* Messi Section */}
       <div className="messiContainer container mx-auto px-4 md:flex justify-around items-center py-10 overflow-x-hidden">
         <div className="w-full md:w-3/4 lg:w-3/4 mb-6 md:mb-0 flex items-center justify-center">
           <img src={messiImg} alt="Messi" className="w-full" />

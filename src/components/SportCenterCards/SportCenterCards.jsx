@@ -10,12 +10,13 @@ import {
   FaRestroom,
   FaSistrix,
 } from "react-icons/fa";
-import { SportCenterContext } from "../../context/CenterContext";
+import { CenterContext } from "../../context/CenterContext";
 import { Card, Col, Row, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import "../../components/ProductCards/productCards.css";
 
 const SportCenterCards = () => {
-  const { complexs } = useContext(SportCenterContext);
+  const { complexs } = useContext(CenterContext);
   const [selectedFilters, setSelectedFilters] = useState({});
   const [filteredComplexs, setFilteredComplexs] = useState(complexs);
   const [filters, setFilters] = useState({
@@ -127,7 +128,7 @@ const SportCenterCards = () => {
                   <Col md={4}>
                     <img
                       src={center.photo.url}
-                      className="img-fluid"
+                      className="img-fluid h-100"
                       alt={center.name}
                     />
                   </Col>
@@ -145,7 +146,12 @@ const SportCenterCards = () => {
                         {center.address}
                       </Card.Text>
                       <div className="btn-container justify-content-end">
-                        <Link className="btn-reserve">Reserva aquí</Link>
+                        <Link
+                          to={`/complejos/${center._id}`}
+                          className="btn-reserve"
+                        >
+                          Reserva aquí
+                        </Link>
                       </div>
                     </Card.Body>
                   </Col>

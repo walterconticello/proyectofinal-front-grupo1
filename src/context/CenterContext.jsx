@@ -7,7 +7,7 @@ export const CenterContext = createContext();
 // eslint-disable-next-line react/prop-types
 const CenterProvider = ({ children }) => {
   const [complexs, setComplexs] = useState([]);
-  const [loading , setLoading] = useState([]);
+  const [loading, setLoading] = useState([]);
   const [owner, setOwner] = useState([]);
 
   useEffect(() => {
