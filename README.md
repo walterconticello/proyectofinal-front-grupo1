@@ -49,7 +49,7 @@
         <h2>Librerias utilizadas</h2>
         <ul><li>liberias...</li><ul>
         <br>
-            <h2>Grupo de desarrolladores</h2>
+        <h2>Grupo de desarrolladores</h2>
             <ul>
                 <li><a href="https://github.com/marcosquinteros">Marcos Quinteros</a></li>
                 <li><a href="https://github.com/walterconticello">Walter Conticello</a></li>
