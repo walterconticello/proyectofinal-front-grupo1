@@ -44,7 +44,7 @@ const ModalNewProduct = ({ show, handleClose }) => {
     description: "",
     price: "",
     stock: "",
-    categories: "", // Inicializa como una cadena vacía
+    categories: "",
     image: null,
   };
 

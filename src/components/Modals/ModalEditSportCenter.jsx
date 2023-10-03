@@ -72,10 +72,10 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex, userId }) => {
       facebook: complex.social.facebook,
       instagram: complex.social.instagram,
     },
-    location: {
-      latitude: complex.location.latitude,
-      longitude: complex.location.longitude,
-    },
+    // location: {
+    //   latitude: complex.location.latitude,
+    //   longitude: complex.location.longitude,
+    // },
   };
 
   return (
@@ -236,25 +236,6 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex, userId }) => {
                       name="photo"
                       component="div"
                       className="text-danger"
-                    />
-                  </BootstrapForm.Group>
-                  <BootstrapForm.Group>
-                    <label className="form-label">Latitud</label>
-                    <Field
-                      type="text"
-                      name="location.latitude"
-                      className="form-control"
-                      placeholder="Latitud"
-                    />
-                  </BootstrapForm.Group>
-
-                  <BootstrapForm.Group>
-                    <label className="form-label">Longitud</label>
-                    <Field
-                      type="text"
-                      name="location.longitude"
-                      className="form-control"
-                      placeholder="Longitud"
                     />
                   </BootstrapForm.Group>
                 </Col>

@@ -43,10 +43,10 @@ const ProductsTable = ({ products }) => {
   return (
     <>
       <Button
-        className="d-flex align-items-center my-3 add-button"
+        className="d-flex align-items-center m-2 btn p-2 add-button"
         onClick={handleShowNewProductModal}
       >
-        <span>Agregar producto</span>
+        Agregar producto
         <MdAddCircle className="mx-2" />
       </Button>
       <div className="table-responsive ">

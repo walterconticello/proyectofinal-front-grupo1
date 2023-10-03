@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { CenterContext } from "../../context/CenterContext";
+import { AuthContext } from "../../context/AuthContext";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,6 +17,7 @@ import {
 } from "react-bootstrap";
 import { MdAddCircle } from "react-icons/md";
 import { FaShower, FaHouzz, FaRestroom, FaGlassCheers } from "react-icons/fa";
+import { useEffect } from "react";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -43,6 +45,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const SportCenterForm = () => {
+  const { getUsers, users, updateUser } = useContext(AuthContext);
   const { postSportCenter, getSportCenter } = useContext(CenterContext);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -53,6 +56,7 @@ const SportCenterForm = () => {
     name: "",
     address: "",
     phone: "",
+    ownerId: "",
     services: {
       bar: false,
       showers: false,
@@ -65,23 +69,24 @@ const SportCenterForm = () => {
       facebook: "",
       instagram: "",
     },
-    location: {
-      latitude: "",
-      longitude: "",
-    },
+    // location: {
+    //   latitude: "",
+    //   longitude: "",
+    // },
   };
 
+  // console.log(users);
   return (
     <Container>
       <Button
         onClick={handleShowModal}
-        variant="btn add-button d-flex align-items-center justify-content-end m-2"
+        variant="btn add-button d-flex align-items-center "
       >
-        <MdAddCircle className="m-2" />
         Agregar Complejo
+        <MdAddCircle className="m-2" />
       </Button>
       <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
+        <Modal.Header className="p-3" closeButton>
           <Modal.Title>Agregar Complejo</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -89,9 +94,10 @@ const SportCenterForm = () => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={async (values, actions) => {
+              console.log(values);
               setIsLoading(true);
               try {
-                console.log(values);
+                // console.log(values);
                 await postSportCenter(values);
                 setIsLoading(false);
                 handleCloseModal();
@@ -108,6 +114,13 @@ const SportCenterForm = () => {
               } catch (e) {
                 setIsLoading(false);
                 console.log("error" + e);
+              }
+              try {
+                setIsLoading(true);
+                await updateUser(values.ownerId, values, true);
+                setIsLoading(false);
+              } catch (e) {
+                console.log(e);
               }
             }}
           >
@@ -249,6 +262,28 @@ const SportCenterForm = () => {
                       />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group>
+                      <label className="form-label">Propietario</label>
+                      <Field
+                        as="select"
+                        name="ownerId"
+                        className="form-control"
+                      >
+                        <option value="" disabled>
+                          Seleccione un propietario
+                        </option>
+                        {users.map((user) => (
+                          <option key={user._id} value={user._id}>
+                            {user.username}
+                          </option>
+                        ))}
+                      </Field>
+                      <ErrorMessage
+                        name="ownerId"
+                        component="div"
+                        className="text-danger"
+                      />
+                    </BootstrapForm.Group>
+                    {/* <BootstrapForm.Group>
                       <label className="form-label">Latitud</label>
                       <Field
                         type="text"
@@ -266,7 +301,7 @@ const SportCenterForm = () => {
                         className="form-control"
                         placeholder="Longitud"
                       />
-                    </BootstrapForm.Group>
+                    </BootstrapForm.Group> */}
                   </Col>
                 </Row>
                 <div className="btn-container d-flex justify-content-end">

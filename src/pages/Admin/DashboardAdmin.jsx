@@ -21,11 +21,11 @@ const DashboardAdmin = () => {
   // console.log(complexs);
   useEffect(() => {
     getUsers();
+    getSales();
     getSportCenter();
     getProducts();
-    getSales();
   }, []);
-
+  // console.log(sales, " desde dashboard admin");
   return (
     <>
       <Container fluid>

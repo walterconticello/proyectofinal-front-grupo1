@@ -36,7 +36,22 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
-
+  const updateUser = async (id, updatedData, makeOwner = false) => {
+    try {
+      const token = localStorage.getItem("token");
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      const userData = {
+        ...updatedData,
+        isOwner: makeOwner ? true : updatedData.isOwner,
+      };
+      const response = await axios.put(`/api/users/${id}`, userData);
+      const updatedUser = response.data;
+      setUser(updatedUser);
+    } catch (error) {
+      console.error("Error al actualizar el usuario:", error);
+      throw error;
+    }
+  };
   const logout = () => {
     setUser(null);
     setAuthenticated(false);
@@ -117,6 +132,7 @@ export const AuthProvider = ({ children }) => {
         getUsers,
         getUserId,
         deleteUser,
+        updateUser,
         authenticated,
         loading,
         login,

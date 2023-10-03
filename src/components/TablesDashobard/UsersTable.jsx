@@ -9,7 +9,7 @@ const UsersTable = ({ users }) => {
   const { deleteUser, getUsers } = useContext(AuthContext);
 
   const MySwal = withReactContent(Swal);
-  const limitedUsers = users.slice(0, 3);
+  const limitedUsers = users.slice(0, 7);
 
   return (
     <>
@@ -32,7 +32,7 @@ const UsersTable = ({ users }) => {
               <td>{user.isOwner ? "Es Owner" : "No es Owner"}</td>
               <td>
                 <button
-                  className="p-2 mx-2"
+                  className="p-2 mx-2 btn-warning"
                   onClick={async () => {
                     const result = await MySwal.fire({
                       title: "¿Estás seguro?",
