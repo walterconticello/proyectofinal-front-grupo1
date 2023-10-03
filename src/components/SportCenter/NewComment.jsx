@@ -3,32 +3,29 @@ import "./stars.css";
 import * as Yup from "yup";
 import clsx from "clsx";
 import { useFormik } from "formik";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
-const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
+const NewComment = ({show, onHide, idSportCenter, page, setComments, setLastPage, loggedUser}) => {
     
     const URL = import.meta.env.VITE_DB;
-    
+    const userId = (loggedUser)? loggedUser._id : "";
     const postComment = async (comment) => {
         try{
+            const token = localStorage.getItem("token");
             comment.rating = parseInt(comment.rating);
-            comment.user = {
-                username: "diego_vacapaz5",
-                email: "diegovca@hotmail.com1",
-                photo: ""
-            }
-            const response = await fetch(`${URL}comments2`, {
+            const response = await fetch(`${URL}api/comments`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(comment),
             });
 
-            const updateResponse = await  fetch(`${URL}comments${page}`);
+            const updateResponse = await fetch(`${URL}api/comments/sportcenter/${idSportCenter}/${page}`);
             const data = await updateResponse.json();
-            setComments([...data]);
-
+            setComments(data.comments);
+            setLastPage(data.pages);
             Swal.fire({
                 icon: 'success',
                 title: 'Genial!',
@@ -58,7 +55,7 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
         text: "",
         rating: 0,
         sportCenterId: idSportCenter,
-        userId: "AJSndfjkasndkjasn", //Sacar el Id desde el context
+        userId: userId,
     }
 
     const formik = useFormik({
@@ -82,7 +79,7 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={formik.handleSubmit} noValidate>
+                    <Form className="form-comment" onSubmit={formik.handleSubmit} noValidate>
                         <Form.Group className="mb-3">
                             <Form.Label htmlFor="commentArea">Escribe tu reseña:</Form.Label>
                             <Form.Control as="textarea" id="commentArea" maxLength={500} minLength={5} required placeholder="Escribe un comentario aquí..." rows={5} {...formik.getFieldProps("text")} className={`newcomment-text ${clsx(
@@ -101,7 +98,7 @@ const NewComment = ({show, onHide, idSportCenter, page, setComments}) => {
                             )}
                         </Form.Group>
 
-                        <Form.Group className="mb-3 d-flex flex-row align-items-center flex-nowrap">
+                        <Form.Group className="mb-3 calificanos">
                             <Form.Label>Califícanos:</Form.Label>
                             <fieldset {...formik.getFieldProps("rating")} className={`rating ${clsx(
                                 "form-control",

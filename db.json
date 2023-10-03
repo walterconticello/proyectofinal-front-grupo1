@@ -1,4 +1,8 @@
 {
+  "user":{
+      "username" : "admin1",
+      "password" : "admin1"
+  },
   "SportCenter": [
     {
       "id": "614a5d75c32e42b75c135f47",

@@ -3,19 +3,27 @@ import { createContext, useEffect, useState } from "react";
 
 export const ReservationContext = createContext();
 
-const ReserveContext = ({ children }) => {
+const ReservationProvider = ({ children }) => {
   const [bookings, setBookings] = useState([]);
 
-  const getReservations = async () => {
+  const getReservationOwner = async () => {
     try {
-      const response = await axios.get(`/api/reservation/`);
+      const response = await axios.get(`/api/reservationOwner`);
+      setBookings(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getReservationUser = async () => {
+    try {
+      const response = await axios.get(`/api/reservationUser`);
       setBookings(response.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const postReseration = async (bookings) => {
+  const postReservation = async (bookings) => {
     try {
       const response = axios.post("/api/reservation/", bookings);
       console.log(response);
@@ -24,14 +32,14 @@ const ReserveContext = ({ children }) => {
     }
   };
 
-  const deleteResevation = async (id) => {
+  const canceledReservation = async (id) => {
     console.log(id, "id de context");
     try {
       await axios.delete(`/api/reservation/${id}`);
-      const deleteResevation = bookings.filter((booking) => booking.id !== id);
-      setBookings(deleteResevation);
+      const canceled = bookings.filter((booking) => booking.id !== id);
+      setBookings(canceled);
     } catch (error) {
-      console.log(error, "error al borrar cancha");
+      console.log(error, "error al cancelar la reserva");
     }
   };
 
@@ -45,9 +53,17 @@ const ReserveContext = ({ children }) => {
       console.log(error, "error de productos");
     }
   };
+  const getReservations = async () => {
+    try {
+      const response = await axios.get(`/api/reservation/`);
+      setBookings(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    getReservations();
+  getReservationOwner();
   }, []);
 
   return (
@@ -56,9 +72,11 @@ const ReserveContext = ({ children }) => {
         bookings,
         setBookings,
         getReservations,
-        postReseration,
-        deleteResevation,
+        postReservation,
+        canceledReservation,
         viewBooking,
+        getReservationOwner,
+        getReservationUser,
       }}
     >
       {children}
@@ -66,4 +84,4 @@ const ReserveContext = ({ children }) => {
   );
 };
 
-export default ReserveContext;
+export default ReservationProvider;

@@ -1,4 +1,4 @@
-import { Fragment, useState, useContext } from "react";
+import { Fragment, useState, useContext, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logoApp from "../../../assets/logo-canchas.png";
@@ -12,6 +12,9 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 const navigation = [
   { name: "Inicio", href: "/", current: false },
   { name: "Store", href: "/store", current: false },
+  { name: "Owner Dashboard", href: "/owner/dashboard", current: false },
+  { name: "Admin Dashboard", href: "/admin/dashboard", current: false },
+
   // Agregar otras rutas aqui
 ];
 
@@ -20,7 +23,7 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
-  const { authenticated, logout } = useContext(AuthContext);
+  const { authenticated, logout, getAuth } = useContext(AuthContext);
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
 
@@ -30,6 +33,10 @@ const Navbar = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  useEffect(() => {
+    getAuth();
+  }, []);
 
   return (
     <Disclosure as="nav" className="navbarContainer">
@@ -63,9 +70,9 @@ const Navbar = () => {
                       <NavLink
                         key={item.name}
                         to={item.href}
-                        activeclassname ="text-white navBtn" // Apply active class
+                        activeclassname="text-white navBtn"
                         className={classNames(
-                          location.pathname === item.href // Check if the current path matches the item's href
+                          location.pathname === item.href
                             ? "text-white navBtn"
                             : "text-gray-300 hover:text-white hover:bg-lime-500 navBtn",
                           "rounded-md px-3 py-2 text-sm font-medium navBtn"
@@ -120,7 +127,7 @@ const Navbar = () => {
                           <Menu.Item>
                             {({ active }) => (
                               <NavLink
-                              to="/perfil"
+                                to="/perfil"
                                 className={classNames(
                                   active ? "bg-lime-100 botonCierre" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
@@ -165,7 +172,7 @@ const Navbar = () => {
                 <NavLink
                   key={item.name}
                   to={item.href}
-                  activeclassname ="text-white navBtn" // Apply active class
+                  activeclassname="text-white navBtn" // Apply active class
                   className={classNames(
                     location.pathname === item.href
                       ? "navBtn text-white transition"

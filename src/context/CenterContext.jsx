@@ -1,10 +1,14 @@
 import axios from "../config/axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { AuthContext } from "./AuthContext";
 
-export const SportCenterContext = createContext();
+export const CenterContext = createContext();
 
-const CenterContext = ({ children }) => {
+// eslint-disable-next-line react/prop-types
+const CenterProvider = ({ children }) => {
   const [complexs, setComplexs] = useState([]);
+  const [loading , setLoading] = useState([]);
+  const [owner, setOwner] = useState([]);
 
   useEffect(() => {
     getSportCenter();
@@ -19,13 +23,33 @@ const CenterContext = ({ children }) => {
     }
   };
 
-  const postSportCenter = async (complexs) => {
-    console.log("data" + complexs);
+  const getSportCenterOwner = async (id) => {
     try {
-      const response = axios.post(`/api/sportCenter/`, complexs);
-      console.log(response);
+      const response = await axios.get(`/api/sportCenter/owner/${id}`);
+      setOwner(response.data);
     } catch (error) {
-      console.log(error);
+      console.log("Error fetching data:", error);
+    }
+  };
+
+  const postSportCenter = async (complexs) => {
+    try {
+      let form = new FormData();
+      let subObject = {};
+      for (let key in complexs) {
+        if (key == "photo") {
+          form.append(key, complexs[key]);
+        } else {
+          subObject[key] = complexs[key];
+        }
+      }
+      form.append("data", JSON.stringify(subObject));
+      const response = await axios.post(`/api/sportCenter`, form, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      return response;
+    } catch (error) {
+      console.log(error, "error posting sportCenter");
     }
   };
 
@@ -39,29 +63,52 @@ const CenterContext = ({ children }) => {
     }
   };
 
-  const updateSportCenter = async (complexs) => {
-    console.log(complexs);
+  const updateSportCenter = async (id, complexs) => {
     try {
-      await axios.put(`/api/sportCenter/${complexs.id}`);
+      let form = new FormData();
+      let subObject = {};
+
+      for (let key in complexs) {
+        if (key === "photo") {
+          form.append(key, complexs[key]);
+        } else {
+          subObject[key] = complexs[key];
+        }
+      }
+
+      form.append("data", JSON.stringify(subObject));
+
+      const response = await axios.put(`/api/sportCenter/${id}`, form, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      return response;
     } catch (error) {
-      console.log(error, "error al editar");
+      console.error("Error updating sport complex:", error);
     }
   };
 
+  useEffect(() => {
+    getSportCenter();
+  }, [setLoading]);
+
   return (
-    <SportCenterContext.Provider
+    <CenterContext.Provider
       value={{
         complexs,
-        getSportCenter,
+        loading,
         setComplexs,
+        owner,
+        getSportCenter,
         postSportCenter,
         deleteSportCenter,
         updateSportCenter,
+        getSportCenterOwner,
       }}
     >
       {children}
-    </SportCenterContext.Provider>
+    </CenterContext.Provider>
   );
 };
 
-export default CenterContext;
+export default CenterProvider;
