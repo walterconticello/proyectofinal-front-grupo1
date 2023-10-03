@@ -12,10 +12,13 @@ const Home = () => {
           <p className="headerText text-lime-500 text-5xl md:text-6xl lg:text-7xl">
             RESERVA <br /> <span className="font-bold">TU CANCHA</span>
           </p>
-          <button className="bg-lime-500 hover:bg-white h-10 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-60 transition text-gray-50 heroButton">
-            <span className="flex items-center justify-center h-full">
+          <button className="bg-lime-500 hover:bg-white h-10 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-60 transition heroButton">
+            <Link
+              to="/complejos"
+              className="flex items-center justify-center h-full text-white"
+            >
               RESERVA HOY!
-            </span>
+            </Link>
           </button>
         </div>
       </div>
@@ -30,9 +33,12 @@ const Home = () => {
             INDUMENTARIA <br /> <span className="font-bold">DEPORTIVA</span>
           </p>
           <button className="bg-lime-500 hover:bg-white h-10 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-60 transition text-gray-50 heroButton">
-            <span className="flex items-center justify-center h-full">
+            <Link
+              to="/store"
+              className="flex items-center justify-center h-full text-white"
+            >
               Ver tienda
-            </span>
+            </Link>
           </button>
         </div>
       </div>

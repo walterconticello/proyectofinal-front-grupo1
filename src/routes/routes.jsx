@@ -11,6 +11,7 @@ import Contact from "../pages/Contact/Contact";
 import SportCenterDetail from "../components/SportCenter/SportCenterDetail";
 import OwnerDashboard from "../pages/Dashboard/OwnerDashboard";
 import DashboardAdmin from "../pages/Admin/DashboardAdmin";
+import Error404 from "../pages/Error404/Error404";
 
 const Routes = () => {
   return (
@@ -60,6 +61,7 @@ const Routes = () => {
         path="/complejos/:idSportCenter"
         element={<SportCenterDetail />}
       ></Route>
+      <Route path="/*" element={<Error404 />} />
     </Rutas>
   );
 };

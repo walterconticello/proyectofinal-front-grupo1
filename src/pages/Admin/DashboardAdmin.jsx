@@ -18,14 +18,12 @@ const DashboardAdmin = () => {
     useContext(CenterContext);
   const { products, getProducts } = useContext(ProductContext);
   const { sales, getSales } = useContext(SalesContext);
-  // console.log(complexs);
   useEffect(() => {
     getUsers();
     getSales();
     getSportCenter();
     getProducts();
   }, []);
-  // console.log(sales, " desde dashboard admin");
   return (
     <>
       <Container fluid>
