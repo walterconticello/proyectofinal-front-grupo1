@@ -26,7 +26,7 @@
             <code>json-server --watch db.json --port 8001</code>
         </pre>
         <p><strong>2)</strong> Corriendo una base de datos noSql(mongoDB)</p>
-        <p>Puede dirigirse a nuestro repositorio de back-end y seguir las instrucciones aqui: <a>https://github.com/walterconticello/proyectofinal-back-grupo1</a></p>
+        <p>Puede dirigirse a nuestro repositorio de back-end y seguir las instrucciones <a href="https://github.com/walterconticello/proyectofinal-back-grupo1">aqui</a></p>
         <br>
         <h2>Estructura general del sitio</h2>
     <main/>        
