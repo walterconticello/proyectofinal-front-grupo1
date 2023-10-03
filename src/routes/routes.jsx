@@ -1,11 +1,17 @@
 import { Route, Routes as Rutas } from "react-router-dom";
 import Store from "../pages/store/Store";
 import Home from "../pages/Home/Home";
+import { Dashboard } from "../pages/Dashboard";
 import List from "../pages/list/List";
 import ProductDetails from "../pages/store/productDetails/ProductDetails";
 import Login from "../pages/Login/Login";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
+import SportCenter from "../pages/sportCenter/SportCenter";
+import Fields from "../pages/Fields";
+import Reservation from "../components/Cards/Reservations";
+import Users from "../pages/Users";
+import Products from "../pages/Products";
 import Contact from "../pages/Contact/Contact";
 import SportCenterDetail from "../components/SportCenter/SportCenterDetail";
 import OwnerDashboard from "../pages/Dashboard/OwnerDashboard";
@@ -39,8 +45,16 @@ const Routes = () => {
         }
       />
 
-      <Route path="/complejos" element={<List />} />
-      <Route path="/store/product/:productId" element={<ProductDetails />} />
+      <Route path="/complejos" element={<SportCenter />} />
+      <Route
+        path="/store/product/:productId"
+        element={
+          <PrivateRoute>
+            <ProductDetails />
+          </PrivateRoute>
+        }
+      />
+
       <Route path="/login" element={<Login />} />
       <Route
         path="/perfil"

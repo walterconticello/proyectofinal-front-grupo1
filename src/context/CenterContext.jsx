@@ -10,6 +10,10 @@ const CenterProvider = ({ children }) => {
   const [loading , setLoading] = useState([]);
   const [owner, setOwner] = useState([]);
 
+  useEffect(() => {
+    getSportCenter();
+  }, []);
+
   const getSportCenter = async () => {
     try {
       const response = await axios.get(`/api/sportCenter/`);
