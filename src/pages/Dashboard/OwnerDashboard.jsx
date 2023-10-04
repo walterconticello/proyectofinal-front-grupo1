@@ -28,6 +28,7 @@ import ModalEditSportCenter from "../../components/Modals/ModalEditSportCenter";
 import FieldsTable from "../../components/FieldsTable/FieldsTable";
 import ModalNewField from "../../components/Modals/ModalNewField";
 import "./dashboard.css";
+import ReservationTable from "../../components/Reservartions/ReservationsTable";
 const OwnerDashboard = () => {
   const [loadingCenter, setLoadingCenter] = useState(true);
   const [loadingCenterFields, setLoadingCenterFields] = useState(true);
@@ -161,6 +162,7 @@ const OwnerDashboard = () => {
           ) : (
             <FieldsTable center={center} />
           )}
+            {/* <ReservationTable/> */}
         </Col>
       </Row>
       {showModal && (

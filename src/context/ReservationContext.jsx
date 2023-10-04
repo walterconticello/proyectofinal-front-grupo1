@@ -1,5 +1,5 @@
 import axios from "../config/axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const ReservationContext = createContext();
 
@@ -61,10 +61,6 @@ const ReservationProvider = ({ children }) => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-  getReservationOwner();
-  }, []);
 
   return (
     <ReservationContext.Provider
