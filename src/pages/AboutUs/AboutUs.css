@@ -29,7 +29,7 @@
   .background {
     height: 50vh;
     border-radius: 9px;
-    background-image: url('../assets/Messicampeon.jpg');
+    background-image: url('../../assets/Messicampeon.jpg');
     background-size: cover;
     background-position: flex;
   }

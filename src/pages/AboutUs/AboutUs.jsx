@@ -1,4 +1,4 @@
-import CardsTeam from "../components/CardsTeam/CardsTeam";
+import CardsTeam from "../../components/CardsTeam/CardsTeam";
 import "./AboutUs.css";
 import { Row, Col } from "react-bootstrap";
 const AboutUs = () => {

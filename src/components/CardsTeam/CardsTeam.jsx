@@ -50,47 +50,11 @@ const teamMembers = [
 ];
 
 const CardTeam = ({ member }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const handleClick = () => {
-    setIsFlipped(!isFlipped);
-  };
-
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-      <Card
-        className="col-sm-6 col-md-4 col-lg-4 mb-4 custom-card mx-2"
-        onClick={handleClick}
-      >
-        <Card.Img variant="top" src={member.image} />
-        <Card.Body>
-          <Card.Title>{member.name}</Card.Title>
-          <div className="buttons-container">
-            <Button
-              className="github-button"
-              variant="primary"
-              href={member.github}
-            >
-              <FontAwesomeIcon icon={faGithub} />
-            </Button>
-            <Button
-              className="linkedin-button"
-              variant="primary"
-              href={member.linkedin}
-            >
-              <FontAwesomeIcon icon={faLinkedin} />
-            </Button>
-          </div>
-        </Card.Body>
-      </Card>
-
-      <Card
-        className="col-sm-6 col-md-4 col-lg-3 mb-4 mx-2 custom-card"
-        onClick={handleClick}
-      >
-        <Card.Body>
-          <Card.Text>{member.description}</Card.Text>
-        </Card.Body>
+    <Card className="col-sm-6 col-md-4 col-lg-4 mb-4 custom-card mx-2">
+      <Card.Img variant="top" src={member.image} />
+      <Card.Body>
+        <Card.Title>{member.name}</Card.Title>
         <div className="buttons-container">
           <Button
             className="github-button"
@@ -107,8 +71,8 @@ const CardTeam = ({ member }) => {
             <FontAwesomeIcon icon={faLinkedin} />
           </Button>
         </div>
-      </Card>
-    </ReactCardFlip>
+      </Card.Body>
+    </Card>
   );
 };
 

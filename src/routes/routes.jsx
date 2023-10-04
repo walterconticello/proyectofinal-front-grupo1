@@ -1,4 +1,3 @@
-
 import { Route, Routes as Rutas } from "react-router-dom";
 import Store from "../pages/store/Store";
 import Home from "../pages/Home/Home";
@@ -13,6 +12,7 @@ import SportCenterDetail from "../components/SportCenter/SportCenterDetail";
 import OwnerDashboard from "../pages/Dashboard/OwnerDashboard";
 import DashboardAdmin from "../pages/Admin/DashboardAdmin";
 import Error404 from "../pages/Error404/Error404";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const Routes = () => {
   return (
@@ -63,6 +63,7 @@ const Routes = () => {
         element={<SportCenterDetail />}
       ></Route>
       <Route path="/contacto" element={<Contact />} />
+      <Route path="/nosotros" element={<AboutUs />} />
       <Route path="/*" element={<Error404 />} />
     </Rutas>
   );
