@@ -1,3 +1,4 @@
+
 import { Route, Routes as Rutas } from "react-router-dom";
 import Store from "../pages/store/Store";
 import Home from "../pages/Home/Home";
