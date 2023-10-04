@@ -1,9 +1,10 @@
 .title {
     font-size: 3rem;
     margin-bottom: 40px;
-    background-color: #71B641;
+    /* background-color: #71B641; */
     margin-top: 30px;
     position: relative;
+    color: #71B641;
   }
 
   
@@ -11,7 +12,7 @@
     border-radius: 20px;
     font-size: x-large;
     margin-bottom: 40px;
-    background-color: rgba(194, 192, 192, 0.5);
+    /* background-color: rgba(194, 192, 192, 0.5); */
     margin-top: 30px;
   }
 
@@ -26,16 +27,17 @@
   }
   
   .background {
-    border-radius: 50px;
+    height: 50vh;
+    border-radius: 9px;
     background-image: url('../assets/Messicampeon.jpg');
     background-size: cover;
     background-position: flex;
   }
-
+/* 
   .h2 {
     margin-left: 10px;
     font-size: 30px;
     margin-bottom: 40px;
     margin-top: 30px;
     position: relative;
-  }
+  } */

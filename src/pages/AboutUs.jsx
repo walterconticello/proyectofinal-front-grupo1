@@ -1,28 +1,32 @@
-import CardsTeam from '../components/CardsTeam/CardsTeam';
-import "./AboutUs.css"
-
+import CardsTeam from "../components/CardsTeam/CardsTeam";
+import "./AboutUs.css";
+import { Row, Col } from "react-bootstrap";
 const AboutUs = () => {
   return (
-    <div>
-      <h1 className='title bigger'>Nuestra misión</h1>
-     
-      <div className='content background'>
-        <p className='text'>"Nuestro Objetivo es impulsar la innovación digital a través del desarrollo web de aplicaciones excepcionales. 
-          Como equipo apasionado, nos comprometemos a crear soluciones en línea que no solo sean funcionales y atractivas,
-           sino que también superen las expectativas de nuestros clientes. 
-           Trabajamos incansablemente para transformar ideas en realidades digitales, implementando tecnologías de vanguardia
-            y las mejores prácticas de desarrollo. Nuestra misión es no solo construir aplicaciones, 
-            sino también construir experiencias que dejen una marca duradera en el mundo en línea. 
-            Mediante la colaboración, la creatividad y el enfoque en la calidad, estamos dedicados a hacer que la web sea un lugar más dinámico,
-             interactivo y eficiente para todos."</p>
-      </div>
-          
-      <h2 className='title bigger'>¿Quienes somos?</h2>
-      <h2 className='h2'>Conocenos más haciendo click en nosotros!</h2>
-      <br />
-      <CardsTeam />
+    <div className="container">
+      <Row className="d-flex justify-content-center">
+        <Col md={8}>
+          <h1 className="title bigger">Nuestra misión</h1>
+
+          <div className="content background"></div>
+
+          <p className="text">
+            "Nuestro objetivo es impulsar la innovación digital a través del
+            desarrollo web de aplicaciones excepcionales, superando las
+            expectativas de nuestros clientes. Trabajamos incansablemente para
+            transformar ideas en realidades digitales, utilizando tecnologías de
+            vanguardia y las mejores prácticas de desarrollo. Nuestra misión es
+            construir experiencias duraderas en línea, colaborando creativamente
+            y enfocándonos en la calidad, para hacer que la web sea más
+            dinámica, interactiva y eficiente para todos."
+          </p>
+
+          <h2 className="title bigger">¿Quienes somos?</h2>
+          <CardsTeam />
+        </Col>
+      </Row>
     </div>
   );
-}
+};
 
 export default AboutUs;
