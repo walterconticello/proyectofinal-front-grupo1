@@ -9,21 +9,28 @@ import CartModal from "../../cart/CartModal";
 import { AuthContext } from "../../../context/AuthContext";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-const navigation = [
-  { name: "Inicio", href: "/", current: false },
-  { name: "Store", href: "/store", current: false },
-  { name: "Owner Dashboard", href: "/owner/dashboard", current: false },
-  { name: "Admin Dashboard", href: "/admin/dashboard", current: false },
-
-  // Agregar otras rutas aqui
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Navbar = () => {
-  const { authenticated, logout, getAuth } = useContext(AuthContext);
+  const { authenticated, logout, getAuth, user } = useContext(AuthContext);
+  const navigation = [
+    { name: "Inicio", href: "/", current: false, show: true },
+    { name: "Store", href: "/store", current: false, show: true },
+    {
+      name: "Owner Dashboard",
+      href: "/owner/dashboard",
+      current: false,
+      show: user?.isOwner,
+    },
+    {
+      name: "Admin Dashboard",
+      href: "/admin/dashboard",
+      current: false,
+      show: user?.isAdmin,
+    },
+  ];
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
 
@@ -66,22 +73,25 @@ const Navbar = () => {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <NavLink
-                        key={item.name}
-                        to={item.href}
-                        activeclassname="text-white navBtn"
-                        className={classNames(
-                          location.pathname === item.href
-                            ? "text-white navBtn"
-                            : "text-gray-300 hover:text-white hover:bg-lime-500 navBtn",
-                          "rounded-md px-3 py-2 text-sm font-medium navBtn"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </NavLink>
-                    ))}
+                    {navigation.map(
+                      (item) =>
+                        item.show && (
+                          <NavLink
+                            key={item.name}
+                            to={item.href}
+                            activeclassname="text-white navBtn"
+                            className={classNames(
+                              location.pathname === item.href
+                                ? "text-white navBtn"
+                                : "text-gray-300 hover:text-white hover:bg-lime-500 navBtn",
+                              "rounded-md px-3 py-2 text-sm font-medium navBtn"
+                            )}
+                            aria-current={item.current ? "page" : undefined}
+                          >
+                            {item.name}
+                          </NavLink>
+                        )
+                    )}
                   </div>
                 </div>
               </div>
