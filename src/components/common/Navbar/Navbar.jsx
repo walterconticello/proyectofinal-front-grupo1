@@ -178,22 +178,25 @@ const Navbar = () => {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
-                <NavLink
-                  key={item.name}
-                  to={item.href}
-                  activeclassname="text-white navBtn" // Apply active class
-                  className={classNames(
-                    location.pathname === item.href
-                      ? "navBtn text-white transition"
-                      : "text-gray-400 hover:text-white hover:bg-lime-500 transition",
-                    "block rounded-md px-3 py-2 text-base font-medium transition"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </NavLink>
-              ))}
+              {navigation.map(
+                (item) =>
+                  item.show && (
+                    <NavLink
+                      key={item.name}
+                      to={item.href}
+                      activeclassname="text-white navBtn" // Apply active class
+                      className={classNames(
+                        location.pathname === item.href
+                          ? "navBtn text-white transition"
+                          : "text-gray-400 hover:text-white hover:bg-lime-500 transition",
+                        "block rounded-md px-3 py-2 text-base font-medium transition"
+                      )}
+                      aria-current={item.current ? "page" : undefined}
+                    >
+                      {item.name}
+                    </NavLink>
+                  )
+              )}
             </div>
           </Disclosure.Panel>
         </>

@@ -50,7 +50,7 @@ const ProductsTable = ({ products }) => {
         <MdAddCircle className="mx-2" />
       </Button>
       <div className="table-responsive ">
-        <Table striped bordered hover>
+        <Table striped responsive bordered hover>
           <thead>
             <tr>
               <th className="w-25">Imagen</th>

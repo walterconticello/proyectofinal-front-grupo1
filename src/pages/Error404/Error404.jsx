@@ -18,7 +18,7 @@ const Error404 = () => {
     };
   }, []);
   return (
-    <div className="not-found-page bg-white">
+    <div className="not-found-page bg-white responsive">
       <div id="lottie-container" className="lottie-container"></div>
       <h1>Página no encontrada</h1>
       <p>Lo sentimos, la página que estás buscando no existe.</p>

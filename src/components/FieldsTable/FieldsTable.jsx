@@ -90,7 +90,7 @@ const FieldsTable = ({ center }) => {
 
   return (
     <>
-      <Table striped bordered hover size="sm">
+      <Table striped responsive bordered hover size="sm" className="">
         <thead>
           <tr>
             <th>Cancha</th>
@@ -114,15 +114,6 @@ const FieldsTable = ({ center }) => {
               <td>{field.closeHour} hs</td>
               <td>${field.pricePerHour}</td>
               <td>{field.size}</td>
-              {/* <td>
-                <Form onClick={() => handleState(field._id, field.isActive)}>
-                  <Form.Check
-                    type="switch"
-                    id="custom-switch"
-                    label={field.isActive ? "Activo" : "Inactivo"}
-                  />
-                </Form>
-              </td> */}
               <td>
                 <button onClick={() => handleEdit(field)}>
                   <MdEdit />

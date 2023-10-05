@@ -13,7 +13,11 @@ const UsersTable = ({ users }) => {
 
   return (
     <>
-      <Table className="table-responsive mx-auto text-center" striped="columns">
+      <Table
+        responsive
+        className="table-responsive mx-auto text-center"
+        striped="columns"
+      >
         <thead>
           <tr>
             <th>Username</th>

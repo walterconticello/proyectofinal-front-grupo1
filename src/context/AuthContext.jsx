@@ -45,6 +45,7 @@ export const AuthProvider = ({ children }) => {
         isOwner: makeOwner ? true : updatedData.isOwner,
       };
       const response = await axios.put(`/api/users/${id}`, userData);
+      // console.log(response);
       const updatedUser = response.data;
       setUser(updatedUser);
     } catch (error) {

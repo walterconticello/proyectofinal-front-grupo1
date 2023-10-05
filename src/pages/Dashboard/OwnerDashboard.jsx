@@ -28,11 +28,15 @@ import ModalEditSportCenter from "../../components/Modals/ModalEditSportCenter";
 import FieldsTable from "../../components/FieldsTable/FieldsTable";
 import ModalNewField from "../../components/Modals/ModalNewField";
 import "./dashboard.css";
+import { ReservationContext } from "../../context/ReservationContext";
 import ReservationTable from "../../components/Reservartions/ReservationsTable";
 const OwnerDashboard = () => {
   const [loadingCenter, setLoadingCenter] = useState(true);
+  const [loadingBookings, setLoadingBookings] = useState(false);
   const [loadingCenterFields, setLoadingCenterFields] = useState(true);
   const { user, getAuth } = useContext(AuthContext);
+  const { getReservationOwner, bookings, canceledReservation } =
+    useContext(ReservationContext);
 
   const { getFieldsBySportCenterId } = useContext(FieldsContext);
   const userId = user._id;
@@ -71,6 +75,12 @@ const OwnerDashboard = () => {
   }, [center]);
   // console.log(center);
 
+  useEffect(() => {
+    if (bookings && bookings._id) {
+      getReservationOwner();
+      setLoadingBookings(true);
+    }
+  }, []);
   const categoryIcons = {
     parking: <FaCarAlt size={28} />,
     showers: <FaShower size={28} />,
@@ -162,7 +172,12 @@ const OwnerDashboard = () => {
           ) : (
             <FieldsTable center={center} />
           )}
-            {/* <ReservationTable/> */}
+          <hr />
+          {setLoadingBookings ? (
+            <p>No hay reservas disponibles</p>
+          ) : (
+            <ReservationTable bookings={bookings} />
+          )}
         </Col>
       </Row>
       {showModal && (

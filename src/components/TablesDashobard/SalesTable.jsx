@@ -14,7 +14,7 @@ const SalesTable = ({ sales }) => {
   };
   // console.log(sales);
   return (
-    <Table striped="columns">
+    <Table responsive striped="columns">
       <thead>
         <tr>
           <th>Nombre</th>

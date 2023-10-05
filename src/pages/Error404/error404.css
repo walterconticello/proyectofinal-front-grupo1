@@ -8,7 +8,15 @@
   }
 
   .lottie-container {
-    width: 500px;
+    width: 100%;
+    max-width: 400px; 
+    margin: 0 auto; 
+  }
+
+  @media (min-width: 768px) {
+    .lottie-container {
+      max-width: 600px; /* Ajusta el ancho máximo para pantallas más grandes */
+    }
   }
 
   .goback-button{

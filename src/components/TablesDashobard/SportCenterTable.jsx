@@ -15,7 +15,7 @@ const SportCenterTable = ({ complexs }) => {
   return (
     <>
       <SportCenterForm />
-      <Table striped="columns">
+      <Table responsive striped="columns">
         <thead>
           <tr>
             <th>Nombre</th>
