@@ -85,12 +85,12 @@ const Comment = ({
           <div className="d-flex comment-header justify-content-start align-items-center gap-1 gap-md-3">
             <div className="comment-header-portrait">
               <img
-                src={comment.userId.photo.url || UserPhoto}
+                src={comment.userId?.photo.url || UserPhoto}
                 alt="profile img"
                 className="comment-header-img"
               />
             </div>
-            <h3 className="comment-username">{comment.userId.username}</h3>
+            <h3 className="comment-username">{comment.userId?.username}</h3>
           </div>
           <div className="d-flex align-items-center">
             {stars.map((star, index) => {
@@ -104,7 +104,7 @@ const Comment = ({
           </div>
         </div>
         <div className="delete-comment-button">
-          {loggedUser && comment.userId.email === loggedUser.email && (
+          {loggedUser && comment.userId?.email === loggedUser.email && (
             <img
               src={Delete}
               alt="delete comment"
