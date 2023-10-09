@@ -47,7 +47,31 @@
         <h3>datos del admin harcodeado</h3>
         <br>
         <h2>Librerias utilizadas</h2>
-        <ul><li>liberias...</li><ul>
+        <ul>
+  <li><a href="https://fontawesome.com/">@fortawesome/fontawesome-svg-core</a></li>
+  <li><a href="https://headlessui.dev/">@headlessui/react</a></li>
+  <li><a href="https://heroicons.com/">@heroicons/react</a></li>
+  <li><a href="https://popper.js.org/">@popperjs/core</a></li>
+  <li><a href="https://axios-http.com/">axios</a></li>
+  <li><a href="https://formik.org/">formik</a></li>
+  <li><a href="https://jwt.io/">jwt-decode</a></li>
+  <li><a href="https://leafletjs.com/">leaflet</a></li>
+  <li><a href="https://airbnb.io/lottie/">lottie-web</a></li>
+  <li><a href="https://momentjs.com/">moment</a></li>
+  <li><a href="https://react-bootstrap.github.io/">react-bootstrap</a></li>
+  <li><a href="https://github.com/AaronCCWong/react-card-flip">react-card-flip</a></li>
+  <li><a href="https://github.com/wojtekmaj/react-clock">react-clock</a></li>
+  <li><a href="https://reactdatepicker.com/">react-datepicker</a></li>
+  <li><a href="https://react-dropzone.js.org/">react-dropzone</a></li>
+  <li><a href="https://react-icons.github.io/react-icons/">react-icons</a></li>
+  <li><a href="https://react-leaflet.js.org/">react-leaflet</a></li>
+  <li><a href="https://reactrouter.com/">react-router-dom</a></li>
+  <li><a href="https://fkhadra.github.io/react-toastify/">react-toastify</a></li>
+  <li><a href="https://sweetalert2.github.io/">sweetalert2</a></li>
+  <li><a href="https://github.com/jquense/yup">yup</a></li>
+  <li><a href="https://tailwindcss.com/docs/installation">tailwindcss</a></li>
+  <li><a href="https://postcss.org/">postcss</a></li>
+</ul>
         <br>
         <h2>Grupo de desarrolladores</h2>
             <ul>
