@@ -1,7 +1,7 @@
 import axiosOriginal from "axios";
 
 const axios = axiosOriginal.create({
-  baseURL: "http://localhost:8001",
+  baseURL: "https://reservagol-app-api.onrender.com",
 });
 
 export default axios;
