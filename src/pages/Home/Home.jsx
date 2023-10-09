@@ -12,17 +12,25 @@ const Home = () => {
           <p className="headerText text-lime-500 text-5xl md:text-6xl lg:text-7xl">
             RESERVA <br /> <span className="font-bold">TU CANCHA</span>
           </p>
-          <button className="bg-lime-500 hover:bg-white h-10 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-60 transition heroButton">
-            <Link
-              to="/complejos"
-              className="flex items-center justify-center h-full text-white"
-            >
+          <button className="bg-lime-500 hover:bg-white h-10 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-60 transition text-gray-50 heroButton">
+            <span className="flex items-center justify-center h-full">
               RESERVA HOY!
-            </Link>
+            </span>
           </button>
         </div>
       </div>
 
+      {/* SearchSection */}
+      {/* <div className="searchContainer mt-1 mb-1 p-2">
+				<SearchBar />
+				<div className="complexCards container mx-auto p-5">
+					<div className="grid gap-4 justify-center md:grid-cols-3">
+						
+					</div>
+				</div>
+			</div> */}
+
+      {/* Messi Section */}
       <div className="messiContainer container mx-auto px-4 md:flex justify-around items-center py-10 overflow-x-hidden">
         <div className="w-full md:w-3/4 lg:w-3/4 mb-6 md:mb-0 flex items-center justify-center">
           <img src={messiImg} alt="Messi" className="w-full" />
@@ -33,12 +41,9 @@ const Home = () => {
             INDUMENTARIA <br /> <span className="font-bold">DEPORTIVA</span>
           </p>
           <button className="bg-lime-500 hover:bg-white h-10 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-60 transition text-gray-50 heroButton">
-            <Link
-              to="/store"
-              className="flex items-center justify-center h-full text-white"
-            >
+            <span className="flex items-center justify-center h-full">
               Ver tienda
-            </Link>
+            </span>
           </button>
         </div>
       </div>
