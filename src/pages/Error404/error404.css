@@ -1,0 +1,27 @@
+.not-found-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    height: 100vh;
+    text-align: center;
+  }
+
+  .lottie-container {
+    width: 100%;
+    max-width: 400px; 
+    margin: 0 auto; 
+  }
+
+  @media (min-width: 768px) {
+    .lottie-container {
+      max-width: 600px; /* Ajusta el ancho máximo para pantallas más grandes */
+    }
+  }
+
+  .goback-button{
+    background-color: #71B641;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+  }

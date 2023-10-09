@@ -1,0 +1,19 @@
+.dashboard-stats {
+    /* background-color: #252525 !important; */
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.users-stats {
+    background-color: #71B641 !important;
+}
+
+.sportcenter-stats {
+    background-color: #4aada9;
+}
+
+.sales-stats {
+    background-color: #8a4aad;
+
+}

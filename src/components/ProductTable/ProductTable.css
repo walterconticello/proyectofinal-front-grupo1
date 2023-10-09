@@ -1,0 +1,44 @@
+
+
+.product-table-container {
+    /* margin: 20px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .table-container button {
+    /* padding: 5px 10px; */
+    background-color: #dc3545 !important;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .btnEdit {
+    background-color: #71B641 !important;
+
+  }
+  
+  .table-container button:hover {
+    background-color: #c82333;
+  }

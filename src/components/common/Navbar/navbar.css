@@ -1,0 +1,25 @@
+.navbarContainer {
+	background-color: #F2F2F2;
+}
+
+.navBtn {
+	background-color: #71B641;
+	transition: 0.5s;
+}
+
+.carrito {
+	color: #71B641;
+}
+
+.userIcon {
+	color: #71B641
+}
+
+.botonCierre{
+	cursor: pointer;
+}
+.navBtn:hover {
+	background-color: #71B641;
+} 
+
+/*sin importancias*/
