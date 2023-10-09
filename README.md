@@ -45,6 +45,8 @@
         <h2>Deploy</h2>
         <h3>link del deploy</h3>
         <h3>datos del admin harcodeado</h3>
+        <p>user : superadmin
+           pass : superadmin1</p>
         <br>
         <h2>Librerias utilizadas</h2>
         <ul>
