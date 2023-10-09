@@ -22,7 +22,7 @@ const Home = () => {
 
       setRandomComplexs(getRandomComplexs());
     }
-  }, [complexs, randomComplexs]);
+  }, [complexs, randomComplexs.length]);
 
   return (
     <>
