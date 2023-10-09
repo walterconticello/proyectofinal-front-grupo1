@@ -1,9 +1,29 @@
-import SearchBar from "../../components/SearchBar/SearchBar";
 import "./home.css";
 import messiImg from "../../assets/Frame_2.png";
+import { Button, Card } from "react-bootstrap";
+import { CenterContext } from "../../context/CenterContext";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+
 const Home = () => {
+
+  const { complexs } = useContext(CenterContext);
+  const [randomComplexs, setRandomComplexs] = useState([]);
+
+
+  useEffect(() => {
+    if (randomComplexs.length === 0) {
+      const getRandomComplexs = () => {
+        const shuffledComplexs = complexs.sort(() => 0.5 - Math.random());
+        const selectedComplexs = shuffledComplexs.slice(0, 3); // Cambio a 3 complejos
+        return selectedComplexs;
+      };
+
+      setRandomComplexs(getRandomComplexs());
+    }
+  }, [complexs, randomComplexs]);
+
   return (
     <>
       {/* Hero Section */}
@@ -12,23 +32,38 @@ const Home = () => {
           <p className="headerText text-lime-500 text-5xl md:text-6xl lg:text-7xl">
             RESERVA <br /> <span className="font-bold">TU CANCHA</span>
           </p>
-          <button className="bg-lime-500 hover:bg-white h-10 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-60 transition text-gray-50 heroButton">
-            <span className="flex items-center justify-center h-full">
-              RESERVA HOY!
-            </span>
-          </button>
+          <Link to="/complejos">
+            <button className="bg-lime-500 hover:bg-white h-10 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-60 transition text-gray-50 heroButton">
+              <span className="flex items-center justify-center h-full">
+                RESERVA HOY!
+              </span>
+            </button>
+          </Link>
         </div>
       </div>
 
       {/* SearchSection */}
-      {/* <div className="searchContainer mt-1 mb-1 p-2">
-				<SearchBar />
-				<div className="complexCards container mx-auto p-5">
-					<div className="grid gap-4 justify-center md:grid-cols-3">
-						
-					</div>
-				</div>
-			</div> */}
+      <div className="searchContainer mt-1 mb-1 p-2">
+        <div className="complexCards container mx-auto p-5">
+          <div className="grid gap-4 justify-center md:grid-cols-3">
+            {randomComplexs.map((complex) => (
+              <Card key={complex._id} style={{ width: "18rem" }}>
+                <Card.Img variant="top" src={complex.photo.url} />
+                <Card.Body>
+                  <Card.Title>{complex.name}</Card.Title> <hr />
+                  <Card.Text>
+                    <strong>Dirección:</strong> {complex.address}<br />
+                    <strong>Teléfono:</strong> {complex.phone}
+                  </Card.Text>
+                  <Link to={`/complejos/${complex._id}`}>
+                    <Button variant="primary">Ver Complejo</Button>
+                  </Link>
+                </Card.Body>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* Messi Section */}
       <div className="messiContainer container mx-auto px-4 md:flex justify-around items-center py-10 overflow-x-hidden">
@@ -40,11 +75,13 @@ const Home = () => {
           <p className="headerText text-lime-500 text-5xl md:text-6xl lg:text-7xl text-center md:text-left mb-4 md:mb-6">
             INDUMENTARIA <br /> <span className="font-bold">DEPORTIVA</span>
           </p>
-          <button className="bg-lime-500 hover:bg-white h-10 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-60 transition text-gray-50 heroButton">
-            <span className="flex items-center justify-center h-full">
-              Ver tienda
-            </span>
-          </button>
+          <Link to="/store">
+            <button className="bg-lime-500 hover:bg-white h-10 rounded-md px-5 py-4 text-sm hover:text-lime-500 font-bold w-60 transition text-gray-50 heroButton">
+              <span className="flex items-center justify-center h-full">
+                Ver tienda
+              </span>
+            </button>
+          </Link>
         </div>
       </div>
     </>

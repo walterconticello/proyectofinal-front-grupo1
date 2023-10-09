@@ -229,6 +229,7 @@
 /* Estilos para los mensajes de error de Formik */
 .error-message {
 	color: red !important;
+	background-color: transparent !important;
 	/* Cambiar el color del mensaje de error a rojo */
 }
 

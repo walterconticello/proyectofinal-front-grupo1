@@ -15,8 +15,8 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await axios.post(`api/auth/login`, values);
       const token = response.data.token;
-      console.log(response);
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`; // Update to use Bearer token
+      
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       localStorage.setItem("token", token);
       setAuthenticated(true);
       setUser(response.data.user);
@@ -30,7 +30,6 @@ export const AuthProvider = ({ children }) => {
     try {
       const { data } = await axios.post(`api/auth/register`, values);
       console.log("Registered user:", data);
-      // Manejar respuesta exitosa de registro aquí
     } catch (error) {
       console.error("Register error:", error);
       throw error;
@@ -45,7 +44,6 @@ export const AuthProvider = ({ children }) => {
         isOwner: makeOwner ? true : updatedData.isOwner,
       };
       const response = await axios.put(`/api/users/${id}`, userData);
-      // console.log(response);
       const updatedUser = response.data;
       setUser(updatedUser);
     } catch (error) {
@@ -81,7 +79,7 @@ export const AuthProvider = ({ children }) => {
       setUser(data.user);
       setAuthenticated(true);
     } catch (error) {
-      console.error("Error en getAuth:", error); // Agrega esta línea para registrar el error
+
       setAuthenticated(false);
       toast.error("Error de autenticación. Ingrese nuevamente");
     }
@@ -100,7 +98,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const deleteUser = async (id) => {
-    console.log(id, "id de context");
     try {
       await axios.delete(`api/users/${id}`);
       const deleteUsuario = users.filter((usuario) => usuario.id !== id);
@@ -111,7 +108,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getUserId = async (id) => {
-    console.log(id);
     try {
       await axios.get(`api/users/${id}`);
       const response = users.filter((usuario) => usuario.id !== id);

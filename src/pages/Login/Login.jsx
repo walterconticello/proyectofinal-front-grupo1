@@ -91,7 +91,9 @@ const Login = () => {
 		setRegisterLoading(true);
 		try {
 			await register(values);
+			await login({ username: values.username, password: values.password });
 			toast.success('Registro exitoso');
+			navigate('/');
 		} catch (error) {
 			toast.error('Error al registrar. Por favor, verifica tus datos y la conexión al servidor.');
 		} finally {
