@@ -44,7 +44,7 @@
         <br>
         <h2>Deploy</h2>
         <br>
-        <h3>datos del admin harcodeado</h3>
+        <h2>datos del admin harcodeado</h2>
         <p>user : superadmin
            pass : superadmin1</p>
         <br>
