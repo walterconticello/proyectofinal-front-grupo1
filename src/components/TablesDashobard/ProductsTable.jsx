@@ -49,7 +49,10 @@ const ProductsTable = ({ products }) => {
         Agregar producto
         <MdAddCircle className="mx-2" />
       </Button>
-      <div className="table-responsive ">
+      <div
+        className="table-container"
+        style={{ maxHeight: "400px", overflowY: "auto" }}
+      >
         <Table striped responsive bordered hover>
           <thead>
             <tr>
@@ -75,41 +78,43 @@ const ProductsTable = ({ products }) => {
                 <td className="align-middle">${product.price}</td>
                 <td className="align-middle">{product.stock}</td>
                 <td className="align-middle">
-                  <Button
-                    variant="primary"
-                    className="m-2 add-button"
-                    onClick={() => handleEditModalShow(product)}
-                  >
-                    <MdEdit />
-                  </Button>
-                  <Button
-                    variant="danger"
-                    onClick={async () => {
-                      const result = await MySwal.fire({
-                        title: "¿Estás seguro?",
-                        text: "Esta acción eliminará el producto de forma permanente.",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#d33",
-                        cancelButtonColor: "#3085d6",
-                        confirmButtonText: "Sí, eliminar",
-                        cancelButtonText: "Cancelar",
-                      });
+                  <div className="d-flex align-items-center justify-content-center">
+                    <Button
+                      className="mx-1 add-button"
+                      onClick={() => handleEditModalShow(product)}
+                    >
+                      <MdEdit />
+                    </Button>
+                    <Button
+                      variant="danger"
+                      className="mx-1 "
+                      onClick={async () => {
+                        const result = await MySwal.fire({
+                          title: "¿Estás seguro?",
+                          text: "Esta acción eliminará el producto de forma permanente.",
+                          icon: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#d33",
+                          cancelButtonColor: "#3085d6",
+                          confirmButtonText: "Sí, eliminar",
+                          cancelButtonText: "Cancelar",
+                        });
 
-                      if (result.isConfirmed) {
-                        await deleteProduct(product._id);
-                        console.log("product deleted");
-                        getProducts();
-                        MySwal.fire(
-                          "Eliminado",
-                          "El producto ha sido eliminado.",
-                          "success"
-                        );
-                      }
-                    }}
-                  >
-                    <MdDelete />
-                  </Button>
+                        if (result.isConfirmed) {
+                          await deleteProduct(product._id);
+                          console.log("product deleted");
+                          getProducts();
+                          MySwal.fire(
+                            "Eliminado",
+                            "El producto ha sido eliminado.",
+                            "success"
+                          );
+                        }
+                      }}
+                    >
+                      <MdDelete />
+                    </Button>
+                  </div>
                 </td>
               </tr>
             ))}

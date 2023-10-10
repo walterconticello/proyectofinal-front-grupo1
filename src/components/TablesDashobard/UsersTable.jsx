@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import { AuthContext } from "../../context/AuthContext";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
@@ -12,7 +12,10 @@ const UsersTable = ({ users }) => {
   const limitedUsers = users.slice(0, 7);
 
   return (
-    <>
+    <div
+      className="table-container"
+      style={{ maxHeight: "400px", overflowY: "auto" }}
+    >
       <Table
         responsive
         className="table-responsive mx-auto text-center"
@@ -35,7 +38,7 @@ const UsersTable = ({ users }) => {
               <td>{user.state ? "Activo" : "Inactivo"}</td>
               <td>{user.isOwner ? "Es Owner" : "No es Owner"}</td>
               <td>
-                <button
+                <Button
                   className="p-2 mx-2 btn-warning"
                   onClick={async () => {
                     const result = await MySwal.fire({
@@ -61,13 +64,13 @@ const UsersTable = ({ users }) => {
                   }}
                 >
                   <MdDelete />
-                </button>
+                </Button>
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
-    </>
+    </div>
   );
 };
 
