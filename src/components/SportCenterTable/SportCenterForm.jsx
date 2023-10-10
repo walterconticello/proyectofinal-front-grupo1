@@ -294,9 +294,12 @@ const SportCenterForm = () => {
                         className="text-danger"
                       />
                     </BootstrapForm.Group>
-                    <BootstrapForm.Group>
+                  </Col>
+                  <Col className="my-2">
+                    <div className="mb-3">
+                      <b>Seleccione la ubicación:</b>
+                    </div>
                       <MapComponent latitude={latitude} longitude={longitude} setLatitude={setLatitude} setLongitude={setLongitude}></MapComponent>
-                    </BootstrapForm.Group>
                   </Col>
                 </Row>
                 <div className="btn-container d-flex justify-content-end">
