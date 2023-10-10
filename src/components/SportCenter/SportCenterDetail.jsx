@@ -215,12 +215,18 @@ const SportCenterDetail = () => {
             <p>{sportCenter.phone}</p>
           </article>
           <article className="d-flex justify-content-center gap-3 my-3">
-            <a href={sportCenter.social.instagram} target="_blank">
-              <img src={Instagram} alt="Instagram" />
-            </a>
-            <a href={sportCenter.social.facebook} target="_blank">
-              <img src={Facebook} alt="Facebook" />
-            </a>
+            {
+              sportCenter.social.instagram &&
+              <a href={sportCenter.social.instagram} target="_blank">
+                <img src={Instagram} alt="Instagram" />
+              </a>
+            }
+            {
+              sportCenter.social.facebook &&
+              <a href={sportCenter.social.facebook} target="_blank">
+                <img src={Facebook} alt="Facebook" />
+              </a>
+            }
           </article>
         </section>
       </div>
