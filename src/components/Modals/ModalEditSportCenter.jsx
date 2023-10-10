@@ -20,6 +20,7 @@ import {
   FaRestroom,
   FaSistrix,
 } from "react-icons/fa";
+import MapComponent from "../SportCenterTable/MapComponent";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -41,8 +42,8 @@ const validationSchema = Yup.object().shape({
     instagram: Yup.string().min(3, "Debe tener al menos 3 caracteres"),
   }),
   location: Yup.object().shape({
-    latitude: Yup.number(),
-    longitude: Yup.number(),
+    latitude: Yup.string(),
+    longitude: Yup.string(),
   }),
 });
 
@@ -52,8 +53,11 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex, userId }) => {
   const [complex, setComplex] = useState(editComplex);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [latitude, setLatitude] = useState(editComplex.location.latitude);
+  const [longitude, setLongitude] = useState(editComplex.location.longitude);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
+
 
   const initialValues = {
     ownerId: complex.ownerId,
@@ -72,10 +76,10 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex, userId }) => {
       facebook: complex.social.facebook,
       instagram: complex.social.instagram,
     },
-    // location: {
-    //   latitude: complex.location.latitude,
-    //   longitude: complex.location.longitude,
-    // },
+    location: {
+      latitude: complex.location.latitude,
+      longitude: complex.location.longitude,
+    },
   };
 
   return (
@@ -90,6 +94,14 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex, userId }) => {
           onSubmit={async (values, actions) => {
             setIsLoading(true);
             try {
+              if(!values.phone.startsWith("+54")){
+                const phone = "+54" + values.phone;
+                values.phone = phone;
+              }
+              if((latitude!== null) && (longitude!== null)){
+                values.location.latitude = latitude;
+                values.location.longitude = longitude;
+              }
               await updateSportCenter(complex._id, values);
               setIsLoading(false);
               handleClose();
@@ -239,6 +251,14 @@ const ModalEditSportCenter = ({ show, handleClose, editComplex, userId }) => {
                     />
                   </BootstrapForm.Group>
                 </Col>
+                <Col className="my-2">
+                    <div className="mb-3">
+                      <b>Seleccione la ubicación:</b>
+                    </div>
+                    <div className="d-flex justify-content-center">
+                      <MapComponent latitude={latitude} longitude={longitude} setLatitude={setLatitude} setLongitude={setLongitude}></MapComponent>
+                    </div>
+                  </Col>
               </Row>
               <div className="btn-container d-flex justify-content-end">
                 <Button type="submit" className="btn add-button px-5 my-3">
