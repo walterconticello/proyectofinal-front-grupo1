@@ -94,10 +94,13 @@ const SportCenterForm = () => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={async (values, actions) => {
-              console.log(values);
               setIsLoading(true);
               try {
                 // console.log(values);
+                if(!values.phone.startsWith("+54")){
+                  const phone = "+54" + values.phone;
+                  values.phone = phone;
+                }
                 await postSportCenter(values);
                 setIsLoading(false);
                 handleCloseModal();
