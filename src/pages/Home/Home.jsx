@@ -4,13 +4,10 @@ import { Button, Card } from "react-bootstrap";
 import { CenterContext } from "../../context/CenterContext";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-
+import { MdLocationPin, MdPhone } from "react-icons/md";
 const Home = () => {
-
   const { complexs } = useContext(CenterContext);
   const [randomComplexs, setRandomComplexs] = useState([]);
-
 
   useEffect(() => {
     if (randomComplexs.length === 0) {
@@ -52,8 +49,13 @@ const Home = () => {
                 <Card.Body>
                   <Card.Title>{complex.name}</Card.Title> <hr />
                   <Card.Text>
-                    <strong>Dirección:</strong> {complex.address}<br />
-                    <strong>Teléfono:</strong> {complex.phone}
+                    <div className="d-flex mx-1">
+                      <MdLocationPin size={25} /> {complex.address}
+                    </div>
+                    <br />
+                    <div className="d-flex mx-1">
+                      <MdPhone size={25} /> {complex.phone}
+                    </div>
                   </Card.Text>
                   <Link to={`/complejos/${complex._id}`}>
                     <Button variant="primary">Ver Complejo</Button>
