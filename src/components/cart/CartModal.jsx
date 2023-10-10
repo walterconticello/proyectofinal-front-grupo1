@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
-import "../ProductCards/ProductCards.css";
+import "./cartModal.css";
 import { MdClose, MdDelete } from "react-icons/md";
 const CartModal = ({ onClick, onClose }) => {
   const [cartItems, setCartItems] = useState([]);
