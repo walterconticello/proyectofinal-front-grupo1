@@ -13,7 +13,7 @@ const Home = () => {
     if (randomComplexs.length === 0) {
       const getRandomComplexs = () => {
         const shuffledComplexs = complexs.sort(() => 0.5 - Math.random());
-        const selectedComplexs = shuffledComplexs.slice(0, 3); // Cambio a 3 complejos
+        const selectedComplexs = shuffledComplexs.slice(0, 4); // Cambio a 3 complejos
         return selectedComplexs;
       };
 
@@ -41,10 +41,10 @@ const Home = () => {
 
       {/* SearchSection */}
       <div className="searchContainer mt-1 mb-1 p-2">
-        <div className="complexCards container mx-auto p-5">
-          <div className="grid gap-4 justify-center md:grid-cols-3">
+        <div className="complexCards container mx-auto p-3 ">
+          <div className="d-flex flex-nowrap overflow-auto cards-container gap-4 ">
             {randomComplexs.map((complex) => (
-              <Card key={complex._id} style={{ width: "18rem" }}>
+              <Card key={complex._id} className="sportcenter-card col-12">
                 <Card.Img variant="top" src={complex.photo.url} />
                 <Card.Body>
                   <Card.Title>{complex.name}</Card.Title> <hr />
@@ -58,7 +58,9 @@ const Home = () => {
                     </div>
                   </Card.Text>
                   <Link to={`/complejos/${complex._id}`}>
-                    <Button variant="primary">Ver Complejo</Button>
+                    <Button className="reserve-button" variant="primary">
+                      Ver Complejo
+                    </Button>
                   </Link>
                 </Card.Body>
               </Card>

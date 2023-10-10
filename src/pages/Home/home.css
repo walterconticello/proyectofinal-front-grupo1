@@ -14,3 +14,30 @@
 	background-color: #71B641;
 }
 
+.reserve-button {
+    background-color: #71B641 !important;
+    border: none !important
+  }
+
+.scroll-container{
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	gap: 4px; /* Espacio entre las tarjetas */
+	scroll-snap-type: x mandatory;
+}
+.scroll-container > .Card {
+	flex: 0 0 auto;
+	scroll-snap-align: start;
+  }
+
+  .sportcenter-card{
+	max-width: 18rem !important;
+	scroll-snap-align: start;
+
+  }
+
+  .cards-container{
+	scroll-snap-type: x mandatory;
+
+  }
