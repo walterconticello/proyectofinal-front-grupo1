@@ -299,7 +299,9 @@ const SportCenterForm = () => {
                     <div className="mb-3">
                       <b>Seleccione la ubicación:</b>
                     </div>
+                    <div className="d-flex justify-content-center">
                       <MapComponent latitude={latitude} longitude={longitude} setLatitude={setLatitude} setLongitude={setLongitude}></MapComponent>
+                    </div>
                   </Col>
                 </Row>
                 <div className="btn-container d-flex justify-content-end">
