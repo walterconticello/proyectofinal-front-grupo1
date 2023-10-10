@@ -18,6 +18,7 @@ import {
 import { MdAddCircle } from "react-icons/md";
 import { FaShower, FaHouzz, FaRestroom, FaGlassCheers } from "react-icons/fa";
 import { useEffect } from "react";
+import MapComponent from "./MapComponent";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -39,8 +40,8 @@ const validationSchema = Yup.object().shape({
     instagram: Yup.string().min(3, "Debe tener al menos 3 caracteres"),
   }),
   location: Yup.object().shape({
-    latitude: Yup.number(),
-    longitude: Yup.number(),
+    latitude: Yup.string(),
+    longitude: Yup.string(),
   }),
 });
 
@@ -49,6 +50,8 @@ const SportCenterForm = () => {
   const { postSportCenter, getSportCenter } = useContext(CenterContext);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
 
@@ -69,10 +72,10 @@ const SportCenterForm = () => {
       facebook: "",
       instagram: "",
     },
-    // location: {
-    //   latitude: "",
-    //   longitude: "",
-    // },
+    location: {
+      latitude: "",
+      longitude: "",
+    },
   };
 
   // console.log(users);
@@ -96,11 +99,16 @@ const SportCenterForm = () => {
             onSubmit={async (values, actions) => {
               setIsLoading(true);
               try {
-                // console.log(values);
                 if(!values.phone.startsWith("+54")){
                   const phone = "+54" + values.phone;
                   values.phone = phone;
                 }
+                if((latitude!== null) && (longitude!== null)){
+                  values.location.latitude = latitude;
+                  values.location.longitude = longitude;
+                }
+                setLatitude(null);
+                setLongitude(null);
                 await postSportCenter(values);
                 setIsLoading(false);
                 handleCloseModal();
@@ -286,25 +294,9 @@ const SportCenterForm = () => {
                         className="text-danger"
                       />
                     </BootstrapForm.Group>
-                    {/* <BootstrapForm.Group>
-                      <label className="form-label">Latitud</label>
-                      <Field
-                        type="text"
-                        name="location.latitude"
-                        className="form-control"
-                        placeholder="Latitud"
-                      />
-                    </BootstrapForm.Group>
-
                     <BootstrapForm.Group>
-                      <label className="form-label">Longitud</label>
-                      <Field
-                        type="text"
-                        name="location.longitude"
-                        className="form-control"
-                        placeholder="Longitud"
-                      />
-                    </BootstrapForm.Group> */}
+                      <MapComponent latitude={latitude} longitude={longitude} setLatitude={setLatitude} setLongitude={setLongitude}></MapComponent>
+                    </BootstrapForm.Group>
                   </Col>
                 </Row>
                 <div className="btn-container d-flex justify-content-end">
