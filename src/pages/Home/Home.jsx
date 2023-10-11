@@ -45,7 +45,11 @@ const Home = () => {
           <div className="d-flex flex-nowrap overflow-auto cards-container gap-4 ">
             {randomComplexs.map((complex) => (
               <Card key={complex._id} className="sportcenter-home-card col-12">
-                <Card.Img variant="top" src={complex.photo.url} />
+                <Card.Img
+                  variant="top"
+                  className="home-card-img"
+                  src={complex.photo.url}
+                />
                 <Card.Body>
                   <Card.Title>{complex.name}</Card.Title> <hr />
                   <Card.Text>

@@ -9,7 +9,6 @@ const UsersTable = ({ users }) => {
   const { deleteUser, getUsers } = useContext(AuthContext);
 
   const MySwal = withReactContent(Swal);
-  const limitedUsers = users.slice(0, 7);
 
   return (
     <div
@@ -31,7 +30,7 @@ const UsersTable = ({ users }) => {
           </tr>
         </thead>
         <tbody>
-          {limitedUsers.map((user, index) => (
+          {users.map((user, index) => (
             <tr key={user._id}>
               <td>{user.username}</td>
               <td>{user.email}</td>

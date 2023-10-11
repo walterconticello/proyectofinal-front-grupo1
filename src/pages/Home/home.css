@@ -41,3 +41,8 @@
 	scroll-snap-type: x mandatory;
 
   }
+
+  .CardImg{
+	min-height: "500px" !important;
+	object-fit: "cover" !important
+  }
