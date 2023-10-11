@@ -47,6 +47,10 @@ const Home = () => {
               <Card key={complex._id} className="sportcenter-home-card col-12">
                 <Card.Img
                   variant="top"
+                  style={{
+                    minHeight: "200px",
+                    objectFit: "cover",
+                  }}
                   className="home-card-img"
                   src={complex.photo.url}
                 />

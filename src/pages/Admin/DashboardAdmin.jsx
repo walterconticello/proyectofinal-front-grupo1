@@ -28,11 +28,13 @@ const DashboardAdmin = () => {
     <>
       <Container fluid>
         <Row className="d-flex justify-content-center align-itmes-center my-5 mx-1">
-          <Col xs lg="2">
+          <Col xs lg="2" md="3">
             {complexs && <SportCenters complexs={complexs} />}
           </Col>
-          <Col md="2">{sales && <Sales sales={sales} />}</Col>
-          <Col xs lg="2">
+          <Col lg="2" md="3">
+            {sales && <Sales sales={sales} />}
+          </Col>
+          <Col lg="2" md="3">
             {users && <User users={users} />}
           </Col>
         </Row>

@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { ProductContext } from "../../context/ProductContext";
+import { AuthContext } from "../../context/AuthContext";
 import "./productCards.css";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -12,6 +13,7 @@ import {
 
 const ProductCards = () => {
   const { products } = useContext(ProductContext);
+  const { user } = useContext(AuthContext);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [cart, setCart] = useState([]);
@@ -101,6 +103,7 @@ const ProductCards = () => {
                         <Link
                           to={`/store/product/${product._id}`}
                           className="buy-button btn"
+                          disabled={!user}
                         >
                           Buy now
                         </Link>

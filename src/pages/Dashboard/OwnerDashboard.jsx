@@ -73,7 +73,6 @@ const OwnerDashboard = () => {
         });
     }
   }, [center]);
-  // console.log(center);
 
   useEffect(() => {
     if (bookings && bookings._id) {
@@ -130,6 +129,10 @@ const OwnerDashboard = () => {
                     src={center.photo.url}
                     className="img-fluid"
                     alt={center.name}
+                    style={{
+                      minHeight: "200px",
+                      objectFit: "cover",
+                    }}
                   />
                 </Col>
                 <Col md={8}>

@@ -1,4 +1,4 @@
-import Card from "react-bootstrap/Card";
+import { MdOutlineStore } from "react-icons/md";
 
 const SportCenters = ({ complexs }) => {
   let complejos = 0;
@@ -9,7 +9,10 @@ const SportCenters = ({ complexs }) => {
 
   return (
     <div className="dashboard-stats sportcenter-stats d-flex flex-column">
-      <h5>Complejos</h5>
+      <div className="name-icon d-flex justify-content-between">
+        <h5>Complejos</h5>
+        <MdOutlineStore size={23} />
+      </div>
       <h2>{complejos}</h2>
     </div>
   );

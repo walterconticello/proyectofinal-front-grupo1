@@ -36,39 +36,38 @@ const SportCenterCards = () => {
     Vestuario: <FaRestroom size={20} />,
   };
 
+  const applyFilters = () => {
+    const selected = {};
+    Object.keys(filters).forEach((category) => {
+      if (filters[category]) {
+        selected[category] = true;
+      }
+    });
+    const filtered = complexs.filter((complex) => {
+      if (filters.searchTerm && !complex.name.includes(filters.searchTerm)) {
+        return false;
+      }
+      if (filters.Estacionamiento && !complex.services.parking) {
+        return false;
+      }
+      if (filters.Duchas && !complex.services.showers) {
+        return false;
+      }
+      if (filters.Bar && !complex.services.bar) {
+        return false;
+      }
+      if (filters.Vestuario && !complex.services.dressingRoom) {
+        return false;
+      }
+      if (filters.Parrillas && !complex.services.grill) {
+        return false;
+      }
+      return true;
+    });
+
+    setFilteredComplexs(filtered);
+  };
   useEffect(() => {
-    const applyFilters = () => {
-      const selected = {};
-      Object.keys(filters).forEach((category) => {
-        if (filters[category]) {
-          selected[category] = true;
-        }
-      });
-      const filtered = complexs.filter((complex) => {
-        if (filters.searchTerm && !complex.name.includes(filters.searchTerm)) {
-          return false;
-        }
-        if (filters.Estacionamiento && !complex.services.parking) {
-          return false;
-        }
-        if (filters.Duchas && !complex.services.showers) {
-          return false;
-        }
-        if (filters.Bar && !complex.services.bar) {
-          return false;
-        }
-        if (filters.Vestuario && !complex.services.dressingRoom) {
-          return false;
-        }
-        if (filters.Parrillas && !complex.services.grill) {
-          return false;
-        }
-        return true;
-      });
-
-      setFilteredComplexs(filtered);
-    };
-
     applyFilters();
   }, [filters, complexs]);
 
@@ -123,7 +122,7 @@ const SportCenterCards = () => {
         <Col md={12} lg={8}>
           {complexs.length > 0 ? (
             filteredComplexs.map((center, index) => (
-              <Card key={index} className="sportcenter-card border m-2">
+              <Card key={index} className="sportcenter-card border my-3">
                 <Row>
                   <Col md={4}>
                     <img
@@ -133,7 +132,7 @@ const SportCenterCards = () => {
                     />
                   </Col>
                   <Col md={8}>
-                    <div className="icon-futbol d-flex align-items-center">
+                    <div className="icon-futbol d-flex ">
                       <FaFutbol size={25} className="mx-2" />
                       <p className="icon-text">Futbol 5</p>
                     </div>
