@@ -68,7 +68,7 @@ const Footer = () => {
                 </Link>
               </div>
               <div className="text-gray-300 mb-2 itemFooter">
-                <Link className="text-white" to="/*">
+                <Link className="text-white" to="/nosotros">
                   Acerca de Nosotros
                 </Link>
               </div>
