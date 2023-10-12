@@ -15,7 +15,12 @@
 
   @media (min-width: 768px) {
     .lottie-container {
-      max-width: 600px; /* Ajusta el ancho máximo para pantallas más grandes */
+      max-width: 600px; 
+    }
+  }
+  @media (max-width: 1248px) {
+    .lottie-container {
+      max-width: 400px; 
     }
   }
 
