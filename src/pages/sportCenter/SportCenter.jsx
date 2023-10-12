@@ -4,7 +4,7 @@ import SportCenterCards from "../../components/SportCenterCards/SportCenterCards
 const SportCenter = () => {
   return (
     <>
-      <div className="container">
+      <div className="">
         <Slider />
         <SportCenterCards />
       </div>

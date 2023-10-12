@@ -40,14 +40,7 @@ const Routes = () => {
       />
 
       <Route path="/complejos" element={<SportCenter />} />
-      <Route
-        path="/store/product/:productId"
-        element={
-          <PrivateRoute>
-            <ProductDetails />
-          </PrivateRoute>
-        }
-      />
+      <Route path="/store/product/:productId" element={<ProductDetails />} />
 
       <Route path="/login" element={<Login />} />
       <Route

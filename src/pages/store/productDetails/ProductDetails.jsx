@@ -127,7 +127,11 @@ const ProductDetails = () => {
                 <MdOutlineShoppingCart />
               )}
             </Button>
-            <Button className="buy-button px-5 mt-3" onClick={handleShowModal}>
+            <Button
+              disabled={!user}
+              className="buy-button px-5 mt-3"
+              onClick={handleShowModal}
+            >
               Buy now
             </Button>
           </div>
