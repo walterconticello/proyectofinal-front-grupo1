@@ -39,14 +39,14 @@ const NewComment = ({
         icon: "success",
         title: "Genial!",
         confirmButtonColor: "#71B641",
-        text: "Tu comentario se guardo con éxito", //Poner el mensaje del backend
+        text: "Tu comentario se guardo con éxito",
       });
     } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         confirmButtonColor: "#71B641",
-        text: "Algo salió mal", //Poner el mensaje del backend
+        text: "Algo salió mal",
       });
     }
   };

@@ -62,7 +62,7 @@ const Login = () => {
 			console.error("Login error:", error);
 		} finally {
 			setIsLoading(false);
-			setSubmitting(false); // Reset the submitting state
+			setSubmitting(false);
 		}
 	};
 

@@ -69,7 +69,7 @@ const SportCenterDetail = () => {
         icon: "error",
         title: "Oops...",
         confirmButtonColor: "#71B641",
-        text: "Algo salió mal", //Poner el mensaje del backend
+        text: "Algo salió mal",
       });
     }
   };
@@ -81,7 +81,6 @@ const SportCenterDetail = () => {
           `${URL}/api/comments/sportcenter/${idSportCenter}/${page}`
         );
         const data = await response.json();
-        //Cuando el comentario es una palabra muy larga con muchas letras, hace scroll horizontal
         setComments(data.comments);
         setLastPage(data.pages);
       } catch (error) {
@@ -89,7 +88,7 @@ const SportCenterDetail = () => {
           icon: "error",
           title: "Oops...",
           confirmButtonColor: "#71B641",
-          text: "Algo salió mal", //Poner el mensaje del backend
+          text: "Algo salió mal",
         });
       }
     }
@@ -105,7 +104,7 @@ const SportCenterDetail = () => {
         icon: "error",
         title: "Oops...",
         confirmButtonColor: "#71B641",
-        text: "Algo salió mal", //Poner el mensaje del backend
+        text: "Algo salió mal",
       });
     }
   };
@@ -264,7 +263,7 @@ const SportCenterDetail = () => {
                     comment={comment}
                     page={page}
                     setComments={setComments}
-                  ></Comment> //PONER COMO KEY el _id
+                  ></Comment>
                 );
               })
             ) : (

@@ -184,7 +184,7 @@ const Navbar = () => {
                     <NavLink
                       key={item.name}
                       to={item.href}
-                      activeclassname="text-white navBtn" // Apply active class
+                      activeclassname="text-white navBtn"
                       className={classNames(
                         location.pathname === item.href
                           ? "navBtn text-white transition"

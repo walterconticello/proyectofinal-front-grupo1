@@ -127,7 +127,7 @@ const ModalNewProduct = ({ show, handleClose }) => {
                 <label htmlFor="categories">Categorías</label>
                 <Field
                   name="categories"
-                  as="select" // Usa un select en lugar de un input de texto
+                  as="select"
                   className="form-control"
                 >
                   <option value="">Selecciona una categoría</option>

@@ -9,7 +9,6 @@ const ProductSideBar = ({
   isSidebarOpen,
 }) => {
   const { products } = useContext(ProductContext);
-  // const [priceRange, setPriceRange] = useState([0, 100]);
   const uniqueCategories = Array.from(
     new Set(products.map((product) => product.categories).flat())
   );

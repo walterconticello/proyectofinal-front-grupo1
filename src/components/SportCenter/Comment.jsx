@@ -18,7 +18,6 @@ const Comment = ({
   const URL = import.meta.env.VITE_DB;
   const starsFactory = () => {
     for (let i = 1; i <= comment.rating / 2; i++) {
-      //1
       stars.push("fill");
     }
     for (let j = 0; j < comment.rating % 2; j++) {
@@ -50,14 +49,14 @@ const Comment = ({
         icon: "success",
         title: "Genial!",
         confirmButtonColor: "#71B641",
-        text: "El comentario fue borrado con éxito!", //Poner el mensaje del backend
+        text: "El comentario fue borrado con éxito!",
       });
     } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         confirmButtonColor: "#71B641",
-        text: "Algo salió mal", //Poner el mensaje del backend
+        text: "Algo salió mal",
       });
     }
   };

@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { FaPhone, FaEnvelope, FaFacebook, FaMapMarker } from "react-icons/fa";
-import "./contactInfo.css"; // Asegúrate de crear este archivo CSS
+import "./contactInfo.css";
 
 const ContactPage = () => {
   return (

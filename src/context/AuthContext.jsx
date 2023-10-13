@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     setAuthenticated(false);
-    axios.defaults.headers.common["Authorization"] = ""; // Limpiar el token de autorización
+    axios.defaults.headers.common["Authorization"] = "";
     localStorage.removeItem("token");
     toast.success("Cerraste tu sesion de manera exitosa, vuelve pronto!", {
       position: toast.POSITION.TOP_CENTER,

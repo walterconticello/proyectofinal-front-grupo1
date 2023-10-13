@@ -9,7 +9,6 @@ import SportCenterForm from "../SportCenterTable/SportCenterForm";
 const SportCenterTable = ({ complexs }) => {
   const { getSportCenter, deleteSportCenter } = useContext(CenterContext);
 
-  // const limitedComplexs = complexs.slice(0, 3);
   const MySwal = withReactContent(Swal);
 
   return (

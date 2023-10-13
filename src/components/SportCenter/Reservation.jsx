@@ -23,7 +23,7 @@ const Reservation = ({ show, onHide, field, loggedUser }) => {
 
   const addDay = (day, month, offset) => {
     switch (month) {
-      case 0: //31 days
+      case 0:
       case 2:
       case 4:
       case 6:
@@ -35,7 +35,7 @@ const Reservation = ({ show, onHide, field, loggedUser }) => {
         }
         return day + offset - 31;
         break;
-      case 3: //30 days
+      case 3:
       case 5:
       case 8:
       case 10:
@@ -99,7 +99,7 @@ const Reservation = ({ show, onHide, field, loggedUser }) => {
         icon: "error",
         title: "Oops...",
         confirmButtonColor: "#71B641",
-        text: "Algo salió mal", //Poner el mensaje del backend
+        text: "Algo salió mal",
       });
     }
   };
@@ -131,14 +131,14 @@ const Reservation = ({ show, onHide, field, loggedUser }) => {
         icon: "success",
         title: "Genial!",
         confirmButtonColor: "#71B641",
-        text: "Tu reserva se guardo correctamente!", //Poner el mensaje del backend
+        text: "Tu reserva se guardo correctamente!",
       });
     } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         confirmButtonColor: "#71B641",
-        text: "Algo salió mal", //Poner el mensaje del backend
+        text: "Algo salió mal",
       });
     }
   };
@@ -165,7 +165,6 @@ const Reservation = ({ show, onHide, field, loggedUser }) => {
     return [];
   };
 
-  //Puedo hacer un filtro de dia cuando se completa todas las horas
 
   useEffect(() => {
     fetchReservation();

@@ -1,8 +1,8 @@
-import  { useState } from 'react';  // Import useState from 'react'
+import  { useState } from 'react';
 import { Card } from 'react-bootstrap';
 
 const Active = ({ active }) => {
-  const [cantidad, setCantidad] = useState(active);  // Destructure the state and state updater function
+  const [cantidad, setCantidad] = useState(active);
 
   return (
     <>
