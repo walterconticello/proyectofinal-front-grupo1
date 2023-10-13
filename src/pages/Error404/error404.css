@@ -9,7 +9,8 @@
 
   .lottie-container {
     width: 100%;
-    max-width: 400px; 
+    max-width: 400px;
+    max-height: 50vh;
     margin: 0 auto; 
   }
 
