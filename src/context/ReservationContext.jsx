@@ -26,14 +26,12 @@ const ReservationProvider = ({ children }) => {
   const postReservation = async (bookings) => {
     try {
       const response = axios.post("/api/reservation/", bookings);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
   };
 
   const canceledReservation = async (id) => {
-    console.log(id, "id de context");
     try {
       await axios.delete(`/api/reservation/${id}`);
       const canceled = bookings.filter((booking) => booking.id !== id);
@@ -44,11 +42,9 @@ const ReservationProvider = ({ children }) => {
   };
 
   const viewBooking = async (id) => {
-    console.log(id);
     try {
       await axios.get(`/api/reservation/${id}`);
       const viewBooking = bookings.filter((booking) => booking.id !== id);
-      console.log(viewBooking);
     } catch (error) {
       console.log(error, "error de productos");
     }

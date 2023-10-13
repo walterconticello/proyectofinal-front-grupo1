@@ -26,22 +26,10 @@ import NewComment from "./NewComment";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthContext";
 import { useParams } from "react-router-dom";
-/*
-CONECTAR CON EL BACKEND:
--MODIFICAR LAS GET
--PONER LOS MENSAJES DE LAS RESPONSE EN LOS ALERT
-
-EXTRAER LA INFO DE USUARIO DESDE EL JWT
-
-REVISAR LOS COMMENTS ASI NO QUEDA NADA COLGADO POR PULIR
-
-DESINTALAR DBJSON Y ELIMINAR EL ARCHIVO
-*/
 
 const SportCenterDetail = () => {
   const [sportCenter, setSportCenter] = useState(false);
   const { idSportCenter } = useParams();
-  //   console.log(idSportCenter);
 
   const [comments, setComments] = useState([]);
   const [page, setPage] = useState(1);

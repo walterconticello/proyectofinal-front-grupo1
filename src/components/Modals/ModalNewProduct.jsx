@@ -56,9 +56,7 @@ const ModalNewProduct = ({ show, handleClose }) => {
     setIsLoading(true);
 
     try {
-      console.log(values);
       await addProduct(values);
-      console.log("Product posted successfully");
       getProducts();
     } catch (error) {
       console.error("Error posting product:", error);

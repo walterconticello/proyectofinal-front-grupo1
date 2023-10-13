@@ -23,7 +23,7 @@
 	display: flex;
 	flex-wrap: nowrap;
 	overflow-x: auto;
-	gap: 4px; /* Espacio entre las tarjetas */
+	gap: 4px;
 	scroll-snap-type: x mandatory;
 }
 .scroll-container > .Card {

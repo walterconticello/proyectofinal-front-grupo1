@@ -44,9 +44,6 @@ const ProductDetails = () => {
 
   const handleBuyNow = () => {
     if (!user || !user._id) {
-      console.log(
-        "User is not authenticated. Please log in to make a purchase."
-      );
       return;
     }
     handleCloseModal();
@@ -59,7 +56,6 @@ const ProductDetails = () => {
 
     addSale(saleData)
       .then(() => {
-        console.log("Sale created successfully.");
       })
       .catch((error) => {
         console.error("Failed to create sale:", error);

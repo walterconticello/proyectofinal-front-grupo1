@@ -280,7 +280,6 @@ const Reservation = ({ show, onHide, field, loggedUser }) => {
                 <Form.Label className="fw-medium">
                   Seleccione una fecha:{" "}
                 </Form.Label>{" "}
-                {/*FALTA EL LIMITE INFERIOR DE HS Y FALTA EL EXCLUDE POR RESERVAS HECHAS*/}
                 <DatePicker
                   showIcon
                   showTimeSelect
@@ -318,7 +317,6 @@ const Reservation = ({ show, onHide, field, loggedUser }) => {
                   </div>
                 )}
               </Form.Group>{" "}
-              {/*filterDate={} filterTime={filterReservedHours} excludeDates={[]} excludeTimes={[]}*/}
             </div>
             <Form.Group className="d-flex flex-column flex-md-row justify-content-md-end gap-3">
               <Button

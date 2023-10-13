@@ -15,11 +15,8 @@ color: #656565;
   border-radius: 12px;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid #71B641; */
-  /* box-shadow: 10px 10px 40px -15px rgba(0,0,0,0.99); */
 
   padding: 10px;
-  /* margin: 1p ; */
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }

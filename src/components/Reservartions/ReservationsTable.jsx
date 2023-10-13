@@ -10,12 +10,6 @@ const ReservationTable = ({ bookings }) => {
   const { getReservationOwner, canceledReservation } =
     useContext(ReservationContext);
 
-  // useEffect(() => {
-  //   getReservationOwner();
-  // }, []);
-
-  // console.log(bookings);
-
   return (
     <>
       <Table responsive>
@@ -56,7 +50,6 @@ const ReservationTable = ({ bookings }) => {
 
                     if (result.isConfirmed) {
                       await canceledReservation(booking._id);
-                      console.log("reservacion cancelada");
                       getReservationOwner();
                       MySwal.fire(
                         "Cancelada",

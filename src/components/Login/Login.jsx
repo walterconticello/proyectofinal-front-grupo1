@@ -74,17 +74,15 @@ const Login = () => {
 			console.error("Register error:", error);
 		} finally {
 			setIsLoading(false);
-			setSubmitting(false); // Reset the submitting state
+			setSubmitting(false);
 		}
 	};
 
 	return (
 		<>
-			{console.log("User:", user)}
 			{authenticated && user && (
 				<div className="authenticated-message">
 					<h1>Welcome, {user.username}!</h1>
-					{/* You can add more information or actions for authenticated users */}
 				</div>
 			)}
 			<div className={`container1 ${isSignUp ? "sign-up-mode" : ""}`}>

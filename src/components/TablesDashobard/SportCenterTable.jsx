@@ -52,7 +52,6 @@ const SportCenterTable = ({ complexs }) => {
 
                       if (result.isConfirmed) {
                         await deleteSportCenter(complex._id);
-                        console.log("sportcenter deleted");
                         getSportCenter();
                         MySwal.fire(
                           "Eliminado",

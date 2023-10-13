@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  // console.log(users, "from auth context");
 
   const login = async (values) => {
     try {
@@ -29,7 +28,6 @@ export const AuthProvider = ({ children }) => {
   const register = async (values) => {
     try {
       const { data } = await axios.post(`api/auth/register`, values);
-      console.log("Registered user:", data);
     } catch (error) {
       console.error("Register error:", error);
       throw error;

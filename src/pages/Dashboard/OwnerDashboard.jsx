@@ -41,7 +41,6 @@ const OwnerDashboard = () => {
   const { getFieldsBySportCenterId } = useContext(FieldsContext);
   const userId = user._id;
   const { getSportCenterOwner, owner } = useContext(CenterContext);
-  //   console.log(userId);
   const center = owner[0];
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);

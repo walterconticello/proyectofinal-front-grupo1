@@ -78,7 +78,6 @@ const SportCenterForm = () => {
     },
   };
 
-  // console.log(users);
   return (
     <Container>
       <Button
