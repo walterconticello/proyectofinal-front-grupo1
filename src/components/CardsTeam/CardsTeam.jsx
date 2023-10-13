@@ -29,7 +29,7 @@ const teamMembers = [
       "Scrum Master y programador web creativo, une la estética con la funcionalidad de manera magistral.",
     github: "https://github.com/marcosquinteros ",
     linkedin: "https://www.linkedin.com/in/marcos-quinteros-135b87237/",
-    image: "./public/Marcos.jpg",
+    image: "https://avatars.githubusercontent.com/u/111574002?v=4",
   },
   {
     name: "Diego Vaca Paz",
