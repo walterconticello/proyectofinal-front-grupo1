@@ -37,7 +37,6 @@ const SportCenterTable = () => {
           <thead>
             <tr>
               <th>Nombre</th>
-              {/* <th>Dueño</th> */}
               <th>Direccion</th>
               <th>Telefono</th>
               <th>Acciones</th>
@@ -72,7 +71,6 @@ const SportCenterTable = () => {
 
                       if (result.isConfirmed) {
                         await deleteSportCenter(complex._id);
-                        console.log("sportcenter deleted");
                         getSportCenter();
                         MySwal.fire(
                           "Eliminado",

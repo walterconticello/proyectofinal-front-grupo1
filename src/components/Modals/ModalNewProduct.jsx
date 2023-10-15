@@ -56,9 +56,7 @@ const ModalNewProduct = ({ show, handleClose }) => {
     setIsLoading(true);
 
     try {
-      console.log(values);
       await addProduct(values);
-      console.log("Product posted successfully");
       getProducts();
     } catch (error) {
       console.error("Error posting product:", error);
@@ -129,7 +127,7 @@ const ModalNewProduct = ({ show, handleClose }) => {
                 <label htmlFor="categories">Categorías</label>
                 <Field
                   name="categories"
-                  as="select" // Usa un select en lugar de un input de texto
+                  as="select"
                   className="form-control"
                 >
                   <option value="">Selecciona una categoría</option>

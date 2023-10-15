@@ -4,7 +4,6 @@ import "./contactForm.css";
 
 const ContactForm = () => {
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     resetForm();
   };
 

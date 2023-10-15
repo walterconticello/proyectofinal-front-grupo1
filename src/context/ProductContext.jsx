@@ -48,8 +48,6 @@ const ProductProvider = ({ children }) => {
       const res = await axios.post("/api/products", form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-
-      console.log("Product posted successfully");
       return res;
     } catch (err) {
       console.error("Error posting product:", err);

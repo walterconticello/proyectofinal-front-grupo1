@@ -1,7 +1,6 @@
 
 
 .product-table-container {
-    /* margin: 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,8 +31,6 @@
 
   }
   .table-container button {
-    /* padding: 5px 10px; */
-    /* background-color: #dc3545 !important; */
     color: white;
     border: none;
     cursor: pointer;
@@ -42,7 +39,6 @@
   .table-container button:hover {
     background-color: #c82333;
   }
-/* .img-thumbnail-product */
 Image{
   max-height:40% !important;
 }

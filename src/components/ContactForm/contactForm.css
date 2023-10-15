@@ -1,9 +1,4 @@
 .container-form-contact {
-    /* width: 100% ; */
-    /* margin: 0 auto; */
-    /* padding: 20px; */
-    /* border: 1px solid #ccc; */
-    /* border-radius: 5px; */
     background-color: #71b641;
   }
   
@@ -13,7 +8,6 @@
     font-size: 1.9rem;
     font-weight: 600;
     margin-bottom: 12px;
-    /* margin-top: 1rem; */
   }
   .head{
     color: #fff;

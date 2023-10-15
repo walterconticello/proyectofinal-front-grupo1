@@ -21,7 +21,7 @@ const validationSchema = Yup.object().shape({
   pricePerHour: Yup.number()
     .required("El precio por hora es requerido")
     .min(0, "El precio por hora no puede ser menor que 0")
-    .max(10000, "El precio por hora no puede ser mayor que $10,000"),
+    .max(100000, "El precio por hora no puede ser mayor que $100.000"),
   size: Yup.number()
     .required("El tamaño es requerido")
     .min(5, "El tamaño no puede ser menor que 5")

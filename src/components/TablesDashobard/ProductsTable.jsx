@@ -102,7 +102,6 @@ const ProductsTable = ({ products }) => {
 
                         if (result.isConfirmed) {
                           await deleteProduct(product._id);
-                          console.log("product deleted");
                           getProducts();
                           MySwal.fire(
                             "Eliminado",

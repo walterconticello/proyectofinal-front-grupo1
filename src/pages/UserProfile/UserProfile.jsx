@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 const UserProfile = () => {
 	const { authenticated, user, logout } = useContext(AuthContext);
 	const [showModal, setShowModal] = useState(false);
-
+	const [selectedFile, setSelectedFile] = useState(null);
 	const userRole = user ? (user.isAdmin ? "Admin" : user.isOwner ? "Owner" : "Cliente") : "";
 
 	const handleModal = () => {
@@ -20,8 +20,19 @@ const UserProfile = () => {
 	};
 
 	const handleEditSubmit = async (values) => {
+		const formData = new FormData();
+		formData.append("username", values.username);
+		formData.append("email", values.email);
+		formData.append("password", values.password);
+		if (selectedFile) {
+			formData.append("photo", selectedFile);
+		}
 		try {
-			const response = await axios.put(`/api/users/${user._id}`, values);
+			const response = await axios.put(`/api/users/${user._id}`, formData, {
+				headers: {
+					"Content-Type": "multipart/form-data",
+				}
+			});
 			if (response.status === 200) {
 				handleModal();
 				toast.success('Datos editados con exito!', {
@@ -101,9 +112,9 @@ const UserProfile = () => {
 								<span>Compras</span>
 							</h3>
 						</div>
-						<div className="actionBtnProfile">
-							<button onClick={handleModal}>Editar Datos</button>
-						</div>
+							<div className="actionBtnProfile">
+								<button onClick={handleModal}>Editar Datos</button>
+							</div>
 					</div>
 				</div>
 			</div>
@@ -194,6 +205,18 @@ const UserProfile = () => {
 									{errors.password && touched.password && (
 										<div className="error-message">{errors.password}</div>
 									)}
+								</Form.Group>
+								<Form.Group controlId="photo">
+									<Form.Label>Foto de Perfil</Form.Label>
+									<input
+										type="file"
+										name="photo"
+										accept="image/*"
+										onChange={(e) => {
+											const file = e.target.files[0];
+											setSelectedFile(file);
+										}}
+									/>
 								</Form.Group>
 								<Button type="submit" className="py-2 mt-3" disabled={isSubmitting}>
 									{isSubmitting ? "Guardando..." : "Guardar Cambios"}

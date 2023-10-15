@@ -27,7 +27,7 @@
 
 .rating > label{
 	color: #acacac;
-	float: right; /*right*/
+	float: right;
 	cursor: pointer;
 	font-weight: 300 !important;
 }

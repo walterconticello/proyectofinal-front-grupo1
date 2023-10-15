@@ -9,7 +9,6 @@ import SportCenterForm from "../SportCenterTable/SportCenterForm";
 const SportCenterTable = ({ complexs }) => {
   const { getSportCenter, deleteSportCenter } = useContext(CenterContext);
 
-  // const limitedComplexs = complexs.slice(0, 3);
   const MySwal = withReactContent(Swal);
 
   return (
@@ -52,7 +51,6 @@ const SportCenterTable = ({ complexs }) => {
 
                       if (result.isConfirmed) {
                         await deleteSportCenter(complex._id);
-                        console.log("sportcenter deleted");
                         getSportCenter();
                         MySwal.fire(
                           "Eliminado",

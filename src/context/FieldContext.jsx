@@ -38,7 +38,6 @@ const FieldProvider = ({ children }) => {
     try {
       const response = await axios.get(`/fieldsOwner`);
       setFieldsOwner(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -60,8 +59,6 @@ const FieldProvider = ({ children }) => {
           "Content-Type": "multipart/form-data",
         },
       });
-
-      console.log("Respuesta del servidor:", response.data);
     } catch (error) {
       console.error("Error al enviar los datos:", error);
     }

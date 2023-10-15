@@ -99,7 +99,6 @@ const FieldsTable = ({ center }) => {
             <th>Horario de cierre</th>
             <th>Precio por hora</th>
             <th>Tamaño</th>
-            {/* <th>Activo</th> */}
             <th>Actions</th>
           </tr>
         </thead>
