@@ -5,11 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import ReactCardFlip from "react-card-flip";
 import "./CardsTeam.css";
-import Lautaro from "../../../public/Lautaro.jpg";
-import Walter from "../../../public/Walter.jpg";
-import Diego from "../../../public/Diego.jpg";
-import Marcos from "../../../public/Marcos.jpg";
-import Pablo from "../../../public/Pablo.jpg";
 
 const teamMembers = [
   {
@@ -18,7 +13,7 @@ const teamMembers = [
       "Desarrollador web apasionado, combina creatividad y código para crear sitios excepcionales.",
     github: "https://github.com/LautaroCruzSrur",
     linkedin: "https://www.linkedin.com/in/lautarocruzs/",
-    image: Lautaro,
+    image: "https://avatars.githubusercontent.com/u/105937766?v=4",
   },
   {
     name: "Walter Conticello",
@@ -26,7 +21,7 @@ const teamMembers = [
       "Experto en desarrollo web, construye estructuras sólidas tanto en back-end como en front-end.",
     github: "https://github.com/walterconticello",
     linkedin: "https://www.linkedin.com/in/walter-conticello/",
-    image: Walter,
+    image: "https://avatars.githubusercontent.com/u/126125113?v=4",
   },
   {
     name: "Marcos Quinteros",
@@ -34,7 +29,7 @@ const teamMembers = [
       "Scrum Master y programador web creativo, une la estética con la funcionalidad de manera magistral.",
     github: "https://github.com/marcosquinteros ",
     linkedin: "https://www.linkedin.com/in/marcos-quinteros-135b87237/",
-    image: Marcos,
+    image: "https://avatars.githubusercontent.com/u/111574002?v=4",
   },
   {
     name: "Diego Vaca Paz",
@@ -42,7 +37,7 @@ const teamMembers = [
       "Un talentoso arquitecto web full stack que domina tanto el frente como el dorso digital.",
     github: "https://github.com/diegovacapaz",
     linkedin: "https://www.linkedin.com/in/diego-isaias-vaca-paz-a9b6361b8/",
-    image: Diego,
+    image: "https://avatars.githubusercontent.com/u/69909513?v=4",
   },
   {
     name: "Pablo Matias Rodriguez",
@@ -50,7 +45,7 @@ const teamMembers = [
       "Desarrollador full stack apasionado, crea soluciones completas con maestría.",
     github: "https://github.com/PabloRodriguez95",
     linkedin: "https://www.linkedin.com/in/pablo-rodriguez-372845285/",
-    image: Pablo,
+    image: "https://avatars.githubusercontent.com/u/127259019?v=4",
   },
 ];
 
