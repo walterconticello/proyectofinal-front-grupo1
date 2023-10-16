@@ -6,7 +6,7 @@ export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
   const [fields, setFields] = useState([]);
-  const [centerFields, setCenterFields] = useState([]);
+  const [centerFields, setCenterFields] = useState(null);
   const [fieldsOwner, setFieldsOwner] = useState([]);
   const [loading, setIsLoading] = useState(true);
 

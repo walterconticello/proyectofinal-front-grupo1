@@ -16,11 +16,11 @@ const FieldsTable = ({ center }) => {
 
   const [showEditModal, setShowEditModal] = useState(false);
 
-  useEffect(() => {
-    if (center) {
-      getFieldsBySportCenterId(center._id);
-    }
-  }, [center.id]);
+  // useEffect(() => {
+  //   if (center) {
+  //     getFieldsBySportCenterId(center._id);
+  //   }
+  // }, [center.id]);este use Effect esta al pedo.
 
   const handleEdit = (field) => {
     setEditField(field);
