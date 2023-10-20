@@ -15,13 +15,6 @@ const FieldsTable = ({ center }) => {
   const [editField, setEditField] = useState(null);
 
   const [showEditModal, setShowEditModal] = useState(false);
-
-  useEffect(() => {
-    if (center) {
-      getFieldsBySportCenterId(center._id);
-    }
-  }, [center.id]);
-
   const handleEdit = (field) => {
     setEditField(field);
     setShowEditModal(true);

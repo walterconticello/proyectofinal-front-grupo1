@@ -5,14 +5,20 @@ import { AuthContext } from "./AuthContext";
 export const FieldsContext = createContext();
 
 const FieldProvider = ({ children }) => {
+  const {user} = useContext(AuthContext);
   const [fields, setFields] = useState([]);
   const [centerFields, setCenterFields] = useState([]);
   const [fieldsOwner, setFieldsOwner] = useState([]);
   const [loading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getFields();
+    getFields(); 
   }, []);
+  useEffect(() =>{
+    if(!user){
+      setCenterFields([]);
+    }
+  },[user]);
 
   const getFields = async () => {
     try {
@@ -25,6 +31,7 @@ const FieldProvider = ({ children }) => {
 
   const getFieldsBySportCenterId = async (sportCenterId) => {
     try {
+      setCenterFields([]);
       const response = await axios.get(
         `/api/sportcenter/fields/${sportCenterId}`
       );
