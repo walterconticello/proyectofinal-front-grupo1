@@ -1,32 +1,45 @@
-import React from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useState, useRef } from "react";
+import { Formik, Field, Form } from "formik";
+import * as Yup from "yup";
 import "./contactForm.css";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     resetForm();
   };
 
-  const validate = (values) => {
-    const errors = {};
+  const validationSchema = Yup.object().shape({
+    name: Yup.string()
+      .matches(/^[a-zA-Z\s]+$/, "El nombre solo debe tener letras y espacios")
+      .required("El nombre es requerido"),
+    email: Yup.string().email("Email invalido").required("Email es requerido"),
+    message: Yup.string()
+      .required("Message is required")
+      .test("characterLimit", "Maximo 200 caracteres", (value) => {
+        return !value || value.length <= 200;
+      }),
+  });
 
-    if (!values.name) {
-      errors.name = "Name is required";
-    }
+  const [messageLength, setMessageLength] = useState(0);
+  const form = useRef();
 
-    if (!values.email) {
-      errors.email = "Email is required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email address";
-    }
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-    if (!values.message) {
-      errors.message = "Message is required";
-    }
-
-    return errors;
+    emailjs
+      .sendForm(
+        "service_l98j15g",
+        "template_j2zcx7q",
+        form.current,
+        "AEYEb1Mx0uSTLvMxZ"
+      )
+      .then((result) => {})
+      .catch((error) => {
+        console.log(error.text);
+      });
   };
 
   return (
@@ -39,11 +52,11 @@ const ContactForm = () => {
       </div>
       <Formik
         initialValues={{ name: "", email: "", message: "" }}
+        validationSchema={validationSchema}
         onSubmit={handleSubmit}
-        validate={validate}
       >
-        {({ touched, errors }) => (
-          <Form className="my-3">
+        {({ touched, errors, values, setFieldValue }) => (
+          <Form ref={form} onSubmit={sendEmail} className="my-3">
             <div className="form-group w-100">
               <label htmlFor="name" className="label">
                 Name:
@@ -72,12 +85,22 @@ const ContactForm = () => {
                 name="message"
                 rows="4"
                 className="input"
+                onChange={(e) => {
+                  const newValue = e.target.value;
+                  setMessageLength(newValue.length);
+
+                  // Actualiza el valor del campo de mensaje en Formik
+                  setFieldValue("message", newValue);
+                }}
               />
+              <div className="character-count text-end">
+                {200 - messageLength}
+              </div>
               {touched.message && errors.message && (
                 <div className="error-message">{errors.message}</div>
               )}
             </div>
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-button" value="Send">
               Submit
             </button>
           </Form>
