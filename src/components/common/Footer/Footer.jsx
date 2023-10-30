@@ -8,11 +8,19 @@ const Footer = () => {
     <div className="container-fluid footerContainer p-3">
       <div className="row p-4">
         <div className="footerLogoContainer col-lg-4 d-flex flex-column align-items-center justify-content-center p-3">
-          <img src={logoApp} alt="logoReservaGol" className="logoFooter mb-4" />
+          <Link to="/">
+            <img src={logoApp} alt="logoReservaGol" className="logoFooter mb-4" />
+          </Link>
           <div className="d-flex gap-4 align-items-center justify-content-center text-gray-200">
-            <FaFacebook size={38} className="socialIcon" />
-            <FaTwitter size={38} className="socialIcon" />
-            <FaInstagram size={38} className="socialIcon" />
+            <Link to="/*">
+              <FaFacebook size={38} className="socialIcon" />
+            </Link>
+            <Link to="/*">
+              <FaTwitter size={38} className="socialIcon" />
+            </Link>
+            <Link to="/*">
+              <FaInstagram size={38} className="socialIcon" />
+            </Link>
           </div>
         </div>
         <div className="footerMenuContainer col-lg-8 align-items-center justify-content-center mt-4">

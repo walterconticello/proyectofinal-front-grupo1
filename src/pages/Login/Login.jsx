@@ -102,6 +102,18 @@ const Login = () => {
 		}
 	};
 
+	const handleNotification = () => {
+		toast.info('Esta función aún se encuentra en desarrollo', {
+			position: toast.POSITION.TOP_CENTER,
+			autoClose: 3000, // Puedes ajustar la duración de la notificación
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
+	};
+
 	return (
 		<>
 			<div className={`container1 ${isSignUp ? "sign-up-mode" : ""}`}>
@@ -140,10 +152,10 @@ const Login = () => {
 									</button>
 									<p className="social-text">O inicia con redes sociales</p>
 									<div className="social-media">
-										<a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
-										<a href="#" className="social-icon"><i className="fab fa-twitter"></i></a>
-										<a href="#" className="social-icon"><i className="fab fa-google"></i></a>
-										<a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
+										<a href="#" className="social-icon" onClick={handleNotification} disabled><i className="fab fa-facebook-f"></i></a>
+										<a href="#" className="social-icon" onClick={handleNotification} disabled><i className="fab fa-twitter"></i></a>
+										<a href="#" className="social-icon" onClick={handleNotification} disabled><i className="fab fa-google"></i></a>
+										<a href="#" className="social-icon" onClick={handleNotification} disabled><i className="fab fa-linkedin-in"></i></a>
 									</div>
 								</Form>
 							)}
@@ -192,10 +204,10 @@ const Login = () => {
 									</button>
 									<p className="social-text">O registrate con redes sociales</p>
 									<div className="social-media">
-										<a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
-										<a href="#" className="social-icon"><i className="fab fa-twitter"></i></a>
-										<a href="#" className="social-icon"><i className="fab fa-google"></i></a>
-										<a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
+										<a href="#" className="social-icon" onClick={handleNotification}><i className="fab fa-facebook-f"></i></a>
+										<a href="#" className="social-icon" onClick={handleNotification}><i className="fab fa-twitter"></i></a>
+										<a href="#" className="social-icon" onClick={handleNotification}><i className="fab fa-google"></i></a>
+										<a href="#" className="social-icon" onClick={handleNotification}><i className="fab fa-linkedin-in"></i></a>
 									</div>
 								</Form>
 							)}
