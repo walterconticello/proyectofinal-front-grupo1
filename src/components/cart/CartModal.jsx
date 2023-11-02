@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import "./cartModal.css";
 import { MdClose, MdDelete } from "react-icons/md";
+import { toast } from 'react-toastify';
 const CartModal = ({ onClick, onClose }) => {
   const [cartItems, setCartItems] = useState([]);
   const [showModal, setShowModal] = useState(true);
@@ -30,6 +31,17 @@ const CartModal = ({ onClick, onClose }) => {
     setShowModal(false);
     onClose();
   };
+  const handleNotification = () => {
+		toast.info('Esta función aún se encuentra en desarrollo', {
+			position: toast.POSITION.TOP_CENTER,
+			autoClose: 3000, // Puedes ajustar la duración de la notificación
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
+	};
 
   return (
     <Modal show={showModal} onHide={handleModalClose}>
@@ -74,7 +86,7 @@ const CartModal = ({ onClick, onClose }) => {
         </button>
         <p>
           Total: <span className="border p-2">${cartTotal}</span>
-          <button className="btn buy-button mx-2">Comprar</button>
+          <button className="btn buy-button mx-2"onClick={handleNotification}>Comprar</button>
         </p>
       </Modal.Footer>
     </Modal>
